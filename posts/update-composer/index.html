@@ -115,6 +115,8 @@
 <p><code>[UnexpectedValueException] Your github oauth token for github.com contains invalid characters:</code></p>
 <p>I've seen that before, too. My github oauth token is fine, but Composer has a bug that makes it think otherwise. Fortunately, <a href="https://stackoverflow.com/a/67005141/2943704">rafaelbitten</a> has a solution. His first step, however, is a doozy: &quot;Find the <code>composer/auth.json</code> file.&quot; For me, that's in <code>~/.config/composer</code>, not in <code>~/.composer</code>, as it might be for some. After I found my <code>auth.json</code> file, I copied the oauth part (actually, it was the only thing in the file), pasted it somewhere for the moment, and replaced it with <code>{}</code> so that Composer wouldn't throw another error: <code>Expected one of: 'STRING', 'NUMBER', 'NULL', 'TRUE', 'FALSE', '{', '['</code>. Of course, after I did that, I ran into the <code>Filesystem exception</code> error from above when I did <code>composer selfupdate</code>, so I repeated the Boss COTIGA's process.</p>
 <p>After that, <code>composer selfupdate</code> showed that I was using the most current stable version.</p>
+<hr />
+<span style="font-size:smaller">Photo by <a href="https://unsplash.com/@marius?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Marius Masalar</a> on <a href="https://unsplash.com/s/photos/music?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></span>
 
             
           <div id="taglist" class="mx-auto">
