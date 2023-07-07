@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samuel J. Huskey - Converting a Drupal site to 11ty</title>
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/dist/app.css" />
+
+    
+
+
+<meta name="description" content="Samuel J. Huskey&#39;s Personal Website">
+
+
+<meta property="og:site_name" content="Samuel J. Huskey">
+<meta property="og:title" content="Samuel J. Huskey">
+<meta property="og:description" content="Samuel J. Huskey&#39;s Personal Website">
+<meta property="og:url" content="https://sjhuskey.github.io/posts/drupal-to-11ty/">
+<meta property="og:locale" content="">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Converting a Drupal site to 11ty">
+<meta name="twitter:description" content="Samuel J. Huskey&#39;s Personal Website">
+
+
+
+
+<link rel="icon" href="/assets/favicons/favicon.ico">
+
+
+
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    <div id="header-container">
+  <div class="container py-6">
+    <header class="pb-5 mb-4">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container w-75 mx-auto border-bottom">
+          <a href="/" class="d-flex align-items-center text-light text-decoration-none">
+              <title>Samuel J. Huskey</title>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span class="fs-4">Samuel J. Huskey</span>
+          </a>
+          <button
+            class="navbar-toggler navbar-dark"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/cv.html">CV</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/dh.html">DH</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/tech.html">Tech</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/posts">Blog</a>
+    </li>
+</ul>
+
+
+</div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <main id="main">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            
+            <img src="/assets/images/drupal.jpg" class="featured-image-post" />
+            
+            <h1>Converting a Drupal site to 11ty</h1>
+            <p>The main website for the Digital Latin Library has been running on the Drupal 7 CMS since its launch. As many Digital Humanities scholars know, maintaining the technology stack for an informational site can be an impediment to making real progress on the actual project. As much as I love Drupal, it is definitely more than I need for a few static pages and some blog posts. One must keep up with not only the Drupal codebase, but a MySQL database and the Linux server that it runs on. Moreover, upgrading the site from Drupal 7 to Drupal 10 would simply not be worth the effort. Having performed that task for the <a href="https://classicalstudies.org/">Society for Classical Studies' website</a>, I know how to do it, but I'm not interested in going through that again for a small site like <a href="https://digitallatin.org/">https://digitallatin.org/</a>.</p>
+<p>Paying for hosting is also an obstacle. For many years, my home institution's Office of the Vice President for Research and Partnerships gave me the use of a virtual machine for the DLL project, provided that I manage the upkeep and maintenance. That is why I now have the skills to administer Linux servers—valuable skills, to be sure, but again, one more thing to keep up with in this world of DIY Digital Humanities. Since the VPRP wanted to get out of the business of hosting virtual machines, I moved everything over to the university's cloud computing resource. That was a good solution, but again, I had to agree to be the system administrator for the server. I don't mind maintaining a Linux server. There's something satisfying about completing those tasks. Still, it does take time away from other aspects of my research and creative activity.</p>
+<p>So, I decided to convert the Digital Latin Library site to the static site manager <a href="https://www.11ty.dev/">11ty</a>. First of all, since it's a <em>static</em> site manager, I don't have to maintain a MySQL database. Second, my content isn't stored in pieces in a database. I can just store it in Markdown files. I like writing in Markdown. Indeed, I do almost <em>all</em> of my writing in <a href="https://www.markdownguide.org/">Markdown</a> these days. Combined with <a href="https://pandoc.org/">Pandoc</a>, it's remarkably flexible! Third, Git is big part of the workflow for an 11ty site, so count this Git fan in! Finally, I can host my 11ty site on Github for free!</p>
+<p>Those are the reasons for converting my site to 11ty. Here are the steps that I took to do it, in case someone else is interested in taking this adventure.</p>
+<h2>First step: Export Content from Drupal</h2>
+<p>I used the Views module in Drupal to export all of my nodes to a CSV file. You'll need to have the <a href="https://www.drupal.org/project/views">Views module</a> installed and enabled, along with the <a href="https://www.drupal.org/project/views_data_export">Views Data Export module</a>.</p>
+<p>My site had a number of different content types, but I was able to use one View for all of them. Your data export view should include at least these fields:</p>
+<ul>
+<li>Content: Title (Title)</li>
+<li>Content: Body (Body)</li>
+<li>Content: Author (Author)</li>
+<li>Content: Path (Path)</li>
+<li>Content: Post date (Post date)</li>
+<li>Content: Category (Category)</li>
+<li>Content: Type (Type)</li>
+</ul>
+<p>Your content types might have other fields (e.g., images) that you'll want to include.</p>
+<p>I set my data export view to download the content as a CSV file so that I could easily work with it in Python in the next step.</p>
+<h2>Use Python to Convert CSV Data to Markdown Files</h2>
+<p>To be perfectly honest, I consulted <a href="https://openai.com/blog/chatgpt">Chat-GPT</a> about how to convert my CSV data to individual Markdown files, so the following script is mostly its work.</p>
+<p>The CSV file I downloaded from Drupal was called <code>export_all_content.csv</code>. Where that occurs in the following script, you'll need to change it to your file's name.</p>
+<p>The columns in my CSV file were called Title, Body, Author, Path, Post date, Category, and Type. Your titles might be different, depending on how you set up your data export view in Drupal.</p>
+<p>I created a new folder on my computer for this project and called it <code>dllnew</code>. Inside that folder, I created two other folders, <code>markdown</code> (for the new markdown files) and <code>data</code> (for the CSV file). The Python script is in the root of <code>dllnew</code>.</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> os<br><span class="token keyword">import</span> csv<br><span class="token keyword">import</span> markdown<br><br><span class="token comment"># Create the "markdown" directory if it doesn't exist</span><br><span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span><span class="token string">'markdown'</span><span class="token punctuation">)</span><span class="token punctuation">:</span><br>    os<span class="token punctuation">.</span>makedirs<span class="token punctuation">(</span><span class="token string">'markdown'</span><span class="token punctuation">)</span><br>    <br><span class="token triple-quoted-string string">''' Default metadata for all pages. Note that I'm using <br>    'post' as the default for the layout field, since most <br>    of my pages are blog posts'''</span><br><br>DEFAULT_METADATA <span class="token operator">=</span> <span class="token punctuation">{</span><br>    <span class="token string">'layout'</span><span class="token punctuation">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span><br>    <span class="token string">'title'</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br>    <span class="token string">'author'</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br>    <span class="token string">'path'</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br>    <span class="token string">'date'</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br>    <span class="token string">'category'</span><span class="token punctuation">:</span> <span class="token string">''</span><br><span class="token punctuation">}</span><br><br><span class="token comment"># Open the CSV file</span><br><span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'data/export_all_content.csv'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> csv_file<span class="token punctuation">:</span><br>    csv_reader <span class="token operator">=</span> csv<span class="token punctuation">.</span>DictReader<span class="token punctuation">(</span>csv_file<span class="token punctuation">)</span><br><br>    <span class="token comment"># Loop through each row in the CSV file</span><br>    <span class="token keyword">for</span> row <span class="token keyword">in</span> csv_reader<span class="token punctuation">:</span><br>        <span class="token comment"># Extract data from the row</span><br>        title <span class="token operator">=</span> row<span class="token punctuation">[</span><span class="token string">'Title'</span><span class="token punctuation">]</span><br>        body <span class="token operator">=</span> row<span class="token punctuation">[</span><span class="token string">'Body'</span><span class="token punctuation">]</span><br>        author <span class="token operator">=</span> row<span class="token punctuation">[</span><span class="token string">'Author'</span><span class="token punctuation">]</span><br>        path <span class="token operator">=</span> row<span class="token punctuation">[</span><span class="token string">'Path'</span><span class="token punctuation">]</span><br>        date <span class="token operator">=</span> row<span class="token punctuation">[</span><span class="token string">'Post date'</span><span class="token punctuation">]</span><br>        category <span class="token operator">=</span> row<span class="token punctuation">[</span><span class="token string">'Category'</span><span class="token punctuation">]</span><br>        layout <span class="token operator">=</span> row<span class="token punctuation">[</span><span class="token string">'Type'</span><span class="token punctuation">]</span><br><br>        <span class="token comment"># Merge the default metadata with the metadata from the CSV file</span><br>        metadata <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token operator">**</span>DEFAULT_METADATA<span class="token punctuation">,</span> <span class="token string">'title'</span><span class="token punctuation">:</span> title<span class="token punctuation">,</span> <span class="token string">'author'</span><span class="token punctuation">:</span> author<span class="token punctuation">,</span> <span class="token string">'path'</span><span class="token punctuation">:</span> path<span class="token punctuation">,</span> <span class="token string">'date'</span><span class="token punctuation">:</span> date<span class="token punctuation">,</span> <span class="token string">'category'</span><span class="token punctuation">:</span> category<span class="token punctuation">,</span> <span class="token string">'layout'</span><span class="token punctuation">:</span> layout<span class="token punctuation">}</span><br><br>        <span class="token comment"># Convert the body text to HTML using markdown</span><br>        html <span class="token operator">=</span> markdown<span class="token punctuation">.</span>markdown<span class="token punctuation">(</span>body<span class="token punctuation">)</span><br><br>        <span class="token comment"># Add the metadata to the beginning of the HTML content</span><br>        markdown_text <span class="token operator">=</span> <span class="token string">'---\n'</span> <span class="token operator">+</span> <span class="token string">'\n'</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string-interpolation"><span class="token string">f'</span><span class="token interpolation"><span class="token punctuation">{</span>k<span class="token punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token punctuation">{</span>v<span class="token punctuation">}</span></span><span class="token string">'</span></span> <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> metadata<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'\n---\n\n'</span> <span class="token operator">+</span> html<br><br>        <span class="token comment"># Replace spaces with hyphens in the filename</span><br>        filename <span class="token operator">=</span> title<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'.md'</span><br>        <br>        <span class="token comment"># Write the markdown file</span><br>        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token string">'markdown'</span><span class="token punctuation">,</span> filename<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> markdown_file<span class="token punctuation">:</span><br>            markdown_file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>markdown_text<span class="token punctuation">)</span></code></pre>
+<p>Running this script yields one new Markdown file per row in the CSV file, all saved in the <code>markdown</code> directory.</p>
+<h2>Cleaning Up the Markdown</h2>
+<p>I noticed that my new Markdown files weren't completely in the Markdown language. That is, the metadata block looked good, but the HTML code from the original Drupal nodes was still present. For example:</p>
+<pre class="language-html"><code class="language-html">---<br>layout: base<br>title: Textual Criticism<br>author:<br>permalink: /library-digital-latin-texts/textual-criticism<br>date: 2015-05-08<br>category:<br>---<br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Reading an apparatus criticus is hard enough for a human to do; for a computer, it's impossible—at least if the apparatus hasn't been encoded. <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Critical editions in print <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>em</span><span class="token punctuation">></span></span>are<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>em</span><span class="token punctuation">></span></span> heavily encoded, but in a way that only humans with special training and lots of experience can decode. Because publishers prefer not to sacrifice much real estate on a page to printing information that they think only some readers will use, textual scholars have developed a way of compressing the information into the allotted space using abbreviations and symbols. Call it a “print-optimized visualization of textual data.”<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>The image above is an excerpt from the Harvard Servius. Consider all of the types of information that appear in the entries on a single page:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://digitallatin.org/sites/default/files/servius_marked_up.png<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border-style</span><span class="token punctuation">:</span>solid<span class="token punctuation">;</span> <span class="token property">border-width</span><span class="token punctuation">:</span>1px<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span>406px<span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span>600px</span><span class="token punctuation">"</span></span></span> <span class="token punctuation">/></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
+<p>So, I consulted Chat-GPT again to find a good way to convert the HTML code into standard Markdown. After a few tries, I ended up with this:</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> os<br><span class="token keyword">import</span> html2text<br><br><span class="token keyword">def</span> <span class="token function">convert_html_in_markdown</span><span class="token punctuation">(</span>markdown_file<span class="token punctuation">)</span><span class="token punctuation">:</span><br>    <span class="token comment"># Load the Markdown file</span><br>    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>markdown_file<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span><br>        markdown_content <span class="token operator">=</span> <span class="token builtin">file</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><br><br>    <span class="token comment"># Split the Markdown content into metadata and body</span><br>    metadata<span class="token punctuation">,</span> body <span class="token operator">=</span> markdown_content<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'---'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><br><br>    <span class="token comment"># Convert HTML to Markdown with custom BodyWidth</span><br>    converted_body <span class="token operator">=</span> html2text<span class="token punctuation">.</span>html2text<span class="token punctuation">(</span>body<span class="token punctuation">,</span> bodywidth<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><br><br>    <span class="token comment"># Combine the metadata and converted body</span><br>    md_content <span class="token operator">=</span> <span class="token string">'---\n'</span> <span class="token operator">+</span> metadata <span class="token operator">+</span> <span class="token string">'\n---\n'</span> <span class="token operator">+</span> converted_body<br><br>    <span class="token comment"># Generate the output file name</span><br>    md_output_file <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>splitext<span class="token punctuation">(</span>markdown_file<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'_converted.md'</span><br><br>    <span class="token comment"># Write the converted Markdown content to the output file</span><br>    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>md_output_file<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span><br>        <span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span>md_content<span class="token punctuation">)</span><br><br>    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Converted HTML in </span><span class="token interpolation"><span class="token punctuation">{</span>markdown_file<span class="token punctuation">}</span></span><span class="token string"> to Markdown in </span><span class="token interpolation"><span class="token punctuation">{</span>md_output_file<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><br><br><span class="token keyword">def</span> <span class="token function">batch_convert_html_in_markdown</span><span class="token punctuation">(</span>markdown_folder<span class="token punctuation">)</span><span class="token punctuation">:</span><br>    <span class="token comment"># Get the list of Markdown files in the folder</span><br>    markdown_files <span class="token operator">=</span> <span class="token punctuation">[</span>f <span class="token keyword">for</span> f <span class="token keyword">in</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span>markdown_folder<span class="token punctuation">)</span> <span class="token keyword">if</span> f<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">'.md'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><br><br>    <span class="token comment"># Convert HTML in each Markdown file</span><br>    <span class="token keyword">for</span> markdown_file <span class="token keyword">in</span> markdown_files<span class="token punctuation">:</span><br>        markdown_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>markdown_folder<span class="token punctuation">,</span> markdown_file<span class="token punctuation">)</span><br>        convert_html_in_markdown<span class="token punctuation">(</span>markdown_path<span class="token punctuation">)</span><br><br><span class="token comment"># Specify the folder containing the Markdown files</span><br>markdown_folder <span class="token operator">=</span> <span class="token string">'../pages'</span><br><br><span class="token comment"># Call the batch conversion function</span><br>batch_convert_html_in_markdown<span class="token punctuation">(</span>markdown_folder<span class="token punctuation">)</span><br></code></pre>
+<p>To use that script on your own files, you'll need to change the value for <code>markdown_folder</code> to the path of your Markdown files.</p>
+<p>The script will save a new version of your Markdown files with <code>_converted</code> appended to the file name, so you won't lose your original versions.</p>
+<h2>Next Steps</h2>
+<p>My next steps will be:</p>
+<ol>
+<li>Download the files directory from my Drupal 7 site</li>
+<li>Identify a good place for the image files in my 11ty site</li>
+<li>Update the image paths in my new Markdown files</li>
+<li>Work on the theme for the site.</li>
+</ol>
+<p>That fourth step is going to take the most time. That's always the way for DIY Digital Humanities projects, am I right? I'm not a graphic designer by any stretch of the imagination. Fortunately, there are many good template to use as a starting point. I think I'll use <a href="https://mandrasch.github.io/11ty-plain-bootstrap5/">11ty-plain-bootstrap5</a>, but <a href="https://11straps-demo.netlify.app/">11straps</a> also looks like a good option.</p>
+
+            
+          <div id="taglist" class="mx-auto">
+              <h2>Filed under</h2>
+              <ul>
+                
+                
+                <li>
+                  <a href="/tags/Drupal">Drupal</a>
+                </li>
+                
+                
+                
+                
+              </ul>
+            </div>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mt-auto">
+  <div class="container w-75 mx-auto">
+    <div class="row">
+      <div class="col-8">
+        <p class="footerinfo">
+          ©2023 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
+          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+        </p>
+      </div>
+      <div class="col-4">
+        <div id="socialicons">
+          <a href="https://twitter.com/SamHuskey" target="_blank" rel="noopener noreferrer">
+            <svg
+              class="niftybutton-twitter"
+              data-tag="twi"
+              data-name="Twitter"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M419.6 168.6c-11.7 5.2-24.2 8.7-37.4 10.2 13.4-8.1 23.8-20.8 28.6-36 -12.6 7.5-26.5 12.9-41.3 15.8 -11.9-12.6-28.8-20.6-47.5-20.6 -42 0-72.9 39.2-63.4 79.9 -54.1-2.7-102.1-28.6-134.2-68 -17 29.2-8.8 67.5 20.1 86.9 -10.7-0.3-20.7-3.3-29.5-8.1 -0.7 30.2 20.9 58.4 52.2 64.6 -9.2 2.5-19.2 3.1-29.4 1.1 8.3 25.9 32.3 44.7 60.8 45.2 -27.4 21.4-61.8 31-96.4 27 28.8 18.5 63 29.2 99.8 29.2 120.8 0 189.1-102.1 185-193.6C399.9 193.1 410.9 181.7 419.6 168.6z"
+              ></path></svg
+          ></a>
+          <a href="https://github.com/sjhuskey" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-github"
+              data-donate="true"
+              data-tag="git"
+              data-name="Github"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"
+              ></path></svg></a
+          ><a href="https://www.linkedin.com/in/sjhuskey/" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-linkedin"
+              data-donate="true"
+              data-tag="lin"
+              data-name="LinkedIn"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"
+              ></path></svg
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript" src="/dist/app.js"></script>
+  </body>
+</html>
