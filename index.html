@@ -3,26 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Samuel J. Huskey - Samuel J. Huskey</title>
+    <title>Samuel J. Huskey - Samuel J. Huskey&#39;s Personal Web Site</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
 
     
 
 
-<meta name="description" content="Samuel J. Huskey&#39;s personal website">
+<meta name="description" content="Template for static site generator Eleventy with Boostrap 5 and SCSS/JS compilation via laravel-mix.">
 
 
 <meta property="og:site_name" content="Samuel J. Huskey">
-<meta property="og:title" content="Samuel J. Huskey">
-<meta property="og:description" content="Samuel J. Huskey&#39;s personal website">
+<meta property="og:title" content="Samuel J. Huskey&#39;s Personal Web Site">
+<meta property="og:description" content="Template for static site generator Eleventy with Boostrap 5 and SCSS/JS compilation via laravel-mix.">
 <meta property="og:url" content="https://sjhuskey.github.io/">
-<meta property="og:locale" content="">
+<meta property="og:locale" content=""><meta property="og:image" content="http://localhost:8080/assets/images/open-graph/teaser.jpeg">
 
 
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Samuel J. Huskey">
-<meta name="twitter:description" content="Samuel J. Huskey&#39;s personal website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Samuel J. Huskey&#39;s Personal Web Site">
+<meta name="twitter:description" content="Template for static site generator Eleventy with Boostrap 5 and SCSS/JS compilation via laravel-mix."><meta property="twitter:image" content="http://localhost:8080/assets/images/open-graph/teaser.jpeg">
 
 
 
@@ -54,7 +54,7 @@
             <span class="fs-4">Samuel J. Huskey</span>
           </a>
           <button
-            class="navbar-toggler"
+            class="navbar-toggler navbar-dark"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -102,40 +102,87 @@
           <div class="col-md-10 mx-auto">
             
             <h1></h1>
-            <h1>Welcome!</h1>
-<p><img src="/assets/images/sjhuskey-2017.jpg" alt="Sam Huskey" class="float-image"></p>
-<p>This is the personal web site of Samuel J. Huskey.</p>
-<p>I launched this site as a space where I could write about my adventures in web development, text and data analysis, digital philology, and technology in general, apart from my main research project, the <a href="https://digitallatin.org/">Digital Latin Library</a>.</p>
-<p>I intend to use this site to post about technical issues and problems that I run into while building and maintaining various digital resources, mostly to keep a record for myself of how I solved them. If that information helps someone else, all the better!</p>
-<p>I also wanted to experiment with different web applications. I've been a Drupal developer since version 6, and I have also worked with ExpressionEngine and a variety of other content management systems. I built the first version of this site with WordPress, then I tried it on <a href="https://jekyllrb.com/">Jekyll</a>. Now it's on <a href="https://www.11ty.dev/">11ty</a>!</p>
-<p>If you want to know more about me, I invite you to read my <a href="about">About page</a> and view my <a href="about/cv.html">CV</a>.</p>
-<hr />
-    <h2>My Blog Posts</h2>
-    <ul><li>
-        <a href="/posts/drupal-to-11ty/">Converting a Drupal site to 11ty</a> | June 11, 2023
-      </li><li>
-        <a href="/posts/gitignore-for-drupal/">Gitignore for Drupal</a> | February 22, 2023
-      </li><li>
-        <a href="/posts/using-ddev-local-drupal/">Using ddev for Local Drupal Development</a> | October 6, 2022
-      </li><li>
-        <a href="/posts/aau-exploration/">NEH funding histories for AAU Institutions</a> | September 26, 2022
-      </li><li>
-        <a href="/posts/journey/">My Journey with Web Technology</a> | April 1, 2022
-      </li><li>
-        <a href="/posts/patching-drupal-module/">Installing Drupal</a> | March 10, 2022
-      </li><li>
-        <a href="/posts/installing-drupal/">Installing Drupal</a> | March 10, 2022
-      </li><li>
-        <a href="/posts/migrating-digital-latin-library-from-drupal-7-to-drupal-9/">Migrating the Digital Latin Library from Drupal 7 to Drupal 9</a> | October 4, 2021
-      </li><li>
-        <a href="/posts/making-a-vocabulary-list-for-wheelock/">Making a Vocabulary List for Wheelock</a> | September 7, 2021
-      </li><li>
-        <a href="/posts/update-composer/">Updating Composer</a> | June 25, 2021
-      </li><li>
-        <a href="/posts/verify-downloaded-file/">Verify a Downloaded File</a> | June 22, 2021
-      </li><li>
-        <a href="/posts/settings-php-for-drupal-9/">The settings.php file for Drupal 9</a> | June 8, 2021
-      </li></ul>
+            
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-2">
+    <h1 class="display-5 fw-bold">Welcome!</h1>
+
+    <p class="pt-4">
+      I launched this site as a space where I could write about my adventures with technology, text and data analysis,
+      and digital philology. I post about technical issues and problems that I run into while building, using, and
+      maintaining various digital resources, mostly to keep a record for myself of how I solved them. If that
+      information helps someone else, all the better!
+    </p>
+  </div>
+</div>
+
+<div class="row align-items-md-stretch">
+  <div class="col-md-6 mt-3">
+    <div class="h-100 p-5 text-white bg-dark rounded-3">
+      <h2>About Me</h2>
+      <p>
+        As an introvert, I generally prefer not to talk about myself, but since this is my personal web site, I really
+        ought to provide <em>some</em> information. I was born and raised in Charlottesville, VA. For much of my youth,
+        I thought that I would be a professional musician, but that changed when I took Latin in high school …
+      </p>
+      <a href="about" class="btn btn-outline-light">More about me</a>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="h-100 p-5 border text-white rounded-3" style="background-color: #96be25">
+      <h2>Digital Humanities</h2>
+      <p>
+        In many ways, my career in this area of study—I'll refer to it as "DH", though it goes by a variety of
+        names—began in the late 1990's when I taught myself how to make web pages with HTML. At the time, I was also
+        supplementing my income as a graduate student in Classics by fixing computers for faculty members and other
+        students. That, too, helped to develop my interest in technology.
+      </p>
+      <a href="about/dh.html " class="btn btn-outline-light">More …</a>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="h-100 p-5 broder text-white rounded-3" style="background-color: #2596be">
+      <h2>My Blog Posts</h2>
+      <ul class="list-unstyled"><li class="pb-1" style="background-color: #2596be">
+          <a href="/posts/drupal-to-11ty/" class="link-light">Converting a Drupal site to 11ty</a>
+        </li><li class="pb-1" style="background-color: #2596be">
+          <a href="/posts/gitignore-for-drupal/" class="link-light">Gitignore for Drupal</a>
+        </li><li class="pb-1" style="background-color: #2596be">
+          <a href="/posts/using-ddev-local-drupal/" class="link-light">Using ddev for Local Drupal Development</a>
+        </li><li class="pb-1" style="background-color: #2596be">
+          <a href="/posts/aau-exploration/" class="link-light">NEH funding histories for AAU Institutions</a>
+        </li><li class="pb-1" style="background-color: #2596be">
+          <a href="/posts/journey/" class="link-light">My Journey with Web Technology</a>
+        </li></ul>
+      <a href="posts " class="btn btn-outline-light">More …</a>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="h-100 p-5 text-white rounded-3" style="background-color: #be2596">
+      <h2>Digital Latin Library</h2>
+      <ul class="list-unstyled">
+        <li class="pb-1"><a href="https://digitallatin.org/" class="link-light">DigitalLatin.org</a></li>
+        <li class="pb-1"><a href="https://catalog.digitallatin.org/" class="link-light">The DLL Catalog</a></li>
+        <li class="pb-1">
+          <a href="https://ldlt.digitallatin.org/" class="link-light">The Library of Digital Latin Texts</a>
+        </li>
+        <li class="pb-1">
+          <a href="https://digitallatin.github.io/guidelines/LDLT-Guidelines.html" class="link-light"
+            >LDLT Encoding Guidelines</a
+          >
+        </li>
+        <li class="pb-1"><a href="https://github.com/DigitalLatin/" class="link-light">DLL on GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-12">
+    <div class="img-fit-cover-container rounded-3 bg-light"></div>
+  </div>
+</div>
+<!-- for debug: {&quot;title&quot;:&quot;Samuel J. Huskey&quot;,&quot;description&quot;:&quot;Samuel J. Huskey&#39;s Personal Website&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;baseUrl&quot;:&quot;http://localhost:8080&quot;,&quot;pathPrefix&quot;:&quot;/&quot;,&quot;lang&quot;:&quot;en&quot;,&quot;home&quot;:&quot;https://sjhuskey.github.io/&quot;} {&quot;date&quot;:&quot;2023-07-07T16:23:22.511Z&quot;,&quot;inputPath&quot;:&quot;./src/index.njk&quot;,&quot;fileSlug&quot;:&quot;&quot;,&quot;filePathStem&quot;:&quot;/index&quot;,&quot;outputFileExtension&quot;:&quot;html&quot;,&quot;url&quot;:&quot;/&quot;,&quot;outputPath&quot;:&quot;_site/index.html&quot;} {&quot;lang&quot;:&quot;en&quot;,&quot;title&quot;:&quot;Samuel J. Huskey&#39;s Personal Web Site&quot;,&quot;image&quot;:&quot;/assets/images/open-graph/teaser.jpeg&quot;,&quot;description&quot;:&quot;Template for static site generator Eleventy with Boostrap 5 and SCSS/JS compilation via laravel-mix.&quot;}-->
 
             
           </div>
@@ -146,13 +193,13 @@
     <footer class="mt-auto">
   <div class="container w-75 mx-auto">
     <div class="row">
-      <div class="col">
+      <div class="col-8">
         <p class="footerinfo">
           ©2023 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
           <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
         </p>
       </div>
-      <div class="col">
+      <div class="col-4">
         <div id="socialicons">
           <a href="https://twitter.com/SamHuskey" target="_blank" rel="noopener noreferrer">
             <svg
