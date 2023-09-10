@@ -1,0 +1,11 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "emmet.includeLanguages": {
+    "njk": "html"
+  },
+  "files.associations": {
+    "*.njk": "html"
+  },
+  "git.ignoreLimitWarning": true
+}

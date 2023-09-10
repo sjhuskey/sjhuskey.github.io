@@ -1,0 +1,198 @@
+/* via https://getbootstrap.com/docs/5.0/examples/jumbotron/ */
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+/* for bootstrap-icons (svg) */
+.bi {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: -0.125em;
+}
+
+.img-fit-cover-container {
+  &.rounded-3 {
+    picture img {
+      border-radius: 0.3rem !important;
+    }
+  }
+  picture {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+  picture img {
+    object-fit: cover;
+    height: auto;
+    width: 100%;
+  }
+}
+
+#header-container {
+  background-color: #841617;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: var(--bs-light);
+}
+
+#header-container nav {
+  background-color: #841617;
+}
+
+code {
+  color: #b33c7e;
+}
+
+.featured-image-post {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  padding-bottom: 2rem;
+}
+
+.float-image-right {
+  float: right;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  border-radius: 10px;
+  border: thin solid black;
+}
+
+.float-image-left {
+  float: left;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+  border-radius: 10px;
+  border: thin solid black;
+}
+
+.image {
+  border: solid thin black;
+}
+
+.multi-column-list {
+  -webkit-column-count: 2; /* Specify the number of columns */
+  -moz-column-count: 2;
+  column-count: 2;
+}
+
+/****
+*
+* Tables
+*
+****/
+table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+thead {
+  background-color: #3c42b3;
+  color: #ffffff;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 12px 15px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: #f0f8ff;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px solid #a5a6a7;
+}
+
+/****
+*
+* Tag list
+*
+****/
+#taglist {
+  background-color: #640000;
+  border-radius: 10px;
+  padding: 0.6rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  width: max-content;
+}
+
+#taglist h2 {
+  font-size: large;
+  color: var(--bs-light);
+  text-align: center;
+}
+
+#taglist li {
+  display: inline;
+  margin-right: 2rem;
+}
+
+#taglist a {
+  color: #b3ac3c;
+}
+
+/****
+*
+* Footer Styles
+*
+****/
+footer {
+  background-color: black;
+  color: var(--bs-light);
+}
+
+.footerinfo {
+  margin-top: 1rem;
+  font-size: smaller;
+}
+
+.footerinfo a {
+  color: var(--bs-light);
+}
+
+#socialicons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: right;
+}
+
+#socialicons a {
+  text-decoration: none;
+  border: 0;
+  width: 36px;
+  height: 36px;
+  padding: 2px;
+  margin: 5px;
+  color: var(--color-theme-highlight);
+  border-radius: 15%;
+}
+
+#socialicons svg {
+  display: block;
+  fill: currentColor;
+}
