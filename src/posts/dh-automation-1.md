@@ -16,7 +16,7 @@ My eyes were opened to these possibilities when I read _[Automate the Boring Stu
 
 ## Renaming Files … Lots and Lots of Files
 
-My colleage [Bill Endres](https://www.ou.edu/cas/english/about/faculty/b-endres) recently asked me for help with a task that routinely takes a lot of his time. An expert in multi-spectral imaging, Bill takes dozens and dozens of images in a typical imaging session. The software he uses labels each image with a date-time stamp and the light frequency in use. For example, the file name `20230720_132856_365_nm.tif` tells us that the image was taken on July 20, 2023 (20230720) at 1:28:56 p.m., and that the light frequency in use was 365nm.
+My colleage [Bill Endres](https://www.ou.edu/cas/english/about/faculty/b-endres) asked me for help with a task that routinely takes a lot of his time. An expert in multi-spectral imaging, Bill takes dozens and dozens of images in a typical imaging session. The software he uses labels each image with a date-time stamp and the light frequency in use. For example, the file name `20230720_132856_365_nm.tif` tells us that the image was taken on July 20, 2023 (20230720) at 1:28:56 p.m., and that the light frequency in use was 365nm.
 
 The thing is that each object (i.e., page of a manuscript in this case) is imaged in sixteen different frequencies, so the result of imaging one page is a list of images like this:
 
