@@ -51,8 +51,18 @@
   background-color: #841617;
 }
 
+blockquote {
+  margin: 0 0 1rem 2rem;
+  border-left: thick solid #f5f2f0;
+  padding-left: 1rem;
+}
+
 code {
   color: #b33c7e;
+}
+
+pre[class*="language-"] {
+  margin: 0.5em 0 2rem;
 }
 
 .featured-image-post {
