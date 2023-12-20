@@ -52,7 +52,7 @@ Assistant Professor, University of Oklahoma. (August 2002–July 2008)
 
 #### Articles
 
-1. Huskey, S.J. 2023. "Committing to reproducibility and explainability: using Git as a research journal." _International Journal of Digital Humanities_. <https://doi.org/10.1007/s42803-023-00076-9>
+1. Huskey, S.J. 2023. "Committing to reproducibility and explainability: using Git as a research journal." _International Journal of Digital Humanities_. <https://doi.org/10.1007/s42803-023-00076-9>. PDF available at [https://rdcu.be/dt2vc](https://rdcu.be/dt2vc){.uri}
 1. Huskey, S. J. 2022. "The Visual [Re]Presentation of Textual Data in Traditional and Digital Critical Editions." _magazén: International Journal for Digital and Public Humanities_ 3.1. <https://edizionicafoscari.unive.it/it/edizioni4/riviste/magazen/2022/1/the-visual-representation-of-textual-data-in-tradi/>
 1. Huskey, S. J. and Cayless, H. 2022. "The Digital Critical Apparatus: Thoughts from the Field." _The Classical Journal_ 117.3: 340–358.
 1. Huskey, S. J., and Witt, J. 2019. "Decoupling Quality Control and Publication: The Digital Latin Library and the Traveling Imprimatur." _Digital Humanities Quarterly_ 13.4. <http://digitalhumanities.org/dhq/vol/13/4/000438/000438.html>
