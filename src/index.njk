@@ -1,0 +1,88 @@
+---
+meta:
+  lang: en
+  title: "Samuel J. Huskey's Personal Web Site"
+  image: "/assets/images/open-graph/teaser.jpeg"
+  description: "A website about Samuel J. Huskey"
+layout: base
+eleventyNavigation:
+  key: Home
+---
+
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-2">
+    <h1 class="display-5 fw-bold">Welcome!</h1>
+
+    <p class="pt-4">
+      I launched this site as a space where I could write about my adventures with technology, text and data analysis,
+      and digital philology. I post about technical issues and problems that I run into while building, using, and
+      maintaining various digital resources, mostly to keep a record for myself of how I solved them. If that
+      information helps someone else, all the better!
+    </p>
+  </div>
+</div>
+
+<div class="row align-items-md-stretch">
+  <div class="col-md-6 mt-3">
+    <div class="h-100 p-5 text-white bg-dark rounded-3">
+      <h2>About Me</h2>
+      <p>
+        As an introvert, I generally prefer not to talk about myself, but since this is my personal web site, I really
+        ought to provide <em>some</em> information. I was born and raised in Charlottesville, VA. For much of my youth,
+        I thought that I would be a professional musician, but that changed when I took Latin in high school …
+      </p>
+      <a href="{{ 'about' | url }}" class="btn btn-outline-light">More about me</a>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="h-100 p-5 border text-white rounded-3" style="background-color: #96be25">
+      <h2>Digital Humanities</h2>
+      <p>
+        In many ways, my career in this area of study—I'll refer to it as "DH", though it goes by a variety of
+        names—began in the late 1990's when I taught myself how to make web pages with HTML. At the time, I was also
+        supplementing my income as a graduate student in Classics by fixing computers for faculty members and other
+        students. That, too, helped to develop my interest in technology.
+      </p>
+      <a href="{{ 'about/dh.html ' | url }}" class="btn btn-outline-light">More …</a>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="h-100 p-5 broder text-white rounded-3" style="background-color: #2596be">
+      <h2>My Blog Posts</h2>
+      <ul class="list-unstyled">
+        {%- set count = 0 -%} {%- for item in collections.posts | reverse -%} {%- if count < 5 -%} {%- set count = count
+        + 1 -%}
+        <li class="pb-1" style="background-color: #2596be">
+          <a href="{{ item.url | url }}" class="link-light">{{ item.data.title }}</a>
+        </li>
+        {%- endif -%} {%- endfor -%}
+      </ul>
+      <a href="{{ 'posts ' | url }}" class="btn btn-outline-light">More …</a>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="h-100 p-5 text-white rounded-3" style="background-color: #be2596">
+      <h2>Digital Latin Library</h2>
+      <ul class="list-unstyled">
+        <li class="pb-1"><a href="https://digitallatin.org/" class="link-light">DigitalLatin.org</a></li>
+        <li class="pb-1"><a href="https://catalog.digitallatin.org/" class="link-light">The DLL Catalog</a></li>
+        <li class="pb-1">
+          <a href="https://ldlt.digitallatin.org/" class="link-light">The Library of Digital Latin Texts</a>
+        </li>
+        <li class="pb-1">
+          <a href="https://digitallatin.github.io/guidelines/LDLT-Guidelines.html" class="link-light"
+            >LDLT Encoding Guidelines</a
+          >
+        </li>
+        <li class="pb-1"><a href="https://github.com/DigitalLatin/" class="link-light">DLL on GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-12">
+    <div class="img-fit-cover-container rounded-3 bg-light"></div>
+  </div>
+</div>
+<!-- for debug: {{ site | dump }} {{page | dump }} {{meta | dump}}-->

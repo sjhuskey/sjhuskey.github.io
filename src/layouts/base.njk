@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="{{ meta.lang or site.lang }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ site.title }} - {{ title or meta.title }}</title>
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ '/dist/app.css' | url }}" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-T4DCQE192P');
+    </script>
+    {% include "meta.njk" %}
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    {% include "header.njk" %}
+
+    <main id="main">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            {% if image %}
+            <img src="{{ image }}" class="featured-image-post" />
+            {% endif %}
+            <h1>{{ title }}</h1>
+            {{ content | safe }}
+            {% if tags %}
+          <div id="taglist" class="mx-auto">
+              <h2>Filed under</h2>
+              <ul>
+                {% for item in tags %}
+                {% if item !== 'posts' %}
+                <li>
+                  <a href="/tags/{{ item }}">{{ item }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </main>
+
+    {% include "footer.njk" %}
+    <script type="text/javascript" src="{{ '/dist/app.js' | url }}"></script>
+  </body>
+</html>
