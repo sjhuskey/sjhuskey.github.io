@@ -51,7 +51,7 @@ async function imageShortcode(src, alt, sizes = "100vw") {
     formats: ["webp", "jpeg"],
     urlPath: `${pathPrefix}img`,
     // outputDir: "./img/" is default
-    outputDir: "./_site/img/", // passthrough below didn't work, write to output dir by now
+    outputDir: "./docs/img/", // passthrough below didn't work, write to output dir by now
   });
 
   let lowsrc = metadata.jpeg[0];
@@ -151,7 +151,7 @@ module.exports = function (eleventyConfig) {
   return {
     dir: {
       input: "src",
-      output: "_site",
+      output: "docs",
       includes: "includes", // this path is releative to input-path (src/)
       layouts: "layouts", // this path is releative to input-path (src/)
       data: "data", // this path is releative to input-path (src/)
