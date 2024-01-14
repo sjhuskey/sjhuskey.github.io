@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samuel J. Huskey - The settings.php file for Drupal 9</title>
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/dist/app.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-T4DCQE192P');
+    </script>
+    
+
+
+<meta name="description" content="Samuel J. Huskey&#39;s Personal Website">
+
+
+<meta property="og:site_name" content="Samuel J. Huskey">
+<meta property="og:title" content="Samuel J. Huskey">
+<meta property="og:description" content="Samuel J. Huskey&#39;s Personal Website">
+<meta property="og:url" content="https://sjhuskey.github.io/posts/settings-php-for-drupal-9/">
+<meta property="og:locale" content="">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The settings.php file for Drupal 9">
+<meta name="twitter:description" content="Samuel J. Huskey&#39;s Personal Website">
+
+
+
+
+<link rel="icon" href="/assets/favicons/favicon.ico">
+
+
+
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    <div id="header-container">
+  <div class="container py-6">
+    <header class="pb-5 mb-4">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container w-75 mx-auto border-bottom">
+          <a href="/" class="d-flex align-items-center text-light text-decoration-none">
+              <title>Samuel J. Huskey</title>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span class="fs-4">Samuel J. Huskey</span>
+          </a>
+          <button
+            class="navbar-toggler navbar-dark"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/cv.html">CV</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/dh.html">DH</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/tech.html">Tech</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/posts">Blog</a>
+    </li>
+</ul>
+
+
+</div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <main id="main">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            
+            <img src="/assets/images/drupal.jpg" class="featured-image-post" />
+            
+            <h1>The settings.php file for Drupal 9</h1>
+            <!-- Excerpt Start -->
+<p>Here are some few useful tidbits I've learned about the <code>settings.php</code> file in my adventures with Drupal 8 and 9. All of this assumes that you are working on the command line and that your user is in the sudoers group.</p>
+<!-- Excerpt End -->
+<h2>First Steps</h2>
+<p>It's best to do the following things first:</p>
+<ol>
+<li>Set up the files directory and give it the correct permissions: <code>cd SITE/web/sites/default &amp;&amp; sudo mkdir files &amp;&amp; sudo chown USERNAME:apache files &amp;&amp; sudo chmod a+w files</code> <strong>Note</strong>: Change SITE and USERNAME to your site's name and your system username, respectively.</li>
+<li>Create the settings.php file: <code>cp default.settings.php settings.php &amp;&amp; sudo chown USERNAME:USERNAME settings.php &amp;&amp; sudo chmod ug=rwx,o=rw settings.php</code></li>
+<li>Run install by going to the site at <a href="http://142.93.182.93/SITE/web/core/install.php">http://142.93.182.93/SITE/web/core/install.php</a>.</li>
+<li>Secure the permissions on settings.php: <code>sudo chmod u=rw,go=r settings.php &amp;&amp; sudo chmod a=rwx files</code></li>
+<li>Make a private files directory: <code>cd</code> to the root of the installation and do <code>sudo mkdir private &amp;&amp; sudo chown USERNAME:USERNAME private &amp;&amp; sudo chmod a+w private</code></li>
+<li>Move the <code>config</code> directory out of <code>web/sites/default/files</code> and into the root of the site: <code>cd web/sites/default/files</code> and copy the name of the configuration file. Save that name because you'll need it a couple more times. <code>sudo cp -r config_HASH ../../../../config_HASH</code> (where HASH is the string appended to the config directory's name). After verifying that the config directory has been moved to the root of the site, do <code>sudo rm -rf config_HASH</code> inside of <code>web/sites/default/files</code>.</li>
+</ol>
+<h2>The settings.php file</h2>
+<p>Change to the <code>web/sites/default</code> directory and open <code>settings.php</code> using your favorite text editor. I use Nano even though I know it some purists will insist that Vim is the only way to go. To them I say, &quot;Whatever.&quot;</p>
+<h3>Edit the &quot;trusted_host_patterns&quot;</h3>
+<p>Edit the <code>trusted_host_patterns</code> to include the root or host of your site. Using the find feature of your text editor, search for 'trusted_host', then enter the following in the space after the end of the commented portion:</p>
+<pre class="language-php"><code class="language-php"><span class="token variable">$settings</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'trusted_host_patterns'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><br>    <span class="token string single-quoted-string">'^YOUR_HOST_PATTERN_HERE$'</span><span class="token punctuation">,</span><br><span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
+<p>Observe that the value is a Regular Expression, so &quot;^&quot; and &quot;$&quot; are important for marking the beginning and ending point. You will also have to escape some characters. For example, <code>^myniftysite\.org$</code>.</p>
+<h3>Tell Drupal where to find the private files directory</h3>
+<p>Search for &quot;file_private_path&quot; and add this after the end of the commented portion:</p>
+<p><code>$settings['file_private_path'] = $app_root . '/../private';</code></p>
+<p>That will tell Drupal to look outside of the web root for the private files directory.</p>
+<h3>Tell Drupal where to find the config directory.</h3>
+<p>Search for &quot;config_sync_directory&quot; and add this after the end of the commented portion:</p>
+<pre class="language-php"><code class="language-php"><span class="token variable">$settings</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'config_sync_directory'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$app_root</span> <span class="token operator">.</span> <span class="token string single-quoted-string">'/../config_HASH/sync'</span><span class="token punctuation">;</span></code></pre>
+<p>Note that you must replace &quot;HASH&quot; here with the actual hash that is appended after &quot;config_&quot;. Don't for get to add &quot;/sync&quot;, either!</p>
+<h3>Generate a .htaccess file for the private files directory</h3>
+<p>Navigate in the browser to <code>admin/config/media/file-system</code> and click 'Save configuation' to generate the <code>.htaccess</code> file.</p>
+<h3>If you are going to do a migration:</h3>
+<p>If you are going to do a migration, add the following at the end of your <code>settings.php</code> file to connect to the migration database. <strong>NOTE</strong>: It's important to name the key 'migrate'.</p>
+<pre class="language-php"><code class="language-php"><span class="token variable">$databases</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'migrate'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'default'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">array</span> <span class="token punctuation">(</span><br>  <span class="token string single-quoted-string">'database'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'DBNAME'</span><span class="token punctuation">,</span><br>  <span class="token string single-quoted-string">'username'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'DBUSER'</span><span class="token punctuation">,</span><br>  <span class="token string single-quoted-string">'password'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'DBPASSWORD'</span><span class="token punctuation">,</span><br>  <span class="token string single-quoted-string">'prefix'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">''</span><span class="token punctuation">,</span><br>  <span class="token string single-quoted-string">'host'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'localhost'</span><span class="token punctuation">,</span><br>  <span class="token string single-quoted-string">'port'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'3306'</span><span class="token punctuation">,</span><br>  <span class="token string single-quoted-string">'namespace'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'Drupal\\Core\\Database\\Driver\\mysql'</span><span class="token punctuation">,</span><br>  <span class="token string single-quoted-string">'driver'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'mysql'</span><span class="token punctuation">,</span><br><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Of course, DBNAME, DBUSER, AND DBPASSWORD have to be replaced with real values.</p>
+<hr />
+<span style="font-size:smaller">Photo by <a href="https://unsplash.com/es/@rubaitulazad?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rubaitul Azad</a> on <a href="https://unsplash.com/s/photos/drupal?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></span>
+
+            
+          <div id="taglist" class="mx-auto">
+              <h2>Filed under</h2>
+              <ul>
+                
+                
+                <li>
+                  <a href="/tags/Drupal">Drupal</a>
+                </li>
+                
+                
+                
+                
+              </ul>
+            </div>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mt-auto">
+  <div class="container w-75 mx-auto">
+    <div class="row">
+      <div class="col-8">
+        <p class="footerinfo">
+          ©2024 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
+          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+        </p>
+      </div>
+      <div class="col-4">
+        <div id="socialicons">
+          <a href="https://github.com/sjhuskey" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-github"
+              data-donate="true"
+              data-tag="git"
+              data-name="Github"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"
+              ></path></svg></a
+          ><a href="https://www.linkedin.com/in/sjhuskey/" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-linkedin"
+              data-donate="true"
+              data-tag="lin"
+              data-name="LinkedIn"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"
+              ></path></svg
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript" src="/dist/app.js"></script>
+  </body>
+</html>
