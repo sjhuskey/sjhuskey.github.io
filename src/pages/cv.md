@@ -1,7 +1,7 @@
 ---
 title: "Curriculum Vitae"
 author: "Samuel J. Huskey"
-date: 2022-05-03
+date: 2024-01-03
 permalink: "/about/cv.html"
 layout: page
 eleventyNavigation:
