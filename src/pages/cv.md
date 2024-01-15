@@ -11,6 +11,7 @@ eleventyNavigation:
 [_Download a print version of this document._](https://sjhuskey.github.io/docs/files/cv-web.pdf)
 
 Samuel J. Huskey
+Professor
 The University of Oklahoma
 Department of Classics and Letters
 Email: [huskey](mailto:huskey@ou.edu)[@ou.edu](mailto:huskey@ou.edu)
