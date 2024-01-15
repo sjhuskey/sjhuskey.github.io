@@ -6,8 +6,6 @@ permalink: "/about/cv.html"
 layout: page
 eleventyNavigation:
   key: CV
-geometry: margin=1in
-fontsize: 12pt
 ---
 
 [_Download a print version of this document._](https://sjhuskey.github.io/docs/files/cv-web.pdf)
