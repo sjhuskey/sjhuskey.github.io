@@ -291,6 +291,7 @@ Association
 
 ### Awards and Honors
 
+1. OU Center for Faculty Excellence Fellow (2023)
 1. OU Libraries Library Partner Award (April 2019)
 1. Most Inspiring Faculty, University of Oklahoma Department of Athletics (April 2019)
 1. Nancy L. Mergler Faculty Mentor Award for Undergraduate Research, OU Office of Undergraduate Research (April 2018)
