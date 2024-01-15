@@ -8,7 +8,7 @@ eleventyNavigation:
   key: CV
 ---
 
-[_Download a print version of this document._](https://sjhuskey.github.io/docs/files/cv-web.pdf)
+[_Download a print version of this document._](https://sjhuskey.info/files/cv-web.pdf)
 
 Samuel J. Huskey
 Professor
