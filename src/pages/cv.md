@@ -128,7 +128,8 @@ CAMWS = Classical Association of the Middle West and South
 SCS = Society for Classical Studies, formerly American Philological
 Association
 
-1. Huskey, S. J. "Evaluating Digital Scholarship on its Own Terms: A Case Study." SCS 151st annual meeting, Washington, D.C. (January 3, 2020)
+1. Huskey, S. J. Panelist: "Peer Review: Present Tensions, Future Directions." SCS 155th annual meeting, Chicago, IL (January 6, 2024).
+1. Huskey, S. J. "Evaluating Digital Scholarship on its Own Terms: A Case Study." SCS 151st annual meeting, Washington, D.C. (January 3, 2020).
 1. Huskey, S. J. "The Digital Latin Library," SCS 150th annual meeting, San Diego, CA. (January 6, 2019).
 1. Felkner, V. K. and Huskey, S. J. "Digital Critical Editions: Coding and/as Scholarship," CAMWS 114th annual meeting, Albuquerque, NM. (April 2018).
 1. Huskey, S. J. "The Digital Latin Library and the Library of Digital Latin Texts," SCS 149th annual meeting, Boston, MA. (January 7, 2018).
@@ -185,12 +186,13 @@ Association
 1. CL C 3313:\* Religions of Rome (Spring 2003, 2004, 2007)
 1. CL C 3510: \* States in Crisis in Greece & Rome (Spring 2021)
 1. CL C 3613: Classical Influences on Modern Literature (Winter 2004, May 2005, Summer 2005, May 2006)
-1. CL C 4503: Classics Capstone (Spring 2009, Spring 2015, Spring 2016, Spring 2019, Spring 2020)
+1. CL C 4503: Classics Capstone (Spring 2009, Spring 2015, Spring 2016, Spring 2019, Spring 2020, Spring 2023)
 1. GRK 2113 Biblical Greek (Fall 2018, Fall 2020)
+1. LAT 1115: Beginning Latin I (Fall 2023)
 1. LAT 2113: Intermediate Latin Prose (Spring 2003, Spring 2004, Spring 2006, Spring 2008, Fall 2008, Spring 2019, Spring 2021)
 1. LAT 2213: Intermediate Latin Poetry (Spring 2007, Fall 2021)
 1. LAT 3113: Advanced Latin Prose (Fall 2002, Fall 2003, Spring 2008, Fall 2009, Fall 2010)
-1. LAT 3213: Advanced Latin Poetry (Fall 2004, Fall 2006)
+1. LAT 3213: Advanced Latin Poetry (Fall 2004, Fall 2006, Spring 2023)
 1. LAT 3313:\* Latin Prose Composition (Spring 2006, 2008, 2010, 2012, 2014, 2018)
 1. LAT 4133: Historians (Fall 2006, 2007, 2011, 2012, 2013, 2017, 2019)
 1. LAT 4213: Latin Lyric Poetry (Fall 2005, Spring 2011, Spring 2017)
@@ -199,6 +201,7 @@ Association
 
 #### Directed Student Learning
 
+1. Honors Research, Kathryn Powers (Fall 2023)
 1. Honors Research, Jack Bennet (Fall 2021)
 1. Mentored Undergraduate Research, Caleb Carr (Spring 2019)
 1. Mentored Undergraduate Research, Elizabeth Anderson, (Fall 2018)
@@ -224,10 +227,13 @@ Association
 
 ### University Service
 
+1. Committee Member, OU Provost AI Subcommittee on Research and Creative Activity. (Fall 2023–present).
+1. Committee Member, OU Faculty Evaluation Working Group. (January 2023–present).
+1. Committee Member, OU Humanities Forum Advisory Board. (August 2022-present).
 1. Committee Member, University Libraries Associate Dean for Digital Strategies & Innovation. (Fall 2021).
 1. Committee Member, University Libraries Chief Technology Office Search. (April 2021–July 2021).
 1. Faculty Appeals Board (2020–2023)
-1. Campus IT Council. Replacement position. (Spring 2020)
+1. Campus IT Council. (Spring 2020, Fall 2023–present)
 1. Chief Information Officer Search Committee (2019)
 1. Business Continuity Plan (2015–Present).
 1. Provost's Advisory Committee on Learning Outcomes Assessment. (2014–2016).
@@ -266,6 +272,7 @@ Association
 
 ### Public Service
 
+1. Guest Speaker, St. Stephen's United Methodist Church Fiction Group. (August 22, 2023).
 1. Committee Member, United Way of Norman Income Council, Norman, OK. (February 23, 2017–June 20, 2017).
 1. Guest Speaker, College of Arts and Sciences Research Discussion Series. (November 10, 2017).
 1. Guest Speaker, Pioneer Library System, OK. (March 21, 2016–April 17,2016).
