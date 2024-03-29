@@ -1,7 +1,7 @@
 ---
 title: "Curriculum Vitae"
 author: "Samuel J. Huskey"
-date: 2024-01-03
+date: 2024-03-29
 permalink: "/about/cv.html"
 layout: page
 eleventyNavigation:
@@ -10,13 +10,13 @@ eleventyNavigation:
 
 [_Download a print version of this document._](https://sjhuskey.info/files/cv-web.pdf)
 
-Samuel J. Huskey
-Professor
-The University of Oklahoma
-Department of Classics and Letters
-Email: [huskey](mailto:huskey@ou.edu)[@ou.edu](mailto:huskey@ou.edu)
-Website: [https://sjhuskey.info/](https://sjhuskey.info/)
-ORCID: <https://orcid.org/0000-0002-8192-9385>
+Samuel J. Huskey  
+Professor  
+The University of Oklahoma  
+Department of Classics and Letters  
+Email: [huskey](mailto:huskey@ou.edu)[@ou.edu](mailto:huskey@ou.edu)  
+Website: [https://sjhuskey.info/](https://sjhuskey.info/)  
+ORCID: <https://orcid.org/0000-0002-8192-9385>  
 
 ### Education
 
@@ -69,7 +69,7 @@ Assistant Professor, University of Oklahoma. (August 2002–July 2008)
 
 #### Chapters in Books
 
-1. Huskey, S.J. and Robert A. Kaster. (forthcoming) "Editing." In _The Cambridge Critical Guide to Latin Literature._ Roy K. Gibson and Christopher Whitton, eds. Cambridge: Cambridge University Press.
+1. Huskey, S.J. and Robert A. Kaster. 2024. "Editing." In _The Cambridge Critical Guide to Latin Literature._ Roy K. Gibson and Christopher Whitton, eds., 516–562. Cambridge: Cambridge University Press.
 1. Huskey, S.J. 2020. "Scholarly Digital Editions: A Wise Investment for Scholars and Institutions." In _Der digital turn in den Altertumswissenschaften: Wahrnehmung–Dokumentation–Reflexion_ Anna Novokhatko, Stelios Chronopoulos, and Felix Maier, eds. Heidelberg: Universitätsbibliothek Heidelberg, 43–54. Open Access: <https://doi.org/10.11588/propylaeum.563>
 1. Huskey, S.J. 2019. "The Digital Latin Library: Cataloging and Publishing Critical Editions of Latin Texts." In _Digital Classical Philology Ancient Greek and Latin in the Digital Revolution_. Monica Berti, ed. Berlin: De Gruyter Saur, 19–34. Open Access: <https://doi.org/10.1515/9783110599572-003>
 1. Huskey, S. J. 2018. "Warts and All: A Study of the Paratexts in the Iowa Lucan." In _At the Crossroads of Greco-Roman History, Culture and Religion._ Sinclair Bell and Lora Holland, eds. Oxford: Archaeopress Publishing Ltd., 249–260. Open Access at: <http://www.archaeopress.com/ArchaeopressShop/Public/displayProductDetail.asp?id=%7b45331E1A-8F26-493F-9C5B-085C7D0F2C91%7d>
@@ -179,7 +179,7 @@ Association
 (\* Indicates a course proposed, developed, and taught)
 
 1. CL C 1113:\* Introduction to Classical Studies (Fall 2011, 2012)
-1. CL C 2383: Classical Mythology (Summer 2003, Spring 2011, Spring 2013, Fall 2014, Fall 2016, Fall 2020)
+1. CL C 2383: Classical Mythology (Summer 2003, Spring 2011, Spring 2013, Fall 2014, Fall 2016, Fall 2020, Spring 2024)
 1. CL C 3023:\* Greek Literature in English Translation (Fall 2008)
 1. CL C 3033: Latin Literature in English Translation (Fall 2002, 2003, 2004, 2005, 2007)
 1. CL C 3113: Greek Epic Poetry (May 2003, 2004, Fall 2021)
@@ -188,8 +188,10 @@ Association
 1. CL C 3510: \* States in Crisis in Greece & Rome (Spring 2021)
 1. CL C 3613: Classical Influences on Modern Literature (Winter 2004, May 2005, Summer 2005, May 2006)
 1. CL C 4503: Classics Capstone (Spring 2009, Spring 2015, Spring 2016, Spring 2019, Spring 2020, Spring 2023)
-1. GRK 2113 Biblical Greek (Fall 2018, Fall 2020)
+1. GRK 2113: Biblical Greek (Fall 2018, Fall 2020)
+1. GRK 3213: Greek Tragedy (Spring 2024)
 1. LAT 1115: Beginning Latin I (Fall 2023)
+1. LAT 1215: Beginning Latin II (Spring 2024)
 1. LAT 2113: Intermediate Latin Prose (Spring 2003, Spring 2004, Spring 2006, Spring 2008, Fall 2008, Spring 2019, Spring 2021)
 1. LAT 2213: Intermediate Latin Poetry (Spring 2007, Fall 2021)
 1. LAT 3113: Advanced Latin Prose (Fall 2002, Fall 2003, Spring 2008, Fall 2009, Fall 2010)
