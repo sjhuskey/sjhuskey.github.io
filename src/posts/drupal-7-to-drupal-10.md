@@ -1,5 +1,5 @@
 ---
-title: "Upgrading DLL Catalog to Drupal 10"
+title: "Upgrading the DLL Catalog Site to Drupal 10"
 author: "Samuel J. Huskey"
 date: "2024-05-25"
 url: "https://sjhuskey.info/posts/drupal-7-to-drupal-10/"
@@ -202,7 +202,7 @@ Breaking that down, I'm using a `for` loop in bash to iterate over the files and
 
 This can be done in a text editor with "Find and Replace in Files", too. Be sure to change `catalog_migrate` to the name of your module.
 
-### Edit migrate_plus.migration_group.my_module.yml
+### Edit the Migration Group YAML file
 
 Update the content of `migrate_plus.migration_group.catalog_migrate.yml`. Prior to editing, mine looks like this:
 
