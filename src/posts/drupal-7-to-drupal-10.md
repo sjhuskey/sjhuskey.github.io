@@ -287,4 +287,4 @@ Finally, I run `migrate:import` (`mim`) again with the `--group` and `--continue
 
 ## Next Step: Rebuilding the Theme
 
-This is the really unfortunate part of upgrading a Drupal 7 site. Drupal 8 introduced an entirely new theming layer, so I'll need to rebuild the theme in Twig before I can launch the new version. For now, everything will be done locally on my DDEV site. I'll post something about my adventures with rebuilding the site.
+This is the really unfortunate part of upgrading a Drupal 7 site. Drupal 8 introduced an entirely new theming layer, so I'll need to rebuild the theme in Twig before I can launch the new version. For now, everything will be done locally on my DDEV site. I'll post something about my adventures with rebuilding the theme.
