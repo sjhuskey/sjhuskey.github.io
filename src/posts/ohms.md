@@ -21,7 +21,7 @@ A colleague asked me to help her get started using the [Oral History Metadata Sy
 
 ## Set up a PHP environment with DDEV
 
-1. Make a new directory called `ohms`: `mkdir ohms`. I put mine in `~/Sites`.
+1. Make a new directory called "ohms": `mkdir ohms`. I put mine in `~/Sites`.
 1. Change into the new directory and run the following command: `ddev config`. This will launch a dialog. You can just press the `return` key for the first two prompts (`Project name:` and `Docroot Location`), but be sure to enter `php` for the third prompt (`Project Type`).
 1. Execute the command `ddev start`.
 
@@ -30,12 +30,12 @@ At this point, there should be a bare site that you can visit by opening a web b
 ## Copy the OHMS Viewer files into the PHP Environment
 
 1. Extract the OHMS Viewer archive to your PHP environment: `tar -xvf ohms-viewer-3.9.3.tar.gz -C ~/Sites/ohms`.
-1. Rename the new directory `ohms-viewer`: `mv ohms-viewer-3.9.3 ohms-viewer`.
+1. Rename the new directory "ohms-viewer": `mv ohms-viewer-3.9.3 ohms-viewer`.
 
 ## Make a cachefiles Directory
 
 1. Change into `ohms-viewer`.
-1. Create a new directory called `cachefiles` (`mkdir cachefiles`).
+1. Create a new directory called "cachefiles" (`mkdir cachefiles`).
 
 This is where you'll eventually put your OHMS XML files.
 
