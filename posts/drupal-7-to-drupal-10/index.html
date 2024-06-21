@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Open Graph meta tags -->
-    <meta property="og:title" content="Upgrading DLL Catalog to Drupal 10">
+    <meta property="og:title" content="Upgrading the DLL Catalog Site to Drupal 10">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://sjhuskey.info/posts/drupal-7-to-drupal-10/">
     <meta property="og:image" content="/assets/images/drupal.jpg">
     <meta property="og:description" content="My experience of upgrading a Drupal 7 site to Drupal 10">
-    <title>Samuel J. Huskey - Upgrading DLL Catalog to Drupal 10</title>
+    <title>Samuel J. Huskey - Upgrading the DLL Catalog Site to Drupal 10</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
     <!-- Google tag (gtag.js) -->
@@ -35,7 +35,7 @@
 
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Upgrading DLL Catalog to Drupal 10">
+<meta name="twitter:title" content="Upgrading the DLL Catalog Site to Drupal 10">
 <meta name="twitter:description" content="Samuel J. Huskey&#39;s Personal Website">
 
 
@@ -117,7 +117,7 @@
             
             <img src="/assets/images/drupal.jpg" class="featured-image-post" />
             
-            <h1>Upgrading DLL Catalog to Drupal 10</h1>
+            <h1>Upgrading the DLL Catalog Site to Drupal 10</h1>
             <p>I finally have some time to devote to upgrading the <a href="https://catalog.digitallatin.org/">DLL Catalog</a> from Drupal 7 to Drupal 10! I'm sharing some of the basic stuff here in case DH folks need to upgrade their sites.</p>
 <p>I'm going to work on my upgrade project locally (i.e., on my laptop), using the fantastic <a href="https://ddev.com/">DDEV</a> Docker-based tool so that I don't have to do it on a remote server or deal with MAMP or something like that. I strongly recommend using DDEV. There's <a href="https://ddev.com/get-started/">excellent documentation for installing it</a>, so I won't repeat it here.</p>
 <p>After installing Docker and DDEV, the next step is to set up DDEV sites for both the existing Drupal 7 (D7) codebase and database and a new Drupal 10 codebase and database. Next, I'll install the migration modules. Finally, I'll run the migrations and troubleshoot.</p>
@@ -196,7 +196,7 @@
 <li>Change remaining instances of <code>upgrade_d7</code> to <code>catalog_migrate</code></li>
 </ol>
 <p>This can be done in a text editor with &quot;Find and Replace in Files&quot;, too. Be sure to change <code>catalog_migrate</code> to the name of your module.</p>
-<h3>Edit migrate_plus.migration_group.my_module.yml</h3>
+<h3>Edit the Migration Group YAML file</h3>
 <p>Update the content of <code>migrate_plus.migration_group.catalog_migrate.yml</code>. Prior to editing, mine looks like this:</p>
 <pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">langcode</span><span class="token punctuation">:</span> en<br><span class="token key atrule">status</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><br><span class="token key atrule">dependencies</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><br><span class="token key atrule">id</span><span class="token punctuation">:</span> migrate_drupal_7<br><span class="token key atrule">label</span><span class="token punctuation">:</span> <span class="token string">"Import from Drupal 7"</span><br><span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"Migrations originally generated from drush migrate-upgrade --configure-only"</span><br><span class="token key atrule">source_type</span><span class="token punctuation">:</span> <span class="token string">"Drupal 7"</span><br><span class="token key atrule">module</span><span class="token punctuation">:</span> <span class="token null important">null</span><br><span class="token key atrule">shared_configuration</span><span class="token punctuation">:</span><br>  <span class="token key atrule">source</span><span class="token punctuation">:</span><br>    <span class="token key atrule">key</span><span class="token punctuation">:</span> drupal_7<br>    <span class="token key atrule">database</span><span class="token punctuation">:</span><br>      <span class="token key atrule">driver</span><span class="token punctuation">:</span> mysql<br>      <span class="token key atrule">username</span><span class="token punctuation">:</span> db<br>      <span class="token key atrule">password</span><span class="token punctuation">:</span> db<br>      <span class="token key atrule">host</span><span class="token punctuation">:</span> ddev<span class="token punctuation">-</span>catalog<span class="token punctuation">-</span>db<br>      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token string">""</span><br>      <span class="token key atrule">database</span><span class="token punctuation">:</span> db<br>      <span class="token key atrule">prefix</span><span class="token punctuation">:</span> <span class="token null important">null</span></code></pre>
 <p>I edited it to this (changes commented):</p>
