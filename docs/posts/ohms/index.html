@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Samuel J. Huskey - Samuel J. Huskey</title>
+    <title>Samuel J. Huskey - Using the OHMS Viewer with DDEV</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
     <!-- Google tag (gtag.js) -->
@@ -18,19 +18,19 @@
     
 
 
-<meta name="description" content="Samuel J. Huskey&#39;s personal website">
+<meta name="description" content="Samuel J. Huskey&#39;s Personal Website">
 
 
 <meta property="og:site_name" content="Samuel J. Huskey">
 <meta property="og:title" content="Samuel J. Huskey">
-<meta property="og:description" content="Samuel J. Huskey&#39;s personal website">
-<meta property="og:url" content="https://sjhuskey.github.io/old-index/">
+<meta property="og:description" content="Samuel J. Huskey&#39;s Personal Website">
+<meta property="og:url" content="https://sjhuskey.github.io/posts/ohms/">
 <meta property="og:locale" content="">
 
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Samuel J. Huskey">
-<meta name="twitter:description" content="Samuel J. Huskey&#39;s personal website">
+<meta name="twitter:title" content="Using the OHMS Viewer with DDEV">
+<meta name="twitter:description" content="Samuel J. Huskey&#39;s Personal Website">
 
 
 
@@ -109,45 +109,65 @@
         <div class="row">
           <div class="col-md-10 mx-auto">
             
-            <h1></h1>
-            <h1>Welcome!</h1>
-<p><img src="/assets/images/sjhuskey-2017.jpg" alt="Sam Huskey" class="float-image"></p>
-<p>This is the personal web site of Samuel J. Huskey.</p>
-<p>I launched this site as a space where I could write about my adventures in web development, text and data analysis, digital philology, and technology in general, apart from my main research project, the <a href="https://digitallatin.org/">Digital Latin Library</a>.</p>
-<p>I intend to use this site to post about technical issues and problems that I run into while building and maintaining various digital resources, mostly to keep a record for myself of how I solved them. If that information helps someone else, all the better!</p>
-<p>I also wanted to experiment with different web applications. I've been a Drupal developer since version 6, and I have also worked with ExpressionEngine and a variety of other content management systems. I built the first version of this site with WordPress, then I tried it on <a href="https://jekyllrb.com/">Jekyll</a>. Now it's on <a href="https://www.11ty.dev/">11ty</a>!</p>
-<p>If you want to know more about me, I invite you to read my <a href="about">About page</a> and view my <a href="about/cv.html">CV</a>.</p>
-<hr />
-    <h2>My Blog Posts</h2>
-    <ul><li>
-        <a href="/posts/ohms/">Using the OHMS Viewer with DDEV</a> | June 21, 2024
-      </li><li>
-        <a href="/posts/dh-automation-1/">Tales of DH Automation</a> | September 22, 2023
-      </li><li>
-        <a href="/posts/drupal-to-11ty/">Converting a Drupal site to 11ty</a> | June 11, 2023
-      </li><li>
-        <a href="/posts/gitignore-for-drupal/">Gitignore for Drupal</a> | February 22, 2023
-      </li><li>
-        <a href="/posts/using-ddev-local-drupal/">Using ddev for Local Drupal Development</a> | October 6, 2022
-      </li><li>
-        <a href="/posts/aau-exploration/">NEH funding histories for AAU Institutions</a> | September 26, 2022
-      </li><li>
-        <a href="/posts/journey/">My Journey with Web Technology</a> | April 1, 2022
-      </li><li>
-        <a href="/posts/installing-drupal/">Installing Drupal</a> | March 10, 2022
-      </li><li>
-        <a href="/posts/migrating-digital-latin-library-from-drupal-7-to-drupal-9/">Migrating the Digital Latin Library from Drupal 7 to Drupal 9</a> | October 4, 2021
-      </li><li>
-        <a href="/posts/making-a-vocabulary-list-for-wheelock/">Making a Vocabulary List for Wheelock</a> | September 7, 2021
-      </li><li>
-        <a href="/posts/update-composer/">Updating Composer</a> | June 25, 2021
-      </li><li>
-        <a href="/posts/verify-downloaded-file/">Verify a Downloaded File</a> | June 22, 2021
-      </li><li>
-        <a href="/posts/settings-php-for-drupal-9/">The settings.php file for Drupal 9</a> | June 8, 2021
-      </li></ul>
+            <img src="/assets/images/tech.jpg" class="featured-image-post" />
+            
+            <h1>Using the OHMS Viewer with DDEV</h1>
+            <p>A colleague asked me to help her get started using the <a href="https://www.oralhistoryonline.org/">Oral History Metadata Synthesizer's</a> <a href="https://github.com/uklibraries/ohms-viewer">OHMS Viewer</a>. It is meant to integrate with a CMS, but she just needs to see how it works for now. Instead of going through the trouble of setting up access to a remote server, I decided to see if I could get it working with <a href="https://ddev.com/">DDEV</a>, a super-easy application for developing web sites locally (i.e., on a laptop or desktop computer).</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Comfort using a Command Line Interface (e.g., Terminal).</li>
+<li><a href="https://www.docker.com/">Docker</a>. The instructions for different operating systems are available at <a href="https://ddev.readthedocs.io/en/stable/users/install/docker-installation/">https://ddev.readthedocs.io/en/stable/users/install/docker-installation/</a>.</li>
+<li>[DDEV]: Instructions are at <a href="https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/">https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/</a>.</li>
+<li>OHMS Viewer: Download the latest release at <a href="https://github.com/uklibraries/ohms-viewer/releases">https://github.com/uklibraries/ohms-viewer/releases</a>. It is available as a <code>zip</code> or <code>tar.gz</code> archive. I'm working with the <code>tar.gz</code> file.</li>
+<li>An account on <a href="https://www.aviaryplatform.com/">Aviary</a></li>
+</ul>
+<h2>Set up a PHP environment with DDEV</h2>
+<ol>
+<li>Make a new directory called <code>ohms</code>: <code>mkdir ohms</code>. I put mine in <code>~/Sites</code>.</li>
+<li>Change into the new directory and run the following command: <code>ddev config</code>. This will launch a dialog. You can just press the <code>return</code> key for the first two prompts (<code>Project name:</code> and <code>Docroot Location</code>), but be sure to enter <code>php</code> for the third prompt (<code>Project Type</code>).</li>
+<li>Execute the command <code>ddev start</code>.</li>
+</ol>
+<p>At this point, there should be a bare site that you can visit by opening a web browser and going to <code>http://ohms.ddev.site</code>. You'll probably see the message <strong>403 Forbidden</strong>. That's okay.</p>
+<h2>Copy the OHMS Viewer files into the PHP Environment</h2>
+<ol>
+<li>Extract the OHMS Viewer archive to your PHP environment: <code>tar -xvf ohms-viewer-3.9.3.tar.gz -C ~/Sites/ohms</code>.</li>
+<li>Rename the new directory <code>ohms-viewer</code>: <code>mv ohms-viewer-3.9.3 ohms-viewer</code>.</li>
+</ol>
+<h2>Make a cachefiles Directory</h2>
+<ol>
+<li>Change into <code>ohms-viewer</code>.</li>
+<li>Create a new directory called <code>cachefiles</code> (<code>mkdir cachefiles</code>).</li>
+</ol>
+<p>This is where you'll eventually put your OHMS XML files.</p>
+<h2>Edit the OHMS Viewer's Config File</h2>
+<ol>
+<li>Change into the <code>config</code> directory within <code>ohms-viewer</code>: <code>cd ~/Sites/ohms/ohms-viewer/config</code>.</li>
+<li>Make a copy of <code>config.template.ini</code> and call it <code>config.ini</code>.</li>
+<li>Using a text editor, edit the content of <code>config.ini</code>. Change the first line to read <code>tmpDir = cachefiles</code>. The rest of the file can be left as it is.</li>
+<li>Save <code>config.ini</code>.</li>
+</ol>
+<h2>Test the Viewer</h2>
+<p>For this step, you'll need an OHMS XML file from an OHMS collection on <a href="https://www.aviaryplatform.com/">Aviary</a>. To obtain an XML file, you'll need to create an OHMS record in the OHMS Studio. When the record is complete, you should be able to click on the three vertical dots on the far right of the row and select &quot;Export XML&quot;.</p>
+<p>Put the XML file into the <code>cachefiles</code> directory created above.</p>
+<p>You should now be able to use a web browser to navigate to <code>http://ohms.ddev.site/ohms-viewer/viewer.php?cachefile=YOUR-XML-FILE.xml</code> to see the record in the OHMS Viewer. Be sure to replace <code>YOUR-XML-FILE</code> with the actual name of your file.</p>
 
             
+          <div id="taglist" class="mx-auto">
+              <h2>Filed under</h2>
+              <ul>
+                
+                
+                <li>
+                  <a href="/tags/OHMS">OHMS</a>
+                </li>
+                
+                
+                
+                
+              </ul>
+            </div>
+          </div>
+          
           </div>
         </div>
       </div>
