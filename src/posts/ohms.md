@@ -1,6 +1,8 @@
 ---
 title: "Using the OHMS Viewer with DDEV"
 author: "Samuel J. Huskey"
+url: "https://sjhuskey.info/posts/ohms/"
+description: "How to set up a basic PHP environment for testing the OHMS Viewer."
 date: "2024-06-21"
 layout: base
 image: "/assets/images/tech.jpg"
