@@ -217,7 +217,7 @@
 <p>To resolve the issues, I work in the site's <code>sync</code> directory, which DDEV puts in <code>web/sites/default/files/sync</code>. I edit the files that correspond to the migrations that had problems, then I do <code>ddev drush cim</code> to import the changes, followed by <code>ddev drush cr</code> to clear the caches.</p>
 <p>Finally, I run <code>migrate:import</code> (<code>mim</code>) again with the <code>--group</code> and <code>--continue-on-failure</code> flags, watching for the same or new error messages. It might be the case that you will have to live with some of the minor issues that don't affect the content or functionality of your site.</p>
 <h2>Next Step: Rebuilding the Theme</h2>
-<p>This is the really unfortunate part of upgrading a Drupal 7 site. Drupal 8 introduced an entirely new theming layer, so I'll need to rebuild the theme in Twig before I can launch the new version. For now, everything will be done locally on my DDEV site. I'll post something about my adventures with rebuilding the site.</p>
+<p>This is the really unfortunate part of upgrading a Drupal 7 site. Drupal 8 introduced an entirely new theming layer, so I'll need to rebuild the theme in Twig before I can launch the new version. For now, everything will be done locally on my DDEV site. I'll post something about my adventures with rebuilding the theme.</p>
 
             
           <div id="taglist" class="mx-auto">
