@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Upgrading DLL Catalog to Drupal 10">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sjhuskey.info/posts/drupal-7-to-drupal-10/">
+    <meta property="og:image" content="/assets/images/drupal.jpg">
+    <meta property="og:description" content="My experience of upgrading a Drupal 7 site to Drupal 10">
+    <title>Samuel J. Huskey - Upgrading DLL Catalog to Drupal 10</title>
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/dist/app.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-T4DCQE192P');
+    </script>
+    
+
+
+<meta name="description" content="Samuel J. Huskey&#39;s Personal Website">
+
+
+<meta property="og:site_name" content="Samuel J. Huskey">
+<meta property="og:title" content="Samuel J. Huskey">
+<meta property="og:description" content="Samuel J. Huskey&#39;s Personal Website">
+<meta property="og:url" content="https://sjhuskey.github.io/posts/drupal-7-to-drupal-10/">
+<meta property="og:locale" content="">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Upgrading DLL Catalog to Drupal 10">
+<meta name="twitter:description" content="Samuel J. Huskey&#39;s Personal Website">
+
+
+
+
+<link rel="icon" href="/assets/favicons/favicon.ico">
+
+
+
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    <div id="header-container">
+  <div class="container py-6">
+    <header class="pb-5 mb-4">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container w-75 mx-auto border-bottom">
+          <a href="/" class="d-flex align-items-center text-light text-decoration-none">
+              <title>Samuel J. Huskey</title>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span class="fs-4">Samuel J. Huskey</span>
+          </a>
+          <button
+            class="navbar-toggler navbar-dark"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/cv.html">CV</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/dh.html">DH</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/tech.html">Tech</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/posts">Blog</a>
+    </li>
+</ul>
+
+
+</div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <main id="main">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            
+            <img src="/assets/images/drupal.jpg" class="featured-image-post" />
+            
+            <h1>Upgrading DLL Catalog to Drupal 10</h1>
+            <p>I finally have some time to devote to upgrading the <a href="https://catalog.digitallatin.org/">DLL Catalog</a> from Drupal 7 to Drupal 10! I'm sharing some of the basic stuff here in case DH folks need to upgrade their sites.</p>
+<p>I'm going to work on my upgrade project locally (i.e., on my laptop), using the fantastic <a href="https://ddev.com/">DDEV</a> Docker-based tool so that I don't have to do it on a remote server or deal with MAMP or something like that. I strongly recommend using DDEV. There's <a href="https://ddev.com/get-started/">excellent documentation for installing it</a>, so I won't repeat it here.</p>
+<p>After installing Docker and DDEV, the next step is to set up DDEV sites for both the existing Drupal 7 (D7) codebase and database and a new Drupal 10 codebase and database. Next, I'll install the migration modules. Finally, I'll run the migrations and troubleshoot.</p>
+<h2>Setting up the DDEV Sites</h2>
+<h3>DLL Catalog (D7)</h3>
+<p>On my server, I made a copy of the codebase and database, then I used <a href="https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/"><code>scp</code></a> to copy those files to my local machine. I decompressed the codebase (<code>tar -xvf catalog.tar.gz</code>) and changed into the new directory (<code>cd catalog</code>). Then I configured that directory to use DDEV (<code>ddev config</code>) and told DDEV to import the SQL file I downloaded (<code>ddev mysql db &lt; ../catalog.sql</code>). Et voilà: the DLL Catalog site is running locally on my laptop.</p>
+<p><em>Note that there is also a specific DDEV command for importing a database: <code>ddev import-db</code>. Read more at <a href="https://ddev.readthedocs.io/en/stable/users/usage/managing-projects/#importing-a-database">https://ddev.readthedocs.io/en/stable/users/usage/managing-projects/#importing-a-database</a></em>.</p>
+<h3>Target Site (D10)</h3>
+<p>Spinning up a bare D10 site is remarkably easy, thanks to <a href="https://ddev.readthedocs.io/en/stable/users/quickstart/#drupal">DDEV's CMS quickstart directions for Drupal</a>.</p>
+<h2>Prepare for Migration</h2>
+<h3>Install Migrate modules on the D10 site</h3>
+<p>This is easy. First, use Composer to require the migration modules in the D10 site. Note that I'm requiring not only Migrate Upgrade and Migrate Plus, but also Migrate Tools and Migrate File, since experience tells me that I'll avoid errors on import with those installed:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># Require the migrate modules</span><br>ddev <span class="token function">composer</span> require drupal/migrate_tools drupal/migrate_upgrade drupal/migrate_plus drupal/migrate_file<br><span class="token comment"># Install the migrate modules</span><br>ddev drush en -y migrate_tools,migrate_upgrade,migrate_plus,migrate_file</code></pre>
+<h3>Install Contributed Modules on the D10 site</h3>
+<p>For this step, the easiest thing to do is to install the <a href="https://www.drupal.org/project/upgrade_status">Upgrade Status</a> module on the D7 site, enable it, and run its report. That will tell you which contributed modules on the D7 site have versions that are compatible with D10.</p>
+<p>Make note of the modules that are not compatible and begin thinking about whether you need to find an alternative. In my case, I wrote some custom modules that I'll need to upgrade, but that's not a crucial detail at this stage.</p>
+<p>For the modules that do have compatible versions, ask whether you'll need their functionality on the D10 site. If the answer is yes, then install and enable them.</p>
+<h3>Define the Migration Source Database</h3>
+<p>Since I'm migrating content from one Docker container into another, the two need to be able to communicate. Fortunately for all of us, the Drupal community has <a href="https://www.drupal.org/docs/upgrading-drupal/upgrading-from-drupal-6-or-drupal-7/upgrade-using-drush#s-define-the-source-database">some good tips</a> about this:</p>
+<blockquote>
+<p>Start up both the source web site (Drupal 7) and target web site (Drupal 10) in separate DDEV instances. Enter the D7 credentials in the Drupal 10 <code>settings.php</code>, using the Docker containers listed during start up, for example <code>ddev-drupal7-db</code> and <code>ddev-drupal7-web</code>, shown during start up.</p>
+</blockquote>
+<p>If you weren't paying that much attention during startup, you can use <code>docker ps</code> to find the container names. Here's the truncated output from when I ran that command:</p>
+<pre class="language-bash"><code class="language-bash">f5690a2779de ddev-catalog-web<br>84540cbad1c5 ddev-catalog-db<br>ac6dc2c61ffa ddev-router<br>881cf19e2de0 ddev-d10catalog-db<br>38103ba38a87 ddev-d10catalog-web<br>70200fafaac5 ddev-ssh-agent</code></pre>
+<p>Here's what I entered into my d10catalog site's <code>settings.php</code>, following the <a href="https://www.drupal.org/docs/upgrading-drupal/upgrading-from-drupal-6-or-drupal-7/upgrade-using-web-browser#s-example-values-for-ddev">Example values for DDEV</a>:</p>
+<pre class="language-php"><code class="language-php"><span class="token variable">$settings</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'migrate_source_connection'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'migrate'</span><span class="token punctuation">;</span><br><span class="token variable">$settings</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'migrate_source_version'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'7'</span><span class="token punctuation">;</span><br><span class="token variable">$settings</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'migrate_file_public_path'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'http://catalog.ddev.site/'</span><span class="token punctuation">;</span><br><span class="token variable">$settings</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'migrate_file_private_path'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">;</span><br><br><span class="token variable">$databases</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'migrate'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'default'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><br>  <span class="token string single-quoted-string">'database'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'db'</span><span class="token punctuation">,</span><br>  <span class="token string single-quoted-string">'username'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'db'</span><span class="token punctuation">,</span><br>  <span class="token string single-quoted-string">'password'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'db'</span><span class="token punctuation">,</span><br>  <span class="token string single-quoted-string">'host'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'ddev-catalog-db'</span><span class="token punctuation">,</span><br>  <span class="token string single-quoted-string">'port'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'3306'</span><span class="token punctuation">,</span><br>  <span class="token string single-quoted-string">'driver'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'mysql'</span><span class="token punctuation">,</span><br>  <span class="token string single-quoted-string">'prefix'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">''</span><span class="token punctuation">,</span><br><span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
+<p>Be sure to clear the cache with <code>ddev drush cr</code> after making this update to <code>settings.php</code>.</p>
+<h2>Make a Custom Module for the Migration</h2>
+<p>I have found that it makes sense in the long run to make a custom module for your migration. It's easier than you think.🤠</p>
+<h3>Set up the Structure for your Module</h3>
+<ol>
+<li>Switch into <code>web/modules</code> in your D10 site</li>
+<li>If you don't already have a <code>custom</code> directory, make one: <code>mkdir custom</code></li>
+<li>Switch into <code>custom</code> and create a new directory for your custom module (e.g., <code>cd custom &amp;&amp; mkdir my_migration</code>)</li>
+<li>Switch into your custom migration module</li>
+<li>Make an <code>info.yml</code> file. Mine is <code>catalog_migrate.info.yml</code>. Change the first part of the file's name to whatever you're calling your module.</li>
+<li>Add the following contents to the <code>info.yml</code> file:</li>
+</ol>
+<pre class="language-yml"><code class="language-yml"><span class="token key atrule">type</span><span class="token punctuation">:</span> module<br><span class="token key atrule">name</span><span class="token punctuation">:</span> Catalog D7 to D10 Migration Module<br><span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"A module for migrating content from a legacy site to a new one."</span><br><span class="token key atrule">package</span><span class="token punctuation">:</span> Custom<br><span class="token key atrule">core</span><span class="token punctuation">:</span> 10.x<br><span class="token key atrule">core_version_requirement</span><span class="token punctuation">:</span> ^10<br><span class="token key atrule">dependencies</span><span class="token punctuation">:</span><br>  <span class="token punctuation">-</span> drupal<span class="token punctuation">:</span>migrate<br>  <span class="token punctuation">-</span> drupal<span class="token punctuation">:</span>migrate_drupal<br>  <span class="token punctuation">-</span> drupal<span class="token punctuation">:</span>migrate_plus<br>  <span class="token punctuation">-</span> drupal<span class="token punctuation">:</span>migrate_tools</code></pre>
+<p>Now make the directories for the migration files you'll generate in the next step:</p>
+<ol>
+<li>Make a directory called <code>config</code> (<code>mkdir config</code>).</li>
+<li>Switch into <code>config</code> and make a new directory called <code>install</code> (<code>mkdir install</code>)</li>
+</ol>
+<h3>Generate the Migration Files</h3>
+<p>The <code>drush migrate:upgrade</code> command will generate the files needed for the custom module. Certain things have to be done to make it work on a DDEV site. Specifically, the values in the <code>--legacy-db-url</code> extension have to use the database user, password, Docker name, and database name that I used to make the connection in <code>settings.php</code>. The <code>legacy-root</code> value should be the absolute path to the D7 site; in my case, it's <code>/Users/sjhuskey/Sites/catalog</code>. If you need help finding the absolute path, use <code>cd</code> to navigate to your D7 site's root, then execute <code>pwd</code> (print name of working directory) to get the absolute path.</p>
+<p>Taking those items into consideration, this is the command I ran to generate the migration files:</p>
+<pre class="language-bash"><code class="language-bash">ddev drush migrate:upgrade --legacy-db-url<span class="token operator">=</span>mysql://db:db@ddev-catalog-db/db --legacy-root<span class="token operator">=</span>/Users/sjhuskey/Sites/catalog/sites/default/files --configure-only</code></pre>
+<h3>Export the Migration Files</h3>
+<p>After running the <code>drush migrate:upgrade</code> command above, I ran the following command to export the files needed for migration to a <code>tmp</code> directoy I created in the root directory of the site:</p>
+<pre class="language-bash"><code class="language-bash">ddev drush cex --destination<span class="token operator">=</span><span class="token punctuation">..</span>/tmp</code></pre>
+<p><code>../tmp</code> changes from the <code>web</code> directory to the parent or root directory.</p>
+<p>If you don't add the <code>--destination</code> flag, the files will end up in your <code>sync</code> file, and when you try to activate your custom module later, you'll get an error.</p>
+<h3>Copy the Migration Files into your Custom Module</h3>
+<p>When I did <code>ddev drush cex</code> in the previous step, the configuration files for EVERYTHING were added to the temporary directory. I just need the migration config files, so I changed into the directory at <code>/Users/sjhuskey/Desktop/tmp</code> and executed the following command to copy only the migration config files to my custom module's <code>config/install</code> directory:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">cp</span> migrate_plus.migration.* migrate_plus.migration_group.migrate_*.yml ~/Sites/d10catalog/web/modules/custom/catalog_migrate/config/install</code></pre>
+<p>Now I have a bunch of files with names like <code>migrate_plus.migration.upgrade_d7_action.yml</code> in my module's <code>config/install</code> directory. Great!</p>
+<h3>Modify the Names of the Migration Files</h3>
+<p>First things first: change the name of <code>migrate_plus.migration_group.migrate_drupal_7.yml</code> to <code>migrate_plus.migration_group.my_module.yml</code>.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">mv</span> migrate_plus.migration_group.migrate_drupal_7.yml migrate_plus.migration_group.catalog_migrate.yml</code></pre>
+<p>This file will define the group for your migration.</p>
+<p>I need to replace <code>upgrade_d7</code> in the file names with the name of my module. Since dozens of files need that change, I wrote a Python script to do it for me:</p>
+<pre class="language-python"><code class="language-python"><span class="token comment">#!/usr/bin/env python</span><br><span class="token comment"># coding: utf-8</span><br><br><span class="token keyword">import</span> os<br><span class="token punctuation">[</span>os<span class="token punctuation">.</span>rename<span class="token punctuation">(</span>f<span class="token punctuation">,</span> f<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'upgrade_d7'</span><span class="token punctuation">,</span> <span class="token string">'catalog_migrate'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">for</span> f <span class="token keyword">in</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token keyword">not</span> f<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">]</span></code></pre>
+<p>As always, if you're following along, replace <code>catalog_migrate</code> with the name of your custom module.</p>
+<p>I named the file <code>rename.py</code> and placed it in my custom module's <code>config/install</code> directory. I ran it with <code>python3 rename.py</code>. Shazam! All of my files have been renamed.</p>
+<h3>Remove Unneeded Files</h3>
+<p>Remove <code>migrate_plus.migration.catalog_migrate_action.yml</code> and <code>migrate_plus.migration.upgrade_action_settings.yml</code>. From past experience, I know that they cause trouble.</p>
+<h3>Edit the Migration Config Files</h3>
+<p>Several find/replace operations are needed across all the migration config files. The command line tool <code>sed</code> is great for this:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">file</span> <span class="token keyword">in</span> *<span class="token punctuation">;</span> <span class="token keyword">do</span><br>    <span class="token function">sed</span> -i <span class="token string">''</span> -e <span class="token string">'/^uuid: [0-9a-z\-]*$/d'</span> <span class="token punctuation">\</span><br>        -e <span class="token string">'s/migration_group: migrate_drupal_7/migration_group: catalog_migrate/'</span> <span class="token punctuation">\</span><br>        -e <span class="token string">'s/id: upgrade_d7/id: catalog_migrate/'</span> <span class="token punctuation">\</span><br>        -e <span class="token string">'s/upgrade_d7/catalog_migrate/'</span> <span class="token string">"<span class="token variable">$file</span>"</span><br><span class="token keyword">done</span></code></pre>
+<p>Breaking that down, I'm using a <code>for</code> loop in bash to iterate over the files and perform the following operations:</p>
+<ol>
+<li>All of the migration files contain a uuid that must be removed. I'm using the Regular Expression <code>^uuid: [0-9a-z\-]*$/d</code> to match the pattern and delete the line</li>
+<li>Change <code>migration_group: migrate_drupal_7</code> to the <code>migration_group: catalog_migrate</code></li>
+<li>Change <code>id: upgrade_d7</code> to <code>id: catalog_migrate</code></li>
+<li>Change remaining instances of <code>upgrade_d7</code> to <code>catalog_migrate</code></li>
+</ol>
+<p>This can be done in a text editor with &quot;Find and Replace in Files&quot;, too. Be sure to change <code>catalog_migrate</code> to the name of your module.</p>
+<h3>Edit migrate_plus.migration_group.my_module.yml</h3>
+<p>Update the content of <code>migrate_plus.migration_group.catalog_migrate.yml</code>. Prior to editing, mine looks like this:</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">langcode</span><span class="token punctuation">:</span> en<br><span class="token key atrule">status</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><br><span class="token key atrule">dependencies</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><br><span class="token key atrule">id</span><span class="token punctuation">:</span> migrate_drupal_7<br><span class="token key atrule">label</span><span class="token punctuation">:</span> <span class="token string">"Import from Drupal 7"</span><br><span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"Migrations originally generated from drush migrate-upgrade --configure-only"</span><br><span class="token key atrule">source_type</span><span class="token punctuation">:</span> <span class="token string">"Drupal 7"</span><br><span class="token key atrule">module</span><span class="token punctuation">:</span> <span class="token null important">null</span><br><span class="token key atrule">shared_configuration</span><span class="token punctuation">:</span><br>  <span class="token key atrule">source</span><span class="token punctuation">:</span><br>    <span class="token key atrule">key</span><span class="token punctuation">:</span> drupal_7<br>    <span class="token key atrule">database</span><span class="token punctuation">:</span><br>      <span class="token key atrule">driver</span><span class="token punctuation">:</span> mysql<br>      <span class="token key atrule">username</span><span class="token punctuation">:</span> db<br>      <span class="token key atrule">password</span><span class="token punctuation">:</span> db<br>      <span class="token key atrule">host</span><span class="token punctuation">:</span> ddev<span class="token punctuation">-</span>catalog<span class="token punctuation">-</span>db<br>      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token string">""</span><br>      <span class="token key atrule">database</span><span class="token punctuation">:</span> db<br>      <span class="token key atrule">prefix</span><span class="token punctuation">:</span> <span class="token null important">null</span></code></pre>
+<p>I edited it to this (changes commented):</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">langcode</span><span class="token punctuation">:</span> en<br><span class="token key atrule">status</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><br><span class="token key atrule">dependencies</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><br><span class="token key atrule">id</span><span class="token punctuation">:</span> catalog_migrate <span class="token comment"># Change the id to the machine name of the module</span><br><span class="token key atrule">label</span><span class="token punctuation">:</span> <span class="token string">"Import from Catalog D7 site"</span> <span class="token comment"># Change the label.</span><br><span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"Migrations originally generated from drush migrate-upgrade --configure-only"</span><br><span class="token key atrule">source_type</span><span class="token punctuation">:</span> <span class="token string">"Drupal 7"</span><br><span class="token key atrule">module</span><span class="token punctuation">:</span> <span class="token null important">null</span><br><span class="token key atrule">shared_configuration</span><span class="token punctuation">:</span><br>  <span class="token key atrule">source</span><span class="token punctuation">:</span><br>    <span class="token key atrule">key</span><span class="token punctuation">:</span> migrate <span class="token comment"># Change this to "migrate"</span><br>    <span class="token key atrule">database</span><span class="token punctuation">:</span><br>      <span class="token key atrule">driver</span><span class="token punctuation">:</span> mysql<br>      <span class="token key atrule">username</span><span class="token punctuation">:</span> db<br>      <span class="token key atrule">password</span><span class="token punctuation">:</span> db<br>      <span class="token key atrule">host</span><span class="token punctuation">:</span> ddev<span class="token punctuation">-</span>catalog<span class="token punctuation">-</span>db<br>      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token string">""</span><br>      <span class="token key atrule">database</span><span class="token punctuation">:</span> db<br>      <span class="token key atrule">prefix</span><span class="token punctuation">:</span> <span class="token null important">null</span></code></pre>
+<h2>Install the Module</h2>
+<p>Install the module with <code>ddev drush en -y catalog_migrate</code>. If all goes well, the module is enabled and I can move on to the next step.</p>
+<h2>Check Migration Status</h2>
+<p>If you run <code>ddev drush migrate:status</code>, you're likely to see a bunch of scary error messages related to Drupal 6 migrations that are included by default. To avoid seeing those, do <code>ddev drush migrate:status --group=catalog_migrate</code>. I did that and found that my migrations were looking good: all were idle, with expected numbers in the <code>Total</code>, <code>Imported</code>, and <code>Unprocessed</code> columns.</p>
+<h2>Running the Migration</h2>
+<p>I wish there were a <code>--simulate</code> flag so that I could run a test migration without actually importing a bunch of stuff into my D10 site, but there isn't. So, now's the time to run <code>ddev drush migrate:import --group=catalog_migrate --continue-on-failure</code>. I use the <code>continue-on-failure</code> flag because otherwise the process stops every time there's even a minor issue. There probably will be some issues, but I prefer to find out how extensive the issues are by watching all of the migrations complete their run.</p>
+<h2>Debugging</h2>
+<p>I have never seen a migration executed flawlessly on the first run. It's good to know some debugging tips.</p>
+<p>Drush does a good job of letting you know when there are problems. For example, my migration produced this message:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>notice<span class="token punctuation">]</span> Processed <span class="token number">327</span> items <span class="token punctuation">(</span><span class="token number">315</span> created, <span class="token number">0</span> updated, <span class="token number">12</span> failed, <span class="token number">0</span> ignored<span class="token punctuation">)</span> - <span class="token keyword">done</span> with <span class="token string">'catalog_migrate_field_formatter_settings'</span><br><span class="token punctuation">[</span>error<span class="token punctuation">]</span>  catalog_migrate_field_formatter_settings Migration - <span class="token number">12</span> failed.</code></pre>
+<p>The <code>migrate:message</code> (<code>mmsg</code>) command, with the name of the troublesome migration, will provide more information: <code>ddev drush mmsg catalog_migrate_field_formatter_settings</code>. Running that told me that most of the issues had to do with field format widgets that were supplied by the <a href="https://www.drupal.org/project/autocomplete_widgets">Autocomplete Widgets</a> module, which does not have a D10 version.</p>
+<p>If there are issues with other migrations, now is the time to use <code>mmsg</code> with those, too. Otherwise, the messages will disappear after you run <code>migrate:rollback</code> (<code>mr</code>) to, well, roll back the migration.</p>
+<p>Sometimes, when a migration stops in the middle of the operation, it's necessary to use <code>migrate:reset-status</code> (<code>mrs</code>) to reset a migration.</p>
+<p>To resolve the issues, I work in the site's <code>sync</code> directory, which DDEV puts in <code>web/sites/default/files/sync</code>. I edit the files that correspond to the migrations that had problems, then I do <code>ddev drush cim</code> to import the changes, followed by <code>ddev drush cr</code> to clear the caches.</p>
+<p>Finally, I run <code>migrate:import</code> (<code>mim</code>) again with the <code>--group</code> and <code>--continue-on-failure</code> flags, watching for the same or new error messages. It might be the case that you will have to live with some of the minor issues that don't affect the content or functionality of your site.</p>
+
+            
+          <div id="taglist" class="mx-auto">
+              <h2>Filed under</h2>
+              <ul>
+                
+                
+                <li>
+                  <a href="/tags/Drupal">Drupal</a>
+                </li>
+                
+                
+                
+                
+              </ul>
+            </div>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mt-auto">
+  <div class="container w-75 mx-auto">
+    <div class="row">
+      <div class="col-8">
+        <p class="footerinfo">
+          ©2024 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
+          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+        </p>
+      </div>
+      <div class="col-4">
+        <div id="socialicons">
+          <a href="https://github.com/sjhuskey" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-github"
+              data-donate="true"
+              data-tag="git"
+              data-name="Github"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"
+              ></path></svg></a
+          ><a href="https://www.linkedin.com/in/sjhuskey/" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-linkedin"
+              data-donate="true"
+              data-tag="lin"
+              data-name="LinkedIn"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"
+              ></path></svg
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript" src="/dist/app.js"></script>
+  </body>
+</html>
