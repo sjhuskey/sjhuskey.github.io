@@ -9,15 +9,15 @@ tags:
   - posts
 ---
 
-A colleague asked me to help her get started using the [Oral History Metadata Synthesizer's](https://www.oralhistoryonline.org/) [OHMS Viewer](https://github.com/uklibraries/ohms-viewer). It is meant to integrate with a CMS, but she just needs to see how it works for now. Instead of going through the trouble of setting up access to a remote server, I decided to see if I could get it working with [DDEV](https://ddev.com/), a super-easy application for developing web sites locally (i.e., on a laptop or desktop computer).
+A colleague asked me to help her get started using the [Oral History Metadata Synthesizer's](https://www.oralhistoryonline.org/) [OHMS Viewer](https://github.com/uklibraries/ohms-viewer). It is meant to integrate with a CMS, but she just needs to see how it works for now. Instead of going through the trouble of setting up access to a remote server, I decided to see if I could get it working with [DDEV](https://ddev.com/), a super-easy-to-use application for developing web sites locally (i.e., on a laptop or desktop computer).
 
 ## Prerequisites
 
 - Comfort using a Command Line Interface (e.g., Terminal).
 - [Docker](https://www.docker.com/). The instructions for different operating systems are available at [https://ddev.readthedocs.io/en/stable/users/install/docker-installation/](https://ddev.readthedocs.io/en/stable/users/install/docker-installation/).
-- [DDEV]: Instructions are at [https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/](https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/).
+- [DDEV](https://ddev.com/): Instructions are at [https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/](https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/).
 - OHMS Viewer: Download the latest release at [https://github.com/uklibraries/ohms-viewer/releases](https://github.com/uklibraries/ohms-viewer/releases). It is available as a `zip` or `tar.gz` archive. I'm working with the `tar.gz` file.
-- An account on [Aviary](https://www.aviaryplatform.com/)
+- An account on [Aviary](https://www.aviaryplatform.com/).
 
 ## Set up a PHP environment with DDEV
 
