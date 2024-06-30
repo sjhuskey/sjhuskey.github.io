@@ -3,6 +3,7 @@ title: "Gitignore for Drupal"
 author: "Samuel J. Huskey"
 date: "2023-02-22"
 image: "/assets/images/drupal.jpg"
+url: "https://sjhuskey.info/posts/gitignore-for-drupal/"
 tags:
   - Drupal
   - posts
@@ -63,5 +64,6 @@ Thumbs.db
 ##########
 .sass-cache
 ```
+
 <hr />
 <span style="font-size:smaller">Photo by <a href="https://unsplash.com/es/@rubaitulazad?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rubaitul Azad</a> on <a href="https://unsplash.com/s/photos/drupal?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></span>

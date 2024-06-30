@@ -6,9 +6,15 @@
       "name": "Samuel J. Huskey",
       "email": "huskey@ou.edu"
     },
+    "type": "atom",
+    "language": "en",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
     "url": "https://sjhuskey.info/feed/feed.xml",
-    "id": "https://sjhuskey.info/"
+    "id": "https://sjhuskey.info/",
+    "collection": {
+      "name": "posts",
+      "limit": 0
+    }
   }
 }

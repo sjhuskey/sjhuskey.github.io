@@ -2,6 +2,7 @@
 title: "The settings.php file for Drupal 9"
 author: "Samuel J. Huskey"
 date: 2021-06-08
+url: "https://sjhuskey.info/posts/settings-php-for-drupal-9/"
 tags:
   - Drupal
   - posts

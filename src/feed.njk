@@ -1,19 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom">
-  <title>{{ metadata.title }}</title>
-  <subtitle>{{ metadata.feed.subtitle }}</subtitle>
-  <link href="{{ metadata.feed.url }}" rel="self" /> <link href="{{ metadata.url }}" />
+---
+permalink: feed/feed.xml
+eleventyExcludeFromCollections: true
+---
+
+{%- set feedData = { title: metadata.feed.title, subtitle: metadata.feed.subtitle, type: metadata.feed.type, url:
+metadata.feed.url, language: metadata.feed.language, author: { name: metadata.feed.author.name, email:
+metadata.feed.author.email } } -%}
+
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ feedData.title }}</title>
+  <subtitle>{{ feedData.subtitle }}</subtitle>
+  <type>{{ feedData.type }}</type>
+  <link href="{{ feedData.url }}" rel="self" />
+  <link href="{{ metadata.url }}" />
   <updated>{{ collections.posts | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
-  <id>{{ metadata.url }}</id>
+  <id>{{ feedData.url }}</id>
+  <language>{{ feedData.language }}</language>
   <author>
-    <name>{{ metadata.feed.author.name }}</name>
-    <email>{{ metadata.feed.author.email }}</email>
+    <name>{{ feedData.author.name }}</name>
+    <email>{{ feedData.author.email }}</email>
   </author>
-  {%- for post in collections.posts | reverse %} {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url)
-
-
-
-
-
+  {%- for post in collections.posts | reverse %} {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(feedData.url)
   }}{% endset %}
   <entry>
     <title>{{ post.data.title }}</title>

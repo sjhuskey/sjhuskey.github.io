@@ -101,7 +101,7 @@ module.exports = function (eleventyConfig) {
   // Add the RSS feed plugin with metadata
   eleventyConfig.addPlugin(pluginRss, {
     type: "atom", // or "rss", "json"
-    outputPath: "/feed.xml",
+    outputPath: "feed/feed.xml",
     collection: {
       name: "posts", // iterate over `collections.posts`
       limit: 0, // 0 means no limit
