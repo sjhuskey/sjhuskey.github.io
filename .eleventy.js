@@ -98,7 +98,26 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("site", globalSiteData);
 
   // Add plugins
-  eleventyConfig.addPlugin(pluginRss);
+  // Add the RSS feed plugin with metadata
+  eleventyConfig.addPlugin(pluginRss, {
+    type: "atom", // or "rss", "json"
+    outputPath: "/feed.xml",
+    collection: {
+      name: "posts", // iterate over `collections.posts`
+      limit: 0, // 0 means no limit
+    },
+    metadata: {
+      language: "en",
+      title: "S.J. Huskey's Blog",
+      subtitle:
+        "I post about technical issues and problems that I run into while building, using, and maintaining various digital resources, mostly to keep a record for myself of how I solved them. If that information helps someone else, all the better!",
+      base: "https://sjhuskey.info/",
+      author: {
+        name: "Samuel J. Huskey",
+        email: "huskey@ou.edu", // Optional
+      },
+    },
+  });
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(syntaxHighlight);
 
