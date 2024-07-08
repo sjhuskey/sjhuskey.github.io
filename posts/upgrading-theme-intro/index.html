@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Open Graph meta tags -->
-    <meta property="og:title" content="Rebuilding A Theme after Upgrading from Drupal 7 to Drupal 10: Introduction">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://sjhuskey.info/posts/upgrading-theme">
-    <meta property="og:image" content="/assets/images/drupal.jpg">
-    <meta property="og:description" content="Notes on my process for rebuilding a theme from the ground up after upgrading a Drupal site from 7 to 10">
+    <meta property="og:title" content="Rebuilding A Theme after Upgrading from Drupal 7 to Drupal 10: Introduction" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://sjhuskey.info/posts/upgrading-theme" />
+    <meta property="og:image" content="/assets/images/drupal.jpg" />
+    <meta property="og:description" content="Notes on my process for rebuilding a theme from the ground up after upgrading a Drupal site from 7 to 10" />
     <title>Samuel J. Huskey - Rebuilding A Theme after Upgrading from Drupal 7 to Drupal 10: Introduction</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
@@ -16,10 +16,12 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-T4DCQE192P');
+      gtag("config", "G-T4DCQE192P");
     </script>
     
 
@@ -118,6 +120,16 @@
             <img src="/assets/images/drupal.jpg" class="featured-image-post" />
             
             <h1>Rebuilding A Theme after Upgrading from Drupal 7 to Drupal 10: Introduction</h1>
+            
+            <p class="post-date">
+              Posted: 2024-06-23
+               in              
+              <a href="/tags/Drupal">Drupal</a
+              >,  
+              <a href="/tags/Front End Development">Front End Development</a
+              >   
+            </p>
+            
             <p>For me, the worst part of upgrading a <a href="https://drupal.org/">Drupal</a> site from 7 to the latest version (I've done upgrades to 8, 9, and 10) is rebuilding the theme. Since Drupal 8 introduced an entirely new theming framework, themes for Drupal 7 sites simply will not work on an upgraded site, so the only choices are to rebuild the theme from scratch or build a new one. Either way, if you're not a front-end developer or if you don't have the funds to pay one to do the work for you, this part of an upgrade can seem like an insurmountable obstacle.</p>
 <p>I'm here to tell you that it's not. It's doable, if you have at least some familiarity with <a href="https://www.w3.org/Style/CSS/">CSS</a> and <a href="https://html.spec.whatwg.org/multipage/">HTML</a>, and if you're willing to invest some time into learning <a href="https://getbootstrap.com/">Bootstrap</a> and <a href="https://twig.symfony.com/">Twig</a>. To be honest, even if you don't know anything about those things, you can make a significant amount of progress with hints from Chat-GPT et al.</p>
 <p>I have upgraded two Drupal 7 sites that had custom themes designed by a front-end development company that charged a lot of money (i.e., &gt; $30,000). In both cases, I rebuilt the theme so that it strongly resembles the original D7 custom theme. Since I am by no means a graphic designer, that was the most direct path to getting the sites back online after the upgrade.</p>
@@ -128,29 +140,6 @@
 <li><a href="https://sjhuskey.info/posts/upgrading-theme-tips-tricks">Rebuilding A Theme: Tricks and Tips</a></li>
 </ul>
 
-            
-          <div id="taglist" class="mx-auto">
-              <h2>Filed under</h2>
-              <ul>
-                
-                
-                <li>
-                  <a href="/tags/Drupal">Drupal</a>
-                </li>
-                
-                
-                
-                <li>
-                  <a href="/tags/Front End Development">Front End Development</a>
-                </li>
-                
-                
-                
-                
-              </ul>
-            </div>
-          </div>
-          
           </div>
         </div>
       </div>

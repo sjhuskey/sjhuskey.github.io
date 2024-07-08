@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Open Graph meta tags -->
-    <meta property="og:title" content="Converting a Drupal site to 11ty">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://sjhuskey.info/posts/drupal-to-11ty/">
-    <meta property="og:image" content="/assets/images/drupal.jpg">
-    <meta property="og:description" content="">
+    <meta property="og:title" content="Converting a Drupal site to 11ty" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://sjhuskey.info/posts/drupal-to-11ty/" />
+    <meta property="og:image" content="/assets/images/drupal.jpg" />
+    <meta property="og:description" content="" />
     <title>Samuel J. Huskey - Converting a Drupal site to 11ty</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
@@ -16,10 +16,12 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-T4DCQE192P');
+      gtag("config", "G-T4DCQE192P");
     </script>
     
 
@@ -118,6 +120,14 @@
             <img src="/assets/images/drupal.jpg" class="featured-image-post" />
             
             <h1>Converting a Drupal site to 11ty</h1>
+            
+            <p class="post-date">
+              Posted: 2023-06-11
+               in         
+              <a href="/tags/Drupal">Drupal</a>
+               
+            </p>
+            
             <p>The main website for the Digital Latin Library has been running on the Drupal 7 CMS since its launch. As many Digital Humanities scholars know, maintaining the technology stack for an informational site can be an impediment to making real progress on the actual project. As much as I love Drupal, it is definitely more than I need for a few static pages and some blog posts. One must keep up with not only the Drupal codebase, but a MySQL database and the Linux server that it runs on. Moreover, upgrading the site from Drupal 7 to Drupal 10 would simply not be worth the effort. Having performed that task for the <a href="https://classicalstudies.org/">Society for Classical Studies' website</a>, I know how to do it, but I'm not interested in going through that again for a small site like <a href="https://digitallatin.org/">https://digitallatin.org/</a>.</p>
 <p>Paying for hosting is also an obstacle. For many years, my home institution's Office of the Vice President for Research and Partnerships gave me the use of a virtual machine for the DLL project, provided that I manage the upkeep and maintenance. That is why I now have the skills to administer Linux servers—valuable skills, to be sure, but again, one more thing to keep up with in this world of DIY Digital Humanities. Since the VPRP wanted to get out of the business of hosting virtual machines, I moved everything over to the university's cloud computing resource. That was a good solution, but again, I had to agree to be the system administrator for the server. I don't mind maintaining a Linux server. There's something satisfying about completing those tasks. Still, it does take time away from other aspects of my research and creative activity.</p>
 <p>So, I decided to convert the Digital Latin Library site to the static site manager <a href="https://www.11ty.dev/">11ty</a>. First of all, since it's a <em>static</em> site manager, I don't have to maintain a MySQL database. Second, my content isn't stored in pieces in a database. I can just store it in Markdown files. I like writing in Markdown. Indeed, I do almost <em>all</em> of my writing in <a href="https://www.markdownguide.org/">Markdown</a> these days. Combined with <a href="https://pandoc.org/">Pandoc</a>, it's remarkably flexible! Third, Git is big part of the workflow for an 11ty site, so count this Git fan in! Finally, I can host my 11ty site on Github for free!</p>
@@ -160,23 +170,6 @@
 </ol>
 <p>That fourth step is going to take the most time. That's always the way for DIY Digital Humanities projects, am I right? I'm not a graphic designer by any stretch of the imagination. Fortunately, there are many good template to use as a starting point. I think I'll use <a href="https://mandrasch.github.io/11ty-plain-bootstrap5/">11ty-plain-bootstrap5</a>, but <a href="https://11straps-demo.netlify.app/">11straps</a> also looks like a good option.</p>
 
-            
-          <div id="taglist" class="mx-auto">
-              <h2>Filed under</h2>
-              <ul>
-                
-                
-                <li>
-                  <a href="/tags/Drupal">Drupal</a>
-                </li>
-                
-                
-                
-                
-              </ul>
-            </div>
-          </div>
-          
           </div>
         </div>
       </div>

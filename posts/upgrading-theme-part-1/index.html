@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Open Graph meta tags -->
-    <meta property="og:title" content="Rebuilding A Theme: Tricks and Tips">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://sjhuskey.info/posts/upgrading-theme-tips-tricks">
-    <meta property="og:image" content="/assets/images/drupal.jpg">
-    <meta property="og:description" content="Some basic information to know before starting a front-end development project in Drupal">
+    <meta property="og:title" content="Rebuilding A Theme: Tricks and Tips" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://sjhuskey.info/posts/upgrading-theme-tips-tricks" />
+    <meta property="og:image" content="/assets/images/drupal.jpg" />
+    <meta property="og:description" content="Some basic information to know before starting a front-end development project in Drupal" />
     <title>Samuel J. Huskey - Rebuilding A Theme: Tricks and Tips</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
@@ -16,10 +16,12 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-T4DCQE192P');
+      gtag("config", "G-T4DCQE192P");
     </script>
     
 
@@ -118,6 +120,16 @@
             <img src="/assets/images/drupal.jpg" class="featured-image-post" />
             
             <h1>Rebuilding A Theme: Tricks and Tips</h1>
+            
+            <p class="post-date">
+              Posted: 2024-07-02
+               in              
+              <a href="/tags/Drupal">Drupal</a
+              >,  
+              <a href="/tags/Front End Development">Front End Development</a
+              >   
+            </p>
+            
             <p>Before I start blogging about the specifics of my front-end development project, I thought I should list some things I've picked up over time about theming in Drupal.</p>
 <h2>Develop with DDEV</h2>
 <p>I do all my Drupal development work using <a href="https://ddev.com/">DDEV</a> to run the site locally. See my post <a href="https://sjhuskey.info/posts/using-ddev-local-drupal/">Using ddev for Local Drupal Development</a> for more information on using DDEV. It is so much better than the bad old days of using MAMP or a Virtual Machine!</p>
@@ -129,7 +141,7 @@
 <p>In my case, the theme I'll be working with uses SASS, which stands for &quot;Syntactically Awesome Style Sheets.&quot; According to the <a href="https://sass-lang.com/">website</a>, &quot;Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.&quot; Installation instructions are at <a href="https://sass-lang.com/install/">https://sass-lang.com/install/</a>. In my case, I'll use Homebrew to install it on my Mac: <code>brew install sass/sass/sass</code>.</p>
 <p>In some cases, <a href="https://www.npmjs.com/">npm</a> takes care of this step.</p>
 <h2>Set Up Drupal for Theme Development</h2>
-<p>First of all, install the <a href="https://www.drupal.org/project/twig_tweak">Twig Tweak module</a>. It adds a bunch of functionality that you'll probably want or need.</p>
+<p>First of all, install the <a href="https://www.drupal.org/project/twig_tweak">Twig Tweak module</a>. It adds a bunch of functionality that you'll probably want or need. You should also familiarize yourself with the <a href="https://git.drupalcode.org/project/twig_tweak/-/blob/3.x/docs/cheat-sheet.md">Twig Tweak Cheat Sheet</a>, which is indispensible.</p>
 <p>Twig is the default templating language for Drupal since version 8. In addition to being more user-friendly than the raw PHP of earlier versions of Drupal, Twig has some really helpful hinting and debugging features. To take advantage of these, you need to edit a couple of files in the <code>web/sites/default</code> directory.</p>
 <h3>Turn on Twig Debugging</h3>
 <ol>
@@ -162,29 +174,6 @@
 <p>Don't forget to reset the permissions on <code>settings.php</code>: <code>chmod ug=r,o= settings.php</code>.</p>
 <p>Be sure to clear the caches: <code>drush cr</code>.</p>
 
-            
-          <div id="taglist" class="mx-auto">
-              <h2>Filed under</h2>
-              <ul>
-                
-                
-                <li>
-                  <a href="/tags/Drupal">Drupal</a>
-                </li>
-                
-                
-                
-                <li>
-                  <a href="/tags/Front End Development">Front End Development</a>
-                </li>
-                
-                
-                
-                
-              </ul>
-            </div>
-          </div>
-          
           </div>
         </div>
       </div>

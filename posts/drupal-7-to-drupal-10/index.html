@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Open Graph meta tags -->
-    <meta property="og:title" content="Upgrading the DLL Catalog Site to Drupal 10">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://sjhuskey.info/posts/drupal-7-to-drupal-10/">
-    <meta property="og:image" content="/assets/images/drupal.jpg">
-    <meta property="og:description" content="My experience of upgrading a Drupal 7 site to Drupal 10">
+    <meta property="og:title" content="Upgrading the DLL Catalog Site to Drupal 10" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://sjhuskey.info/posts/drupal-7-to-drupal-10/" />
+    <meta property="og:image" content="/assets/images/drupal.jpg" />
+    <meta property="og:description" content="My experience of upgrading a Drupal 7 site to Drupal 10" />
     <title>Samuel J. Huskey - Upgrading the DLL Catalog Site to Drupal 10</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
@@ -16,10 +16,12 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-T4DCQE192P');
+      gtag("config", "G-T4DCQE192P");
     </script>
     
 
@@ -118,6 +120,14 @@
             <img src="/assets/images/drupal.jpg" class="featured-image-post" />
             
             <h1>Upgrading the DLL Catalog Site to Drupal 10</h1>
+            
+            <p class="post-date">
+              Posted: 2024-05-25
+               in         
+              <a href="/tags/Drupal">Drupal</a>
+               
+            </p>
+            
             <p>I finally have some time to devote to upgrading the <a href="https://catalog.digitallatin.org/">DLL Catalog</a> from Drupal 7 to Drupal 10! I'm sharing some of the basic stuff here in case DH folks need to upgrade their sites.</p>
 <p>I'm going to work on my upgrade project locally (i.e., on my laptop), using the fantastic <a href="https://ddev.com/">DDEV</a> Docker-based tool so that I don't have to do it on a remote server or deal with MAMP or something like that. I strongly recommend using DDEV. There's <a href="https://ddev.com/get-started/">excellent documentation for installing it</a>, so I won't repeat it here.</p>
 <p>After installing Docker and DDEV, the next step is to set up DDEV sites for both the existing Drupal 7 (D7) codebase and database and a new Drupal 10 codebase and database. Next, I'll install the migration modules. Finally, I'll run the migrations and troubleshoot.</p>
@@ -219,23 +229,6 @@
 <h2>Next Step: Rebuilding the Theme</h2>
 <p>This is the really unfortunate part of upgrading a Drupal 7 site. Drupal 8 introduced an entirely new theming layer, so I'll need to rebuild the theme in Twig before I can launch the new version. For now, everything will be done locally on my DDEV site. I'll post something about my adventures with rebuilding the theme.</p>
 
-            
-          <div id="taglist" class="mx-auto">
-              <h2>Filed under</h2>
-              <ul>
-                
-                
-                <li>
-                  <a href="/tags/Drupal">Drupal</a>
-                </li>
-                
-                
-                
-                
-              </ul>
-            </div>
-          </div>
-          
           </div>
         </div>
       </div>

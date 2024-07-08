@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Open Graph meta tags -->
-    <meta property="og:title" content="Using the OHMS Viewer with DDEV">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://sjhuskey.info/posts/ohms/">
-    <meta property="og:image" content="/assets/images/tech.jpg">
-    <meta property="og:description" content="How to set up a basic PHP environment for testing the OHMS Viewer.">
+    <meta property="og:title" content="Using the OHMS Viewer with DDEV" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://sjhuskey.info/posts/ohms/" />
+    <meta property="og:image" content="/assets/images/tech.jpg" />
+    <meta property="og:description" content="How to set up a basic PHP environment for testing the OHMS Viewer." />
     <title>Samuel J. Huskey - Using the OHMS Viewer with DDEV</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
@@ -16,10 +16,12 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-T4DCQE192P');
+      gtag("config", "G-T4DCQE192P");
     </script>
     
 
@@ -118,6 +120,14 @@
             <img src="/assets/images/tech.jpg" class="featured-image-post" />
             
             <h1>Using the OHMS Viewer with DDEV</h1>
+            
+            <p class="post-date">
+              Posted: 2024-06-21
+               in         
+              <a href="/tags/OHMS">OHMS</a>
+               
+            </p>
+            
             <p>A colleague asked me to help her get started using the <a href="https://www.oralhistoryonline.org/">Oral History Metadata Synthesizer's</a> <a href="https://github.com/uklibraries/ohms-viewer">OHMS Viewer</a>. It is meant to integrate with a CMS, but she just needs to see how it works for now. Instead of going through the trouble of setting up access to a remote server, I decided to see if I could get it working with <a href="https://ddev.com/">DDEV</a>, a super-easy-to-use application for developing web sites locally (i.e., on a laptop or desktop computer).</p>
 <h2>Prerequisites</h2>
 <ul>
@@ -157,23 +167,6 @@
 <p>Put the XML file into the <code>cachefiles</code> directory created above.</p>
 <p>You should now be able to use a web browser to navigate to <code>http://ohms.ddev.site/ohms-viewer/viewer.php?cachefile=YOUR-XML-FILE.xml</code> to see the record in the OHMS Viewer. Be sure to replace <code>YOUR-XML-FILE</code> with the actual name of your file.</p>
 
-            
-          <div id="taglist" class="mx-auto">
-              <h2>Filed under</h2>
-              <ul>
-                
-                
-                <li>
-                  <a href="/tags/OHMS">OHMS</a>
-                </li>
-                
-                
-                
-                
-              </ul>
-            </div>
-          </div>
-          
           </div>
         </div>
       </div>
