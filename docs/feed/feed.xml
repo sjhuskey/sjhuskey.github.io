@@ -5,13 +5,79 @@
   <type>atom</type>
   <link href="https://sjhuskey.info/feed/feed.xml" rel="self" />
   <link href="" />
-  <updated>2024-06-21T00:00:00Z</updated>
+  <updated>2024-07-02T00:00:00Z</updated>
   <id>https://sjhuskey.info/feed/feed.xml</id>
   <language>en</language>
   <author>
     <name>Samuel J. Huskey</name>
     <email>huskey@ou.edu</email>
   </author> 
+  <entry>
+    <title>Rebuilding A Theme: Tricks and Tips</title>
+    <link href="https://sjhuskey.info/posts/upgrading-theme-part-1/" />
+    <updated>2024-07-02T00:00:00Z</updated>
+    <id>https://sjhuskey.info/posts/upgrading-theme-part-1/</id>
+    <content type="html">&lt;p&gt;Before I start blogging about the specifics of my front-end development project, I thought I should list some things I&#39;ve picked up over time about theming in Drupal.&lt;/p&gt;
+&lt;h2&gt;Develop with DDEV&lt;/h2&gt;
+&lt;p&gt;I do all my Drupal development work using &lt;a href=&quot;https://ddev.com/&quot;&gt;DDEV&lt;/a&gt; to run the site locally. See my post &lt;a href=&quot;https://sjhuskey.info/posts/using-ddev-local-drupal/&quot;&gt;Using ddev for Local Drupal Development&lt;/a&gt; for more information on using DDEV. It is so much better than the bad old days of using MAMP or a Virtual Machine!&lt;/p&gt;
+&lt;p&gt;But since not everyone uses DDEV, I&#39;m going to leave &lt;code&gt;ddev&lt;/code&gt; off of several of the commands that I will mention in this series, lest I create confusion.&lt;/p&gt;
+&lt;h2&gt;Use Your Browser&#39;s Development Tools&lt;/h2&gt;
+&lt;p&gt;My main web browser is &lt;a href=&quot;https://www.mozilla.org/en-US/firefox/new/&quot;&gt;Firefox&lt;/a&gt;, which has great Web Developer Tools available in Tools &amp;gt; Browser Tools &amp;gt; Web Developer Tools. These tools are essential for inspecting a page&#39;s code to identify what, exactly, needs to be selected for styling. There&#39;s also an interface for seeing how your page looks on different devices.&lt;/p&gt;
+&lt;p&gt;On a Mac, the shortcut for activating the tools in Firefox is &lt;code&gt;⌘⌥c&lt;/code&gt; (command + option + c). I recommend memorizing what the shortcut is in your browser, since you&#39;ll need to use it a lot. I&#39;ll go so far as to say that you shouldn&#39;t even think about front-end development without figuring out how to use your browser&#39;s web development tools!&lt;/p&gt;
+&lt;h2&gt;Install a CSS compiler&lt;/h2&gt;
+&lt;p&gt;In my case, the theme I&#39;ll be working with uses SASS, which stands for &amp;quot;Syntactically Awesome Style Sheets.&amp;quot; According to the &lt;a href=&quot;https://sass-lang.com/&quot;&gt;website&lt;/a&gt;, &amp;quot;Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.&amp;quot; Installation instructions are at &lt;a href=&quot;https://sass-lang.com/install/&quot;&gt;https://sass-lang.com/install/&lt;/a&gt;. In my case, I&#39;ll use Homebrew to install it on my Mac: &lt;code&gt;brew install sass/sass/sass&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In some cases, &lt;a href=&quot;https://www.npmjs.com/&quot;&gt;npm&lt;/a&gt; takes care of this step.&lt;/p&gt;
+&lt;h2&gt;Set Up Drupal for Theme Development&lt;/h2&gt;
+&lt;p&gt;First of all, install the &lt;a href=&quot;https://www.drupal.org/project/twig_tweak&quot;&gt;Twig Tweak module&lt;/a&gt;. It adds a bunch of functionality that you&#39;ll probably want or need.&lt;/p&gt;
+&lt;p&gt;Twig is the default templating language for Drupal since version 8. In addition to being more user-friendly than the raw PHP of earlier versions of Drupal, Twig has some really helpful hinting and debugging features. To take advantage of these, you need to edit a couple of files in the &lt;code&gt;web/sites/default&lt;/code&gt; directory.&lt;/p&gt;
+&lt;h3&gt;Turn on Twig Debugging&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to &lt;code&gt;web/sites/default&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Copy &lt;code&gt;default.services.yml&lt;/code&gt; and name the copy &lt;code&gt;services.yml&lt;/code&gt;: &lt;code&gt;cp default.services.yml services.yml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Open &lt;code&gt;services.yml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Scroll down to the section &lt;code&gt;twig.config&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Change the line &lt;code&gt;debug: false&lt;/code&gt; to &lt;code&gt;debug: true&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Save and close&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Enable Local Settings&lt;/h3&gt;
+&lt;p&gt;The local settings file adds some development tools.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to &lt;code&gt;web/sites/default&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Copy &lt;code&gt;example.settings.local.php&lt;/code&gt; and rename it &lt;code&gt;settings.local.php&lt;/code&gt;: &lt;code&gt;cp example.settings.local.php settings.local.php&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now, edit &lt;code&gt;settings.php&lt;/code&gt; to tell Drupal to use the &lt;code&gt;settings.local.php&lt;/code&gt; file. You might have to change the permissions on &lt;code&gt;settings.php&lt;/code&gt; before you edit it. If you do have to change the permissions:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Navigate to &lt;code&gt;web/sites/default&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Do &lt;code&gt;chmod ug=rwx settings.php&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now, do the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open &lt;code&gt;settings.php&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Scroll down to the bottom of the file&lt;/li&gt;
+&lt;li&gt;Uncomment the last lines by deleting the &lt;code&gt;#&lt;/code&gt; sign at the beginning of each line&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The final lines of &lt;code&gt;settings.php&lt;/code&gt; should now look like this:&lt;/p&gt;
+&lt;pre class=&quot;language-php&quot;&gt;&lt;code class=&quot;language-php&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;file_exists&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$app_root&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token string single-quoted-string&quot;&gt;&#39;/&#39;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$site_path&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token string single-quoted-string&quot;&gt;&#39;/settings.local.php&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;   &lt;span class=&quot;token keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$app_root&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token string single-quoted-string&quot;&gt;&#39;/&#39;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$site_path&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token string single-quoted-string&quot;&gt;&#39;/settings.local.php&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Don&#39;t forget to reset the permissions on &lt;code&gt;settings.php&lt;/code&gt;: &lt;code&gt;chmod ug=r,o= settings.php&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Be sure to clear the caches: &lt;code&gt;drush cr&lt;/code&gt;.&lt;/p&gt;
+</content>
+  </entry> 
+  <entry>
+    <title>Rebuilding A Theme after Upgrading from Drupal 7 to Drupal 10: Introduction</title>
+    <link href="https://sjhuskey.info/posts/upgrading-theme-intro/" />
+    <updated>2024-06-23T00:00:00Z</updated>
+    <id>https://sjhuskey.info/posts/upgrading-theme-intro/</id>
+    <content type="html">&lt;p&gt;For me, the worst part of upgrading a &lt;a href=&quot;https://drupal.org/&quot;&gt;Drupal&lt;/a&gt; site from 7 to the latest version (I&#39;ve done upgrades to 8, 9, and 10) is rebuilding the theme. Since Drupal 8 introduced an entirely new theming framework, themes for Drupal 7 sites simply will not work on an upgraded site, so the only choices are to rebuild the theme from scratch or build a new one. Either way, if you&#39;re not a front-end developer or if you don&#39;t have the funds to pay one to do the work for you, this part of an upgrade can seem like an insurmountable obstacle.&lt;/p&gt;
+&lt;p&gt;I&#39;m here to tell you that it&#39;s not. It&#39;s doable, if you have at least some familiarity with &lt;a href=&quot;https://www.w3.org/Style/CSS/&quot;&gt;CSS&lt;/a&gt; and &lt;a href=&quot;https://html.spec.whatwg.org/multipage/&quot;&gt;HTML&lt;/a&gt;, and if you&#39;re willing to invest some time into learning &lt;a href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt; and &lt;a href=&quot;https://twig.symfony.com/&quot;&gt;Twig&lt;/a&gt;. To be honest, even if you don&#39;t know anything about those things, you can make a significant amount of progress with hints from Chat-GPT et al.&lt;/p&gt;
+&lt;p&gt;I have upgraded two Drupal 7 sites that had custom themes designed by a front-end development company that charged a lot of money (i.e., &amp;gt; $30,000). In both cases, I rebuilt the theme so that it strongly resembles the original D7 custom theme. Since I am by no means a graphic designer, that was the most direct path to getting the sites back online after the upgrade.&lt;/p&gt;
+&lt;p&gt;I decided to base the new themes on &lt;a href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;, because it automagically takes care of a lot of the things I don&#39;t like to deal with in front-end development. Also, Bootstrap&#39;s &lt;a href=&quot;https://getbootstrap.com/docs/5.3/getting-started/introduction/&quot;&gt;documentation is crystal clear&lt;/a&gt;, tutorials abound online (e.g., &lt;a href=&quot;https://www.w3schools.com/bootstrap/bootstrap_get_started.asp&quot;&gt;https://www.w3schools.com/bootstrap/bootstrap_get_started.asp&lt;/a&gt;), and the user community is huge—all factors I strongly consider when making any decisions about technology.&lt;/p&gt;
+&lt;p&gt;Since I know that other Digital Humanities folks have run up against the problem of doing front-end development with little or no funds, I figured I should write up some notes while I go through this process yet again with the DLL&#39;s Catalog site.&lt;/p&gt;
+&lt;p&gt;I&#39;ll add to this list as I finish writing up each step:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-tips-tricks&quot;&gt;Rebuilding A Theme: Tricks and Tips&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry> 
   <entry>
     <title>Using the OHMS Viewer with DDEV</title>
     <link href="https://sjhuskey.info/posts/ohms/" />
