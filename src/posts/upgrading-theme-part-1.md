@@ -1,5 +1,5 @@
 ---
-title: "Rebuilding A Theme: Tricks and Tips"
+title: "Rebuilding a Theme, Part I: Tricks and Tips"
 author: "Samuel J. Huskey"
 date: "2024-07-02"
 url: "https://sjhuskey.info/posts/upgrading-theme-tips-tricks"

@@ -1,5 +1,5 @@
 ---
-title: "Rebuilding A Theme, Part II: Creating a Subtheme"
+title: "Rebuilding a Theme, Part II: Creating a Subtheme"
 author: "Samuel J. Huskey"
 date: "2024-07-03"
 url: "https://sjhuskey.info/posts/upgrading-theme-part-2"

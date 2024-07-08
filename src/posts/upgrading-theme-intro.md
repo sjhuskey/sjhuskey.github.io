@@ -1,5 +1,5 @@
 ---
-title: "Rebuilding A Theme after Upgrading from Drupal 7 to Drupal 10: Introduction"
+title: "Rebuilding a Theme after Upgrading from Drupal 7 to Drupal 10: Introduction"
 author: "Samuel J. Huskey"
 date: "2024-06-23"
 url: "https://sjhuskey.info/posts/upgrading-theme"
