@@ -5,13 +5,44 @@
   <type>atom</type>
   <link href="https://sjhuskey.info/feed/feed.xml" rel="self" />
   <link href="" />
-  <updated>2024-07-02T00:00:00Z</updated>
+  <updated>2024-07-03T00:00:00Z</updated>
   <id>https://sjhuskey.info/feed/feed.xml</id>
   <language>en</language>
   <author>
     <name>Samuel J. Huskey</name>
     <email>huskey@ou.edu</email>
   </author> 
+  <entry>
+    <title>Rebuilding A Theme, Part II: Creating a Subtheme</title>
+    <link href="https://sjhuskey.info/posts/upgrading-theme-part-2/" />
+    <updated>2024-07-03T00:00:00Z</updated>
+    <id>https://sjhuskey.info/posts/upgrading-theme-part-2/</id>
+    <content type="html">&lt;h2&gt;Install and Enable the Theme&lt;/h2&gt;
+&lt;p&gt;There are several options for developing with Boostrap for Drupal. I have used &lt;a href=&quot;https://www.drupal.org/project/radix&quot;&gt;Radix&lt;/a&gt; before, and I liked it, but this time I want to use the &lt;a href=&quot;https://www.drupal.org/project/bootstrap5&quot;&gt;Bootstrap5&lt;/a&gt; theme because it isn&#39;t so heavily dependent on nodeJS.&lt;/p&gt;
+&lt;p&gt;So:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install the Bootstrap5 theme: &lt;code&gt;composer require &#39;drupal/bootstrap5:^4.0&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Enable the Bootstrap5 theme: &lt;code&gt;drush then bootstrap5&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The README file included in the theme also suggests installing the companion module &lt;a href=&quot;https://www.drupal.org/project/twbstools&quot;&gt;Bootstrap 5 tools&lt;/a&gt;, but it doesn&#39;t have a stable release, and it hasn&#39;t been updated since 2022, so I&#39;m not going to do that.&lt;/p&gt;
+&lt;h2&gt;Create a Subtheme&lt;/h2&gt;
+&lt;p&gt;A subtheme allows developers to customize the theme without having all of their changes obliterated every time the theme is updated. The README provide a &lt;code&gt;drush&lt;/code&gt; command: &lt;code&gt;drush --include=&amp;quot;web/themes/contrib/bootstrap5/src/Drush&amp;quot; bootstrap5:generate-subtheme MACHINE_NAME --subtheme-name=&amp;quot;SUBTHEME_NAME&amp;quot;&lt;/code&gt;. Obviously, replace &lt;code&gt;MACHINE_NAME&lt;/code&gt; with the machine name for the subtheme (I&#39;m using &lt;code&gt;dll_catalog&lt;/code&gt;) and &lt;code&gt;SUBTHEME_NAME&lt;/code&gt; with a human-readable name (e.g., &amp;quot;DLL Catalog Theme&amp;quot;).&lt;/p&gt;
+&lt;p&gt;If all goes well, there should now be a directory called &lt;code&gt;custom&lt;/code&gt; inside of &lt;code&gt;web/themes&lt;/code&gt;. There should also be a directory inside of &lt;code&gt;custom&lt;/code&gt; with the machine name that was specified in the drush command.&lt;/p&gt;
+&lt;h2&gt;Enable the Subtheme and Set it as the Default&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Enable the subtheme: &lt;code&gt;drush then dll_catalog&lt;/code&gt; (or whatever the &lt;code&gt;SUBTHEME_NAME&lt;/code&gt; is)&lt;/li&gt;
+&lt;li&gt;Set the subtheme as the default: &lt;code&gt;drush config-set system.theme default dll_catalog&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now, clear the cache (&lt;code&gt;drush cr&lt;/code&gt;), go to your browser, and pull up your site. The new subtheme should be in control. Here&#39;s a screen shot of mine at this stage:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://sjhuskey.info/assets/images/front-end/new-subtheme.png&quot; alt=&quot;Screenshot of my bare subtheme&quot; title=&quot;New Subtheme&quot; class=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Already I like this implementation of Bootstrap better than what I&#39;ve found in Radix. Out of the box, as it were, the Bootstrap5 subtheme takes care of some things that I would have to handle with templates and CSS in Radix. Namely:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The content is centered in the browser window. It&#39;s not difficult to do that (see, for example, &lt;a href=&quot;https://mdbootstrap.com/docs/standard/layout/horizontal-alignment/&quot;&gt;https://mdbootstrap.com/docs/standard/layout/horizontal-alignment/&lt;/a&gt;), but it&#39;s nice not to have to cope with it.&lt;/li&gt;
+&lt;li&gt;The footer is already pushed to the bottom of the browser window. That, too, can be dealt with easily, but I&#39;d rather move on to other things.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As much as I like those things, it&#39;s time to customize my subtheme.&lt;/p&gt;
+</content>
+  </entry> 
   <entry>
     <title>Rebuilding A Theme: Tricks and Tips</title>
     <link href="https://sjhuskey.info/posts/upgrading-theme-part-1/" />
@@ -28,7 +59,7 @@
 &lt;p&gt;In my case, the theme I&#39;ll be working with uses SASS, which stands for &amp;quot;Syntactically Awesome Style Sheets.&amp;quot; According to the &lt;a href=&quot;https://sass-lang.com/&quot;&gt;website&lt;/a&gt;, &amp;quot;Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.&amp;quot; Installation instructions are at &lt;a href=&quot;https://sass-lang.com/install/&quot;&gt;https://sass-lang.com/install/&lt;/a&gt;. In my case, I&#39;ll use Homebrew to install it on my Mac: &lt;code&gt;brew install sass/sass/sass&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;In some cases, &lt;a href=&quot;https://www.npmjs.com/&quot;&gt;npm&lt;/a&gt; takes care of this step.&lt;/p&gt;
 &lt;h2&gt;Set Up Drupal for Theme Development&lt;/h2&gt;
-&lt;p&gt;First of all, install the &lt;a href=&quot;https://www.drupal.org/project/twig_tweak&quot;&gt;Twig Tweak module&lt;/a&gt;. It adds a bunch of functionality that you&#39;ll probably want or need.&lt;/p&gt;
+&lt;p&gt;First of all, install the &lt;a href=&quot;https://www.drupal.org/project/twig_tweak&quot;&gt;Twig Tweak module&lt;/a&gt;. It adds a bunch of functionality that you&#39;ll probably want or need. You should also familiarize yourself with the &lt;a href=&quot;https://git.drupalcode.org/project/twig_tweak/-/blob/3.x/docs/cheat-sheet.md&quot;&gt;Twig Tweak Cheat Sheet&lt;/a&gt;, which is indispensible.&lt;/p&gt;
 &lt;p&gt;Twig is the default templating language for Drupal since version 8. In addition to being more user-friendly than the raw PHP of earlier versions of Drupal, Twig has some really helpful hinting and debugging features. To take advantage of these, you need to edit a couple of files in the &lt;code&gt;web/sites/default&lt;/code&gt; directory.&lt;/p&gt;
 &lt;h3&gt;Turn on Twig Debugging&lt;/h3&gt;
 &lt;ol&gt;

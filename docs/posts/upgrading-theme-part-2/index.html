@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Open Graph meta tags -->
-    <meta property="og:title" content="Verify a Downloaded File" />
+    <meta property="og:title" content="Rebuilding A Theme, Part II: Creating a Subtheme" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://sjhuskey.info/posts/verify-downloaded-file/" />
-    <meta property="og:image" content="/assets/images/linux.jpg" />
-    <meta property="og:description" content="" />
-    <title>Samuel J. Huskey - Verify a Downloaded File</title>
+    <meta property="og:url" content="https://sjhuskey.info/posts/upgrading-theme-part-2" />
+    <meta property="og:image" content="/assets/images/drupal.jpg" />
+    <meta property="og:description" content="Notes on my process for rebuilding a theme from the ground up after upgrading a Drupal site from 7 to 10" />
+    <title>Samuel J. Huskey - Rebuilding A Theme, Part II: Creating a Subtheme</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
     <!-- Google tag (gtag.js) -->
@@ -32,12 +32,12 @@
 <meta property="og:site_name" content="Samuel J. Huskey">
 <meta property="og:title" content="Samuel J. Huskey">
 <meta property="og:description" content="Samuel J. Huskey&#39;s Personal Website">
-<meta property="og:url" content="https://sjhuskey.github.io/posts/verify-downloaded-file/">
+<meta property="og:url" content="https://sjhuskey.github.io/posts/upgrading-theme-part-2/">
 <meta property="og:locale" content="">
 
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Verify a Downloaded File">
+<meta name="twitter:title" content="Rebuilding A Theme, Part II: Creating a Subtheme">
 <meta name="twitter:description" content="Samuel J. Huskey&#39;s Personal Website">
 
 
@@ -117,36 +117,43 @@
         <div class="row">
           <div class="col-md-10 mx-auto">
             
-            <img src="/assets/images/linux.jpg" class="featured-image-post" />
+            <img src="/assets/images/drupal.jpg" class="featured-image-post" />
             
-            <h1>Verify a Downloaded File</h1>
+            <h1>Rebuilding A Theme, Part II: Creating a Subtheme</h1>
             
             <p class="post-date">
-              Posted: Mon Jun 21 2021 19:00:00 GMT-0500 (Central Daylight Time)
+              Posted: 2024-07-03
                in              
-              <a href="/tags/Linux">Linux</a
+              <a href="/tags/Drupal">Drupal</a
               >,  
-              <a href="/tags/System Administration">System Administration</a
+              <a href="/tags/Front End Development">Front End Development</a
               >   
             </p>
             
-            <p>Sometimes it's necessary to download a file to install, update, or upgrade something on your computer. Whenever you download anything from the internet, you should take steps to verify that it is what you expected—and nothing more.</p>
-<p>Many software providers give you a way to verify that the file you're downloading has not been altered. They do this by &quot;signing&quot; the file with a unique code. If the file has been altered in some way (e.g., with the addition of a virus or other malware), then its signature will change.</p>
-<p>You can verify the signature by comparing it to the signature posted by the provider. Some will include a separate file to download that contains the verification code. Others will simply post the code on the same page as the file you're downloading.</p>
-<p>But those signatures are really long, so comparing the file's signature to the one you copied from the site is an error-prone, time-consuming task. It's a perfect opportunity for automation!</p>
-<p>There are many ways to do this, but the easiest (for me, anyway) is to use the <code>shasum</code> tool that is typically bundled with Linux distributions.</p>
-<p>Let's say that you want to <a href="https://solr.apache.org/downloads.html">download Solr</a>. You'll find there something like this:</p>
-<blockquote>
-<p><code>solr-8.11.1.tgz [PGP] [SHA512]</code></p>
-</blockquote>
-<p>That is, a link to the archive of the latest distribution of Solr and some links to the PHP and SHA512 hashes.</p>
-<p>If you download the archive and the SHA512 file (which you might have to right click to get) to the same directory, you can then do the following:</p>
-<pre class="language-bash"><code class="language-bash">shasum -c solr-8.11.1.tgz.sha512</code></pre>
-<p>You might have to wait a second or two, but then, if everything is as it should be, you'll get the message:</p>
-<pre class="language-bash"><code class="language-bash">solr-8.11.1.tgz: OK</code></pre>
-<p>If you don't get that message, <em>don't open the archive file</em>. Something is wrong.</p>
-<hr />
-<span style="font-size:smaller">Photo by <a href="https://unsplash.com/@mudmanuk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Paul Carroll</a> on <a href="https://unsplash.com/s/photos/penguin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash.</a> Penguins, get it?</span>
+            <h2>Install and Enable the Theme</h2>
+<p>There are several options for developing with Boostrap for Drupal. I have used <a href="https://www.drupal.org/project/radix">Radix</a> before, and I liked it, but this time I want to use the <a href="https://www.drupal.org/project/bootstrap5">Bootstrap5</a> theme because it isn't so heavily dependent on nodeJS.</p>
+<p>So:</p>
+<ol>
+<li>Install the Bootstrap5 theme: <code>composer require 'drupal/bootstrap5:^4.0'</code></li>
+<li>Enable the Bootstrap5 theme: <code>drush then bootstrap5</code></li>
+</ol>
+<p>The README file included in the theme also suggests installing the companion module <a href="https://www.drupal.org/project/twbstools">Bootstrap 5 tools</a>, but it doesn't have a stable release, and it hasn't been updated since 2022, so I'm not going to do that.</p>
+<h2>Create a Subtheme</h2>
+<p>A subtheme allows developers to customize the theme without having all of their changes obliterated every time the theme is updated. The README provide a <code>drush</code> command: <code>drush --include=&quot;web/themes/contrib/bootstrap5/src/Drush&quot; bootstrap5:generate-subtheme MACHINE_NAME --subtheme-name=&quot;SUBTHEME_NAME&quot;</code>. Obviously, replace <code>MACHINE_NAME</code> with the machine name for the subtheme (I'm using <code>dll_catalog</code>) and <code>SUBTHEME_NAME</code> with a human-readable name (e.g., &quot;DLL Catalog Theme&quot;).</p>
+<p>If all goes well, there should now be a directory called <code>custom</code> inside of <code>web/themes</code>. There should also be a directory inside of <code>custom</code> with the machine name that was specified in the drush command.</p>
+<h2>Enable the Subtheme and Set it as the Default</h2>
+<ol>
+<li>Enable the subtheme: <code>drush then dll_catalog</code> (or whatever the <code>SUBTHEME_NAME</code> is)</li>
+<li>Set the subtheme as the default: <code>drush config-set system.theme default dll_catalog</code></li>
+</ol>
+<p>Now, clear the cache (<code>drush cr</code>), go to your browser, and pull up your site. The new subtheme should be in control. Here's a screen shot of mine at this stage:</p>
+<p><img src="/assets/images/front-end/new-subtheme.png" alt="Screenshot of my bare subtheme" title="New Subtheme" class="image"></p>
+<p>Already I like this implementation of Bootstrap better than what I've found in Radix. Out of the box, as it were, the Bootstrap5 subtheme takes care of some things that I would have to handle with templates and CSS in Radix. Namely:</p>
+<ol>
+<li>The content is centered in the browser window. It's not difficult to do that (see, for example, <a href="https://mdbootstrap.com/docs/standard/layout/horizontal-alignment/">https://mdbootstrap.com/docs/standard/layout/horizontal-alignment/</a>), but it's nice not to have to cope with it.</li>
+<li>The footer is already pushed to the bottom of the browser window. That, too, can be dealt with easily, but I'd rather move on to other things.</li>
+</ol>
+<p>As much as I like those things, it's time to customize my subtheme.</p>
 
           </div>
         </div>

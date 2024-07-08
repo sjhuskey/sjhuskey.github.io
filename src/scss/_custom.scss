@@ -13,6 +13,24 @@
   }
 }
 
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 2.25rem;
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+  line-height: 1.2;
+  border-bottom: solid thin gray;
+}
+
+h3,
+h4,
+h5 {
+  font-style: italic;
+}
+
 /* for bootstrap-icons (svg) */
 .bi {
   width: 1em;
@@ -49,6 +67,17 @@
 
 #header-container nav {
   background-color: #841617;
+}
+
+.post-date {
+  font-style: italic;
+  font-size: smaller;
+  border-bottom: solid thin black;
+  margin: 1rem 0 2rem 0;
+}
+
+.post-date a {
+  text-decoration: none;
 }
 
 blockquote {
@@ -91,6 +120,8 @@ pre[class*="language-"] {
 
 .image {
   border: solid thin black;
+  width: 100%;
+  height: auto;
 }
 
 .multi-column-list {

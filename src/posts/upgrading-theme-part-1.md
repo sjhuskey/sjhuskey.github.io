@@ -34,7 +34,7 @@ In some cases, [npm](https://www.npmjs.com/) takes care of this step.
 
 ## Set Up Drupal for Theme Development
 
-First of all, install the [Twig Tweak module](https://www.drupal.org/project/twig_tweak). It adds a bunch of functionality that you'll probably want or need.
+First of all, install the [Twig Tweak module](https://www.drupal.org/project/twig_tweak). It adds a bunch of functionality that you'll probably want or need. You should also familiarize yourself with the [Twig Tweak Cheat Sheet](https://git.drupalcode.org/project/twig_tweak/-/blob/3.x/docs/cheat-sheet.md), which is indispensible.
 
 Twig is the default templating language for Drupal since version 8. In addition to being more user-friendly than the raw PHP of earlier versions of Drupal, Twig has some really helpful hinting and debugging features. To take advantage of these, you need to edit a couple of files in the `web/sites/default` directory.
 
