@@ -24,4 +24,5 @@ Since I know that other Digital Humanities folks have run up against the problem
 
 I'll add to this list as I finish writing up each step:
 
-- [Rebuilding A Theme: Tricks and Tips](https://sjhuskey.info/posts/upgrading-theme-tips-tricks)
+- [Rebuilding a Theme, Part I: Tricks and Tips](https://sjhuskey.info/posts/upgrading-theme-tips-tricks)
+- [Rebuidling a Theme, Part II: Creating a Subtheme](https://sjhuskey.info/posts/upgrading-theme-part-2/)
