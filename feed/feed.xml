@@ -13,7 +13,7 @@
     <email>huskey@ou.edu</email>
   </author> 
   <entry>
-    <title>Rebuilding A Theme, Part II: Creating a Subtheme</title>
+    <title>Rebuilding a Theme, Part II: Creating a Subtheme</title>
     <link href="https://sjhuskey.info/posts/upgrading-theme-part-2/" />
     <updated>2024-07-03T00:00:00Z</updated>
     <id>https://sjhuskey.info/posts/upgrading-theme-part-2/</id>
@@ -44,7 +44,7 @@
 </content>
   </entry> 
   <entry>
-    <title>Rebuilding A Theme: Tricks and Tips</title>
+    <title>Rebuilding a Theme, Part I: Tricks and Tips</title>
     <link href="https://sjhuskey.info/posts/upgrading-theme-part-1/" />
     <updated>2024-07-02T00:00:00Z</updated>
     <id>https://sjhuskey.info/posts/upgrading-theme-part-1/</id>
@@ -94,7 +94,7 @@
 </content>
   </entry> 
   <entry>
-    <title>Rebuilding A Theme after Upgrading from Drupal 7 to Drupal 10: Introduction</title>
+    <title>Rebuilding a Theme after Upgrading from Drupal 7 to Drupal 10: Introduction</title>
     <link href="https://sjhuskey.info/posts/upgrading-theme-intro/" />
     <updated>2024-06-23T00:00:00Z</updated>
     <id>https://sjhuskey.info/posts/upgrading-theme-intro/</id>
