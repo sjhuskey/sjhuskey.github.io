@@ -1,7 +1,7 @@
 ---
 title: "Rebuilding a Theme, Part III: Working with Twig"
 author: "Samuel J. Huskey"
-date: "2024-07-08"
+date: "2024-07-09"
 url: "https://sjhuskey.info/posts/upgrading-theme-part-3"
 description: "Some notes on working with the Twig, Drupal's templating language"
 layout: base

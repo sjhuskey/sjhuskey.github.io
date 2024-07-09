@@ -5,7 +5,7 @@
   <type>atom</type>
   <link href="https://sjhuskey.info/feed/feed.xml" rel="self" />
   <link href="" />
-  <updated>2024-07-08T00:00:00Z</updated>
+  <updated>2024-07-09T00:00:00Z</updated>
   <id>https://sjhuskey.info/feed/feed.xml</id>
   <language>en</language>
   <author>
@@ -15,7 +15,7 @@
   <entry>
     <title>Rebuilding a Theme, Part III: Working with Twig</title>
     <link href="https://sjhuskey.info/posts/upgrading-theme-part-3/" />
-    <updated>2024-07-08T00:00:00Z</updated>
+    <updated>2024-07-09T00:00:00Z</updated>
     <id>https://sjhuskey.info/posts/upgrading-theme-part-3/</id>
     <content type="html">&lt;p&gt;After creating my subtheme, this is what the front page looked like without any custom styling:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://sjhuskey.info/assets/images/front-end/new-subtheme.png&quot; alt=&quot;Screenshot of my bare subtheme&quot; title=&quot;New Subtheme&quot; class=&quot;image&quot; /&gt;&lt;/p&gt;
