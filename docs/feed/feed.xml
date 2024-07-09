@@ -5,13 +5,52 @@
   <type>atom</type>
   <link href="https://sjhuskey.info/feed/feed.xml" rel="self" />
   <link href="" />
-  <updated>2024-07-03T00:00:00Z</updated>
+  <updated>2024-07-08T00:00:00Z</updated>
   <id>https://sjhuskey.info/feed/feed.xml</id>
   <language>en</language>
   <author>
     <name>Samuel J. Huskey</name>
     <email>huskey@ou.edu</email>
   </author> 
+  <entry>
+    <title>Rebuilding a Theme, Part III: Working with Twig</title>
+    <link href="https://sjhuskey.info/posts/upgrading-theme-part-3/" />
+    <updated>2024-07-08T00:00:00Z</updated>
+    <id>https://sjhuskey.info/posts/upgrading-theme-part-3/</id>
+    <content type="html">&lt;p&gt;After creating my subtheme, this is what the front page looked like without any custom styling:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://sjhuskey.info/assets/images/front-end/new-subtheme.png&quot; alt=&quot;Screenshot of my bare subtheme&quot; title=&quot;New Subtheme&quot; class=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;I tend to work from top to bottom when doing front end work, so I&#39;m going to start with the &lt;code&gt;&amp;lt;header&amp;gt;&lt;/code&gt;, which contains everything inside the black bar in the image above.&lt;/p&gt;
+&lt;p&gt;If I open my Web Developer Tools (see &lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-1&quot;&gt;part 1&lt;/a&gt;), and scroll to the &lt;code&gt;&amp;lt;header&amp;gt;&lt;/code&gt; section, this is what I see:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://sjhuskey.info/assets/images/front-end/developer-tools.png&quot; alt=&quot;Screenshot of developer tools for header&quot; title=&quot;Developer Tools&quot; class=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;The lines in green text are supplied by the Twig debugger that I turned on earlier (again, see &lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-1&quot;&gt;part 1&lt;/a&gt;). They tell me which Twig files are responsible for rendering the content. If I&#39;m happy with them, I can leave them as they are. But if I want to change anything, I&#39;ll need to &lt;strong&gt;override&lt;/strong&gt; the Twig template.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;&amp;lt;!-- FILE NAME SUGGESTIONS: …&amp;gt;&lt;/code&gt; comment tells developers two things: the name of the template currently responsible for rendering something and other potential names that are available, if the template needs to be overridden. The names go from very specific to generic as they go from left to right.&lt;/p&gt;
+&lt;p&gt;For example, the following is the list of suggestions for the template that renders the entire page:&lt;/p&gt;
+&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- FILE NAME SUGGESTIONS: ▪️ page--front.html.twig ▪️ page--node--9938.html.twig &lt;br /&gt; ▪️ page--node--%.html.twig ▪️ page--node.html.twig ✅ page.html.twig --&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The check mark in front of &lt;code&gt;page.html.twig&lt;/code&gt; tells me that it&#39;s the currently active template. As I read back up the list, I find increasingly specific names:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;page--node.html.twig&lt;/code&gt;: This is the name for a template that would handle all nodes&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;page--node--%.html.twig&lt;/code&gt;: The &lt;code&gt;%&lt;/code&gt; is a kind of placeholder for other information, such as what follows in the next point&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;page--node--9938.html.twig&lt;/code&gt;: &amp;quot;9938&amp;quot; is the node ID of the content that is displayed on my front page. I could use this template name to give that node a special layout.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;page--front.html.twig&lt;/code&gt;: &lt;code&gt;front&lt;/code&gt; specifies this template name for any node set as the front page&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Example: Overriding the Template for the Front Page&lt;/h2&gt;
+&lt;p&gt;Let&#39;s say that I want to create a template just for the front page, so &lt;code&gt;page--front.html.twig&lt;/code&gt;. I need to make a new file with that name in my subtheme. For guidance on the location, I&#39;ll look at the Twig debug comment right below the file name suggestions:&lt;/p&gt;
+&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from &#39;themes/contrib/bootstrap5/templates/layouts/page.html.twig&#39; --&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That tells me that the contributed theme Bootstrap5 supplies the current template for the front page. I can add the &lt;code&gt;templates/layouts&lt;/code&gt; directory structure to my subtheme and save the Bootstrap5 theme&#39;s &lt;code&gt;page.html.twig&lt;/code&gt; there as &lt;code&gt;page--front.html.twig&lt;/code&gt;. After clearing the cache &lt;code&gt;drush cr&lt;/code&gt; and reloading the front page in my browser, I now see this:&lt;/p&gt;
+&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;&amp;lt;!--  FILE NAME SUGGESTIONS: ✅ page--front.html.twig ▪️ page--node--9938.html.twig ▪️ page--node--%.html.twig ▪️ page--node.html.twig ▪️ page.html.twig --&gt;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;&amp;lt;!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from &#39;themes/custom/dll_catalog/templates/layouts/page--front.html.twig&#39; --&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;See? My new &lt;code&gt;page--front.html.twig&lt;/code&gt; template is now being used. If I make changes to it, those changes will be reflected on the screen. And if the Bootstrap5 theme is upgraded, I won&#39;t lose my work.&lt;/p&gt;
+&lt;h2&gt;Overriding Other Templates&lt;/h2&gt;
+&lt;p&gt;Sometimes, the template that you need to override is not in the parent of your subtheme. In that case, the Twig debug messages will tell you where to look for the theme that is currently being used. A common place to look for templates is in &lt;code&gt;web/core/modules/system/templates&lt;/code&gt;, where you&#39;ll find all kinds of goodies. You can also look for templates in the theme listed in &lt;code&gt;web/core/themes&lt;/code&gt;, but be advised that many of them have content that depends on scripts provided elsewhere in the theme.&lt;/p&gt;
+&lt;h2&gt;Takeaways&lt;/h2&gt;
+&lt;p&gt;In general, the process for overriding a template is the same no matter the source:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use Twig file name suggestion messages to identify the name of the theme you need to override and a more specific name for it&lt;/li&gt;
+&lt;li&gt;Use Twig custom template output messages to find the location of the template you need to override&lt;/li&gt;
+&lt;li&gt;Make a new file in your subtheme&lt;/li&gt;
+&lt;li&gt;Alter the content of that file to suit your needs&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+  </entry> 
   <entry>
     <title>Rebuilding a Theme, Part II: Creating a Subtheme</title>
     <link href="https://sjhuskey.info/posts/upgrading-theme-part-2/" />
@@ -107,6 +146,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-tips-tricks&quot;&gt;Rebuilding a Theme, Part I: Tricks and Tips&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-2/&quot;&gt;Rebuidling a Theme, Part II: Creating a Subtheme&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-3&quot;&gt;Rebuilding a Theme, Part III: Working with Twig&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
   </entry> 
