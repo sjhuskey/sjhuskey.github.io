@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Open Graph meta tags -->
-    <meta property="og:title" content="" />
+    <meta property="og:title" content="Rebuilding a Theme, Part III: Working with Twig" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="" />
-    <meta property="og:image" content="" />
-    <meta property="og:description" content="" />
-    <title>Samuel J. Huskey - Posts</title>
+    <meta property="og:url" content="https://sjhuskey.info/posts/upgrading-theme-part-3" />
+    <meta property="og:image" content="/assets/images/drupal.jpg" />
+    <meta property="og:description" content="Some notes on working with the Twig, Drupal&#39;s templating language" />
+    <title>Samuel J. Huskey - Rebuilding a Theme, Part III: Working with Twig</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
     <!-- Google tag (gtag.js) -->
@@ -30,14 +30,14 @@
 
 
 <meta property="og:site_name" content="Samuel J. Huskey">
-<meta property="og:title" content="Posts">
+<meta property="og:title" content="Samuel J. Huskey">
 <meta property="og:description" content="Samuel J. Huskey&#39;s Personal Website">
-<meta property="og:url" content="https://sjhuskey.github.io/posts/">
+<meta property="og:url" content="https://sjhuskey.github.io/posts/upgrading-theme-part-3/">
 <meta property="og:locale" content="">
 
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Posts">
+<meta name="twitter:title" content="Rebuilding a Theme, Part III: Working with Twig">
 <meta name="twitter:description" content="Samuel J. Huskey&#39;s Personal Website">
 
 
@@ -117,85 +117,51 @@
         <div class="row">
           <div class="col-md-10 mx-auto">
             
-            <h1></h1>
+            <img src="/assets/images/drupal.jpg" class="featured-image-post" />
             
+            <h1>Rebuilding a Theme, Part III: Working with Twig</h1>
             
-<div class="p-5 mb-4 bg-light rounded-3">
-  <div class="container-fluid py-2">
-    <h1 class="display-5 fw-bold">My Blog Posts</h1>
-
-    <ul class="list-unstyled pt-3"><li class="pb-1">
-        <a href="/posts/upgrading-theme-part-3/">Rebuilding a Theme, Part III: Working with Twig</a> | July 8, 2024
-      </li><li class="pb-1">
-        <a href="/posts/upgrading-theme-part-2/">Rebuilding a Theme, Part II: Creating a Subtheme</a> | July 3, 2024
-      </li><li class="pb-1">
-        <a href="/posts/upgrading-theme-part-1/">Rebuilding a Theme, Part I: Tricks and Tips</a> | July 2, 2024
-      </li><li class="pb-1">
-        <a href="/posts/upgrading-theme-intro/">Rebuilding a Theme after Upgrading from Drupal 7 to Drupal 10: Introduction</a> | June 23, 2024
-      </li><li class="pb-1">
-        <a href="/posts/ohms/">Using the OHMS Viewer with DDEV</a> | June 21, 2024
-      </li><li class="pb-1">
-        <a href="/posts/drupal-7-to-drupal-10/">Upgrading the DLL Catalog Site to Drupal 10</a> | May 25, 2024
-      </li><li class="pb-1">
-        <a href="/posts/dh-automation-1/">Tales of DH Automation</a> | September 22, 2023
-      </li><li class="pb-1">
-        <a href="/posts/drupal-to-11ty/">Converting a Drupal site to 11ty</a> | June 11, 2023
-      </li><li class="pb-1">
-        <a href="/posts/gitignore-for-drupal/">Gitignore for Drupal</a> | February 22, 2023
-      </li><li class="pb-1">
-        <a href="/posts/using-ddev-local-drupal/">Using ddev for Local Drupal Development</a> | October 6, 2022
-      </li><li class="pb-1">
-        <a href="/posts/aau-exploration/">NEH funding histories for AAU Institutions</a> | September 26, 2022
-      </li><li class="pb-1">
-        <a href="/posts/journey/">My Journey with Web Technology</a> | April 1, 2022
-      </li><li class="pb-1">
-        <a href="/posts/installing-drupal/">Installing Drupal</a> | March 10, 2022
-      </li><li class="pb-1">
-        <a href="/posts/migrating-digital-latin-library-from-drupal-7-to-drupal-9/">Migrating the Digital Latin Library from Drupal 7 to Drupal 9</a> | October 4, 2021
-      </li><li class="pb-1">
-        <a href="/posts/making-a-vocabulary-list-for-wheelock/">Making a Vocabulary List for Wheelock</a> | September 7, 2021
-      </li><li class="pb-1">
-        <a href="/posts/update-composer/">Updating Composer</a> | June 25, 2021
-      </li><li class="pb-1">
-        <a href="/posts/verify-downloaded-file/">Verify a Downloaded File</a> | June 22, 2021
-      </li><li class="pb-1">
-        <a href="/posts/settings-php-for-drupal-9/">The settings.php file for Drupal 9</a> | June 8, 2021
-      </li></ul>
-  </div>
-
-  <div class="col-md-10 mt-3">
-    <div class="h-100 p-5 broder rounded-3">
-      <h2>Categories</h2>
-      <ul class="list-unstyle multi-column-list"><li>
-          <a href="/tags/automation">automation</a>
-        </li><li>
-          <a href="/tags/Composer">Composer</a>
-        </li><li>
-          <a href="/tags/Digital Humanities">Digital Humanities</a>
-        </li><li>
-          <a href="/tags/Digital Latin Library">Digital Latin Library</a>
-        </li><li>
-          <a href="/tags/Drupal">Drupal</a>
-        </li><li>
-          <a href="/tags/Front End Development">Front End Development</a>
-        </li><li>
-          <a href="/tags/Latin">Latin</a>
-        </li><li>
-          <a href="/tags/Linux">Linux</a>
-        </li><li>
-          <a href="/tags/OHMS">OHMS</a>
-        </li><li>
-          <a href="/tags/Python">Python</a>
-        </li><li>
-          <a href="/tags/System Administration">System Administration</a>
-        </li><li>
-          <a href="/tags/Technology">Technology</a>
-        </li></ul>
-    </div>
-  </div>
-
-  <!-- for debug: {&quot;title&quot;:&quot;Samuel J. Huskey&quot;,&quot;description&quot;:&quot;Samuel J. Huskey&#39;s Personal Website&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;baseUrl&quot;:&quot;http://localhost:8080&quot;,&quot;pathPrefix&quot;:&quot;/&quot;,&quot;lang&quot;:&quot;en&quot;,&quot;home&quot;:&quot;https://sjhuskey.github.io/&quot;} {&quot;date&quot;:&quot;2024-07-09T14:19:01.003Z&quot;,&quot;inputPath&quot;:&quot;./src/posts/index.njk&quot;,&quot;fileSlug&quot;:&quot;posts&quot;,&quot;filePathStem&quot;:&quot;/posts/index&quot;,&quot;outputFileExtension&quot;:&quot;html&quot;,&quot;url&quot;:&quot;/posts/&quot;,&quot;outputPath&quot;:&quot;docs/posts/index.html&quot;} {&quot;lang&quot;:&quot;en&quot;,&quot;title&quot;:&quot;Posts&quot;}-->
-</div>
+            <p class="post-date">
+              Posted: 2024-07-08
+               in              
+              <a href="/tags/Drupal">Drupal</a
+              >,  
+              <a href="/tags/Front End Development">Front End Development</a
+              >   
+            </p>
+            
+            <p>After creating my subtheme, this is what the front page looked like without any custom styling:</p>
+<p><img src="/assets/images/front-end/new-subtheme.png" alt="Screenshot of my bare subtheme" title="New Subtheme" class="image"></p>
+<p>I tend to work from top to bottom when doing front end work, so I'm going to start with the <code>&lt;header&gt;</code>, which contains everything inside the black bar in the image above.</p>
+<p>If I open my Web Developer Tools (see <a href="https://sjhuskey.info/posts/upgrading-theme-part-1">part 1</a>), and scroll to the <code>&lt;header&gt;</code> section, this is what I see:</p>
+<p><img src="/assets/images/front-end/developer-tools.png" alt="Screenshot of developer tools for header" title="Developer Tools" class="image"></p>
+<p>The lines in green text are supplied by the Twig debugger that I turned on earlier (again, see <a href="https://sjhuskey.info/posts/upgrading-theme-part-1">part 1</a>). They tell me which Twig files are responsible for rendering the content. If I'm happy with them, I can leave them as they are. But if I want to change anything, I'll need to <strong>override</strong> the Twig template.</p>
+<p>The <code>&lt;!-- FILE NAME SUGGESTIONS: …&gt;</code> comment tells developers two things: the name of the template currently responsible for rendering something and other potential names that are available, if the template needs to be overridden. The names go from very specific to generic as they go from left to right.</p>
+<p>For example, the following is the list of suggestions for the template that renders the entire page:</p>
+<pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- FILE NAME SUGGESTIONS: ▪️ page--front.html.twig ▪️ page--node--9938.html.twig <br> ▪️ page--node--%.html.twig ▪️ page--node.html.twig ✅ page.html.twig --></span></code></pre>
+<p>The check mark in front of <code>page.html.twig</code> tells me that it's the currently active template. As I read back up the list, I find increasingly specific names:</p>
+<ul>
+<li><code>page--node.html.twig</code>: This is the name for a template that would handle all nodes</li>
+<li><code>page--node--%.html.twig</code>: The <code>%</code> is a kind of placeholder for other information, such as what follows in the next point</li>
+<li><code>page--node--9938.html.twig</code>: &quot;9938&quot; is the node ID of the content that is displayed on my front page. I could use this template name to give that node a special layout.</li>
+<li><code>page--front.html.twig</code>: <code>front</code> specifies this template name for any node set as the front page</li>
+</ul>
+<h2>Example: Overriding the Template for the Front Page</h2>
+<p>Let's say that I want to create a template just for the front page, so <code>page--front.html.twig</code>. I need to make a new file with that name in my subtheme. For guidance on the location, I'll look at the Twig debug comment right below the file name suggestions:</p>
+<pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/contrib/bootstrap5/templates/layouts/page.html.twig' --></span></code></pre>
+<p>That tells me that the contributed theme Bootstrap5 supplies the current template for the front page. I can add the <code>templates/layouts</code> directory structure to my subtheme and save the Bootstrap5 theme's <code>page.html.twig</code> there as <code>page--front.html.twig</code>. After clearing the cache <code>drush cr</code> and reloading the front page in my browser, I now see this:</p>
+<pre class="language-html"><code class="language-html"><span class="token comment">&lt;!--  FILE NAME SUGGESTIONS: ✅ page--front.html.twig ▪️ page--node--9938.html.twig ▪️ page--node--%.html.twig ▪️ page--node.html.twig ▪️ page.html.twig --></span><br><span class="token comment">&lt;!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/dll_catalog/templates/layouts/page--front.html.twig' --></span></code></pre>
+<p>See? My new <code>page--front.html.twig</code> template is now being used. If I make changes to it, those changes will be reflected on the screen. And if the Bootstrap5 theme is upgraded, I won't lose my work.</p>
+<h2>Overriding Other Templates</h2>
+<p>Sometimes, the template that you need to override is not in the parent of your subtheme. In that case, the Twig debug messages will tell you where to look for the theme that is currently being used. A common place to look for templates is in <code>web/core/modules/system/templates</code>, where you'll find all kinds of goodies. You can also look for templates in the theme listed in <code>web/core/themes</code>, but be advised that many of them have content that depends on scripts provided elsewhere in the theme.</p>
+<h2>Takeaways</h2>
+<p>In general, the process for overriding a template is the same no matter the source:</p>
+<ol>
+<li>Use Twig file name suggestion messages to identify the name of the theme you need to override and a more specific name for it</li>
+<li>Use Twig custom template output messages to find the location of the template you need to override</li>
+<li>Make a new file in your subtheme</li>
+<li>Alter the content of that file to suit your needs</li>
+</ol>
 
           </div>
         </div>
