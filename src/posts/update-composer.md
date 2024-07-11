@@ -2,7 +2,7 @@
 title: "Updating Composer"
 author: "Samuel J. Huskey"
 date: 2021-06-25
-url: "https://sjhuskey.info/posts/update-composer/"
+url: "/posts/update-composer/"
 tags:
   - Linux
   - System Administration

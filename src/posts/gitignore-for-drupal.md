@@ -3,7 +3,7 @@ title: "Gitignore for Drupal"
 author: "Samuel J. Huskey"
 date: "2023-02-22"
 image: "/assets/images/drupal.jpg"
-url: "https://sjhuskey.info/posts/gitignore-for-drupal/"
+url: "/posts/gitignore-for-drupal/"
 tags:
   - Drupal
   - posts

@@ -2,7 +2,7 @@
 title: "Making a Vocabulary List for Wheelock"
 author: "Samuel J. Huskey"
 date: 2021-09-07
-url: "https://sjhuskey.info/posts/making-a-vocabulary-list-for-wheelock/"
+url: "/posts/making-a-vocabulary-list-for-wheelock/"
 tags:
   - Python
   - Latin

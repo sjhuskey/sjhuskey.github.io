@@ -3,7 +3,7 @@ title: "Using ddev for Local Drupal Development"
 author: "Samuel J. Huskey"
 date: "2022-10-06"
 image: "/assets/images/drupal.jpg"
-url: "https://sjhuskey.info/posts/using-ddev-local-drupal/"
+url: "/posts/using-ddev-local-drupal/"
 tags:
   - Drupal
   - posts

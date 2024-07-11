@@ -2,7 +2,7 @@
 title: "Rebuilding a Theme, Part IV: Working with Bootstrap"
 author: "Samuel J. Huskey"
 date: "2024-07-11"
-url: "https://sjhuskey.info/posts/upgrading-theme-part-4"
+url: "/posts/upgrading-theme-part-4"
 description: "Notes on working with Bootstrap"
 layout: base
 image: "/assets/images/drupal.jpg"

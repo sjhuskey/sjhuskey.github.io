@@ -4,7 +4,7 @@ author: "Samuel J. Huskey"
 date: "2023-09-22"
 layout: base
 image: "/assets/images/dh-automation.jpg"
-url: "https://sjhuskey.info/posts/dh-automation-1/"
+url: "/posts/dh-automation-1/"
 tags:
   - Python
   - Digital Humanities

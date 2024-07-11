@@ -2,7 +2,7 @@
 title: "Upgrading the DLL Catalog Site to Drupal 10"
 author: "Samuel J. Huskey"
 date: "2024-05-25"
-url: "https://sjhuskey.info/posts/drupal-7-to-drupal-10/"
+url: "/posts/drupal-7-to-drupal-10/"
 description: "My experience of upgrading a Drupal 7 site to Drupal 10"
 layout: base
 image: "/assets/images/drupal.jpg"

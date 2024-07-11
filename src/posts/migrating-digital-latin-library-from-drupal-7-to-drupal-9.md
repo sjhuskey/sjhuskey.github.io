@@ -2,7 +2,7 @@
 title: "Migrating the Digital Latin Library from Drupal 7 to Drupal 9"
 author: "Samuel J. Huskey"
 date: 2021-10-04
-url: "https://sjhuskey.info/posts/migrating-digital-latin-library-from-drupal-7-to-drupal-9/"
+url: "/posts/migrating-digital-latin-library-from-drupal-7-to-drupal-9/"
 tags:
   - Drupal
   - Digital Latin Library

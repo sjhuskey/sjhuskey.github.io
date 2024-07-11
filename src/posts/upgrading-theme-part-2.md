@@ -2,7 +2,7 @@
 title: "Rebuilding a Theme, Part II: Creating a Subtheme"
 author: "Samuel J. Huskey"
 date: "2024-07-03"
-url: "https://sjhuskey.info/posts/upgrading-theme-part-2"
+url: "/posts/upgrading-theme-part-2"
 description: "Notes on my process for rebuilding a theme from the ground up after upgrading a Drupal site from 7 to 10"
 layout: base
 image: "/assets/images/drupal.jpg"

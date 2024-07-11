@@ -2,7 +2,7 @@
 title: "Verify a Downloaded File"
 author: "Samuel J. Huskey"
 date: 2021-06-22
-url: "https://sjhuskey.info/posts/verify-downloaded-file/"
+url: "/posts/verify-downloaded-file/"
 tags:
   - Linux
   - "System Administration"

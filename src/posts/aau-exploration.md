@@ -2,7 +2,7 @@
 title: "NEH funding histories for AAU Institutions"
 author: "Samuel J. Huskey"
 date: "2022-09-26"
-url: "https://sjhuskey.info/posts/aau-exploration/"
+url: "/posts/aau-exploration/"
 layout: base
 tags:
   - Python

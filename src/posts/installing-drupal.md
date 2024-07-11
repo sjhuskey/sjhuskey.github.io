@@ -2,7 +2,7 @@
 title: "Installing Drupal"
 author: "Samuel J. Huskey"
 date: "2022-03-10"
-url: "https://sjhuskey.info/posts/installing-drupal/"
+url: "/posts/installing-drupal/"
 image: "/assets/images/drupal.jpg"
 tags:
   - Drupal

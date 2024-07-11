@@ -2,7 +2,7 @@
 title: "Rebuilding a Theme, Part I: Tricks and Tips"
 author: "Samuel J. Huskey"
 date: "2024-07-02"
-url: "https://sjhuskey.info/posts/upgrading-theme-tips-tricks"
+url: "posts/upgrading-theme-tips-tricks"
 description: "Some basic information to know before starting a front-end development project in Drupal"
 layout: base
 image: "/assets/images/drupal.jpg"

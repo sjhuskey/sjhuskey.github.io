@@ -1,32 +1,29 @@
 {# We use eleventy-rss plugin absoluteUrl filter as helper for absolute URL generation #}
 
 {# General #}
-<meta name="description" content="{{ meta.description or site.description }}">
-
-{# Open Graph #}
-<meta property="og:site_name" content="{{ site.title }}">
-<meta property="og:title" content="{{ meta.title or site.title }}">
-<meta property="og:description" content="{{ meta.description or site.description }}">
-<meta property="og:image" content="{{ meta.image | url | absoluteUrl(site.baseUrl) }}">
-<meta property="og:locale" content="{{ site.local or meta.locale }}">
-
-{%- if meta.image -%}
-<meta property="og:image" content="{{ meta.image | url | absoluteUrl(site.baseUrl) }}">
-{%- endif -%}
-{# eo Open Graph #}
-
-{# Twitter #}
-<meta name="twitter:card" content="{% if meta.image -%}summary_large_image{% else %}summary{% endif %}">
-<meta name="twitter:title" content="{{ title or meta.title }}">
-<meta name="twitter:description" content="{{ meta.description or site.description}}">
-{%- if meta.image -%}
-<meta property="twitter:image" content="{{ meta.image | url | absoluteUrl(site.baseUrl) }}">
-{%- endif -%}
-{# eo Twitter #}
+<meta name="description" content="{{ site.description }}">
+<!-- Open Graph Metadata -->
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{ page.url | absoluteUrl(site.baseUrl) }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:locale" content="{{ locale or site.locale }}">
+  {% if image %}
+  <meta property="og:image" content="{{ image | absoluteUrl(site.baseUrl) }}">
+  {% endif %}
+  
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="{% if image %}summary_large_image{% else %}summary{% endif %}">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ description or site.description }}">
+  {% if image %}
+  <meta name="twitter:image" content="{{ image | absoluteUrl(site.baseUrl) }}">
+  {% endif %}
 
 
 
 {# Favicon #}
-<link rel="icon" href="{{ '/assets/favicons/favicon.ico' | url }}">
+<link rel="icon" href="{{ '/assets/images/favicon.ico' | url | absoluteUrl(site.baseUrl) }}">
 
 {# This file is ignored by prettier by now /bc too much damage ;-), see .prettierignore #}

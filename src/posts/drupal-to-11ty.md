@@ -4,7 +4,7 @@ author: "Samuel J. Huskey"
 date: "2023-06-11"
 layout: base
 image: "/assets/images/drupal.jpg"
-url: "https://sjhuskey.info/posts/drupal-to-11ty/"
+url: "/posts/drupal-to-11ty/"
 tags:
   - Drupal
   - posts
