@@ -17,7 +17,7 @@ console.log("pathPrefix is set to ...", pathPrefix);
 const globalSiteData = {
   title: "Samuel J. Huskey's Personal Website",
   description: "I blog about my adventures with technology, text and data analysis, and digital philology",
-  locale: "en",
+  locale: "en_US",
   baseUrl: baseUrl,
   pathPrefix: pathPrefix,
   lang: "en",
