@@ -21,7 +21,7 @@ const globalSiteData = {
   baseUrl: baseUrl,
   pathPrefix: pathPrefix,
   lang: "en",
-  home: "https://sjhuskey.github.io/",
+  home: "https://sjhuskey.info/",
 };
 // Add CSS to Markdown text.
 // From https://giuliachiola.dev/posts/add-html-classes-to-11ty-markdown-content/

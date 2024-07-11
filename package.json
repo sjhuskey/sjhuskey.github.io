@@ -48,6 +48,7 @@
     "sass-loader": "^12.6.0"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "markdown-it-attrs": "^4.1.4",
     "markdown-it-image-figures": "^2.1.0",
     "marked": "^5.1.1",
