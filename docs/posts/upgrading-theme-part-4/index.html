@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Rebuilding a Theme, Part IV: Working with Bootstrap" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://sjhuskey.info/posts/upgrading-theme-part-4" />
+    <meta property="og:image" content="/assets/images/drupal.jpg" />
+    <meta property="og:description" content="Notes on working with Bootstrap" />
+    <title>Samuel J. Huskey - Rebuilding a Theme, Part IV: Working with Bootstrap</title>
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/dist/app.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-T4DCQE192P");
+    </script>
+    
+
+
+<meta name="description" content="Samuel J. Huskey&#39;s Personal Website">
+
+
+<meta property="og:site_name" content="Samuel J. Huskey">
+<meta property="og:title" content="Samuel J. Huskey">
+<meta property="og:description" content="Samuel J. Huskey&#39;s Personal Website">
+<meta property="og:url" content="https://sjhuskey.github.io/posts/upgrading-theme-part-4/">
+<meta property="og:locale" content="">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rebuilding a Theme, Part IV: Working with Bootstrap">
+<meta name="twitter:description" content="Samuel J. Huskey&#39;s Personal Website">
+
+
+
+
+<link rel="icon" href="/assets/favicons/favicon.ico">
+
+
+
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    <div id="header-container">
+  <div class="container py-6">
+    <header class="pb-5 mb-4">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container w-75 mx-auto border-bottom">
+          <a href="/" class="d-flex align-items-center text-light text-decoration-none">
+              <title>Samuel J. Huskey</title>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span class="fs-4">Samuel J. Huskey</span>
+          </a>
+          <button
+            class="navbar-toggler navbar-dark"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/cv.html">CV</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/dh.html">DH</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/tech.html">Tech</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/posts">Blog</a>
+    </li>
+</ul>
+
+
+</div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <main id="main">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            
+            <img src="/assets/images/drupal.jpg" class="featured-image-post" />
+            
+            <h1>Rebuilding a Theme, Part IV: Working with Bootstrap</h1>
+            
+            <p class="post-date">
+              Posted: 2024-07-11
+               in              
+              <a href="/tags/Drupal">Drupal</a
+              >,  
+              <a href="/tags/Front End Development">Front End Development</a
+              >   
+            </p>
+            
+            <p>Bootstrap has a lot of default settings, so it's good to familiarize yourself with how the subtheme handles the defaults and, more importantly, how to override them.</p>
+<p>The <a href="https://www.drupal.org/project/bootstrap5">Bootstrap5</a> theme handles default settings and overrides in an intelligent way. In the <a href="https://sjhuskey.info/posts/upgrading-theme-part-2">subtheme that I made earlier</a>, there's a directory called <code>scss</code>. It contains four files:</p>
+<ol>
+<li>_variables_bootstrap.scss</li>
+<li>_variables_drupal.scss</li>
+<li>ck5style.scss</li>
+<li>style.scss</li>
+</ol>
+<p>The extension <code>.scss</code> stands for &quot;Sassy Cascading Style Sheets, by the way. I don't know how &quot;sassy&quot; they are, but it's a cool system for dealing with CSS.</p>
+<h2>_variables_bootstrap.scss</h2>
+<p>The <code>_variables_bootstrap.scss</code> file is where I'll override any of the Bootstrap settings that I might want to customize. The subtheme already has the following overrides:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token comment">// Bootstrap variables (overrides).</span><br><span class="token property"><span class="token variable">$form-text-margin-top</span></span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$legend-font-size</span></span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span><br><span class="token property"><span class="token variable">$table-cell-padding-x</span></span><span class="token punctuation">:</span> 0.75rem<span class="token punctuation">;</span></code></pre>
+<p>Obviously, I need to know the names of the variables before I can override them. Fortunately, I can look to the parent theme for that. The file at <code>web/themes/contrib/bootstrap5/dist/bootstrap/5.3.3/scss/_variables.scss</code> lists most of the available variables. If I want to override one across the site, I can copy its name into the <code>_variables_bootstrap.scss</code> file and enter the updated value(s) for it.</p>
+<p>Let's say you have a specific shade of blue that is important for your organization's brand. You could use the <code>_variables_bootstrap.scss</code> file to set the variable <code>$blue</code> to your shade of blue. That way, you can just use the word &quot;blue&quot; in your CSS. Bear in mind, however, that you'll affect the other shades of blue that are built into Bootstrap. You could also use these variables to set a specific color for links, font-size, and many, many other aspects of the look of your site.</p>
+<h2>_variables_drupal.scss</h2>
+<p>The Bootstrap5 theme also has a bunch of default settings above and beyond what Bootstrap makes available. The <code>_variables_drupal.scss</code> file in the subtheme already has this:</p>
+<pre class="language-css"><code class="language-css">// Theme variables.<br><br>$<span class="token property">navbar-brand-image-height</span><span class="token punctuation">:</span> 36px !default<span class="token punctuation">;</span><br>$<span class="token property">navbar-brand-image-height-lg</span><span class="token punctuation">:</span> 60px !default<span class="token punctuation">;</span><br>$<span class="token property">navbar-brand-image-width</span><span class="token punctuation">:</span> auto !default<span class="token punctuation">;</span><br>$<span class="token property">navbar-brand-image-margin</span><span class="token punctuation">:</span> 0 1rem 0 0 !default<span class="token punctuation">;</span><br><br>$<span class="token property">navbar-brand-site-title-text-transform</span><span class="token punctuation">:</span> uppercase !default<span class="token punctuation">;</span><br>$<span class="token property">navbar-brand-site-title-font-size</span><span class="token punctuation">:</span> 1.5rem !default<span class="token punctuation">;</span><br>$<span class="token property">navbar-brand-site-title-font-weight</span><span class="token punctuation">:</span> bold !default<span class="token punctuation">;</span><br>$<span class="token property">navbar-brand-site-title-letter-spacing</span><span class="token punctuation">:</span> 2px !default<span class="token punctuation">;</span><br>$<span class="token property">navbar-brand-site-slogan-font-size</span><span class="token punctuation">:</span> 0.875rem !default<span class="token punctuation">;</span><br><br>$<span class="token property">region-padding</span><span class="token punctuation">:</span> 0 0.5rem !default<span class="token punctuation">;</span><br><br>$<span class="token property">footer-padding</span><span class="token punctuation">:</span> 2rem 0 !default<span class="token punctuation">;</span><br><br>$<span class="token property">nav-tabs-link-active-bg-sm</span><span class="token punctuation">:</span> #dee2e6 !default<span class="token punctuation">;</span><br><br>$<span class="token property">local-tasks-primary-margin</span><span class="token punctuation">:</span> 1rem 0 !default<span class="token punctuation">;</span><br>$<span class="token property">local-tasks-secondary-margin</span><span class="token punctuation">:</span> 0 0 1rem 0 !default<span class="token punctuation">;</span><br><br>$<span class="token property">table-striped-bg</span><span class="token punctuation">:</span> #f9f9f9 !default<span class="token punctuation">;</span></code></pre>
+<p>The full list of available &quot;theme&quot; variables can be found at <code>web/themes/contrib/bootstrap5/scss/drupal</code>. That directory contains several files with transparent names like <code>_footer.scss</code> and <code>_navbar.scss</code> that make it easy to identify the file that matters to you. Well done, Bootstrap5 developers!</p>
+<h2>ck5style.scss</h2>
+<p>Don't touch this file unless you really, really need to style specific things about the WYSIWYG editor CKEditor.</p>
+<h2>style.scss</h2>
+<p>This is where I'll do most of my styling work. For example, the <code>navbar</code> in my brand-new subtheme is black. The Digital Latin Library's brand features a specific shade of blue (<code>#005cb9</code>), and I'd like to change the background color of the <code>navbar</code> to that.</p>
+<p>I'll follow Carol Kelly's suggestion at <a href="https://stackoverflow.com/a/43382283">https://stackoverflow.com/a/43382283</a> for accomplishing this objective.</p>
+<p>I'll need to override the Twig template for the navbar to change its CSS class, and I'll need to add some CSS code to <code>style.scss</code> to define the new class.</p>
+<p>When I use my browser's Developer Tools to inspect the <code>navbar</code>, I find that the Twig debugger tells me that it is handled by the <code>page.html.twig</code> template. When I pull up that file in the Bootstrap5 parent theme's <code>templates/layouts</code> directory, I can see a block that is setting a variable <code>nav_classes</code>. That sets the navbar's classes to specific values for every page. After copying <code>page.html.twig</code> to my subtheme's <code>templates/layouts</code> directory, I'll add <code>navbar-custom</code> to that first line, and then I'll define <code>navbar-custom</code> in <code>style.scss</code>. So, I'll change <code>set nav_classes = 'navbar navbar-expand-lg' ~</code> to <code>set nav_classes = 'navbar navbar-expand-lg navbar-custom' ~</code>. I also need to change the logic of this line:</p>
+<pre class="language-twig"><code class="language-twig">(b5_navbar_bg_schema != 'none' ? " bg-#{b5_navbar_bg_schema}" : ' ')</code></pre>
+<p>to this:</p>
+<pre class="language-twig"><code class="language-twig">(b5_navbar_bg_schema != 'dark' and b5_navbar_bg_schema != 'none' ? " bg-#{b5_navbar_bg_schema}" : '')</code></pre>
+<p>The original version translates to &quot;If the b5_navbar background scheme is not set to 'none', then set the background to the value of the navbar background schema; otherwise, set it to nothing.&quot; The new version translates to &quot;If the background schema is not 'dark' and it isn't set to 'none', then set the background to the background schema; otherwise, set it to nothing.&quot; That way, I can remove the <code>bg-dark</code> class that is currently controlling the look of my header.</p>
+<p>Now, I need to define the style for <code>navbar-custom</code>. I'll open <code>style.scss</code> and add this below the existing content:</p>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* ===================================================== <br>    Navbar<br>   ===================================================== */</span><br><br><span class="token comment">/* Cribbed from https://stackoverflow.com/a/43382283 */</span><br><span class="token comment">/* change the background color */</span><br><span class="token selector">.navbar-custom</span> <span class="token punctuation">{</span><br>  <span class="token property">background-color</span><span class="token punctuation">:</span> #005cb9<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">/* change the link color */</span><br><span class="token selector">.navbar-custom .navbar-nav .nav-link</span> <span class="token punctuation">{</span><br>  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">/* change the color of active or hovered links */</span><br><span class="token selector">.navbar-custom .nav-item.active .nav-link,<br>.navbar-custom .nav-item:focus .nav-link,<br>.navbar-custom .nav-item:hover .nav-link</span> <span class="token punctuation">{</span><br>  <span class="token property">color</span><span class="token punctuation">:</span> #a33701<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Notice that I added a comment with some fancy formatting to make it stand out and to give some structure to my SCSS document. This will make it easier to maintain. I also added a comment to give credit where credit is due.</p>
+<p>I've changed the background color of the navbar to the DLL's shade of blue. I also specified that the links in the navbar should be white (#fff), and when they are active they should be a reddish-brown color (#A33701).</p>
+<p>Since I made a change to <code>style.scss</code>, I need to recompile the CSS. The theme's README file instructs me to execute the command <code>sass scss/style.scss css/style.css &amp;&amp; sass scss/ck5style.scss css/ck5style.css</code> in the root directory of the subtheme. I did that, then I did <code>drush cr</code> to clear the caches. The result is that my navbar's background color is now the right shade of blue!</p>
+<p><img src="/assets/images/front-end/new-navbar-color.png" alt="Screenshot of my new navbar color" title="New Navbar Color" class="image"></p>
+<p>I'll take care of navbar's content in the next post.</p>
+<h2>Takeaways</h2>
+<ol>
+<li>Bootstrap has a lot of pre-defined styles that can be overridden to customize the look of your site</li>
+<li>It's important to familiarize yourself with the variables that can be customized or overridden</li>
+<li>Theming in Bootstrap typically involves making changes to Twig templates——to add, remove, or change a CSS class or ID—and SCSS files—to define or override CSS classes</li>
+<li>Even though it took several lines of code in both Twig and SCSS to change the color of the background for a single region in the site, that change will be applied to the entire site, and I won't have to repeat that code anywhere else</li>
+</ol>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mt-auto">
+  <div class="container w-75 mx-auto">
+    <div class="row">
+      <div class="col-8">
+        <p class="footerinfo">
+          ©2024 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
+          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+        </p>
+      </div>
+      <div class="col-4">
+        <div id="socialicons">
+          <!-- Social Media Icons by NiftyButtons https://niftybuttons.com -->
+          <a href="https://github.com/sjhuskey" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-github"
+              data-donate="true"
+              data-tag="git"
+              data-name="Github"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"
+              ></path></svg></a
+          ><a href="https://www.linkedin.com/in/sjhuskey/" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-linkedin"
+              data-donate="true"
+              data-tag="lin"
+              data-name="LinkedIn"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"
+              ></path></svg
+          ></a>
+          <a
+            href="https://sjhuskey.info/feed/feed.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="text-decoration: none; border: 0; width: 36px; height: 36px; padding: 0; margin: 3px; color: #ffffff"
+          >
+            <svg
+              class="niftybutton-rss"
+              style="display: block; fill: currentColor"
+              data-donate="true"
+              data-tag="rss"
+              data-name="RSS"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M201.8 347.2c0 20.3-16.5 36.8-36.8 36.8 -20.3 0-36.8-16.5-36.8-36.8s16.5-36.8 36.8-36.8C185.3 310.4 201.8 326.8 201.8 347.2zM128.2 204.7v54.5c68.5 0.7 124 56.3 124.7 124.7h54.5C306.7 285.3 226.9 205.4 128.2 204.7zM128.2 166.6c57.9 0.3 112.3 22.9 153.2 63.9 41 41 63.7 95.5 63.9 153.5h54.5c-0.3-149.9-121.7-271.4-271.6-271.9V166.6L128.2 166.6z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript" src="/dist/app.js"></script>
+  </body>
+</html>
