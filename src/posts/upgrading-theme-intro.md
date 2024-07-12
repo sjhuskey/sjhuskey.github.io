@@ -27,3 +27,5 @@ I'll add to this list as I finish writing up each step:
 - [Rebuilding a Theme, Part I: Tricks and Tips](https://sjhuskey.info/posts/upgrading-theme-tips-tricks)
 - [Rebuidling a Theme, Part II: Creating a Subtheme](https://sjhuskey.info/posts/upgrading-theme-part-2/)
 - [Rebuilding a Theme, Part III: Working with Twig](https://sjhuskey.info/posts/upgrading-theme-part-3)
+- [Rebuilding a Theme, Part IV: Working with Bootstrap](https://sjhuskey.info/posts/upgrading-theme-part-4)
+- [Rebuilding a Theme, Part V: Customizing the Navbar](https://sjhuskey.info/posts/upgrading-theme-part-5)
