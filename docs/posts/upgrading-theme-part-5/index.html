@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samuel J. Huskey - Rebuilding A Theme, Part V: Customizing the Navbar</title>
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/dist/app.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-T4DCQE192P");
+    </script>
+    
+
+
+<meta name="description" content="I blog about my adventures with technology, text and data analysis, and digital philology">
+<!-- Open Graph Metadata -->
+  <meta property="og:title" content="Rebuilding A Theme, Part V: Customizing the Navbar">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://localhost:8080/posts/upgrading-theme-part-5/">
+  <meta property="og:description" content="Notes on styling the navbar after migrating from Drupal 7 to Drupal 10">
+  <meta property="og:site_name" content="Samuel J. Huskey">
+  <meta property="og:locale" content="en_US">
+  
+  <meta property="og:image" content="/assets/images/drupal.jpg">
+  
+  
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rebuilding A Theme, Part V: Customizing the Navbar">
+  <meta name="twitter:description" content="Notes on styling the navbar after migrating from Drupal 7 to Drupal 10">
+  
+  <meta name="twitter:image" content="http://localhost:8080/assets/images/drupal.jpg">
+  
+
+
+
+
+<link rel="icon" href="http://localhost:8080/assets/images/favicon.ico">
+
+
+
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    <div id="header-container">
+  <div class="container py-6">
+    <header class="pb-5 mb-4">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container w-75 mx-auto border-bottom">
+          <a href="/" class="d-flex align-items-center text-light text-decoration-none">
+              <title>Samuel J. Huskey</title>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span class="fs-4">Samuel J. Huskey</span>
+          </a>
+          <button
+            class="navbar-toggler navbar-dark"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/cv.html">CV</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/dh.html">DH</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/tech.html">Tech</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/posts">Blog</a>
+    </li>
+</ul>
+
+
+</div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <main id="main">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            
+            <img src="/assets/images/drupal.jpg" class="featured-image-post" />
+            
+            <h1>Rebuilding A Theme, Part V: Customizing the Navbar</h1>
+            
+            <p class="post-date">
+              Posted: 2024-07-12
+               in              
+              <a href="/tags/Drupal">Drupal</a
+              >,  
+              <a href="/tags/Front End Development">Front End Development</a
+              >   
+            </p>
+            
+            <h2>Bootstrap's Navbar</h2>
+<p>I could spend a long time reinventing the wheel or implementing a snazzy navigation bar, but I don't have that kind of time, and I'm not a professional graphic designer. I want something simple that just works. Fortunately, <a href="https://getbootstrap.com/docs/5.3/components/navbar/">Bootstrap's navbar</a> has me covered. The trade-off is that my site's navbar will look like other sites made with Bootstrap, but that's okay with me. The ease of implementing a responsive navbar more than makes up for it.</p>
+<p>Still, there are things I can do to make my site distinctive. That's the subject of this post.</p>
+<h2>My Navbar Without Styling</h2>
+<p>As a reminder, after I changed the background color of the navbar in the <a href="https://sjhuskey.info/posts/upgrading-theme-part-4">last post</a>, my site's header looked like this:</p>
+<p><img src="/assets/images/front-end/new-navbar-color.png" alt="Screenshot of my new navbar color" title="New Navbar Color" class="image"></p>
+<h2>Logo</h2>
+<p>The name of the site and its logo are handled by the &quot;branding block&quot;. My subtheme of Bootstrap5 came with a logo.svg (= <a href="https://developer.mozilla.org/en-US/docs/Web/SVG">Scalable Vector Graphic</a>, a particularly good format for images that must be used in different places with different sizes), a favicon.ico file, and a screenshot.png file to display in the &quot;Appearance&quot; menu of Drupal's user interface. My first task is to replace them with the DLL's files.</p>
+<p>I happened to have those files from a previous version of the site, so I dropped them into the subtheme's root directory. Since the &quot;Appearance&quot; menu of my site is already set to use the theme's logo and shortcut icon, I just cleared the caches (<code>drush cr</code>), and voilà:</p>
+<p><img src="/assets/images/front-end/new-logo.png" alt="Screenshot of the site with the DLL's logo" title="DLL's logo" class="image"></p>
+<h2>Site Name</h2>
+<p>As the last screenshot shows, I now have a logo that says &quot;Digital Latin Library&quot; and some text that says &quot;DLL CATALOG&quot; in big, chunky letters. I want the text to match or at least resemble the text on the old site:</p>
+<p><img src="/assets/images/front-end/old-logo-and-name.png" alt="Screenshot of the old site's branding block" title="Old Branding Block" class="image"></p>
+<p>I can do this with some CSS code. Using my browser's Developer Tools, I inspect the site's name and find that it has the class &quot;site-title&quot;:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>home<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>site-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>DLL Catalog<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
+<p>The CSS window shows that the following code applies to that class:</p>
+<pre class="language-css"><code class="language-css"><span class="token property">font-size</span><span class="token punctuation">:</span> 1.5rem<span class="token punctuation">;</span><br><span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span><br><span class="token property">letter-spacing</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span><br><span class="token property">text-transform</span><span class="token punctuation">:</span> uppercase<span class="token punctuation">;</span></code></pre>
+<p>If I remove the <code>font-weight</code> and <code>text-transform</code> properties, my site's name looks like this:</p>
+<p><img src="/assets/images/front-end/name-updated-style.png" alt="Screenshot of the site's name with updated style" title="Updated site name" class="image"></p>
+<p>That's better, but not quite what I want yet. If I bump the <code>font-size</code> up to <code>2rem</code> and set the <code>font-weight</code> to <code>lighter</code>, it looks good enough for my purposes.</p>
+<p><img src="/assets/images/front-end/name-lighter-bigger.png" alt="Screenshot of the site's name with larger and lighter font" title="Updated site name" class="image"></p>
+<p>We're almost there, but there's a problem: on smaller screens (e.g., tablets and phones), the <code>2rem</code> font size will be out of proportion to the logo, which will scale down as the screen size decreases. Instead of specifying separate sizes for tablets and phones, I can use the value <code>larger</code>, which is proportional. I'll also use a <a href="https://getbootstrap.com/docs/5.3/layout/breakpoints/#media-queries">media query</a> to make the value change according to screen size:</p>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* Change the appearance of the site's name */</span><br><br><span class="token selector">.navbar-brand .site-title</span> <span class="token punctuation">{</span><br>  <span class="token property">font-size</span><span class="token punctuation">:</span> larger<span class="token punctuation">;</span><br>  <span class="token property">font-weight</span><span class="token punctuation">:</span> lighter<span class="token punctuation">;</span><br>  <span class="token property">letter-spacing</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span><br>  <span class="token property">text-transform</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token comment">/* Media query for large screens */</span><br><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 992px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span><br>  <span class="token selector">.navbar-brand .site-title</span> <span class="token punctuation">{</span><br>    <span class="token property">font-size</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Now, as we'll see below, the font size of the site's name changes in proportion to the screen size. That's an improvement from the standpoint of accessibility, since the site's name in the old version was part of an image file. Now it is in plain text for anyone to read, however they might read it.</p>
+<h2>Menus</h2>
+<p>Just looking at the screenshot above, it's clear that the navigation menu is out of control. The old site had menus with sub menus leading to pages on the other sites in the DLL's domain. There was a point to that: to make sure that users understood where they were in the DLL's corner of the internet. After all, we have the main informational site (<a href="https://digitallatin.org/">https://digitallatin.org/</a>), the online reading interface for <em>Library of Digital Latin Texts</em> (<a href="https://ldlt.digitallatin.org/">https://ldlt.digitallatin.org/</a>), and the DLL Catalog (<a href="https://catalog.digitallatin.org/">https://catalog.digitallatin.org/</a>), so it is important to provide some signposting for users. But the way we were doing it on the old version of the catalog site made the navigation far too busy and cluttered. Besides, it's best to keep a site's main navigation menu simple so that it will be easy to use on mobile, tablet, laptop, and desktop devices. Moreover, dropdown submenus have to be styled, and that is a tedious job.</p>
+<p>Fortunately, clearing up the main navigation menu is simple. When I <a href="https://sjhuskey.info/posts/drupal-7-to-drupal-10/">migrated the site to Drupal 10</a>, all the menus were included. That means that I can go into the &quot;Menus&quot; interface (<code>/admin/structure/menu</code>) and turn off or delete any items I don't want to appear in the new version.</p>
+<p>For now, I'll disable all the main menu items:</p>
+<p><img src="/assets/images/front-end/navbar-no-main.png" alt="Screenshot of the navbar without main menu" title="Navbar minus main menu" class="image"></p>
+<p>The navbar still has the user menu (&quot;My Account&quot; and &quot;Log Out&quot; for logged-in users) and a search bar. I don't need the user menu, since users don't need accounts to use the site, and I can log in using <code>/user/login</code> whenever I need to. I also plan to make the search bar a much more prominent part of the site, so I can get rid of that, too. In this case, instead of disabling those menu items, I'll edit the Twig template <code>page.html.twig</code>, which has this code near the top:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><br>  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>navbar-toggler collapsed<span class="token punctuation">"</span></span><br>  <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span><br>  <span class="token attr-name">data-bs-toggle</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span><br>  <span class="token attr-name">data-bs-target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#navbarSupportedContent<span class="token punctuation">"</span></span><br>  <span class="token attr-name">aria-controls</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>navbarSupportedContent<span class="token punctuation">"</span></span><br>  <span class="token attr-name">aria-expanded</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span><br>  <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Toggle navigation<span class="token punctuation">"</span></span><br><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>navbar-toggler-icon<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>collapse navbar-collapse justify-content-md-end<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>navbarSupportedContent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>   {{ page.nav_main }} {{ page.nav_additional }} <br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>The user menu and search bar are included in <code>{{ page.nav_additional }}</code>, so if I remove that line, I'll have this:</p>
+<p><img src="/assets/images/front-end/navbar-no-menus-at-all.png" alt="Screenshot of the navbar without any menu items" title="Navbar minus all menus" class="image"></p>
+<p>Now I can think more clearly about what I want in that space. The old site had a secondary menu with links relevant to the DLL Catalog:</p>
+<p><img src="/assets/images/front-end/old-site-secondary-menu.png" alt="Screenshot of the old site's secondary menu" title="Old site's secondary menu" class="image"></p>
+<p>It would make a lot more sense to put that into the main navigation space. So, I'll go into the &quot;Menus&quot; interface (<code>/admin/structure/menu</code>) edit the &quot;Main menu&quot; (<code>/admin/structure/menu/manage/main</code>), et voilà:</p>
+<p><img src="/assets/images/front-end/navbar-new-menu-items.png" alt="Screenshot of the navbar with menu items" title="Navbar with menu items" class="image"></p>
+<p>What's more, without having to do anything extra (other than the media query I mentioned above), my navbar responds well to different screen sizes. I can do a quick check with my browser's &quot;Developer Tools&quot; if I click on the icon that looks like a phone next to a tablet. That opens up a new menu that lets me emulate the appearance of my site on numerous devices of different shapes and sizes.</p>
+<p>Here is my navbar on a tablet:</p>
+<p><img src="/assets/images/front-end/navbar-tablet.png" alt="Screenshot of the navbar on a tablet" title="Navbar on a tablet" class="image"></p>
+<p>And here it is on a phone:</p>
+<p><img src="/assets/images/front-end/navbar-phone.png" alt="Screenshot of the navbar on a phone" title="Navbar on a phone" class="image"></p>
+<p>In both cases, the menu turns into a &quot;hamburger menu&quot; that will expand when clicked:</p>
+<p><img src="/assets/images/front-end/navbar-hamburger.png" alt="Screenshot of the navbar hamburger menu" title="Navbar hamburger menu" class="image"></p>
+<p>I didn't have to write any code to make that happens, since it is baked into Bootstrap's grid system!</p>
+<p>Now that I've styled the navbar, I'll work on the footer in the next post.</p>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mt-auto">
+  <div class="container w-75 mx-auto">
+    <div class="row">
+      <div class="col-8">
+        <p class="footerinfo">
+          ©2024 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
+          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+        </p>
+      </div>
+      <div class="col-4">
+        <div id="socialicons">
+          <!-- Social Media Icons by NiftyButtons https://niftybuttons.com -->
+          <a href="https://github.com/sjhuskey" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-github"
+              data-donate="true"
+              data-tag="git"
+              data-name="Github"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"
+              ></path></svg></a
+          ><a href="https://www.linkedin.com/in/sjhuskey/" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-linkedin"
+              data-donate="true"
+              data-tag="lin"
+              data-name="LinkedIn"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"
+              ></path></svg
+          ></a>
+          <a
+            href="https://sjhuskey.info/feed/feed.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="text-decoration: none; border: 0; width: 36px; height: 36px; padding: 0; margin: 3px; color: #ffffff"
+          >
+            <svg
+              class="niftybutton-rss"
+              style="display: block; fill: currentColor"
+              data-donate="true"
+              data-tag="rss"
+              data-name="RSS"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M201.8 347.2c0 20.3-16.5 36.8-36.8 36.8 -20.3 0-36.8-16.5-36.8-36.8s16.5-36.8 36.8-36.8C185.3 310.4 201.8 326.8 201.8 347.2zM128.2 204.7v54.5c68.5 0.7 124 56.3 124.7 124.7h54.5C306.7 285.3 226.9 205.4 128.2 204.7zM128.2 166.6c57.9 0.3 112.3 22.9 153.2 63.9 41 41 63.7 95.5 63.9 153.5h54.5c-0.3-149.9-121.7-271.4-271.6-271.9V166.6L128.2 166.6z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript" src="/dist/app.js"></script>
+  </body>
+</html>

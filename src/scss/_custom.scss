@@ -120,8 +120,9 @@ pre[class*="language-"] {
 
 .image {
   border: solid thin black;
-  width: 100%;
+  max-width: 100%;
   height: auto;
+  margin: 0.25rem 0 1.75rem 0;
 }
 
 .multi-column-list {
