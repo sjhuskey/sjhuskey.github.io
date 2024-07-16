@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samuel J. Huskey - Rebuilding A Theme, Part VII: Contextual Views</title>
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/dist/app.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-T4DCQE192P");
+    </script>
+    
+
+
+<meta name="description" content="I blog about my adventures with technology, text and data analysis, and digital philology">
+<!-- Open Graph Metadata -->
+  <meta property="og:title" content="Rebuilding A Theme, Part VII: Contextual Views">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sjhuskey.info/posts/upgrading-theme-part-7/">
+  <meta property="og:description" content="Notes on rebuilding views after a migration">
+  <meta property="og:site_name" content="Samuel J. Huskey">
+  <meta property="og:locale" content="en_US">
+  
+  <meta property="og:image" content="/assets/images/drupal.jpg">
+  
+  
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rebuilding A Theme, Part VII: Contextual Views">
+  <meta name="twitter:description" content="Notes on rebuilding views after a migration">
+  
+  <meta name="twitter:image" content="https://sjhuskey.info/assets/images/drupal.jpg">
+  
+
+
+
+
+<link rel="icon" href="https://sjhuskey.info/assets/images/favicon.ico">
+
+
+
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    <div id="header-container">
+  <div class="container py-6">
+    <header class="pb-5 mb-4">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container w-75 mx-auto border-bottom">
+          <a href="/" class="d-flex align-items-center text-light text-decoration-none">
+              <title>Samuel J. Huskey</title>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span class="fs-4">Samuel J. Huskey</span>
+          </a>
+          <button
+            class="navbar-toggler navbar-dark"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/cv.html">CV</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/dh.html">DH</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/tech.html">Tech</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/posts">Blog</a>
+    </li>
+</ul>
+
+
+</div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <main id="main">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            
+            <img src="/assets/images/drupal.jpg" class="featured-image-post" />
+            
+            <h1>Rebuilding A Theme, Part VII: Contextual Views</h1>
+            
+            <p class="post-date">
+              Posted: 2024-07-16
+               in              
+              <a href="/tags/Drupal">Drupal</a
+              >,  
+              <a href="/tags/Front End Development">Front End Development</a
+              >   
+            </p>
+            
+            <p>When users come to an author's page on the DLL Catalog site, they should see all of the information about that author, plus links to related content such as works by that author, individual editions of those works, and web pages that contain the author's works.</p>
+<p>Here's what that looks like on the old site:</p>
+<p><img src="/assets/images/front-end/content-author-authority-old.png" alt="Screenshot of the old Author Authority page" title="Old Author Authority page" class="image"></p>
+<p>I accomplished the lists of related content with contextual views. A contextual view is a feature of the powerful <a href="https://www.drupal.org/docs/8/core/modules/views">Views module</a>, an interface for generating, obviously, views of content. The &quot;contextual&quot; part refers to the display of content depending on a specific context, like when a particular value (e.g., a node's ID) is in the page's URL.</p>
+<p>Since there isn't a migration path for views, I must rebuild all of the site's views from scratch. Fortunately, it's a pretty easy job. I'll just go through the steps for showing works related to an author, since the others pretty much work the same way on my site.</p>
+<h2>Adding a View</h2>
+<p>I'll head over to the Views interface at <code>admin/structure/views</code>. From there I'll click &quot;+Add view&quot;, which will take me to a form for creating my view:</p>
+<p><img src="/assets/images/front-end/view-add-view.png" alt="Screenshot of the Add view page" title="Add View page" class="image"></p>
+<ol>
+<li><strong>View name</strong>: I like to be as systematic and descriptive as possible with view names, so I'm going to name this view &quot;Contextual view for Author Authority: DLL Work&quot;. I'll also check the &quot;Description&quot; box and enter &quot;A contextual view that displays DLL Work nodes related to a specific Author Authority&quot;.</li>
+<li><strong>View settings</strong>: I want to show &quot;Content&quot; of type &quot;DLL Work&quot;. I don't really care how the content is sorted.</li>
+<li><strong>Page settings</strong>: I want to create a page, so I'll check this box. I can leave the default values in the other fields, but I want to select &quot;HTML List&quot; of &quot;Titles (linked)&quot; in the pulldown menus.</li>
+<li><strong>Block settings</strong>: I don't need to create a block, so I'll leave this unchecked.</li>
+<li>Click &quot;Save and edit&quot;</li>
+</ol>
+<p>Now I'll see the View interface:</p>
+<p><img src="/assets/images/front-end/views-interface.png" alt="Screenshot of the View interface" title="View Interface" class="image"></p>
+<h2>Building a Relationship</h2>
+<p>Since establishing a relationship between DLL Work nodes and their corresponding Author Authority node is essential for this view (i.e., it's the contextual part), I'll go over to the &quot;Advanced&quot; part of the View interface first and click &quot;Add&quot; next to &quot;Relationships&quot;. I want to select &quot;Content referenced from field_author&quot; so that I can have access to all of the fields of the Author Authority node associated with DLL Work through the &quot;Author&quot; field (<code>field_author</code>). Basically, this opens a window onto the associated Author Authority record, and I'll be able to grab practially any data from it. I'll click &quot;Add and configure relationships&quot;. Now I'll check &quot;Require this relationship&quot; so that I won't get any unrelated content, then I'll click &quot;Apply&quot;.</p>
+<h2>Providing Context</h2>
+<p>Now I can create the contextual part of the view. In the &quot;Advanced&quot; part of the View interface, I'll click &quot;Add&quot; next to &quot;Contextual filters&quot;. In the window that opens, I'll select &quot;DLL Identifier (field_dll_identifier)&quot;, since I want to view DLL Work nodes <em>in the context of</em> their author, each of which has a unique identifier. Now I'll click &quot;Add and configure contextual filters&quot;.  In the new window, I'll select &quot;field_author: Content&quot; from the Relationship dropdown, to make sure that the context is dependent upon that relationship. Now, sometimes there aren't any works to display, so I need a way to handle that. That's where the &quot;When the filter value is NOT available&quot; part comes in handy. I'll select &quot;Display contents of 'No results found'&quot;. Later, I'll go to the &quot;No results behavior&quot; area of the Views interface and add a text field with the content <code>&lt;p&gt;&lt;em&gt;No records have been entered for this author at this time.&lt;/em&gt;&lt;/p&gt;</code>. That way, the user will see <em>something</em> if there aren't any records to display. Now I'll click &quot;Apply&quot; to, well, apply those settings.</p>
+<p><img src="/assets/images/front-end/view-contextual-filter-window.png" alt="Screenshot of the contextual filter window" title="Contextual filter window" class="image"></p>
+<h2>Testing</h2>
+<p>Now I can test the contextual view. The Views interface has a handy &quot;Preview&quot; feature. I'll scroll down to that part and enter the DLL Identifier for Virgil (A4830) in the &quot;Preview with contextual filters&quot; field. This is what I see after clicking &quot;Update preview&quot;:</p>
+<p><img src="/assets/images/front-end/view-update-preview.png" alt="Screenshot of the Views preview" title="Previewing a contextual view" class="image"></p>
+<p>It works! The DLL Works related to Virgil—and only those DLL Works—are listed.</p>
+<h2>Fine-tuning</h2>
+<p>For a contextual view to work, it needs a placeholder (e.g., <code>%</code>) in its URL. I'll go to the &quot;Page Settings&quot; part of the Views interface and click on &quot;Path:&quot;. Now I'll insert <code>/%</code> at the end of the URL (e.g., <code>contextual-view-for-author-authority-dll-work/%</code>). Now I'll be able to use the DLL identifier in the Twig template for the Author Authority content type to filter this view.</p>
+<p>I also want to be sure to list <em>all</em> of the works without relying on a pager. I'll go down to the &quot;Pager&quot; section and click on &quot;Mini&quot;, the default value for &quot;Use pager:&quot;. Now I'll select &quot;Display all items&quot; and click on &quot;Apply&quot;. I'll click &quot;Apply&quot; again in response to the next window about offset values. The &quot;Use pager:&quot; field should now have the values &quot;Display all items | All items&quot;.</p>
+<p>I'll click &quot;Save&quot; now and move on to creating my other contextual displays. I can easily do that from the same Views interface I've been working on in this post. I just click &quot;+Add&quot; in the Views interface and select &quot;Page&quot; to create a copy of the display that I have just made. I'll change &quot;Content: Content type (= DLL Work)&quot; in the &quot;Filter Criteria&quot; section to &quot;Content: Content type (= Item Record)&quot;. Now the relationship and contextual filter I created previously will apply to this display, too, only this time it will display &quot;Item Record&quot; content. I need to change the URL, too.</p>
+<p><strong>Note</strong>: When changing the filter criteria, select &quot;This page (override)&quot; in the &quot;For&quot; dropdown at the top of the window. Otherwise, whatever you do will apply to EVERY display in the View.</p>
+<p><strong>Another note</strong>: Give your pages distinctive names by clicking the &quot;Display name&quot; link and entering something descriptive. That makes managing the site much easier.</p>
+<p>I might have to come back to this view when I start to work on theming the content type that will use it, but at least it does what I need it to do for now.</p>
+<h2>Takeaway</h2>
+<p>Views is a powerful, extremely useful feature of Drupal. It's no wonder that it became a part of Drupal's core starting with version 8. Relationships and contexts make Views even more versatile, since they make it easy to connect content on a Drupal site in a dynamic way.</p>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mt-auto">
+  <div class="container w-75 mx-auto">
+    <div class="row">
+      <div class="col-8">
+        <p class="footerinfo">
+          ©2024 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
+          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+        </p>
+      </div>
+      <div class="col-4">
+        <div id="socialicons">
+          <!-- Social Media Icons by NiftyButtons https://niftybuttons.com -->
+          <a href="https://github.com/sjhuskey" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-github"
+              data-donate="true"
+              data-tag="git"
+              data-name="Github"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"
+              ></path></svg></a
+          ><a href="https://www.linkedin.com/in/sjhuskey/" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-linkedin"
+              data-donate="true"
+              data-tag="lin"
+              data-name="LinkedIn"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"
+              ></path></svg
+          ></a>
+          <a
+            href="https://sjhuskey.info/feed/feed.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="text-decoration: none; border: 0; width: 36px; height: 36px; padding: 0; margin: 3px; color: #ffffff"
+          >
+            <svg
+              class="niftybutton-rss"
+              style="display: block; fill: currentColor"
+              data-donate="true"
+              data-tag="rss"
+              data-name="RSS"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M201.8 347.2c0 20.3-16.5 36.8-36.8 36.8 -20.3 0-36.8-16.5-36.8-36.8s16.5-36.8 36.8-36.8C185.3 310.4 201.8 326.8 201.8 347.2zM128.2 204.7v54.5c68.5 0.7 124 56.3 124.7 124.7h54.5C306.7 285.3 226.9 205.4 128.2 204.7zM128.2 166.6c57.9 0.3 112.3 22.9 153.2 63.9 41 41 63.7 95.5 63.9 153.5h54.5c-0.3-149.9-121.7-271.4-271.6-271.9V166.6L128.2 166.6z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript" src="/dist/app.js"></script>
+  </body>
+</html>

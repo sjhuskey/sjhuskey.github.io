@@ -5,13 +5,55 @@
   <type>atom</type>
   <link href="https://sjhuskey.info/feed/feed.xml" rel="self" />
   <link href="" />
-  <updated>2024-07-15T00:00:00Z</updated>
+  <updated>2024-07-16T00:00:00Z</updated>
   <id>https://sjhuskey.info/feed/feed.xml</id>
   <language>en</language>
   <author>
     <name>Samuel J. Huskey</name>
     <email>huskey@ou.edu</email>
   </author> 
+  <entry>
+    <title>Rebuilding A Theme, Part VII: Contextual Views</title>
+    <link href="https://sjhuskey.info/posts/upgrading-theme-part-7/" />
+    <updated>2024-07-16T00:00:00Z</updated>
+    <id>https://sjhuskey.info/posts/upgrading-theme-part-7/</id>
+    <content type="html">&lt;p&gt;When users come to an author&#39;s page on the DLL Catalog site, they should see all of the information about that author, plus links to related content such as works by that author, individual editions of those works, and web pages that contain the author&#39;s works.&lt;/p&gt;
+&lt;p&gt;Here&#39;s what that looks like on the old site:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://sjhuskey.info/assets/images/front-end/content-author-authority-old.png&quot; alt=&quot;Screenshot of the old Author Authority page&quot; title=&quot;Old Author Authority page&quot; class=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;I accomplished the lists of related content with contextual views. A contextual view is a feature of the powerful &lt;a href=&quot;https://www.drupal.org/docs/8/core/modules/views&quot;&gt;Views module&lt;/a&gt;, an interface for generating, obviously, views of content. The &amp;quot;contextual&amp;quot; part refers to the display of content depending on a specific context, like when a particular value (e.g., a node&#39;s ID) is in the page&#39;s URL.&lt;/p&gt;
+&lt;p&gt;Since there isn&#39;t a migration path for views, I must rebuild all of the site&#39;s views from scratch. Fortunately, it&#39;s a pretty easy job. I&#39;ll just go through the steps for showing works related to an author, since the others pretty much work the same way on my site.&lt;/p&gt;
+&lt;h2&gt;Adding a View&lt;/h2&gt;
+&lt;p&gt;I&#39;ll head over to the Views interface at &lt;code&gt;admin/structure/views&lt;/code&gt;. From there I&#39;ll click &amp;quot;+Add view&amp;quot;, which will take me to a form for creating my view:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://sjhuskey.info/assets/images/front-end/view-add-view.png&quot; alt=&quot;Screenshot of the Add view page&quot; title=&quot;Add View page&quot; class=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;View name&lt;/strong&gt;: I like to be as systematic and descriptive as possible with view names, so I&#39;m going to name this view &amp;quot;Contextual view for Author Authority: DLL Work&amp;quot;. I&#39;ll also check the &amp;quot;Description&amp;quot; box and enter &amp;quot;A contextual view that displays DLL Work nodes related to a specific Author Authority&amp;quot;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;View settings&lt;/strong&gt;: I want to show &amp;quot;Content&amp;quot; of type &amp;quot;DLL Work&amp;quot;. I don&#39;t really care how the content is sorted.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Page settings&lt;/strong&gt;: I want to create a page, so I&#39;ll check this box. I can leave the default values in the other fields, but I want to select &amp;quot;HTML List&amp;quot; of &amp;quot;Titles (linked)&amp;quot; in the pulldown menus.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Block settings&lt;/strong&gt;: I don&#39;t need to create a block, so I&#39;ll leave this unchecked.&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;Save and edit&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now I&#39;ll see the View interface:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://sjhuskey.info/assets/images/front-end/views-interface.png&quot; alt=&quot;Screenshot of the View interface&quot; title=&quot;View Interface&quot; class=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;Building a Relationship&lt;/h2&gt;
+&lt;p&gt;Since establishing a relationship between DLL Work nodes and their corresponding Author Authority node is essential for this view (i.e., it&#39;s the contextual part), I&#39;ll go over to the &amp;quot;Advanced&amp;quot; part of the View interface first and click &amp;quot;Add&amp;quot; next to &amp;quot;Relationships&amp;quot;. I want to select &amp;quot;Content referenced from field_author&amp;quot; so that I can have access to all of the fields of the Author Authority node associated with DLL Work through the &amp;quot;Author&amp;quot; field (&lt;code&gt;field_author&lt;/code&gt;). Basically, this opens a window onto the associated Author Authority record, and I&#39;ll be able to grab practially any data from it. I&#39;ll click &amp;quot;Add and configure relationships&amp;quot;. Now I&#39;ll check &amp;quot;Require this relationship&amp;quot; so that I won&#39;t get any unrelated content, then I&#39;ll click &amp;quot;Apply&amp;quot;.&lt;/p&gt;
+&lt;h2&gt;Providing Context&lt;/h2&gt;
+&lt;p&gt;Now I can create the contextual part of the view. In the &amp;quot;Advanced&amp;quot; part of the View interface, I&#39;ll click &amp;quot;Add&amp;quot; next to &amp;quot;Contextual filters&amp;quot;. In the window that opens, I&#39;ll select &amp;quot;DLL Identifier (field_dll_identifier)&amp;quot;, since I want to view DLL Work nodes &lt;em&gt;in the context of&lt;/em&gt; their author, each of which has a unique identifier. Now I&#39;ll click &amp;quot;Add and configure contextual filters&amp;quot;.  In the new window, I&#39;ll select &amp;quot;field_author: Content&amp;quot; from the Relationship dropdown, to make sure that the context is dependent upon that relationship. Now, sometimes there aren&#39;t any works to display, so I need a way to handle that. That&#39;s where the &amp;quot;When the filter value is NOT available&amp;quot; part comes in handy. I&#39;ll select &amp;quot;Display contents of &#39;No results found&#39;&amp;quot;. Later, I&#39;ll go to the &amp;quot;No results behavior&amp;quot; area of the Views interface and add a text field with the content &lt;code&gt;&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;No records have been entered for this author at this time.&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;&lt;/code&gt;. That way, the user will see &lt;em&gt;something&lt;/em&gt; if there aren&#39;t any records to display. Now I&#39;ll click &amp;quot;Apply&amp;quot; to, well, apply those settings.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://sjhuskey.info/assets/images/front-end/view-contextual-filter-window.png&quot; alt=&quot;Screenshot of the contextual filter window&quot; title=&quot;Contextual filter window&quot; class=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;Testing&lt;/h2&gt;
+&lt;p&gt;Now I can test the contextual view. The Views interface has a handy &amp;quot;Preview&amp;quot; feature. I&#39;ll scroll down to that part and enter the DLL Identifier for Virgil (A4830) in the &amp;quot;Preview with contextual filters&amp;quot; field. This is what I see after clicking &amp;quot;Update preview&amp;quot;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://sjhuskey.info/assets/images/front-end/view-update-preview.png&quot; alt=&quot;Screenshot of the Views preview&quot; title=&quot;Previewing a contextual view&quot; class=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;It works! The DLL Works related to Virgil—and only those DLL Works—are listed.&lt;/p&gt;
+&lt;h2&gt;Fine-tuning&lt;/h2&gt;
+&lt;p&gt;For a contextual view to work, it needs a placeholder (e.g., &lt;code&gt;%&lt;/code&gt;) in its URL. I&#39;ll go to the &amp;quot;Page Settings&amp;quot; part of the Views interface and click on &amp;quot;Path:&amp;quot;. Now I&#39;ll insert &lt;code&gt;/%&lt;/code&gt; at the end of the URL (e.g., &lt;code&gt;contextual-view-for-author-authority-dll-work/%&lt;/code&gt;). Now I&#39;ll be able to use the DLL identifier in the Twig template for the Author Authority content type to filter this view.&lt;/p&gt;
+&lt;p&gt;I also want to be sure to list &lt;em&gt;all&lt;/em&gt; of the works without relying on a pager. I&#39;ll go down to the &amp;quot;Pager&amp;quot; section and click on &amp;quot;Mini&amp;quot;, the default value for &amp;quot;Use pager:&amp;quot;. Now I&#39;ll select &amp;quot;Display all items&amp;quot; and click on &amp;quot;Apply&amp;quot;. I&#39;ll click &amp;quot;Apply&amp;quot; again in response to the next window about offset values. The &amp;quot;Use pager:&amp;quot; field should now have the values &amp;quot;Display all items | All items&amp;quot;.&lt;/p&gt;
+&lt;p&gt;I&#39;ll click &amp;quot;Save&amp;quot; now and move on to creating my other contextual displays. I can easily do that from the same Views interface I&#39;ve been working on in this post. I just click &amp;quot;+Add&amp;quot; in the Views interface and select &amp;quot;Page&amp;quot; to create a copy of the display that I have just made. I&#39;ll change &amp;quot;Content: Content type (= DLL Work)&amp;quot; in the &amp;quot;Filter Criteria&amp;quot; section to &amp;quot;Content: Content type (= Item Record)&amp;quot;. Now the relationship and contextual filter I created previously will apply to this display, too, only this time it will display &amp;quot;Item Record&amp;quot; content. I need to change the URL, too.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: When changing the filter criteria, select &amp;quot;This page (override)&amp;quot; in the &amp;quot;For&amp;quot; dropdown at the top of the window. Otherwise, whatever you do will apply to EVERY display in the View.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Another note&lt;/strong&gt;: Give your pages distinctive names by clicking the &amp;quot;Display name&amp;quot; link and entering something descriptive. That makes managing the site much easier.&lt;/p&gt;
+&lt;p&gt;I might have to come back to this view when I start to work on theming the content type that will use it, but at least it does what I need it to do for now.&lt;/p&gt;
+&lt;h2&gt;Takeaway&lt;/h2&gt;
+&lt;p&gt;Views is a powerful, extremely useful feature of Drupal. It&#39;s no wonder that it became a part of Drupal&#39;s core starting with version 8. Relationships and contexts make Views even more versatile, since they make it easy to connect content on a Drupal site in a dynamic way.&lt;/p&gt;
+</content>
+  </entry> 
   <entry>
     <title>Rebuilding A Theme, Part VI: Customizing the Footer</title>
     <link href="https://sjhuskey.info/posts/upgrading-theme-part-6/" />
@@ -337,6 +379,8 @@
 &lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-3&quot;&gt;Rebuilding a Theme, Part III: Working with Twig&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-4&quot;&gt;Rebuilding a Theme, Part IV: Working with Bootstrap&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-5&quot;&gt;Rebuilding a Theme, Part V: Customizing the Navbar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-6&quot;&gt;Rebuilding A Theme, Part VI: Customizing the Footer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-7&quot;&gt;Rebuilding A Theme, Part VII: Contextual Views&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
   </entry> 
