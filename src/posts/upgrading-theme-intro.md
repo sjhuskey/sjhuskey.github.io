@@ -31,3 +31,4 @@ I'll add to this list as I finish writing up each step:
 - [Rebuilding a Theme, Part V: Customizing the Navbar](https://sjhuskey.info/posts/upgrading-theme-part-5)
 - [Rebuilding A Theme, Part VI: Customizing the Footer](https://sjhuskey.info/posts/upgrading-theme-part-6)
 - [Rebuilding A Theme, Part VII: Contextual Views](https://sjhuskey.info/posts/upgrading-theme-part-7)
+- [Rebuilding A Theme, Part VIII: Content Types](https://sjhuskey.info/posts/upgrading-theme-part-8)
