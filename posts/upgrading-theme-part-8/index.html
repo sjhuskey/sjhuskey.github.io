@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samuel J. Huskey - Rebuilding A Theme, Part VIII: Content Types</title>
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/dist/app.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-T4DCQE192P");
+    </script>
+    
+
+
+<meta name="description" content="I blog about my adventures with technology, text and data analysis, and digital philology">
+<!-- Open Graph Metadata -->
+  <meta property="og:title" content="Rebuilding A Theme, Part VIII: Content Types">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sjhuskey.info/posts/upgrading-theme-part-8/">
+  <meta property="og:description" content="Notes on theming a site&#39;s content types after migrating from Drupal 7 to Drupal 10">
+  <meta property="og:site_name" content="Samuel J. Huskey">
+  <meta property="og:locale" content="en_US">
+  
+  <meta property="og:image" content="/assets/images/drupal.jpg">
+  
+  
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rebuilding A Theme, Part VIII: Content Types">
+  <meta name="twitter:description" content="Notes on theming a site&#39;s content types after migrating from Drupal 7 to Drupal 10">
+  
+  <meta name="twitter:image" content="https://sjhuskey.info/assets/images/drupal.jpg">
+  
+
+
+
+
+<link rel="icon" href="https://sjhuskey.info/assets/images/favicon.ico">
+
+
+
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    <div id="header-container">
+  <div class="container py-6">
+    <header class="pb-5 mb-4">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container w-75 mx-auto border-bottom">
+          <a href="/" class="d-flex align-items-center text-light text-decoration-none">
+              <title>Samuel J. Huskey</title>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span class="fs-4">Samuel J. Huskey</span>
+          </a>
+          <button
+            class="navbar-toggler navbar-dark"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/cv.html">CV</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/dh.html">DH</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/tech.html">Tech</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/posts">Blog</a>
+    </li>
+</ul>
+
+
+</div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <main id="main">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            
+            <img src="/assets/images/drupal.jpg" class="featured-image-post" />
+            
+            <h1>Rebuilding A Theme, Part VIII: Content Types</h1>
+            
+            <p class="post-date">
+              Posted: 2024-07-17
+               in              
+              <a href="/tags/Drupal">Drupal</a
+              >,  
+              <a href="/tags/Front End Development">Front End Development</a
+              >   
+            </p>
+            
+            <p>The DLL Catalog site has four main content types:</p>
+<ol>
+<li>Author Authority: Nodes in this content type contain information about an author's authorized name, variations on the name, dates, and various identifiers.</li>
+<li>DLL Work: This content type contains the title(s) of works.</li>
+<li>Item Record: These nodes contain metadata for published editions of works.</li>
+<li>Web Page: This content type is for internet pages that present the texts of works.</li>
+</ol>
+<p>The site also makes use of the default Drupal content types Article (for blog posts and updates) and Basic Page (for static content).</p>
+<p>The old site made heavy use of <a href="https://www.drupal.org/project/panels">Panels</a>, a module that took a point and click approach to content layout. It was useful at the time, but it was complicated and difficult to learn. It has been ported over to Drupal 10, but it now has serious competition from <a href="https://www.drupal.org/project/gutenberg">Gutenberg</a>.</p>
+<p>Rather than attempt to migrate the panel pages, I'm going to recreate the functionality with a combination of Drupal blocks and Twig. The advantage to this approach is that if there's another big migration in the future, my layouts won't be tied to a specific module that might or might not be ported over to the new version.</p>
+<h2>Author Authority</h2>
+<p>Here's a screenshot of an Author Authority page on the old site:</p>
+<p><img src="/assets/images/front-end/content-author-authority-old.png" alt="Screenshot of the old Author Authority page" title="Old Author Authority page" class="image"></p>
+<p>And here's a screenshot of the same Author Authority as migrated into Drupal 10:</p>
+<p><img src="/assets/images/front-end/content-author-authority-unthemed.png" alt="Screenshot of the unthemed Author Authority page" title="Unthemed Author Authority page" class="image"></p>
+<p>Most of the Author Authority content on the old site is in a sidebar, while contextual views are pulling related DLL Work, Item Record, and Web Page content into Panels. Since I already recreated those contextual views in my new site (see <a href="https://sjhuskey.info/posts/upgrading-theme-part-7">Rebuilding A Theme, Part VII: Contextual Views</a>), I'm ready to insert them into the templates for the Author Authority content type.</p>
+<p>But first I need to deal with rendering the fields already in the Author Authority content type.</p>
+<h2>Node Fields</h2>
+<p>If I navigate to an Author Authority node and inspect it with my Developer Tools, I'll see that the current Twig template in use is <code>node.html.twig</code>.</p>
+<pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- FILE NAME SUGGESTIONS:<br>   ▪️ node--29982--full.html.twig<br>   ▪️ node--29982.html.twig<br>   ▪️ node--author-authorities--full.html.twig<br>   ▪️ node--author-authorities.html.twig<br>   ▪️ node--full.html.twig<br>   ✅ node.html.twig<br>--></span></code></pre>
+<p>I also see that <code>node--author-authorities--full.html.twig</code> is one of the file name suggestions, so I'll go to the Bootstrap5 parent theme's <code>templates/content</code> directory, copy the content of <code>node.html.twig</code>, and create a new <code>node--author-authorities--full.html.twig</code> file in my subtheme's <code>templates/content</code> directory, which I have created beforehand. I've selected <code>node-author-authories--full.html.twig</code> instead of just <code>node--author-authorities.html.twig</code> because it is more specific. If I need to create other <a href="https://www.drupal.org/docs/drupal-apis/entity-api/display-modes-view-modes-and-form-modes">display modes</a> for this content type, I'll need to make sure that the template I'm making now won't override them. It's always best to be as specific as you can be with your Twig template names—but not so specific that the template applies to only one specific node, like <code>node--29982.html.twig</code> would.</p>
+<p>The <code>node.html.twig</code> template renders the content all at once with <code>{{ content }}</code>:</p>
+<pre class="language-twig"><code class="language-twig"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div<span class="token twig language-twig"><span class="token delimiter punctuation">{{</span>content_attributes<span class="token punctuation">.</span>addClass<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>node__content<span class="token punctuation">'</span></span><span class="token punctuation">)</span><span class="token delimiter punctuation">}}</span></span></span><span class="token punctuation">></span></span><br>  <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> content <span class="token delimiter punctuation">}}</span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>In the old version of the site, I used a feature of the Panel layout to display select fields from the content. I can do that directly in Twig by building onto the <code>{{ content }}</code> variable. For example, if I want to display the &quot;Authorized Name&quot; field, I can do this: <code>{{ content.field_authorized_name }}</code>. That will display the field and its markup. If I just want the value of the field, I can do this: <code>{{ node.field_authorized_name.value }}</code>. Here's what happens if I replace <code>{{ content }}</code> with <code>{{ content.field_authorized_name }}</code> in my template:</p>
+<p><img src="/assets/images/front-end/content-field-authorized-name.png" alt="Screenshot of one rendered field" title="One rendered field" class="image"></p>
+<p>But we put a lot of work into those metadata records, so I'm going to reverse course and display all the data points available. I think I'll render them in a column on the left side of the page, with the rest of the page reserved for the contextual views that show other records associated with the author.</p>
+<p>To do that, I'll do something like what I did <a href="https://sjhuskey.info/posts/upgrading-theme-part-6">when I made three columns for the site's footer</a>. There, I made three columns of equal width. Here, I'm going to make two columns of different widths.</p>
+<h2>Columns</h2>
+<p><a href="https://getbootstrap.com/docs/5.3/layout/grid/">Bootstrap's grid system</a> is based on twelve columns. When I used three columns in the footer, I didn't specify their width, so they defaulted to four units: 4 + 4 + 4 = 12. But now I want a thin column for the metadata fields and a wider one for the contextual views. I can do that by adding a number value to the <code>col</code> class on <code>div</code>:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Thin column<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Wide column<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>To give you an idea of what that looks like, here's a mock-up:</p>
+<p><img src="/assets/images/front-end/content-columns-different-widths.png" alt="Screenshot of columns with different widths" title="Columns of different widths" class="image"></p>
+<p>I'll insert the content into the first column and give it an <code>id</code> to make it easy to style.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>author-data<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ content }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Wide column<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>And I'll use the <code>{{ drupal_view() }}</code> function from the <a href="https://www.drupal.org/project/twig_tweak">Twig Tweak module</a> to render my contextual views. Since the contextual views need <em>context</em> (obviously!), I'll need to supply the information they need. In this case, it's the value of the author's DLL Identifier. The <a href="https://git.drupalcode.org/project/twig_tweak/-/blob/3.x/docs/cheat-sheet.md">Twig Tweak Cheat Sheet</a> shows me almost all the details for doing that.</p>
+<p>The example given looks like this: <code>{{ drupal_view('who_s_new', 'block_1', arg_1, arg_2, arg_3) }}</code>. It doesn't tell me that I have to set the values for the arguments. See below for the way to do that:</p>
+<pre class="language-twig"><code class="language-twig"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>author-data<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> content <span class="token delimiter punctuation">}}</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>author-contextual-views<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <br>        <br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>author-works<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>Works<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br>            <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> drupal_view<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>contextual_view_for_author_authority<span class="token punctuation">'</span></span><span class="token punctuation">,</span> <span class="token string"><span class="token punctuation">'</span>page_1<span class="token punctuation">'</span></span><span class="token punctuation">,</span> arg_1<span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>author-item-records<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>Item Records<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br>            <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> drupal_view<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>contextual_view_for_author_authority<span class="token punctuation">'</span></span><span class="token punctuation">,</span> <span class="token string"><span class="token punctuation">'</span>page_2<span class="token punctuation">'</span></span><span class="token punctuation">,</span> arg_1<span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>author-web-pages<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>Texts on the Internet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br>            <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> drupal_view<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>contextual_view_for_author_authority<span class="token punctuation">'</span></span><span class="token punctuation">,</span> <span class="token string"><span class="token punctuation">'</span>page_3<span class="token punctuation">'</span></span><span class="token punctuation">,</span> arg_1<span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>With those functions in place, my Author Authority node now looks like this:</p>
+<p><img src="/assets/images/front-end/content-author-authority-unthemed-2.png" alt="Screenshot of the unthemed Author Authority page" title="Unthemed Author Authority page" class="image"></p>
+<p>The content is being displayed, but it doesn't look very good because I haven't styled it.</p>
+<h2>Styling</h2>
+<p>I gave each of the different <code>div</code> elements an ID because that makes them easier to style on an individual basis, if I need to.</p>
+<p>I'm going to give the <code>author-data</code> a background color of the light blue that is in the DLL's logo, and I'll insert a bit of padding at the top so that the content has some room to breathe:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">#author-data</span> <span class="token punctuation">{</span><br>  <span class="token property">background-color</span><span class="token punctuation">:</span> #eaf7fb<span class="token punctuation">;</span><br>  <span class="token property">padding-top</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>I also want to insert some space between the fields for the sake of readability:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">#author-data .field</span> <span class="token punctuation">{</span><br>  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>I like the way the field labels on the old site were in all capitals, so I'll do that:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">#author-data .field__label</span> <span class="token punctuation">{</span><br>  <span class="token property">text-transform</span><span class="token punctuation">:</span> uppercase<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Finally, I'd like to give the <code>author-data</code> section a header and use the icon for author authorities that the old theme included. To do that, I'll need to edit the <code>node--author-authorities--full.html.twig</code> template by inserting <code>&lt;h3&gt;Author Data&lt;/h3&gt;</code> inside of <code>&lt;div id=&quot;author-data&quot;&gt;</code>. I will also need to make an <code>image</code> directory in my subtheme and add the image I need. After that, I can use CSS to add the image to the header:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">#author-data h3</span> <span class="token punctuation">{</span><br>  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>/themes/custom/dll_catalog/images/authority-record-on-blue.svg<span class="token punctuation">)</span></span><span class="token punctuation">;</span><br>  <span class="token property">border-bottom</span><span class="token punctuation">:</span> thin solid gray<span class="token punctuation">;</span><br>  <span class="token property">background-repeat</span><span class="token punctuation">:</span> no-repeat<span class="token punctuation">;</span><br>  <span class="token property">background-position</span><span class="token punctuation">:</span> left top<span class="token punctuation">;</span><br>  <span class="token property">padding</span><span class="token punctuation">:</span> 0 0 0.75rem 3rem<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Actually, since I want those last four properties to apply to <code>h3</code> in the <code>contextual-views</code> column, too, I'll do this:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">#author-data h3,<br>#author-contextual-views h3</span> <span class="token punctuation">{</span><br>  <span class="token property">border-bottom</span><span class="token punctuation">:</span> thin solid gray<span class="token punctuation">;</span><br>  <span class="token property">background-repeat</span><span class="token punctuation">:</span> no-repeat<span class="token punctuation">;</span><br>  <span class="token property">background-position</span><span class="token punctuation">:</span> left top<span class="token punctuation">;</span><br>  <span class="token property">padding</span><span class="token punctuation">:</span> 0 0 0.75rem 3rem<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>And now my <code>author-data</code> heading can be styled like this:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">#author-data h3</span> <span class="token punctuation">{</span><br>  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>/themes/custom/dll_catalog/images/authority-record-on-blue.svg<span class="token punctuation">)</span></span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>I'll do something similar for the contextual views. First of all, I want to increase the space between the sections, so I'll use the <code>margin-bottom</code> property:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">#author-contextual-views > div</span> <span class="token punctuation">{</span><br>  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 3.5rem<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>I already added <code>#author-contextual-views h3</code> to the block for <code>author-data h3</code> to make sure that the headings in this section have the same border. Now I will add the background images to the <code>h3</code> tags for each contextual view:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">#author-works h3</span> <span class="token punctuation">{</span><br>  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>/themes/custom/dll_catalog/images/dll-work-on-blue.svg<span class="token punctuation">)</span></span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token selector">#author-item-records h3</span> <span class="token punctuation">{</span><br>  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>/themes/custom/dll_catalog/images/item-record-on-blue.svg<span class="token punctuation">)</span></span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token selector">#author-web-pages h3</span> <span class="token punctuation">{</span><br>  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>/themes/custom/dll_catalog/images/webpage-on-blue.svg<span class="token punctuation">)</span></span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>If I compile my SCSS (<code>sass scss/style.scss css/style.css &amp;&amp; sass scss/ck5style.scss css/ck5style.css</code>) and refresh the caches (<code>drush cr</code>), I can see the outcome of this work:</p>
+<p><img src="/assets/images/front-end/content-styled-columns.png" alt="Screenshot of the styled columns" title="Styled columns" class="image"></p>
+<p>The images are in place and the headings look okay, but I'm not wild about the look. On the old site, the blue side bar was on the right side of the page. I could just switch the order of the <code>div</code> elements and put the one with <code>id=&quot;author-contextual-views&quot;</code> first, but that would cause trouble on smaller screen sizes, since the author data would be pushed to the very bottom of the screen, requiring the user to scroll and scroll to see it.</p>
+<p>What's the solution? This might be a good place for <a href="https://getbootstrap.com/docs/5.3/layout/columns/#reordering">Bootstrap's <code>order</code> class</a>, which allows you to control the order in which elements are displayed on different screen sizes.</p>
+<p>If I add <code>order-lg-2 order-md-2</code> to the <code>div</code> with <code>id=&quot;author-data&quot;</code> and <code>order-lg-1 order-md-1</code> to the <code>div</code> with <code>id=&quot;author-contextual-views</code>, I can reverse the order in which the <code>div</code> elements will be displayed: <code>order-lg-2 order-md-2</code> cause the<code>author-data</code> div to be displayed second (i.e., on the right side of the page) on large (<code>lg</code>) and medium (<code>md</code>) screens, but it will be displayed in its natural order on small and extra-small screens. Here's the new code:</p>
+<pre class="language-twig"><code class="language-twig"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>author-data<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> content <span class="token delimiter punctuation">}}</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>author-contextual-views<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <br>        <br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>author-works<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>Works<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br>            <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> drupal_view<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>contextual_view_for_author_authority<span class="token punctuation">'</span></span><span class="token punctuation">,</span> <span class="token string"><span class="token punctuation">'</span>page_1<span class="token punctuation">'</span></span><span class="token punctuation">,</span> arg_1<span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>author-item-records<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>Item Records<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br>            <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> drupal_view<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>contextual_view_for_author_authority<span class="token punctuation">'</span></span><span class="token punctuation">,</span> <span class="token string"><span class="token punctuation">'</span>page_2<span class="token punctuation">'</span></span><span class="token punctuation">,</span> arg_1<span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>author-web-pages<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>Texts on the Internet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br>            <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> drupal_view<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>contextual_view_for_author_authority<span class="token punctuation">'</span></span><span class="token punctuation">,</span> <span class="token string"><span class="token punctuation">'</span>page_3<span class="token punctuation">'</span></span><span class="token punctuation">,</span> arg_1<span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Here's a screenshot of the page viewed on a desktop screen:</p>
+<p><img src="/assets/images/front-end/content-author-authority-columns-large.png" alt="Screenshot of the the page on a large screen" title="Large screen view" class="image"></p>
+<p>Here it is on a tablet:</p>
+<p><img src="/assets/images/front-end/content-author-authority-columns-medium.png" alt="Screenshot of the the page on a medium screen" title="Medium screen view" class="image"></p>
+<p>And here it is, with the columns in their natural order, on a phone:</p>
+<p><img src="/assets/images/front-end/content-author-authority-columns-small.png" alt="Screenshot of the the page on a small screen" title="Small screen view" class="image"></p>
+<h2>Takeaways</h2>
+<p>It should be pretty clear that Bootstrap, Twig, and CSS are a powerful combination.</p>
+<ul>
+<li><a href="https://getbootstrap.com/docs/5.3/layout/grid/">Bootstrap's grid system</a> makes responsive content layout a breeze, as long as you remember that it's based on the number &quot;12&quot;</li>
+<li>Twig gives you almost total control over where (and whether!) your content is placed on the screen. The <a href="https://www.drupal.org/project/twig_tweak">Twig Tweak module</a> adds a lot of extra functionality to Twig's already full feature set.</li>
+<li>CSS gives you a log of control over the appearance of the content. With just a little knowledge of CSS, you can do quite a lot!</li>
+</ul>
+<p>In the next post, I'll use my <code>node--author-authorities--full.html.twig</code> file and the CSS work that I did to theme the other content types.</p>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mt-auto">
+  <div class="container w-75 mx-auto">
+    <div class="row">
+      <div class="col-8">
+        <p class="footerinfo">
+          ©2024 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
+          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+        </p>
+      </div>
+      <div class="col-4">
+        <div id="socialicons">
+          <!-- Social Media Icons by NiftyButtons https://niftybuttons.com -->
+          <a href="https://github.com/sjhuskey" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-github"
+              data-donate="true"
+              data-tag="git"
+              data-name="Github"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"
+              ></path></svg></a
+          ><a href="https://www.linkedin.com/in/sjhuskey/" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-linkedin"
+              data-donate="true"
+              data-tag="lin"
+              data-name="LinkedIn"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"
+              ></path></svg
+          ></a>
+          <a
+            href="https://sjhuskey.info/feed/feed.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="text-decoration: none; border: 0; width: 36px; height: 36px; padding: 0; margin: 3px; color: #ffffff"
+          >
+            <svg
+              class="niftybutton-rss"
+              style="display: block; fill: currentColor"
+              data-donate="true"
+              data-tag="rss"
+              data-name="RSS"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M201.8 347.2c0 20.3-16.5 36.8-36.8 36.8 -20.3 0-36.8-16.5-36.8-36.8s16.5-36.8 36.8-36.8C185.3 310.4 201.8 326.8 201.8 347.2zM128.2 204.7v54.5c68.5 0.7 124 56.3 124.7 124.7h54.5C306.7 285.3 226.9 205.4 128.2 204.7zM128.2 166.6c57.9 0.3 112.3 22.9 153.2 63.9 41 41 63.7 95.5 63.9 153.5h54.5c-0.3-149.9-121.7-271.4-271.6-271.9V166.6L128.2 166.6z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript" src="/dist/app.js"></script>
+  </body>
+</html>
