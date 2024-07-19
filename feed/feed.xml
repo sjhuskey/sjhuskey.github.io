@@ -5,13 +5,192 @@
   <type>atom</type>
   <link href="https://sjhuskey.info/feed/feed.xml" rel="self" />
   <link href="" />
-  <updated>2024-07-18T00:00:00Z</updated>
+  <updated>2024-07-19T00:00:00Z</updated>
   <id>https://sjhuskey.info/feed/feed.xml</id>
   <language>en</language>
   <author>
     <name>Samuel J. Huskey</name>
     <email>huskey@ou.edu</email>
   </author> 
+  <entry>
+    <title>Rebuilding A Theme, Part X: Solr</title>
+    <link href="https://sjhuskey.info/posts/upgrading-theme-part-10/" />
+    <updated>2024-07-19T00:00:00Z</updated>
+    <id>https://sjhuskey.info/posts/upgrading-theme-part-10/</id>
+    <content type="html">&lt;p&gt;The old Drupal 7 version of the DLL Catalog uses &lt;a href=&quot;https://solr.apache.org/&quot;&gt;Apache Solr&lt;/a&gt; to provide &lt;a href=&quot;https://en.wikipedia.org/wiki/Faceted_search&quot;&gt;faceted search&lt;/a&gt;. Since the search page and its results are important features on the DLL Catalog site, I need to install and configure Solr before I can continue rebuilding my theme.&lt;/p&gt;
+&lt;p&gt;Fortunately, that&#39;s relatively easy to do in DDEV, which I&#39;m using to develop my theme locally. &lt;a href=&quot;https://github.com/ddev/ddev-solr&quot;&gt;The ddev-solr repo&lt;/a&gt; has instructions for installation and configuration, but I&#39;m going to document what I did, since I ran into some obstacles along the way.&lt;/p&gt;
+&lt;h2&gt;Install DDEV Solr&lt;/h2&gt;
+&lt;p&gt;Installation of ddev-solr boils down to these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;ddev get ddev/ddev-solr&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ddev restart&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Install Drupal Modules&lt;/h2&gt;
+&lt;p&gt;Again, fortunately, the ddev-solr repo also has &lt;a href=&quot;https://github.com/ddev/ddev-solr?tab=readme-ov-file#drupal-and-search-api-solr&quot;&gt;instructions for preparing a Drupal site for using Solr&lt;/a&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install the &lt;a href=&quot;https://www.drupal.org/project/search_api_solr&quot;&gt;Search API Solr module&lt;/a&gt;: &lt;code&gt;composer require &#39;drupal/search_api_solr:^4.3&#39;&lt;/code&gt;. That will cause a bunch of other things to be installed.&lt;/li&gt;
+&lt;li&gt;Enable the Search API Solr module: &lt;code&gt;drush en -y search_api_solr&lt;/code&gt;. Again, this will cause some other modules to be installed, too. Be sure to enable the &lt;code&gt;search_api_solr_admin&lt;/code&gt; module, too. It comes with the Search API Solr module, but it isn&#39;t installed automatically: &lt;code&gt;drush en -y search_api_solr_admin&lt;/code&gt;. If you want autocomplete functionality, enable the Search API Solr Autocomplete module: &lt;code&gt;drush en -y search_api_solr_autocomplete&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Install the &lt;a href=&quot;https://www.drupal.org/project/search_api_autocomplete&quot;&gt;Search API Autocomplete module&lt;/a&gt;, if you want search forms to have autocomplete functionality: &lt;code&gt;composer require drupal/search_api_autocomplete&lt;/code&gt;, then &lt;code&gt;drush en -y search_api_autocomplete&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Install the &lt;a href=&quot;https://www.drupal.org/project/facets/&quot;&gt;Facets module&lt;/a&gt;: &lt;code&gt;composer require &#39;drupal/facets:^2.0&#39;&lt;/code&gt;, then &lt;code&gt;drush en -y facets&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Since my theme is a subtheme of the &lt;a href=&quot;https://www.drupal.org/project/bootstrap5&quot;&gt;Bootstrap5 theme&lt;/a&gt;, I&#39;m also going to install the &lt;a href=&quot;https://www.drupal.org/project/views_bootstrap&quot;&gt;Views Bootstrap module&lt;/a&gt;. It will give me some nice options for rendering the search results.&lt;/p&gt;
+&lt;h2&gt;Configure Solr&lt;/h2&gt;
+&lt;p&gt;The documentation is a little hazy here, at least for me. The &lt;a href=&quot;https://solr.apache.org/resources.html#documentation&quot;&gt;documentation for Solr&lt;/a&gt; uses the terms &amp;quot;core&amp;quot; and &amp;quot;collection,&amp;quot; but the Search API Solr interface at &lt;code&gt;/admin/config/search/search-api&lt;/code&gt; only gives you the option to add a new &amp;quot;server&amp;quot; or &amp;quot;index&amp;quot;. I finally realized that a &amp;quot;server&amp;quot; in Search API Solr is really a &amp;quot;core&amp;quot; or a &amp;quot;collection&amp;quot;, depending on which mode your installation of Solr is using (traditional = core; cloud = collection).&lt;/p&gt;
+&lt;p&gt;In any case, the first step is to create a server in Drupal&#39;s UI.&lt;/p&gt;
+&lt;h3&gt;Create a server&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to &lt;code&gt;admin/config/search/search-api&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;+Add Server&amp;quot;. This will open a new page.&lt;/li&gt;
+&lt;li&gt;Enter a name into the &amp;quot;Server name&amp;quot; field and note the corresponding machine name to the right of the field. In my case, I named the server &amp;quot;DLL Catalog&amp;quot;; the machine name is &lt;code&gt;dll_catalog&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Leave the &amp;quot;Enabled&amp;quot; box checked&lt;/li&gt;
+&lt;li&gt;Enter a description in the &amp;quot;Description&amp;quot; field&lt;/li&gt;
+&lt;li&gt;Under &amp;quot;Backend&amp;quot;, choose &amp;quot;Solr&amp;quot;&lt;/li&gt;
+&lt;li&gt;In &amp;quot;Configure Solr backend&amp;quot;, select &amp;quot;Solr Cloud with Basic Auth&amp;quot;&lt;/li&gt;
+&lt;li&gt;In &amp;quot;Solr node&amp;quot;, insert &amp;quot;solr&amp;quot;. &lt;strong&gt;Don&#39;t miss this step!&lt;/strong&gt; If you leave it at &amp;quot;localhost&amp;quot;, you&#39;ll run into a lot of trouble. I speak from experience!&lt;/li&gt;
+&lt;li&gt;In &amp;quot;Solr port&amp;quot;, insert &amp;quot;8983&amp;quot;&lt;/li&gt;
+&lt;li&gt;&amp;quot;Solr path&amp;quot; should be just &amp;quot;/&amp;quot;&lt;/li&gt;
+&lt;li&gt;&amp;quot;Default Solr collection&amp;quot;: Insert the name you want to use for your collection.&lt;/li&gt;
+&lt;li&gt;Leave everything else alone, but scroll down and enter &amp;quot;solr&amp;quot; in the &amp;quot;Username&amp;quot; field and &amp;quot;SolrRocks&amp;quot; in the &amp;quot;Password&amp;quot; field.&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;Save&amp;quot;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You&#39;ll probably see some warning messages at this point. That&#39;s okay. They&#39;ll be handled by the next step. Also, the &amp;quot;Server Connection&amp;quot; field should say &amp;quot;The Solr server could be reached.&amp;quot; The &amp;quot;Collection Connection&amp;quot; should say that the collection could not be accessed. That&#39;s because you haven&#39;t uploaded a configset yet. That&#39;s the next step.&lt;/p&gt;
+&lt;h3&gt;Upload a configset&lt;/h3&gt;
+&lt;p&gt;There are two ways to do this.&lt;/p&gt;
+&lt;p&gt;The easiest way is in the UI. If you enabled the &lt;code&gt;search_api_solr_admin&lt;/code&gt; module, you should see a button &amp;quot;+Upload Configset&amp;quot;. Click that. After a bit, you should see status messages that say &amp;quot;Successfully uploaded configset&amp;quot; and &amp;quot;Successfully created collection&amp;quot;, with the name of your collection. Additionally, the &amp;quot;Collection Connection&amp;quot; should now say that the collection could be accessed.&lt;/p&gt;
+&lt;p&gt;You can also use &lt;code&gt;drush&lt;/code&gt; on the command line. Navigate to your site&#39;s root directory (i.e., where your site is saved on your computer. Mine is in&lt;code&gt;~/Sites/d10dllcat&lt;/code&gt;) and execute this command:&lt;code&gt;ddev drush --numShards=1 search-api-solr:upload-configset SEARCH_API_SERVER_ID&lt;/code&gt;, replacing&lt;code&gt;SEARCH_API_SERVER_ID&lt;/code&gt; with the machine name of your server (see above). In my case, the command looks like this:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ddev drush --numShards=1 search-api-solr:upload-configset dllcatalog&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;Create the Index&lt;/h2&gt;
+&lt;p&gt;Solr needs something to search. That&#39;s the role of an index. I&#39;m going to create an index for site-wide searching of my four main content types here.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to &lt;code&gt;/admin/config/search/search-api&lt;/code&gt; in the UI.&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;+Add index&amp;quot;&lt;/li&gt;
+&lt;li&gt;On the page that comes up, give the index a name in the &amp;quot;Index name&amp;quot; field. I&#39;m using &amp;quot;DLL Catalog Search&amp;quot;.&lt;/li&gt;
+&lt;li&gt;In the &amp;quot;Datasources&amp;quot; area, select &amp;quot;Content&amp;quot; to search the content of the site. There are several other options that you might wish to explore.&lt;/li&gt;
+&lt;li&gt;A warning message appeared at this point: &amp;quot;Configure the used datasources&amp;quot;. In my case, a &amp;quot;Bundles&amp;quot; area appeared. I&#39;m going to answer the question &amp;quot;Which bundles should be indexed?&amp;quot; with &amp;quot;Only those selected&amp;quot;, since I don&#39;t want to include blog posts and basic pages.&lt;/li&gt;
+&lt;li&gt;In the &amp;quot;Bundles&amp;quot; checklist, I&#39;m going to select &amp;quot;Author Authority&amp;quot;, &amp;quot;DLL Work&amp;quot;, &amp;quot;Item Record&amp;quot;, and &amp;quot;Web Page&amp;quot;.&lt;/li&gt;
+&lt;li&gt;I&#39;ll leave the &amp;quot;Languages&amp;quot; section alone, since I don&#39;t have multilingual content.&lt;/li&gt;
+&lt;li&gt;Under &amp;quot;Server&amp;quot;, I&#39;ll select the server I created above: DLLCatalog.&lt;/li&gt;
+&lt;li&gt;I&#39;ll check &amp;quot;Enabled&amp;quot;&lt;/li&gt;
+&lt;li&gt;I&#39;ll enter a description in the &amp;quot;Description&amp;quot; box.&lt;/li&gt;
+&lt;li&gt;I don&#39;t need to do anything in &amp;quot;Index options&amp;quot; or &amp;quot;Solr specific index options&amp;quot;.&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;Save and add fields&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Selecting fields takes time and care. You have to make a lot of decisions about what is important to include in the search and how it should be indexed. Since my experience tells me that each site has different needs, I can&#39;t offer any general wisdom other than this: consider including the &amp;quot;Rendered HTML output&amp;quot; (&lt;code&gt;rendered_item&lt;/code&gt;) along with other specific fields that you want to use as facets. &amp;quot;Content type&amp;quot; is another good one. If you want to use text fields as facets, make sure the &amp;quot;Type&amp;quot; is set to &amp;quot;String&amp;quot;, since &amp;quot;Fulltext&amp;quot; will not work for facets. Unless you&#39;re a super genius, you&#39;ll probably have to tinker with this and revise the selection as you test the search functionality.&lt;/p&gt;
+&lt;p&gt;When you&#39;re finished with selecting fields, click &amp;quot;Save changes&amp;quot;, then move on to the &amp;quot;Processors&amp;quot; tab. Again, the processors selected here will vary for each site.&lt;/p&gt;
+&lt;p&gt;You won&#39;t be able to do anything with the &amp;quot;Autocomplete&amp;quot; tab until you have set up a search view (see below).&lt;/p&gt;
+&lt;p&gt;Go back to the &amp;quot;View&amp;quot; tab and select &amp;quot;Queue all items for reindexing&amp;quot;, then click &amp;quot;Index now&amp;quot; in the &amp;quot;Start indexing now&amp;quot; area.&lt;/p&gt;
+&lt;h2&gt;Create a Display Mode for the Content&lt;/h2&gt;
+&lt;p&gt;The search view that I&#39;ll create below will display either &amp;quot;Rendered Entity&amp;quot; or &amp;quot;Fields.&amp;quot; I&#39;d like to use &amp;quot;Rendered Entity&amp;quot; because I don&#39;t want to configure a bunch of individual fields. But I also don&#39;t want the view to display the full node for each result. The solution is to create a &lt;a href=&quot;https://www.drupal.org/docs/drupal-apis/entity-api/display-modes-view-modes-and-form-modes&quot;&gt;display mode&lt;/a&gt;.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to &lt;code&gt;/admin/structure/display-modes&lt;/code&gt; in the UI&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;View modes&amp;quot;&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;+Add view mode&amp;quot;&lt;/li&gt;
+&lt;li&gt;Choose view mode entity type &amp;quot;Content&amp;quot;&lt;/li&gt;
+&lt;li&gt;Give the view mode a descriptive name (e.g., &amp;quot;Solr Search&amp;quot;) and a description&lt;/li&gt;
+&lt;li&gt;Check the content types that the view mode should apply to&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;Save&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now it&#39;s time to indicate what will be displayed when different content types are rendered in the new view mode.&lt;/p&gt;
+&lt;p&gt;First, go to &lt;code&gt;/admin/structure/types&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Now, for each content type that was specified when the view mode was created:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Click the arrow in the &amp;quot;Operations&amp;quot; column&lt;/li&gt;
+&lt;li&gt;Select &amp;quot;Manage display&amp;quot;&lt;/li&gt;
+&lt;li&gt;When the display window appears, select the new view mode&#39;s name&lt;/li&gt;
+&lt;li&gt;Drag and drop the field names into or out of the &amp;quot;Disabled&amp;quot; area according to your needs. Whatever is not in the &amp;quot;Disabled&amp;quot; area will appear on the screen when the content is rendered in the view mode, in the order in which it is listed in &amp;quot;Field&amp;quot;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Create a Search View&lt;/h2&gt;
+&lt;p&gt;Go to &lt;code&gt;/admin/structure/views&lt;/code&gt; in the UI and click &amp;quot;+Add view&amp;quot;&lt;/p&gt;
+&lt;h3&gt;Add View&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Give the view a name (e.g., &amp;quot;Main Solr Search&amp;quot;) and a description&lt;/li&gt;
+&lt;li&gt;In &amp;quot;View Settings&amp;quot;, in the &amp;quot;Show&amp;quot; dropdown menu, select the name of the index you created above (e.g., &amp;quot;Index DLL Catalog Search&amp;quot;)&lt;/li&gt;
+&lt;li&gt;In &amp;quot;Page Settings&amp;quot;, check &amp;quot;Create a page&amp;quot; and give the page a title and a path. I&#39;m setting my title to &amp;quot;Search&amp;quot; and the path to &lt;code&gt;search&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;I&#39;m going to select &amp;quot;Bootstrap List Group&amp;quot; of &amp;quot;Rendered entity&amp;quot; in the &amp;quot;Page display settings&amp;quot; area. I can change it later, if needed.&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;Save and edit&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Views Interface&lt;/h3&gt;
+&lt;p&gt;You&#39;ll need to do a lot of work here, so save early and save often. I&#39;m going to break it down according to the columns of the Views interface.&lt;/p&gt;
+&lt;h4&gt;First column&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Title&lt;/strong&gt;: You can change the title if you want. It isn&#39;t necessary unless you&#39;re going to have multiple displays in your view.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Format&lt;/strong&gt;: I like to use the Bootstrap List Group here because it fits well with my overall use of the Bootstrap framework.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Show&lt;/strong&gt;: I have used &amp;quot;Rendered Entity&amp;quot; or &amp;quot;Fields&amp;quot; here for different projects. In this one, I&#39;m using &amp;quot;Rendered Entity&amp;quot; because I don&#39;t want to configure a bunch of individual fields. Instead, I&#39;m going to use the view mode I created above. I&#39;ll click &amp;quot;Settings&amp;quot; and select the name of my new view mode for each of the content types listed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Filter criteria&lt;/strong&gt;: This is where you create the search box. This one requires a lot of configuration. To get started, click &amp;quot;Add&amp;quot; and select &amp;quot;Fulltext search&amp;quot;. In the window that appears when you click &amp;quot;Apply and configure filter criteria&amp;quot; do the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Check &amp;quot;Expose this filter to visitors, to allow them to change it&amp;quot;&lt;/li&gt;
+&lt;li&gt;Check &amp;quot;Required&amp;quot;&lt;/li&gt;
+&lt;li&gt;Choose &amp;quot;Single filter&amp;quot; in &amp;quot;Filter type to expose&amp;quot;&lt;/li&gt;
+&lt;li&gt;Make a label and a description, if you wish&lt;/li&gt;
+&lt;li&gt;In &amp;quot;Operator&amp;quot;, choose &amp;quot;Contains any of theses words&amp;quot; to ensure a greedy search&lt;/li&gt;
+&lt;li&gt;&amp;quot;Parse mode&amp;quot; should be set to &amp;quot;Multiple words&amp;quot;&lt;/li&gt;
+&lt;li&gt;If you want to give your users a hint, insert some text in &amp;quot;Placeholder&amp;quot; (e.g., &amp;quot;Enter your search term(s) …&amp;quot;)&lt;/li&gt;
+&lt;li&gt;Set the &amp;quot;Minimum keyword length&amp;quot; to &amp;quot;1&amp;quot; to ensure that &lt;em&gt;something&lt;/em&gt; has to be in the field to search&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Second column&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Page settings&lt;/strong&gt;: Enter the path that you want for your search page. I chose &lt;code&gt;search&lt;/code&gt;. Leave &lt;strong&gt;Menu&lt;/strong&gt; and &lt;strong&gt;Administration&lt;/strong&gt; theme alone.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Access&lt;/strong&gt;: The default &amp;quot;Unrestricted&amp;quot; is fine, unless you want to restrict your search to certain users or roles.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Header&lt;/strong&gt;: Click &amp;quot;Add&amp;quot; and select &amp;quot;Result summary&amp;quot;. In the configuration window, enter &amp;quot;Displaying @start - @end of @total results. Use the filters to limit the results.&amp;quot; Those placeholders will change as needed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Footer&lt;/strong&gt;: I leave this blank.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;No results behavior&lt;/strong&gt;: Click &amp;quot;Add&amp;quot; and select &amp;quot;Text area&amp;quot;. In the configuration window, enter &amp;quot;Your search returned no results.&amp;quot; You&#39;ll need to do some work with a Twig template later to keep that from showing up even before a user has performed a search.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pager&lt;/strong&gt;: Select &amp;quot;Full&amp;quot; and &amp;quot;Paged, 10 items&amp;quot;.&lt;/p&gt;
+&lt;h4&gt;Third column (Advanced)&lt;/h4&gt;
+&lt;p&gt;Expland the column by clicking on the arrow next to &amp;quot;Advanced&amp;quot;. There&#39;s no need to do anything in either the &amp;quot;Relationships&amp;quot; or the &amp;quot;Contextual filters&amp;quot; area.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Exposed form&lt;/strong&gt;: Change &amp;quot;No&amp;quot; to &amp;quot;Yes&amp;quot; in &amp;quot;Exposed form in block&amp;quot;. In &amp;quot;Exposed form style&amp;quot;, select &amp;quot;Basic&amp;quot;. In &amp;quot;Settings&amp;quot;, I like to use &amp;quot;Go&amp;quot; as my &amp;quot;Submit button text&amp;quot;. I don&#39;t check either of the boxes in this window, and I leave &amp;quot;Exposed sorts label&amp;quot; as it is.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Other&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Machine Name: &amp;quot;search&amp;quot;&lt;/li&gt;
+&lt;li&gt;Administrative comment: &amp;quot;None&amp;quot;&lt;/li&gt;
+&lt;li&gt;Use Ajax: &amp;quot;No&amp;quot;&lt;/li&gt;
+&lt;li&gt;Hide attachments in summary: &amp;quot;No&amp;quot;&lt;/li&gt;
+&lt;li&gt;Contextual links: &amp;quot;Shown&amp;quot;&lt;/li&gt;
+&lt;li&gt;Query settings: Check &amp;quot;Skip item access checks&amp;quot; and &amp;quot;Bypass access checks&amp;quot;&lt;/li&gt;
+&lt;li&gt;Caching: &amp;quot;Search API (none)&amp;quot;&lt;/li&gt;
+&lt;li&gt;CSS class: &amp;quot;search-index&amp;quot;. I add this class so that I can do some styling later on.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Click &amp;quot;Save&amp;quot;&lt;/p&gt;
+&lt;h2&gt;Create Facets&lt;/h2&gt;
+&lt;p&gt;Now that you have a search view, you can go to &lt;code&gt;/admin/config/search/facets&lt;/code&gt; in the UI and add some facets.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Click &amp;quot;+Add facet&amp;quot;&lt;/li&gt;
+&lt;li&gt;Select your search view&#39;s name in &amp;quot;Facet source&amp;quot;&lt;/li&gt;
+&lt;li&gt;Select a field that you want to use as a facet&lt;/li&gt;
+&lt;li&gt;Enter a name for the facet&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;Save&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now you need to configure the facet.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;In the &amp;quot;Widget&amp;quot; area, I like to use &amp;quot;List of checkboxes&amp;quot; for most things, but the others can be good options depending on the use case.&lt;/li&gt;
+&lt;li&gt;In &amp;quot;List of links settings&amp;quot;, I select all the boxes.&lt;/li&gt;
+&lt;li&gt;&amp;quot;Facet settings&amp;quot; includes a lot of options that will depend on the site&#39;s needs. The names make their functions more or less obvious.&lt;/li&gt;
+&lt;li&gt;Facet sorting: I tend to leave the default values, unless there&#39;s a special circumstance.&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;Save&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Set Autocomplete&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Go back to &lt;code&gt;/admin/config/search/search-api&lt;/code&gt; and click on your index&lt;/li&gt;
+&lt;li&gt;Click the &amp;quot;Autocomplete&amp;quot; tab&lt;/li&gt;
+&lt;li&gt;Your search view&#39;s name should appear in a list. Check it.&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;Save&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You should see a notice telling you to set the permissions for the search. Click on its link or go to &lt;code&gt;/admin/people/permissions&lt;/code&gt; and filter on &amp;quot;search&amp;quot;. Under &amp;quot;Search API Autocomplete&amp;quot;, check &amp;quot;anonymous user&amp;quot; and &amp;quot;authenticated user&amp;quot; for the permission &amp;quot;Use autocomplete for the YOUR_SEARCH_NAME search.&amp;quot; Click &amp;quot;Save permissions&amp;quot;.&lt;/p&gt;
+&lt;h2&gt;Enable and Place the Search Block&lt;/h2&gt;
+&lt;p&gt;If you go to &lt;code&gt;your-url.com/search&lt;/code&gt; now, you will probably see a mostly blank page. That is because the search block that you created when you made the search view has not been enabled and placed in a page.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to &lt;code&gt;/admin/structure/block&lt;/code&gt; in the UI&lt;/li&gt;
+&lt;li&gt;Scroll down to &amp;quot;Main content&amp;quot; and click &amp;quot;Place block&amp;quot;&lt;/li&gt;
+&lt;li&gt;Filter by your search view&#39;s name. Mine was &amp;quot;Exposed form: main_solr_search-search&amp;quot;&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;Place block&amp;quot;&lt;/li&gt;
+&lt;li&gt;I generally uncheck &amp;quot;Display title&amp;quot; and choose &amp;quot;Override title&amp;quot; so that I can specify the text I want to appear on the search page. I&#39;ve settled on &amp;quot;Search&amp;quot;.&lt;/li&gt;
+&lt;li&gt;In the &amp;quot;Visibility&amp;quot; area, click the &amp;quot;Pages&amp;quot; tab, enter &amp;quot;/&amp;quot; and the path of your search view on one line, then &amp;quot;/&amp;quot; and the path of your search view plus &amp;quot;/*&amp;quot; on a second line:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://sjhuskey.info/assets/images/front-end/search-block-config.png&quot; alt=&quot;Search block configuration&quot; title=&quot;Search block configuration&quot; class=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Click &amp;quot;Save block&amp;quot;.&lt;/p&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;After all that, you should have a functioning search page, but you&#39;re not going to like how it looks. Here&#39;s mine:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://sjhuskey.info/assets/images/front-end/search-page-unstyled.png&quot; alt=&quot;Unstyled search page&quot; title=&quot;Unstyled search page&quot; class=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;That&#39;s because it hasn&#39;t been styled! In the next post(s)—it will probably take more than one—I&#39;ll write about making a display mode for search results, overriding the template for the search page, placing the facets, and styling the various elements.&lt;/p&gt;
+</content>
+  </entry> 
   <entry>
     <title>Rebuilding A Theme, Part IX: Content Types, Continued</title>
     <link href="https://sjhuskey.info/posts/upgrading-theme-part-9/" />

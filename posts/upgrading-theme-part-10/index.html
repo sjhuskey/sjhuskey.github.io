@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samuel J. Huskey - Rebuilding A Theme, Part X: Solr</title>
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/dist/app.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-T4DCQE192P");
+    </script>
+    
+
+
+<meta name="description" content="I blog about my adventures with technology, text and data analysis, and digital philology">
+<!-- Open Graph Metadata -->
+  <meta property="og:title" content="Rebuilding A Theme, Part X: Solr">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sjhuskey.info/posts/upgrading-theme-part-10/">
+  <meta property="og:description" content="Notes on theming a site&#39;s Solr integration after migrating from Drupal 7 to Drupal 10">
+  <meta property="og:site_name" content="Samuel J. Huskey">
+  <meta property="og:locale" content="en_US">
+  
+  <meta property="og:image" content="/assets/images/drupal.jpg">
+  
+  
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rebuilding A Theme, Part X: Solr">
+  <meta name="twitter:description" content="Notes on theming a site&#39;s Solr integration after migrating from Drupal 7 to Drupal 10">
+  
+  <meta name="twitter:image" content="https://sjhuskey.info/assets/images/drupal.jpg">
+  
+
+
+
+
+<link rel="icon" href="https://sjhuskey.info/assets/images/favicon.ico">
+
+
+
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    <div id="header-container">
+  <div class="container py-6">
+    <header class="pb-5 mb-4">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container w-75 mx-auto border-bottom">
+          <a href="/" class="d-flex align-items-center text-light text-decoration-none">
+              <title>Samuel J. Huskey</title>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span class="fs-4">Samuel J. Huskey</span>
+          </a>
+          <button
+            class="navbar-toggler navbar-dark"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/cv.html">CV</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/dh.html">DH</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/tech.html">Tech</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/posts">Blog</a>
+    </li>
+</ul>
+
+
+</div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <main id="main">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            
+            <img src="/assets/images/drupal.jpg" class="featured-image-post" />
+            
+            <h1>Rebuilding A Theme, Part X: Solr</h1>
+            
+            <p class="post-date">
+              Posted: 2024-07-19
+               in              
+              <a href="/tags/Drupal">Drupal</a
+              >,  
+              <a href="/tags/Front End Development">Front End Development</a
+              >   
+            </p>
+            
+            <p>The old Drupal 7 version of the DLL Catalog uses <a href="https://solr.apache.org/">Apache Solr</a> to provide <a href="https://en.wikipedia.org/wiki/Faceted_search">faceted search</a>. Since the search page and its results are important features on the DLL Catalog site, I need to install and configure Solr before I can continue rebuilding my theme.</p>
+<p>Fortunately, that's relatively easy to do in DDEV, which I'm using to develop my theme locally. <a href="https://github.com/ddev/ddev-solr">The ddev-solr repo</a> has instructions for installation and configuration, but I'm going to document what I did, since I ran into some obstacles along the way.</p>
+<h2>Install DDEV Solr</h2>
+<p>Installation of ddev-solr boils down to these steps:</p>
+<ol>
+<li><code>ddev get ddev/ddev-solr</code></li>
+<li><code>ddev restart</code></li>
+</ol>
+<h2>Install Drupal Modules</h2>
+<p>Again, fortunately, the ddev-solr repo also has <a href="https://github.com/ddev/ddev-solr?tab=readme-ov-file#drupal-and-search-api-solr">instructions for preparing a Drupal site for using Solr</a>:</p>
+<ol>
+<li>Install the <a href="https://www.drupal.org/project/search_api_solr">Search API Solr module</a>: <code>composer require 'drupal/search_api_solr:^4.3'</code>. That will cause a bunch of other things to be installed.</li>
+<li>Enable the Search API Solr module: <code>drush en -y search_api_solr</code>. Again, this will cause some other modules to be installed, too. Be sure to enable the <code>search_api_solr_admin</code> module, too. It comes with the Search API Solr module, but it isn't installed automatically: <code>drush en -y search_api_solr_admin</code>. If you want autocomplete functionality, enable the Search API Solr Autocomplete module: <code>drush en -y search_api_solr_autocomplete</code>.</li>
+<li>Install the <a href="https://www.drupal.org/project/search_api_autocomplete">Search API Autocomplete module</a>, if you want search forms to have autocomplete functionality: <code>composer require drupal/search_api_autocomplete</code>, then <code>drush en -y search_api_autocomplete</code>.</li>
+<li>Install the <a href="https://www.drupal.org/project/facets/">Facets module</a>: <code>composer require 'drupal/facets:^2.0'</code>, then <code>drush en -y facets</code>.</li>
+</ol>
+<p>Since my theme is a subtheme of the <a href="https://www.drupal.org/project/bootstrap5">Bootstrap5 theme</a>, I'm also going to install the <a href="https://www.drupal.org/project/views_bootstrap">Views Bootstrap module</a>. It will give me some nice options for rendering the search results.</p>
+<h2>Configure Solr</h2>
+<p>The documentation is a little hazy here, at least for me. The <a href="https://solr.apache.org/resources.html#documentation">documentation for Solr</a> uses the terms &quot;core&quot; and &quot;collection,&quot; but the Search API Solr interface at <code>/admin/config/search/search-api</code> only gives you the option to add a new &quot;server&quot; or &quot;index&quot;. I finally realized that a &quot;server&quot; in Search API Solr is really a &quot;core&quot; or a &quot;collection&quot;, depending on which mode your installation of Solr is using (traditional = core; cloud = collection).</p>
+<p>In any case, the first step is to create a server in Drupal's UI.</p>
+<h3>Create a server</h3>
+<ol>
+<li>Go to <code>admin/config/search/search-api</code></li>
+<li>Click &quot;+Add Server&quot;. This will open a new page.</li>
+<li>Enter a name into the &quot;Server name&quot; field and note the corresponding machine name to the right of the field. In my case, I named the server &quot;DLL Catalog&quot;; the machine name is <code>dll_catalog</code>.</li>
+<li>Leave the &quot;Enabled&quot; box checked</li>
+<li>Enter a description in the &quot;Description&quot; field</li>
+<li>Under &quot;Backend&quot;, choose &quot;Solr&quot;</li>
+<li>In &quot;Configure Solr backend&quot;, select &quot;Solr Cloud with Basic Auth&quot;</li>
+<li>In &quot;Solr node&quot;, insert &quot;solr&quot;. <strong>Don't miss this step!</strong> If you leave it at &quot;localhost&quot;, you'll run into a lot of trouble. I speak from experience!</li>
+<li>In &quot;Solr port&quot;, insert &quot;8983&quot;</li>
+<li>&quot;Solr path&quot; should be just &quot;/&quot;</li>
+<li>&quot;Default Solr collection&quot;: Insert the name you want to use for your collection.</li>
+<li>Leave everything else alone, but scroll down and enter &quot;solr&quot; in the &quot;Username&quot; field and &quot;SolrRocks&quot; in the &quot;Password&quot; field.</li>
+<li>Click &quot;Save&quot;.</li>
+</ol>
+<p>You'll probably see some warning messages at this point. That's okay. They'll be handled by the next step. Also, the &quot;Server Connection&quot; field should say &quot;The Solr server could be reached.&quot; The &quot;Collection Connection&quot; should say that the collection could not be accessed. That's because you haven't uploaded a configset yet. That's the next step.</p>
+<h3>Upload a configset</h3>
+<p>There are two ways to do this.</p>
+<p>The easiest way is in the UI. If you enabled the <code>search_api_solr_admin</code> module, you should see a button &quot;+Upload Configset&quot;. Click that. After a bit, you should see status messages that say &quot;Successfully uploaded configset&quot; and &quot;Successfully created collection&quot;, with the name of your collection. Additionally, the &quot;Collection Connection&quot; should now say that the collection could be accessed.</p>
+<p>You can also use <code>drush</code> on the command line. Navigate to your site's root directory (i.e., where your site is saved on your computer. Mine is in<code>~/Sites/d10dllcat</code>) and execute this command:<code>ddev drush --numShards=1 search-api-solr:upload-configset SEARCH_API_SERVER_ID</code>, replacing<code>SEARCH_API_SERVER_ID</code> with the machine name of your server (see above). In my case, the command looks like this:</p>
+<p><code>ddev drush --numShards=1 search-api-solr:upload-configset dllcatalog</code></p>
+<h2>Create the Index</h2>
+<p>Solr needs something to search. That's the role of an index. I'm going to create an index for site-wide searching of my four main content types here.</p>
+<ol>
+<li>Go to <code>/admin/config/search/search-api</code> in the UI.</li>
+<li>Click &quot;+Add index&quot;</li>
+<li>On the page that comes up, give the index a name in the &quot;Index name&quot; field. I'm using &quot;DLL Catalog Search&quot;.</li>
+<li>In the &quot;Datasources&quot; area, select &quot;Content&quot; to search the content of the site. There are several other options that you might wish to explore.</li>
+<li>A warning message appeared at this point: &quot;Configure the used datasources&quot;. In my case, a &quot;Bundles&quot; area appeared. I'm going to answer the question &quot;Which bundles should be indexed?&quot; with &quot;Only those selected&quot;, since I don't want to include blog posts and basic pages.</li>
+<li>In the &quot;Bundles&quot; checklist, I'm going to select &quot;Author Authority&quot;, &quot;DLL Work&quot;, &quot;Item Record&quot;, and &quot;Web Page&quot;.</li>
+<li>I'll leave the &quot;Languages&quot; section alone, since I don't have multilingual content.</li>
+<li>Under &quot;Server&quot;, I'll select the server I created above: DLLCatalog.</li>
+<li>I'll check &quot;Enabled&quot;</li>
+<li>I'll enter a description in the &quot;Description&quot; box.</li>
+<li>I don't need to do anything in &quot;Index options&quot; or &quot;Solr specific index options&quot;.</li>
+<li>Click &quot;Save and add fields&quot;</li>
+</ol>
+<p>Selecting fields takes time and care. You have to make a lot of decisions about what is important to include in the search and how it should be indexed. Since my experience tells me that each site has different needs, I can't offer any general wisdom other than this: consider including the &quot;Rendered HTML output&quot; (<code>rendered_item</code>) along with other specific fields that you want to use as facets. &quot;Content type&quot; is another good one. If you want to use text fields as facets, make sure the &quot;Type&quot; is set to &quot;String&quot;, since &quot;Fulltext&quot; will not work for facets. Unless you're a super genius, you'll probably have to tinker with this and revise the selection as you test the search functionality.</p>
+<p>When you're finished with selecting fields, click &quot;Save changes&quot;, then move on to the &quot;Processors&quot; tab. Again, the processors selected here will vary for each site.</p>
+<p>You won't be able to do anything with the &quot;Autocomplete&quot; tab until you have set up a search view (see below).</p>
+<p>Go back to the &quot;View&quot; tab and select &quot;Queue all items for reindexing&quot;, then click &quot;Index now&quot; in the &quot;Start indexing now&quot; area.</p>
+<h2>Create a Display Mode for the Content</h2>
+<p>The search view that I'll create below will display either &quot;Rendered Entity&quot; or &quot;Fields.&quot; I'd like to use &quot;Rendered Entity&quot; because I don't want to configure a bunch of individual fields. But I also don't want the view to display the full node for each result. The solution is to create a <a href="https://www.drupal.org/docs/drupal-apis/entity-api/display-modes-view-modes-and-form-modes">display mode</a>.</p>
+<ol>
+<li>Go to <code>/admin/structure/display-modes</code> in the UI</li>
+<li>Click &quot;View modes&quot;</li>
+<li>Click &quot;+Add view mode&quot;</li>
+<li>Choose view mode entity type &quot;Content&quot;</li>
+<li>Give the view mode a descriptive name (e.g., &quot;Solr Search&quot;) and a description</li>
+<li>Check the content types that the view mode should apply to</li>
+<li>Click &quot;Save&quot;</li>
+</ol>
+<p>Now it's time to indicate what will be displayed when different content types are rendered in the new view mode.</p>
+<p>First, go to <code>/admin/structure/types</code>.</p>
+<p>Now, for each content type that was specified when the view mode was created:</p>
+<ol>
+<li>Click the arrow in the &quot;Operations&quot; column</li>
+<li>Select &quot;Manage display&quot;</li>
+<li>When the display window appears, select the new view mode's name</li>
+<li>Drag and drop the field names into or out of the &quot;Disabled&quot; area according to your needs. Whatever is not in the &quot;Disabled&quot; area will appear on the screen when the content is rendered in the view mode, in the order in which it is listed in &quot;Field&quot;.</li>
+</ol>
+<h2>Create a Search View</h2>
+<p>Go to <code>/admin/structure/views</code> in the UI and click &quot;+Add view&quot;</p>
+<h3>Add View</h3>
+<ol>
+<li>Give the view a name (e.g., &quot;Main Solr Search&quot;) and a description</li>
+<li>In &quot;View Settings&quot;, in the &quot;Show&quot; dropdown menu, select the name of the index you created above (e.g., &quot;Index DLL Catalog Search&quot;)</li>
+<li>In &quot;Page Settings&quot;, check &quot;Create a page&quot; and give the page a title and a path. I'm setting my title to &quot;Search&quot; and the path to <code>search</code>.</li>
+<li>I'm going to select &quot;Bootstrap List Group&quot; of &quot;Rendered entity&quot; in the &quot;Page display settings&quot; area. I can change it later, if needed.</li>
+<li>Click &quot;Save and edit&quot;</li>
+</ol>
+<h3>Views Interface</h3>
+<p>You'll need to do a lot of work here, so save early and save often. I'm going to break it down according to the columns of the Views interface.</p>
+<h4>First column</h4>
+<p><strong>Title</strong>: You can change the title if you want. It isn't necessary unless you're going to have multiple displays in your view.</p>
+<p><strong>Format</strong>: I like to use the Bootstrap List Group here because it fits well with my overall use of the Bootstrap framework.</p>
+<p><strong>Show</strong>: I have used &quot;Rendered Entity&quot; or &quot;Fields&quot; here for different projects. In this one, I'm using &quot;Rendered Entity&quot; because I don't want to configure a bunch of individual fields. Instead, I'm going to use the view mode I created above. I'll click &quot;Settings&quot; and select the name of my new view mode for each of the content types listed.</p>
+<p><strong>Filter criteria</strong>: This is where you create the search box. This one requires a lot of configuration. To get started, click &quot;Add&quot; and select &quot;Fulltext search&quot;. In the window that appears when you click &quot;Apply and configure filter criteria&quot; do the following:</p>
+<ol>
+<li>Check &quot;Expose this filter to visitors, to allow them to change it&quot;</li>
+<li>Check &quot;Required&quot;</li>
+<li>Choose &quot;Single filter&quot; in &quot;Filter type to expose&quot;</li>
+<li>Make a label and a description, if you wish</li>
+<li>In &quot;Operator&quot;, choose &quot;Contains any of theses words&quot; to ensure a greedy search</li>
+<li>&quot;Parse mode&quot; should be set to &quot;Multiple words&quot;</li>
+<li>If you want to give your users a hint, insert some text in &quot;Placeholder&quot; (e.g., &quot;Enter your search term(s) …&quot;)</li>
+<li>Set the &quot;Minimum keyword length&quot; to &quot;1&quot; to ensure that <em>something</em> has to be in the field to search</li>
+</ol>
+<h4>Second column</h4>
+<p><strong>Page settings</strong>: Enter the path that you want for your search page. I chose <code>search</code>. Leave <strong>Menu</strong> and <strong>Administration</strong> theme alone.</p>
+<p><strong>Access</strong>: The default &quot;Unrestricted&quot; is fine, unless you want to restrict your search to certain users or roles.</p>
+<p><strong>Header</strong>: Click &quot;Add&quot; and select &quot;Result summary&quot;. In the configuration window, enter &quot;Displaying @start - @end of @total results. Use the filters to limit the results.&quot; Those placeholders will change as needed.</p>
+<p><strong>Footer</strong>: I leave this blank.</p>
+<p><strong>No results behavior</strong>: Click &quot;Add&quot; and select &quot;Text area&quot;. In the configuration window, enter &quot;Your search returned no results.&quot; You'll need to do some work with a Twig template later to keep that from showing up even before a user has performed a search.</p>
+<p><strong>Pager</strong>: Select &quot;Full&quot; and &quot;Paged, 10 items&quot;.</p>
+<h4>Third column (Advanced)</h4>
+<p>Expland the column by clicking on the arrow next to &quot;Advanced&quot;. There's no need to do anything in either the &quot;Relationships&quot; or the &quot;Contextual filters&quot; area.</p>
+<p><strong>Exposed form</strong>: Change &quot;No&quot; to &quot;Yes&quot; in &quot;Exposed form in block&quot;. In &quot;Exposed form style&quot;, select &quot;Basic&quot;. In &quot;Settings&quot;, I like to use &quot;Go&quot; as my &quot;Submit button text&quot;. I don't check either of the boxes in this window, and I leave &quot;Exposed sorts label&quot; as it is.</p>
+<p><strong>Other</strong>:</p>
+<ul>
+<li>Machine Name: &quot;search&quot;</li>
+<li>Administrative comment: &quot;None&quot;</li>
+<li>Use Ajax: &quot;No&quot;</li>
+<li>Hide attachments in summary: &quot;No&quot;</li>
+<li>Contextual links: &quot;Shown&quot;</li>
+<li>Query settings: Check &quot;Skip item access checks&quot; and &quot;Bypass access checks&quot;</li>
+<li>Caching: &quot;Search API (none)&quot;</li>
+<li>CSS class: &quot;search-index&quot;. I add this class so that I can do some styling later on.</li>
+</ul>
+<p>Click &quot;Save&quot;</p>
+<h2>Create Facets</h2>
+<p>Now that you have a search view, you can go to <code>/admin/config/search/facets</code> in the UI and add some facets.</p>
+<ol>
+<li>Click &quot;+Add facet&quot;</li>
+<li>Select your search view's name in &quot;Facet source&quot;</li>
+<li>Select a field that you want to use as a facet</li>
+<li>Enter a name for the facet</li>
+<li>Click &quot;Save&quot;</li>
+</ol>
+<p>Now you need to configure the facet.</p>
+<ol>
+<li>In the &quot;Widget&quot; area, I like to use &quot;List of checkboxes&quot; for most things, but the others can be good options depending on the use case.</li>
+<li>In &quot;List of links settings&quot;, I select all the boxes.</li>
+<li>&quot;Facet settings&quot; includes a lot of options that will depend on the site's needs. The names make their functions more or less obvious.</li>
+<li>Facet sorting: I tend to leave the default values, unless there's a special circumstance.</li>
+<li>Click &quot;Save&quot;</li>
+</ol>
+<h2>Set Autocomplete</h2>
+<ol>
+<li>Go back to <code>/admin/config/search/search-api</code> and click on your index</li>
+<li>Click the &quot;Autocomplete&quot; tab</li>
+<li>Your search view's name should appear in a list. Check it.</li>
+<li>Click &quot;Save&quot;</li>
+</ol>
+<p>You should see a notice telling you to set the permissions for the search. Click on its link or go to <code>/admin/people/permissions</code> and filter on &quot;search&quot;. Under &quot;Search API Autocomplete&quot;, check &quot;anonymous user&quot; and &quot;authenticated user&quot; for the permission &quot;Use autocomplete for the YOUR_SEARCH_NAME search.&quot; Click &quot;Save permissions&quot;.</p>
+<h2>Enable and Place the Search Block</h2>
+<p>If you go to <code>your-url.com/search</code> now, you will probably see a mostly blank page. That is because the search block that you created when you made the search view has not been enabled and placed in a page.</p>
+<ol>
+<li>Go to <code>/admin/structure/block</code> in the UI</li>
+<li>Scroll down to &quot;Main content&quot; and click &quot;Place block&quot;</li>
+<li>Filter by your search view's name. Mine was &quot;Exposed form: main_solr_search-search&quot;</li>
+<li>Click &quot;Place block&quot;</li>
+<li>I generally uncheck &quot;Display title&quot; and choose &quot;Override title&quot; so that I can specify the text I want to appear on the search page. I've settled on &quot;Search&quot;.</li>
+<li>In the &quot;Visibility&quot; area, click the &quot;Pages&quot; tab, enter &quot;/&quot; and the path of your search view on one line, then &quot;/&quot; and the path of your search view plus &quot;/*&quot; on a second line:</li>
+</ol>
+<p><img src="/assets/images/front-end/search-block-config.png" alt="Search block configuration" title="Search block configuration" class="image"></p>
+<p>Click &quot;Save block&quot;.</p>
+<h2>Summary</h2>
+<p>After all that, you should have a functioning search page, but you're not going to like how it looks. Here's mine:</p>
+<p><img src="/assets/images/front-end/search-page-unstyled.png" alt="Unstyled search page" title="Unstyled search page" class="image"></p>
+<p>That's because it hasn't been styled! In the next post(s)—it will probably take more than one—I'll write about making a display mode for search results, overriding the template for the search page, placing the facets, and styling the various elements.</p>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mt-auto">
+  <div class="container w-75 mx-auto">
+    <div class="row">
+      <div class="col-8">
+        <p class="footerinfo">
+          ©2024 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
+          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+        </p>
+      </div>
+      <div class="col-4">
+        <div id="socialicons">
+          <!-- Social Media Icons by NiftyButtons https://niftybuttons.com -->
+          <a href="https://github.com/sjhuskey" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-github"
+              data-donate="true"
+              data-tag="git"
+              data-name="Github"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"
+              ></path></svg></a
+          ><a href="https://www.linkedin.com/in/sjhuskey/" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-linkedin"
+              data-donate="true"
+              data-tag="lin"
+              data-name="LinkedIn"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"
+              ></path></svg
+          ></a>
+          <a
+            href="https://sjhuskey.info/feed/feed.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="text-decoration: none; border: 0; width: 36px; height: 36px; padding: 0; margin: 3px; color: #ffffff"
+          >
+            <svg
+              class="niftybutton-rss"
+              style="display: block; fill: currentColor"
+              data-donate="true"
+              data-tag="rss"
+              data-name="RSS"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M201.8 347.2c0 20.3-16.5 36.8-36.8 36.8 -20.3 0-36.8-16.5-36.8-36.8s16.5-36.8 36.8-36.8C185.3 310.4 201.8 326.8 201.8 347.2zM128.2 204.7v54.5c68.5 0.7 124 56.3 124.7 124.7h54.5C306.7 285.3 226.9 205.4 128.2 204.7zM128.2 166.6c57.9 0.3 112.3 22.9 153.2 63.9 41 41 63.7 95.5 63.9 153.5h54.5c-0.3-149.9-121.7-271.4-271.6-271.9V166.6L128.2 166.6z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript" src="/dist/app.js"></script>
+  </body>
+</html>
