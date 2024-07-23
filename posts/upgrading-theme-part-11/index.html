@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samuel J. Huskey - Rebuilding A Theme, Part XI: Template for the Search Page</title>
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/dist/app.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-T4DCQE192P");
+    </script>
+    
+
+
+<meta name="description" content="I blog about my adventures with technology, text and data analysis, and digital philology">
+<!-- Open Graph Metadata -->
+  <meta property="og:title" content="Rebuilding A Theme, Part XI: Template for the Search Page">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sjhuskey.info/posts/upgrading-theme-part-11/">
+  <meta property="og:description" content="Notes on theming a site&#39;s Solr integration after migrating from Drupal 7 to Drupal 10">
+  <meta property="og:site_name" content="Samuel J. Huskey">
+  <meta property="og:locale" content="en_US">
+  
+  <meta property="og:image" content="https://sjhuskey.info/assets/images/drupal.jpg">
+  
+  
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rebuilding A Theme, Part XI: Template for the Search Page">
+  <meta name="twitter:description" content="Notes on theming a site&#39;s Solr integration after migrating from Drupal 7 to Drupal 10">
+  
+  <meta name="twitter:image" content="https://sjhuskey.info/assets/images/drupal.jpg">
+  
+
+
+
+
+<link rel="icon" href="https://sjhuskey.info/assets/images/favicon.ico">
+
+
+
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    <div id="header-container">
+  <div class="container py-6">
+    <header class="pb-5 mb-4">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container w-75 mx-auto border-bottom">
+          <a href="/" class="d-flex align-items-center text-light text-decoration-none">
+              <title>Samuel J. Huskey</title>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span class="fs-4">Samuel J. Huskey</span>
+          </a>
+          <button
+            class="navbar-toggler navbar-dark"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/cv.html">CV</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/dh.html">DH</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/tech.html">Tech</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/posts">Blog</a>
+    </li>
+</ul>
+
+
+</div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <main id="main">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            
+            <img src="/assets/images/drupal.jpg" class="featured-image-post" />
+            
+            <h1>Rebuilding A Theme, Part XI: Template for the Search Page</h1>
+            
+            <p class="post-date">
+              Posted: 2024-07-22
+               in              
+              <a href="/tags/Drupal">Drupal</a
+              >,  
+              <a href="/tags/Front End Development">Front End Development</a
+              >   
+            </p>
+            
+            <p>After installing and configuring Solr and creating a search view and facets (<a href="https://sjhuskey.info/posts/upgrading-theme-part-10/">see part 10 of this series</a>), I can begin building the search page and the view of results.</p>
+<p>To do that, I need to do create a <code>page--search.html.twig</code> template, use Twig Tweak to place the relevant blocks in the template, and style the components with CSS.</p>
+<h2>Extending the Existing Page Template</h2>
+<p>When I created the search view, I specified the path as <code>/search</code>. When I navigate to that page in my browser and inspect it with the web developer tools, I can see that Twig's file name suggestions list two options for the layout: <code>page--search.html.twig</code> and <code>page.html.twig</code>. The latter is currently active, so I'm going to make a new template with the name of the former in my subtheme's <code>templates/layouts</code> directory.</p>
+<p>Since the search page will look different from other pages on the site, this is not just a matter of copying the content of <code>page.html.twig</code> and making some minor adjustments. Remember that <code>page.html.twig</code> covers practically everything you see on a given page: the header, the navbar, the content, and the footer. I don't want to repeat all that in my <code>page--search.html.twig</code> template, since that would mean that if I make any changes to the navbar, for example, I'd have to be sure that I made the changes in both <code>page.html.twig</code> and <code>page--search.html.twig</code>—and that's just wasting time! Fortunately, I can just make a couple of minor adjustments to my <code>page.html.twig</code> template to turn it into something I can <em>extend</em> with other templates.</p>
+<p>Specifically, I'll enclose the <code>&lt;main&gt;</code> section with <code>{% block main %} … {% endblock %}</code>, and I'll enclose <code>{{ page.content }}</code> with <code>{% block content %} … {% endblock %}</code>. This is a nice feature of Twig that gives me the option to override a portion of a template. In other words, it is effectively a condition: &quot;If another template extends this one, and if it has content, insert the content here; otherwise, just render the content of the current page.&quot;</p>
+<p>Here's the new code for the relevant area of <code>page.html.twig</code>:</p>
+<pre class="language-twig"><code class="language-twig"><span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">block</span> main <span class="token delimiter punctuation">%}</span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main-content<span class="token punctuation">"</span></span> <span class="token attr-name">tabindex</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>  <span class="token twig language-twig"><span class="token comment">{# link is in html.html.twig #}</span></span><br><br>  <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span><br>  <span class="token tag-name keyword">set</span> sidebar_first_classes <span class="token operator">=</span> <span class="token punctuation">(</span>page<span class="token punctuation">.</span>sidebar_first <span class="token operator">and</span> page<span class="token punctuation">.</span>sidebar_second<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string"><span class="token punctuation">'</span>col-12 col-sm-6 col-lg-3<span class="token punctuation">'</span></span> <span class="token punctuation">:</span> <span class="token string"><span class="token punctuation">'</span>col-12 col-lg-3<span class="token punctuation">'</span></span><br>  <span class="token delimiter punctuation">%}</span></span><br><br>  <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span><br>  <span class="token tag-name keyword">set</span> sidebar_second_classes <span class="token operator">=</span> <span class="token punctuation">(</span>page<span class="token punctuation">.</span>sidebar_first <span class="token operator">and</span> page<span class="token punctuation">.</span>sidebar_second<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string"><span class="token punctuation">'</span>col-12 col-sm-6 col-lg-3<span class="token punctuation">'</span></span> <span class="token punctuation">:</span> <span class="token string"><span class="token punctuation">'</span>col-12 col-lg-3<span class="token punctuation">'</span></span><br>  <span class="token delimiter punctuation">%}</span></span><br><br>  <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span><br>  <span class="token tag-name keyword">set</span> content_classes <span class="token operator">=</span> <span class="token punctuation">(</span>page<span class="token punctuation">.</span>sidebar_first <span class="token operator">and</span> page<span class="token punctuation">.</span>sidebar_second<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string"><span class="token punctuation">'</span>col-12 col-lg-6<span class="token punctuation">'</span></span> <span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>page<span class="token punctuation">.</span>sidebar_first <span class="token operator">or</span> page<span class="token punctuation">.</span>sidebar_second<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string"><span class="token punctuation">'</span>col-12 col-lg-9<span class="token punctuation">'</span></span> <span class="token punctuation">:</span> <span class="token string"><span class="token punctuation">'</span>col-12<span class="token punctuation">'</span></span> <span class="token punctuation">)</span><br>   <span class="token delimiter punctuation">%}</span></span><br><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> b5_top_container <span class="token delimiter punctuation">}}</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>   <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">if</span> page<span class="token punctuation">.</span>breadcrumb <span class="token delimiter punctuation">%}</span></span><br>    <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> page<span class="token punctuation">.</span>breadcrumb <span class="token delimiter punctuation">}}</span></span><br>   <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endif</span> <span class="token delimiter punctuation">%}</span></span><br>   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>row g-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">if</span> page<span class="token punctuation">.</span>sidebar_first <span class="token delimiter punctuation">%}</span></span><br>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>order-2 order-lg-1 <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> sidebar_first_classes <span class="token delimiter punctuation">}}</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> page<span class="token punctuation">.</span>sidebar_first <span class="token delimiter punctuation">}}</span></span><br>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endif</span> <span class="token delimiter punctuation">%}</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>order-1 order-lg-2 <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> content_classes <span class="token delimiter punctuation">}}</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>          <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">block</span> content <span class="token delimiter punctuation">%}</span></span><br>            <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> page<span class="token punctuation">.</span>content <span class="token delimiter punctuation">}}</span></span><br>          <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endblock</span> <span class="token delimiter punctuation">%}</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">if</span> page<span class="token punctuation">.</span>sidebar_second <span class="token delimiter punctuation">%}</span></span><br>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>order-3 <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> sidebar_second_classes <span class="token delimiter punctuation">}}</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> page<span class="token punctuation">.</span>sidebar_second <span class="token delimiter punctuation">}}</span></span><br>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endif</span> <span class="token delimiter punctuation">%}</span></span><br>   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">></span></span><br><span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endblock</span> <span class="token delimiter punctuation">%}</span></span></code></pre>
+<p>Now I can focus on the <code>content</code> part in the <code>page--search.html.twig</code> template. If I make any adjustments to other parts of the <code>page.html.twig</code> template (e.g., the navbar), those will affect <code>page--search.html.twig</code>, too.</p>
+<p>At the top of my <code>page--search.html.twig</code> template, I'll insert the following code:</p>
+<pre class="language-twig"><code class="language-twig"><span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">extends</span> <span class="token string"><span class="token punctuation">'</span>page.html.twig<span class="token punctuation">'</span></span> <span class="token delimiter punctuation">%}</span></span><br>    <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">block</span> content <span class="token delimiter punctuation">%}</span></span><br><br>    <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endblock</span> <span class="token delimiter punctuation">%}</span></span><br></code></pre>
+<p>The first line shows that this template <em>extends</em> the default page template. The next lines signal that everything between after <code>block content</code> and <code>endblock</code> should be inserted into the corresponding <code>content</code> block in <code>page.html.twig</code>.</p>
+<p>Now I can work on setting up my search page without worrying about inserting code for the navbar or any other part of the regular page structure.</p>
+<h2>Placing the Search Form</h2>
+<p>In the <a href="https://sjhuskey.info/posts/upgrading-theme-part-10/">previous post</a>, I described the process of creating a block for the exposed search form that is part of the search view. That is what I see when I look at my unstyled search page:</p>
+<p><img src="/assets/images/front-end/search-page-unstyled.png" alt="Unstyled search page" title="Unstyled search page" class="image"></p>
+<p>It's doing the job, but I don't like the fact that it's displaying the &quot;No results&quot; text (&quot;Your search returned no results&quot;) when I haven't even searched for anything. Also, if I search for something, I want the form to remain at the top of the list of results so that I can do a new search.</p>
+<p>The <a href="https://www.drupal.org/project/twig_tweak">Twig Tweak module</a> has a handy <code>drupal_block()</code> function that I can use to place the search block that I created earlier. First, though, I need to know the machine name for that block. The <a href="https://git.drupalcode.org/project/twig_tweak/-/blob/3.x/docs/cheat-sheet.md">Twig Tweak Cheat Sheet</a> tells me how to do that using <code>drush</code>: <code>drush ev &quot;print_r(array_keys(\Drupal::service('plugin.manager.block')-&gt;getDefinitions()));&quot;</code>. That gives me a list of all the blocks with their ID numbers. The one I'm looking for is <code>views_exposed_filter_block:main_solr_search-search'</code>.</p>
+<p>With that information, I'll add this to my <code>page--search.html.twig</code> template:</p>
+<pre class="language-twig"><code class="language-twig"><span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">if</span> page<span class="token punctuation">.</span>content <span class="token delimiter punctuation">%}</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>page__content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token twig language-twig"><span class="token comment">{# Place the search form block #}</span></span><br>        <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> drupal_block<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>views_exposed_filter_block:main_solr_search-search<span class="token punctuation">'</span></span><span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endif</span> <span class="token delimiter punctuation">%}</span></span><br></code></pre>
+<p>After clearing the caches (<code>drush cr</code>) and reloading the page in my browser, I now see this:</p>
+<p><img src="/assets/images/front-end/search-block-with-twig.png" alt="Screenshot of the search form generated by Twig Tweak function" title="Twig Tweak function for search block" class="image"></p>
+<p>But if I search for something, no results will be displayed, because the template doesn't yet have a place for results.</p>
+<h2>Search Results</h2>
+<p>I don't want my &quot;No results&quot; text to be displayed when I haven't searched for anything, so I need a way to control the initial view of the search page. I have a trick for that:</p>
+<pre class="language-twig"><code class="language-twig"><span class="token twig language-twig"><span class="token comment">{# Don't display search results if there aren't any #}</span></span><br>    <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">if</span> drupal_view_result<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>main_solr_search<span class="token punctuation">'</span></span><span class="token punctuation">,</span> <span class="token string"><span class="token punctuation">'</span>search<span class="token punctuation">'</span></span><span class="token punctuation">)</span> <span class="token operator">is</span> empty <span class="token delimiter punctuation">%}</span></span><br>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">else</span> <span class="token delimiter punctuation">%}</span></span>…<span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endif</span> <span class="token delimiter punctuation">%}</span></span>{}</code></pre>
+<p>The <code>if</code> statement makes use of Twig Tweak's <code>drupal_view_result()</code> function and displays an empty <code>div</code> if there aren't any results—and there won't be on the initial view of the search page!</p>
+<p>When there are results, I want to display them, obviously, so here's what happens after the <code>else</code> statement:</p>
+<pre class="language-twig"><code class="language-twig"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container search-container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token twig language-twig"><span class="token comment">{# Render the search results #}</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>Search Results<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br>        <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> drupal_view<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>main_solr_search<span class="token punctuation">'</span></span><span class="token punctuation">,</span> <span class="token string"><span class="token punctuation">'</span>search<span class="token punctuation">'</span></span><span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endif</span> <span class="token delimiter punctuation">%}</span></span></code></pre>
+<p>I use the Twig Tweak function <code>drupal_view()</code> function to display the results.</p>
+<h2>Facets</h2>
+<p>Solr is all about facets, but I haven't done anything about them yet. Fortunately, they're just Drupal blocks, so I can use the <code>drupal_block()</code> function again. First, I have to identify the facets I want to use, so I'll execute the <code>drush</code> command that I used earlier: ``drush ev &quot;print_r(array_keys(\Drupal::service('plugin.manager.block')-&gt;getDefinitions()));&quot;<code>. The resulting list tells me that I want</code>facet_block:content_type<code>and</code>facet_block:time_period` (at least for now).</p>
+<p>I'd like to use a columnar layout for the search page, so that the facets are in a thin column on the left side of the screen, and the results are in a wider column to the right of that. Here's the code to accomplish that:</p>
+<pre class="language-twig"><code class="language-twig"><span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">extends</span> <span class="token string"><span class="token punctuation">'</span>page.html.twig<span class="token punctuation">'</span></span> <span class="token delimiter punctuation">%}</span></span><br>    <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">block</span> content <span class="token delimiter punctuation">%}</span></span><br>  <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">if</span> page<span class="token punctuation">.</span>content <span class="token delimiter punctuation">%}</span></span><br>   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>page__content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token twig language-twig"><span class="token comment">{# Place the search form block #}</span></span><br>    <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> drupal_block<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>views_exposed_filter_block:main_solr_search-search<span class="token punctuation">'</span></span><span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span><br><br>    <span class="token twig language-twig"><span class="token comment">{# Don't display search results if there aren't any #}</span></span><br>    <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">if</span> drupal_view_result<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>main_solr_search<span class="token punctuation">'</span></span><span class="token punctuation">,</span> <span class="token string"><span class="token punctuation">'</span>search<span class="token punctuation">'</span></span><span class="token punctuation">)</span> <span class="token operator">is</span> empty <span class="token delimiter punctuation">%}</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <br>    <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">else</span> <span class="token delimiter punctuation">%}</span></span><br>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container search-container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col-sm-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>       <span class="token twig language-twig"><span class="token comment">{# Render the facets #}</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>search-sidebar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>Filter(s)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">></span></span>Content type<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br>            <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> drupal_block<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>facet_block:content_type<span class="token punctuation">'</span></span><span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span><br>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">></span></span>Time period<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br>            <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> drupal_block<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>facet_block:time_period<span class="token punctuation">'</span></span><span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>       <br>       <span class="token twig language-twig"><span class="token comment">{# Render the search results #}</span></span><br>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col-sm-9<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>Search Results<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br>            <span class="token twig language-twig"><span class="token delimiter punctuation">{{</span> drupal_view<span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>main_solr_search<span class="token punctuation">'</span></span><span class="token punctuation">,</span> <span class="token string"><span class="token punctuation">'</span>search<span class="token punctuation">'</span></span><span class="token punctuation">)</span> <span class="token delimiter punctuation">}}</span></span><br>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>     <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endif</span> <span class="token delimiter punctuation">%}</span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endif</span> <span class="token delimiter punctuation">%}</span></span><br><span class="token twig language-twig"><span class="token delimiter punctuation">{%</span> <span class="token tag-name keyword">endblock</span> <span class="token delimiter punctuation">%}</span></span></code></pre>
+<p>Here is what that looks like when I search for &quot;Vergil&quot;:</p>
+<p><img src="/assets/images/front-end/search-vergil-unthemed.png" alt="Screenshot of search for Vergil, unthemed" title="Search for Vergil, unthemed" class="image"></p>
+<p>It doesn't look great because I haven't done anything about styling it. That's in the next post.</p>
+<h2>Takeaways</h2>
+<ul>
+<li>The ability to <em>extend</em> a template is a great way to keep your theme's code easy to manage.</li>
+<li>Twig Tweak functions make it really easy to place blocks, views, and other elements.</li>
+<li>Using <code>if</code> statements can give you a lot of control over what is displayed on the screen.</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mt-auto">
+  <div class="container w-75 mx-auto">
+    <div class="row">
+      <div class="col-8">
+        <p class="footerinfo">
+          ©2024 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
+          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+        </p>
+      </div>
+      <div class="col-4">
+        <div id="socialicons">
+          <!-- Social Media Icons by NiftyButtons https://niftybuttons.com -->
+          <a href="https://github.com/sjhuskey" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-github"
+              data-donate="true"
+              data-tag="git"
+              data-name="Github"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"
+              ></path></svg></a
+          ><a href="https://www.linkedin.com/in/sjhuskey/" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-linkedin"
+              data-donate="true"
+              data-tag="lin"
+              data-name="LinkedIn"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"
+              ></path></svg
+          ></a>
+          <a
+            href="https://sjhuskey.info/feed/feed.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="text-decoration: none; border: 0; width: 36px; height: 36px; padding: 0; margin: 3px; color: #ffffff"
+          >
+            <svg
+              class="niftybutton-rss"
+              style="display: block; fill: currentColor"
+              data-donate="true"
+              data-tag="rss"
+              data-name="RSS"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M201.8 347.2c0 20.3-16.5 36.8-36.8 36.8 -20.3 0-36.8-16.5-36.8-36.8s16.5-36.8 36.8-36.8C185.3 310.4 201.8 326.8 201.8 347.2zM128.2 204.7v54.5c68.5 0.7 124 56.3 124.7 124.7h54.5C306.7 285.3 226.9 205.4 128.2 204.7zM128.2 166.6c57.9 0.3 112.3 22.9 153.2 63.9 41 41 63.7 95.5 63.9 153.5h54.5c-0.3-149.9-121.7-271.4-271.6-271.9V166.6L128.2 166.6z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript" src="/dist/app.js"></script>
+  </body>
+</html>
