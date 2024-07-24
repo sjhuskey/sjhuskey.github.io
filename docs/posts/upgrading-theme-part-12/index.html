@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samuel J. Huskey - Rebuilding A Theme, Part XII: Styling the Search Page</title>
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/dist/app.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-T4DCQE192P");
+    </script>
+    
+
+
+<meta name="description" content="I blog about my adventures with technology, text and data analysis, and digital philology">
+<!-- Open Graph Metadata -->
+  <meta property="og:title" content="Rebuilding A Theme, Part XII: Styling the Search Page">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://localhost:8080/posts/upgrading-theme-part-12/">
+  <meta property="og:description" content="Notes on theming a site&#39;s Solr integration after migrating from Drupal 7 to Drupal 10">
+  <meta property="og:site_name" content="Samuel J. Huskey">
+  <meta property="og:locale" content="en_US">
+  
+  <meta property="og:image" content="http://localhost:8080/assets/images/drupal.jpg">
+  
+  
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rebuilding A Theme, Part XII: Styling the Search Page">
+  <meta name="twitter:description" content="Notes on theming a site&#39;s Solr integration after migrating from Drupal 7 to Drupal 10">
+  
+  <meta name="twitter:image" content="http://localhost:8080/assets/images/drupal.jpg">
+  
+
+
+
+
+<link rel="icon" href="http://localhost:8080/assets/images/favicon.ico">
+
+
+
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    <div id="header-container">
+  <div class="container py-6">
+    <header class="pb-5 mb-4">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container w-75 mx-auto border-bottom">
+          <a href="/" class="d-flex align-items-center text-light text-decoration-none">
+              <title>Samuel J. Huskey</title>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span class="fs-4">Samuel J. Huskey</span>
+          </a>
+          <button
+            class="navbar-toggler navbar-dark"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/cv.html">CV</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/dh.html">DH</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/tech.html">Tech</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/posts">Blog</a>
+    </li>
+</ul>
+
+
+</div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <main id="main">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            
+            <img src="/assets/images/drupal.jpg" class="featured-image-post" />
+            
+            <h1>Rebuilding A Theme, Part XII: Styling the Search Page</h1>
+            
+            <p class="post-date">
+              Posted: 2024-07-24
+               in              
+              <a href="/tags/Drupal">Drupal</a
+              >,  
+              <a href="/tags/Front End Development">Front End Development</a
+              >   
+            </p>
+            
+            <p>Now that I have a search view and a template for displaying it (<a href="https://sjhuskey.info/posts/upgrading-theme-part-11/">see part 11 of this series</a>), I can begin styling it.</p>
+<p>Here is what that looks like without any styling:</p>
+<p><img src="/assets/images/front-end/search-vergil-unthemed.png" alt="Screenshot of search for Vergil, unthemed" title="Search for Vergil, unthemed" class="image"></p>
+<p>My goals are:</p>
+<ul>
+<li>To display the search form prominently in the center of the page</li>
+<li>To give the facets a background color and to remove the redundant bullets from the checkboxes</li>
+<li>To make the display of results tidier and easier to read</li>
+</ul>
+<p>I'll be working mostly in the <code>style.scss</code> file to accomplish those goals.</p>
+<h2>Search Form</h2>
+<p>First I'll center the search form's heading. Using my browser's web developer tools, I see that it has the following classes: <code>views-exposed-form contextual-region block block-views block-views-exposed-filter-blockmain-solr-search-search</code>. The last one is the most specific, so I'll use that:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.block-views-exposed-filter-blockmain-solr-search-search h2</span> <span class="token punctuation">{</span><br>  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span><br>  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Now I want to center the form. Using the web developer tools, I'll highlight the form and inspect its HTML and CSS. I see that the <code>div</code> enclosing it is currently subject to this:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.form--inline .form-item</span> <span class="token punctuation">{</span><br>  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span><br>  <span class="token property">margin-right</span><span class="token punctuation">:</span> 0.5em<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Both the <code>float</code> and <code>margin-right</code> properties will interfere with any effort to center the form, so I'll need to override them. But I don't want to override them globally; I just want to override them in this one place. I'll do that by adding another one of the classes that I see on the <code>div</code>: <code>form-type-search-api-autocomplete</code>. Here's the CSS:</p>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* Centering the search box.*/</span><br><span class="token selector">.form--inline .form-item.form-type-search-api-autocomplete</span> <span class="token punctuation">{</span><br>  <span class="token property">float</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span><br>  <span class="token property">width</span><span class="token punctuation">:</span> 75%<span class="token punctuation">;</span><br>  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span><br>  <span class="token property">margin-left</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span><br>  <span class="token property">margin-right</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>That takes care of the <code>float</code>, and it uses the value of <code>auto</code> on <code>margin-left</code> and <code>margin-right</code> to center the <code>div</code>.</p>
+<p><img src="/assets/images/front-end/search-form-center-1.png" alt="Search form beginning to be centered" title="Search form beginning to be centered" class="image"></p>
+<p>The helper text inside the <code>input</code> area is aligned to the left. It would look better aligned to the center. Since I don't want to style <em>all</em> <code>input</code> tags, I'll specify the <code>input</code> tag inside of the <code>form</code> with <code>id=&quot;views-exposed-form-main-solr-search-search&quot;</code>:</p>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* Centering the search terms */</span><br><span class="token selector">#views-exposed-form-main-solr-search-search input</span> <span class="token punctuation">{</span><br>  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Now I'll deal with the &quot;Go&quot; button. After some experimentation, I found that I could control the placement of the button by setting <code>text-align</code> on <code>form</code> with <code>id=&quot;views-exposed-form-main-solr-search-search&quot;</code> to <code>center</code>. Since that is the same style for the search terms above, I can just add that selector to the existing style:</p>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* Centering the search terms and the "Go" button */</span><br><span class="token selector">#views-exposed-form-main-solr-search-search,<br>#views-exposed-form-main-solr-search-search input</span> <span class="token punctuation">{</span><br>  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p><img src="/assets/images/front-end/search-form-center-2.png" alt="Search form centered" title="Search form centered" class="image"></p>
+<p>Cool! Now I can move on to styling the facets and the search results.</p>
+<h2>Facets</h2>
+<p>The first thing I want to do is set a background color for the facets. I like the light blue color that I used for the sidebar in the templates for my content types, so I'll use that. When I created the <code>page--search.html.twig</code> template, I added the class <code>search-sidebar</code> to the <code>div</code> where the facets are placed. That means that I can set <code>background-color</code> on that <code>div</code>. I'll also give it some padding, so that the content isn't smooshed on all sides.</p>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* Search Sidebar (facets) */</span><br><span class="token selector">.search-sidebar</span> <span class="token punctuation">{</span><br>  <span class="token property">background</span><span class="token punctuation">:</span> #ade0f2<span class="token punctuation">;</span><br>  <span class="token property">padding</span><span class="token punctuation">:</span> 2rem 0.5rem 1.5rem 1rem<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>The way I've handled <code>padding</code> is shorthand, by the way, for setting <code>padding-top</code>, <code>padding-right</code>, <code>padding-bottom</code>, and <code>padding-left</code>, in that order (i.e., clockwise).</p>
+<p>I want the heading for the sidebar to be set off from the content, so I'll add a bottom border and some spacing:</p>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* Search sidebar h3 style */</span><br><span class="token selector">.search-sidebar h3</span> <span class="token punctuation">{</span><br>  <span class="token property">border-bottom</span><span class="token punctuation">:</span> solid thin grey<span class="token punctuation">;</span><br>  <span class="token property">padding-bottom</span><span class="token punctuation">:</span> 0.5rem<span class="token punctuation">;</span><br>  <span class="token property">margin-right</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span><br>  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 1.25rem<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Now I need to remove the redundant bullets from the checkboxes and adjust for their removal. I can do that by specifying that <code>li</code> (list item) tags in the <code>div</code> with class <code>search-sidebar</code> should have their <code>display</code> property set to <code>block</code>.</p>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* Remove bullets from facet checkboxes */</span><br><span class="token selector">.search-sidebar li</span> <span class="token punctuation">{</span><br>  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span><br>  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span><br>  <span class="token property">margin-left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>While I'm at it, I'll add some spacing to the <code>label</code>, too:</p>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* Add some space between facet checkboxes and labels */</span><br><span class="token selector">.search-sidebar label</span> <span class="token punctuation">{</span><br>  <span class="token property">margin-left</span><span class="token punctuation">:</span> 0.5rem<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>Now my facets sidebar is looking better!</p>
+<p><img src="/assets/images/front-end/search-sidebar-styled.png" alt="Search sidebar styled" title="Search sidebar styled" class="image"></p>
+<p>On to the search results!</p>
+<h2>Search Results</h2>
+<p>I don't think the results require a lot of styling. To my admittedly untrained eye, the items in the list could benefit from a border to make them more distinct. I'll try adding a box shadow around them, too.</p>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* Search results */</span><br><span class="token selector">#views-bootstrap-main-solr-search-search--2 article</span> <span class="token punctuation">{</span><br>  <span class="token property">border</span><span class="token punctuation">:</span> thin solid grey<span class="token punctuation">;</span><br>  <span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span><br>  <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 0 5px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.5<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>The box-shadow might be over the top. I added it just as an example of what can be done with CSS. Here's a screenshot:</p>
+<p><img src="/assets/images/front-end/search-styled-articles.png" alt="Search articles styled" title="Search articles styled" class="image"></p>
+<p>No, I don't like the box-shadow. Let's try giving a different background color to the odd items in the list. For this, I can use the <code>nth-of-type(odd)</code> pseudo-class. Since every result is a list item (<code>li</code>) in an unordered list (<code>ul</code>), and since each list item has the class <code>list-group-item</code>, I can apply a background color to the odd or even list items. For the record, I could also use a number (n) to specify every nth item. Here's what I ended up doing to give each odd item a grey background:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">// Grey background for odd items in the search results<br>#views-bootstrap-main-solr-search-search--2 li.list-group-item:nth-of-type(odd)</span> <span class="token punctuation">{</span><br>  <span class="token property">background-color</span><span class="token punctuation">:</span> #f6f7f8<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+<p>I also added another facet and selected a lighter shade of blue for the sidebar. Here's a screenshot:</p>
+<p><img src="/assets/images/front-end/search-grey-odd-item.png" alt="Grey background for odd items" title="Grey background for odd items" class="image"></p>
+<h2>Takeaways</h2>
+<p>I'm by no means a CSS guru, but I hope that I've demonstrated how powerful it is. With just a few properties and units in your toolbox, you can do quite a lot to change the look of your site.</p>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mt-auto">
+  <div class="container w-75 mx-auto">
+    <div class="row">
+      <div class="col-8">
+        <p class="footerinfo">
+          ©2024 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
+          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+        </p>
+      </div>
+      <div class="col-4">
+        <div id="socialicons">
+          <!-- Social Media Icons by NiftyButtons https://niftybuttons.com -->
+          <a href="https://github.com/sjhuskey" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-github"
+              data-donate="true"
+              data-tag="git"
+              data-name="Github"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"
+              ></path></svg></a
+          ><a href="https://www.linkedin.com/in/sjhuskey/" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-linkedin"
+              data-donate="true"
+              data-tag="lin"
+              data-name="LinkedIn"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"
+              ></path></svg
+          ></a>
+          <a
+            href="https://sjhuskey.info/feed/feed.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="text-decoration: none; border: 0; width: 36px; height: 36px; padding: 0; margin: 3px; color: #ffffff"
+          >
+            <svg
+              class="niftybutton-rss"
+              style="display: block; fill: currentColor"
+              data-donate="true"
+              data-tag="rss"
+              data-name="RSS"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M201.8 347.2c0 20.3-16.5 36.8-36.8 36.8 -20.3 0-36.8-16.5-36.8-36.8s16.5-36.8 36.8-36.8C185.3 310.4 201.8 326.8 201.8 347.2zM128.2 204.7v54.5c68.5 0.7 124 56.3 124.7 124.7h54.5C306.7 285.3 226.9 205.4 128.2 204.7zM128.2 166.6c57.9 0.3 112.3 22.9 153.2 63.9 41 41 63.7 95.5 63.9 153.5h54.5c-0.3-149.9-121.7-271.4-271.6-271.9V166.6L128.2 166.6z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript" src="/dist/app.js"></script>
+  </body>
+</html>
