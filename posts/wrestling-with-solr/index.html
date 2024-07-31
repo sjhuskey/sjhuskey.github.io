@@ -212,7 +212,7 @@
 </ol>
 <p>Leave everything else as it is, except for the HTTP basic authentication fields. Here you should enter the username from your <code>security.json</code> file (e.g., &quot;solr&quot;) and the actual password (i.e., NOT THE HASH in the <code>security.json</code> file). If you entered &quot;MYPASSWORD&quot; in the hashing tool <a href="https://clemente-biondo.github.io/">https://clemente-biondo.github.io/</a>, enter &quot;MYPASSWORD&quot; in the password field here.</p>
 <p>Click &quot;Save&quot;. If all goes well, you should see a message that the Solr server could be reached. The <strong>Core Connection</strong> field, however, should say &quot;The Solr core could not be accessed&quot; (or something like that). That's because we still need to create a core on the Solr server.</p>
-<h3>Create a Solr Core</h3>
+<h2>Create a Solr Core</h2>
 <p>This is the most involved part of this whole process. The first step is to download a configuration set (&quot;configset&quot;):</p>
 <ol>
 <li>Go to <code>/admin/config/search/search-api</code> in the Drupal UI</li>
@@ -240,7 +240,7 @@
 <li><code>d conf</code>: This tells Solr to use the configset that you downloaded from your Drupal site and copied to the Solr Docker container</li>
 </ul>
 <p>If all goes well, you should now have a Solr core.</p>
-<h3>Make Sure Docker and Solr Restart Automatically</h3>
+<h2>Make Sure Docker and Solr Restart Automatically</h2>
 <p>In the section on installing Docker above, I recommended doing <code>sudo systemctl enable docker</code> to make sure that Docker restarts automatically whenever the server is rebooted. We need to update the Solr Docker container to tell it to restart automatically, too. That can be done with <code>docker update --restart always dllsolr</code> (or whatever your Solr server is called). Now, both Docker and the Solr server should start up automatically whenever the system is rebooted.</p>
 <h2>Useful Commands</h2>
 <p>Some useful commands to know for managing Solr as a Docker container:</p>
