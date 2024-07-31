@@ -97,7 +97,7 @@
 &lt;/ol&gt;
 &lt;p&gt;Leave everything else as it is, except for the HTTP basic authentication fields. Here you should enter the username from your &lt;code&gt;security.json&lt;/code&gt; file (e.g., &amp;quot;solr&amp;quot;) and the actual password (i.e., NOT THE HASH in the &lt;code&gt;security.json&lt;/code&gt; file). If you entered &amp;quot;MYPASSWORD&amp;quot; in the hashing tool &lt;a href=&quot;https://clemente-biondo.github.io/&quot;&gt;https://clemente-biondo.github.io/&lt;/a&gt;, enter &amp;quot;MYPASSWORD&amp;quot; in the password field here.&lt;/p&gt;
 &lt;p&gt;Click &amp;quot;Save&amp;quot;. If all goes well, you should see a message that the Solr server could be reached. The &lt;strong&gt;Core Connection&lt;/strong&gt; field, however, should say &amp;quot;The Solr core could not be accessed&amp;quot; (or something like that). That&#39;s because we still need to create a core on the Solr server.&lt;/p&gt;
-&lt;h3&gt;Create a Solr Core&lt;/h3&gt;
+&lt;h2&gt;Create a Solr Core&lt;/h2&gt;
 &lt;p&gt;This is the most involved part of this whole process. The first step is to download a configuration set (&amp;quot;configset&amp;quot;):&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Go to &lt;code&gt;/admin/config/search/search-api&lt;/code&gt; in the Drupal UI&lt;/li&gt;
@@ -125,7 +125,7 @@
 &lt;li&gt;&lt;code&gt;d conf&lt;/code&gt;: This tells Solr to use the configset that you downloaded from your Drupal site and copied to the Solr Docker container&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;If all goes well, you should now have a Solr core.&lt;/p&gt;
-&lt;h3&gt;Make Sure Docker and Solr Restart Automatically&lt;/h3&gt;
+&lt;h2&gt;Make Sure Docker and Solr Restart Automatically&lt;/h2&gt;
 &lt;p&gt;In the section on installing Docker above, I recommended doing &lt;code&gt;sudo systemctl enable docker&lt;/code&gt; to make sure that Docker restarts automatically whenever the server is rebooted. We need to update the Solr Docker container to tell it to restart automatically, too. That can be done with &lt;code&gt;docker update --restart always dllsolr&lt;/code&gt; (or whatever your Solr server is called). Now, both Docker and the Solr server should start up automatically whenever the system is rebooted.&lt;/p&gt;
 &lt;h2&gt;Useful Commands&lt;/h2&gt;
 &lt;p&gt;Some useful commands to know for managing Solr as a Docker container:&lt;/p&gt;

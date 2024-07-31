@@ -152,7 +152,7 @@ Leave everything else as it is, except for the HTTP basic authentication fields.
 
 Click "Save". If all goes well, you should see a message that the Solr server could be reached. The **Core Connection** field, however, should say "The Solr core could not be accessed" (or something like that). That's because we still need to create a core on the Solr server.
 
-### Create a Solr Core
+## Create a Solr Core
 
 This is the most involved part of this whole process. The first step is to download a configuration set ("configset"):
 
@@ -183,7 +183,7 @@ I'll break that last line down:
 
 If all goes well, you should now have a Solr core.
 
-### Make Sure Docker and Solr Restart Automatically
+## Make Sure Docker and Solr Restart Automatically
 
 In the section on installing Docker above, I recommended doing `sudo systemctl enable docker` to make sure that Docker restarts automatically whenever the server is rebooted. We need to update the Solr Docker container to tell it to restart automatically, too. That can be done with `docker update --restart always dllsolr` (or whatever your Solr server is called). Now, both Docker and the Solr server should start up automatically whenever the system is rebooted.
 
