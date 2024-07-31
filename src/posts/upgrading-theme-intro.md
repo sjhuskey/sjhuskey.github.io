@@ -32,3 +32,7 @@ I'll add to this list as I finish writing up each step:
 - [Rebuilding A Theme, Part VI: Customizing the Footer](https://sjhuskey.info/posts/upgrading-theme-part-6)
 - [Rebuilding A Theme, Part VII: Contextual Views](https://sjhuskey.info/posts/upgrading-theme-part-7)
 - [Rebuilding A Theme, Part VIII: Content Types](https://sjhuskey.info/posts/upgrading-theme-part-8)
+- [Rebuilding A Theme, Part IX: Content Types, Continued](https://sjhuskey.info/posts/upgrading-theme-part-9)
+- [Rebuilding A Theme, Part X: Solr](https://sjhuskey.info/posts/upgrading-theme-part-10)
+- [Rebuilding A Theme, Part XI: Template for the Search Page](https://sjhuskey.info/posts/upgrading-theme-part-11)
+- [Rebuilding A Theme, Part XII: Styling the Search Page](https://sjhuskey.info/posts/upgrading-theme-part-12)

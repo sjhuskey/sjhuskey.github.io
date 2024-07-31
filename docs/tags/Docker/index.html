@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Samuel J. Huskey - Rebuilding a Theme after Upgrading from Drupal 7 to Drupal 10: Introduction</title>
+    <title>Samuel J. Huskey - </title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
     <!-- Google tag (gtag.js) -->
@@ -22,22 +22,18 @@
 
 <meta name="description" content="I blog about my adventures with technology, text and data analysis, and digital philology">
 <!-- Open Graph Metadata -->
-  <meta property="og:title" content="Rebuilding a Theme after Upgrading from Drupal 7 to Drupal 10: Introduction">
+  <meta property="og:title" content="">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="http://localhost:8080/posts/upgrading-theme-intro/">
-  <meta property="og:description" content="Notes on my process for rebuilding a theme from the ground up after upgrading a Drupal site from 7 to 10">
+  <meta property="og:url" content="http://localhost:8080/tags/Docker/">
+  <meta property="og:description" content="">
   <meta property="og:site_name" content="Samuel J. Huskey">
   <meta property="og:locale" content="en_US">
   
-  <meta property="og:image" content="http://localhost:8080/assets/images/drupal.jpg">
-  
   
   <!-- Twitter Card Metadata -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Rebuilding a Theme after Upgrading from Drupal 7 to Drupal 10: Introduction">
-  <meta name="twitter:description" content="Notes on my process for rebuilding a theme from the ground up after upgrading a Drupal site from 7 to 10">
-  
-  <meta name="twitter:image" content="http://localhost:8080/assets/images/drupal.jpg">
+  <meta name="twitter:card" content="">
+  <meta name="twitter:title" content="">
+  <meta name="twitter:description" content="I blog about my adventures with technology, text and data analysis, and digital philology">
   
 
 
@@ -117,39 +113,20 @@
         <div class="row">
           <div class="col-md-10 mx-auto">
             
-            <img src="/assets/images/drupal.jpg" class="featured-image-post" />
+            <h1></h1>
             
-            <h1>Rebuilding a Theme after Upgrading from Drupal 7 to Drupal 10: Introduction</h1>
             
-            <p class="post-date">
-              Posted: 2024-06-23
-               in              
-              <a href="/tags/Drupal">Drupal</a
-              >,  
-              <a href="/tags/Front End Development">Front End Development</a
-              >   
-            </p>
-            
-            <p>For me, the worst part of upgrading a <a href="https://drupal.org/">Drupal</a> site from 7 to the latest version (I've done upgrades to 8, 9, and 10) is rebuilding the theme. Since Drupal 8 introduced an entirely new theming framework, themes for Drupal 7 sites simply will not work on an upgraded site, so the only choices are to rebuild the theme from scratch or build a new one. Either way, if you're not a front-end developer or if you don't have the funds to pay one to do the work for you, this part of an upgrade can seem like an insurmountable obstacle.</p>
-<p>I'm here to tell you that it's not. It's doable, if you have at least some familiarity with <a href="https://www.w3.org/Style/CSS/">CSS</a> and <a href="https://html.spec.whatwg.org/multipage/">HTML</a>, and if you're willing to invest some time into learning <a href="https://getbootstrap.com/">Bootstrap</a> and <a href="https://twig.symfony.com/">Twig</a>. To be honest, even if you don't know anything about those things, you can make a significant amount of progress with hints from Chat-GPT et al.</p>
-<p>I have upgraded two Drupal 7 sites that had custom themes designed by a front-end development company that charged a lot of money (i.e., &gt; $30,000). In both cases, I rebuilt the theme so that it strongly resembles the original D7 custom theme. Since I am by no means a graphic designer, that was the most direct path to getting the sites back online after the upgrade.</p>
-<p>I decided to base the new themes on <a href="https://getbootstrap.com/">Bootstrap</a>, because it automagically takes care of a lot of the things I don't like to deal with in front-end development. Also, Bootstrap's <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">documentation is crystal clear</a>, tutorials abound online (e.g., <a href="https://www.w3schools.com/bootstrap/bootstrap_get_started.asp">https://www.w3schools.com/bootstrap/bootstrap_get_started.asp</a>), and the user community is huge—all factors I strongly consider when making any decisions about technology.</p>
-<p>Since I know that other Digital Humanities folks have run up against the problem of doing front-end development with little or no funds, I figured I should write up some notes while I go through this process yet again with the DLL's Catalog site.</p>
-<p>I'll add to this list as I finish writing up each step:</p>
+ 
+<h1>Posts tagged with “Docker”</h1>
+
 <ul>
-<li><a href="https://sjhuskey.info/posts/upgrading-theme-tips-tricks">Rebuilding a Theme, Part I: Tricks and Tips</a></li>
-<li><a href="https://sjhuskey.info/posts/upgrading-theme-part-2/">Rebuidling a Theme, Part II: Creating a Subtheme</a></li>
-<li><a href="https://sjhuskey.info/posts/upgrading-theme-part-3">Rebuilding a Theme, Part III: Working with Twig</a></li>
-<li><a href="https://sjhuskey.info/posts/upgrading-theme-part-4">Rebuilding a Theme, Part IV: Working with Bootstrap</a></li>
-<li><a href="https://sjhuskey.info/posts/upgrading-theme-part-5">Rebuilding a Theme, Part V: Customizing the Navbar</a></li>
-<li><a href="https://sjhuskey.info/posts/upgrading-theme-part-6">Rebuilding A Theme, Part VI: Customizing the Footer</a></li>
-<li><a href="https://sjhuskey.info/posts/upgrading-theme-part-7">Rebuilding A Theme, Part VII: Contextual Views</a></li>
-<li><a href="https://sjhuskey.info/posts/upgrading-theme-part-8">Rebuilding A Theme, Part VIII: Content Types</a></li>
-<li><a href="https://sjhuskey.info/posts/upgrading-theme-part-9">Rebuilding A Theme, Part IX: Content Types, Continued</a></li>
-<li><a href="https://sjhuskey.info/posts/upgrading-theme-part-10">Rebuilding A Theme, Part X: Solr</a></li>
-<li><a href="https://sjhuskey.info/posts/upgrading-theme-part-11">Rebuilding A Theme, Part XI: Template for the Search Page</a></li>
-<li><a href="https://sjhuskey.info/posts/upgrading-theme-part-12">Rebuilding A Theme, Part XII: Styling the Search Page</a></li>
+   
+  <li>
+    <a href="/posts/wrestling-with-solr/">Wrestling with Solr on Docker</a> | July 31, 2024
+  </li>
+  
 </ul>
+
 
           </div>
         </div>
