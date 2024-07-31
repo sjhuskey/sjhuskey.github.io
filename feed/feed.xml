@@ -5,13 +5,143 @@
   <type>atom</type>
   <link href="https://sjhuskey.info/feed/feed.xml" rel="self" />
   <link href="" />
-  <updated>2024-07-24T00:00:00Z</updated>
+  <updated>2024-07-31T00:00:00Z</updated>
   <id>https://sjhuskey.info/feed/feed.xml</id>
   <language>en</language>
   <author>
     <name>Samuel J. Huskey</name>
     <email>huskey@ou.edu</email>
   </author> 
+  <entry>
+    <title>Wrestling with Solr on Docker</title>
+    <link href="https://sjhuskey.info/posts/wrestling-with-solr/" />
+    <updated>2024-07-31T00:00:00Z</updated>
+    <id>https://sjhuskey.info/posts/wrestling-with-solr/</id>
+    <content type="html">&lt;p&gt;Every time I install and configure Apache Solr for a Drupal site, I find myself bogged down in a variety of issues, so I thought it would be helpful (if only to me) to record what I gleaned from the latest instance.&lt;/p&gt;
+&lt;h2&gt;My History with Solr&lt;/h2&gt;
+&lt;p&gt;My first experience with Solr was on the original Digital Latin Library Catalog site, which was on Drupal 7. I preparation for working with it, I read the extensive &lt;a href=&quot;https://solr.apache.org/guide/solr/latest/index.html&quot;&gt;documentation&lt;/a&gt;. With all its talk of &lt;a href=&quot;https://zookeeper.apache.org/&quot;&gt;zookeepers&lt;/a&gt;, my confusion and trepidation grew quickly. Then I realized that Drupal&#39;s &lt;a href=&quot;https://www.drupal.org/project/search_api_solr&quot;&gt;Search API Solr module&lt;/a&gt; took care of most, but certainly not all, of the difficulties. I still had to install and configure Solr, but I eventually managed to get it up and running. I wish that I had documented all the steps back then, but I was so relieved to have made progress that I moved on to something else.&lt;/p&gt;
+&lt;p&gt;My second experience with Solr was when I enhanced the search features on the website of the &lt;a href=&quot;https://classicalstudies.org/&quot;&gt;Society for Classical Studies&lt;/a&gt;. Since I am not the system administrator for the SCS, we paid the hosting company (the heroic and wonderful folks at &lt;a href=&quot;https://www.esosoft.com/&quot;&gt;EsoSoft&lt;/a&gt;) to spin up a Solr server. They opted to install Solr as a &lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; container, so I had the opportunity to learn about managing Solr via &lt;code&gt;docker&lt;/code&gt; commands. I wish that I had documented that experience, too, but I was eager to move on after I had a working setup.&lt;/p&gt;
+&lt;p&gt;When I started using the super-awesome &lt;a href=&quot;https://ddev.com/&quot;&gt;DDEV&lt;/a&gt; for local development, I had to work with Solr again as a Docker container. In this instance, I did take the time to &lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-10/&quot;&gt;document the process&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now that I have finished &lt;a href=&quot;https://sjhuskey.info/posts/drupal-7-to-drupal-10/&quot;&gt;migrating the content of the DLL&#39;s Catalog site from Drupal 7 to Drupal 10&lt;/a&gt; and &lt;a href=&quot;https://sjhuskey.info/posts/drupal-7-to-drupal-10/&quot;&gt;rebuilding its theme&lt;/a&gt;, I need to move the site to my production server, and that involves upgrading Solr. Having learned my lesson from previous experiences, I&#39;m going to document the process here.&lt;/p&gt;
+&lt;h2&gt;Upgrading or Reinstalling Solr?&lt;/h2&gt;
+&lt;p&gt;Since the server is currently configured for a Drupal 7 site, Solr wasn&#39;t the only item in need of an upgrade. I had to upgrade PHP, MariaDB, and Java, among other things. Fortunately, the &lt;code&gt;dnf&lt;/code&gt; package manager made quick work of that.&lt;/p&gt;
+&lt;p&gt;I tried simply upgrading Solr, but I ran into a mess of conflicts and permissions issues, so I decided to uninstall it, remove it, and start with a clean slate. I had a decision to make: run Solr as an application on the server or as a Docker container? The latter has a lot to recommend it, particularly when it comes to maintenance and upkeep, so I decided to install it that way.&lt;/p&gt;
+&lt;h2&gt;Solr in Docker&lt;/h2&gt;
+&lt;p&gt;Apache&#39;s &lt;a href=&quot;https://solr.apache.org/guide/solr/latest/deployment-guide/solr-in-docker.html&quot;&gt;documentation on Solr in Docker&lt;/a&gt; is pretty good, as is the &lt;a href=&quot;https://www.drupal.org/docs/extending-drupal/contributed-modules/contributed-module-documentation/search-api-solr&quot;&gt;documentation for the Search API Solr module&lt;/a&gt;. But there are definitely gaps here and there, and I spent more hours than I care to admit trying to figure out how to fill them. It was a &amp;quot;non-trivial&amp;quot; number of hours. That&#39;s all I will say.&lt;/p&gt;
+&lt;h3&gt;Installing Docker and Solr&lt;/h3&gt;
+&lt;p&gt;To run Solr in Docker, you obviously need to have Docker on your server. That&#39;s easy. I&#39;m using a Red Hat Linux server, so the &lt;code&gt;dnf&lt;/code&gt; package manager can take care of it:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make sure that &lt;code&gt;dnf&lt;/code&gt; can find the Docker repository: &lt;code&gt;sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install Docker, et al.: &lt;code&gt;sudo dnf install -y docker-ce docker-ce-cli containerd.io&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Start Docker: &lt;code&gt;sudo systemctl start docker&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Enable Docker (i.e., make sure that it will start automatically after rebooting): &lt;code&gt;sudo systemctl enable docker&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Grabbing the &lt;a href=&quot;https://hub.docker.com/_/solr/&quot;&gt;official Docker Solr image&lt;/a&gt; is not difficult, either: &lt;code&gt;sudo docker pull solr:9.6.1&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Okay, I have all the components. Now what?&lt;/p&gt;
+&lt;p&gt;This is where the documentation becomes opaque, at least for me. It&#39;s clear enough if you just need to start a Solr server and get to work. If you need Drupal to connect to your Solr server, you have to hold your mouth just right. At least it seems that way.&lt;/p&gt;
+&lt;p&gt;The Search API Solr module makes you put the cart before the horse, as it were. That is, you have to create a server first, then connect Drupal to it. Only then can you download a configuration set and create the Solr core that you need to start indexing content.&lt;/p&gt;
+&lt;p&gt;So, the first step is to create a Solr server.&lt;/p&gt;
+&lt;h3&gt;Creating a Solr Server&lt;/h3&gt;
+&lt;p&gt;In the following steps, the Solr server I&#39;m creating is &lt;code&gt;dllsolr&lt;/code&gt;, and the core is &lt;code&gt;dllcatsolr&lt;/code&gt;. You should be able to substitute your own values for those.&lt;/p&gt;
+&lt;p&gt;Since I&#39;m going to run Solr in a Docker container, I need to use a &lt;code&gt;docker&lt;/code&gt; command to create it: &lt;code&gt;docker run -d -p 8983:8983 --name dllsolr solr&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I&#39;ll break that down:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker run&lt;/code&gt; is the command to create and run a container&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-d&lt;/code&gt; causes the container to run in the background&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;p 8983:8983&lt;/code&gt; maps the container to port 8983, which is the port often used for Solr&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--name dllsolr&lt;/code&gt; gives the container the name &lt;code&gt;dllsolr&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;solr&lt;/code&gt; tells Docker to use the Solr image that I downloaded earlier&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After running that command, Solr was running as a Docker container. Great! But Drupal wasn&#39;t able to connect to it because the Search API Solr module expects to use a username and password. To satisfy that requirement, I need to secure Solr with a &lt;code&gt;security.json&lt;/code&gt; file.&lt;/p&gt;
+&lt;h3&gt;Securing Solr&lt;/h3&gt;
+&lt;p&gt;Fortunately, the DLL Catalog doesn&#39;t need most of the &lt;a href=&quot;https://solr.apache.org/guide/solr/latest/deployment-guide/securing-solr.html&quot;&gt;robust security measures available&lt;/a&gt;. I just need to add a &lt;code&gt;security.json&lt;/code&gt; file to set up Basic Authentication. But even that&#39;s not a trivial affair.&lt;/p&gt;
+&lt;p&gt;At a minimum, a &lt;code&gt;security.json&lt;/code&gt; file should look like this:&lt;/p&gt;
+&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;   &lt;span class=&quot;token property&quot;&gt;&quot;authentication&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;      &lt;span class=&quot;token property&quot;&gt;&quot;class&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;solr.BasicAuthPlugin&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;      &lt;span class=&quot;token property&quot;&gt;&quot;credentials&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;&quot;solr&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;IV0EHq1OnNrj6gvRCwvFwTrZ1+z1oBbnQdiVC3otuq0= Ndd7LKvVBAaZIF0QAVi1ekCfAJXr1GGfLtRUXhgrF8c=&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;br /&gt;   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;   &lt;span class=&quot;token property&quot;&gt;&quot;authorization&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;      &lt;span class=&quot;token property&quot;&gt;&quot;class&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;solr.RuleBasedAuthorizationPlugin&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;      &lt;span class=&quot;token property&quot;&gt;&quot;permissions&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;security-edit&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;         &lt;span class=&quot;token property&quot;&gt;&quot;role&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;admin&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;      &lt;span class=&quot;token property&quot;&gt;&quot;user-role&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;&quot;solr&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;admin&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;br /&gt;   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That&#39;s directly from the &lt;a href=&quot;https://solr.apache.org/guide/solr/latest/deployment-guide/authentication-and-authorization-plugins.html#configuring-security-json&quot;&gt;Apache Solr documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The really important part is this:&lt;/p&gt;
+&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;   &lt;span class=&quot;token property&quot;&gt;&quot;credentials&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;&quot;solr&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;IV0EHq1OnNrj6gvRCwvFwTrZ1+z1oBbnQdiVC3otuq0= Ndd7LKvVBAaZIF0QAVi1ekCfAJXr1GGfLtRUXhgrF8c=&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;   &lt;br /&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is the line that establishes the credentials (obviously) needed to log on to the Solr server and perform operations. It&#39;s pretty clear that &lt;code&gt;solr&lt;/code&gt; is meant to be the username, but the password needs some explaining. In this example, the password is actually &amp;quot;SolrRocks&amp;quot;. But it wouldn&#39;t be safe to put that in plain text, so it must be &amp;quot;hashed&amp;quot; first. And you can&#39;t use just any tool to hash the password. I tried using a Python script with the &lt;code&gt;bcrypt&lt;/code&gt; library to hash a password, but that didn&#39;t work. Well, it produced a hashed password, but it didn&#39;t work with Solr. I couldn&#39;t find any guidance in the Solr documentation about how to create the hash, so I did a search of the internet and found this wonderful tool: &lt;a href=&quot;https://clemente-biondo.github.io/&quot;&gt;https://clemente-biondo.github.io&lt;/a&gt;. (Bless you, Clemente Biondo, whoever you are!) This client-side tool allows you to enter a password of your choice into a form and get a hashed password and a template for using it in a &lt;code&gt;security.json&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;Okay, now that I had a hashed password in a &lt;code&gt;security.json&lt;/code&gt; file, I had to get it into the Docker container. Here, again, you need to know a secret.&lt;/p&gt;
+&lt;p&gt;It&#39;s easy to copy files to and from a Docker container. As long as you know the ID of the container, you just use &lt;code&gt;docker cp&lt;/code&gt;, as in &lt;code&gt;docker cp myfile.txt DOCKERID:/path/to/directory&lt;/code&gt;. But if you just do that, the file you copy won&#39;t have the correct permissions, and &lt;em&gt;there will be no way to change them or to remove the file after it is in the container&lt;/em&gt;. The answer is to use the &lt;code&gt;-a&lt;/code&gt; switch on &lt;code&gt;docker cp&lt;/code&gt;. That switch preserves (the &amp;quot;a&amp;quot; is for &amp;quot;archive&amp;quot;) everything about the file&#39;s permissions and ownership and prevents it from being changed by Docker.&lt;/p&gt;
+&lt;p&gt;So, after hashing the password and adding it to &lt;code&gt;security.json&lt;/code&gt;, copy it into the Solr Docker container like this: &lt;code&gt;docker cp -a security.json 82fd162cad53:/var/solr/data&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I&#39;ll break that down:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker cp&lt;/code&gt; tells Docker to copy something into or out of a container&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-a&lt;/code&gt;: archive mode, to preserve the file&#39;s permissions from being modified by Docker&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;security.json&lt;/code&gt; is the name of the file to be copied from the server to the Docker container&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;82fd162cad53:&lt;/code&gt; is the ID of the Docker container. The ID can be discovered by doing &lt;code&gt;docker ps&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/var/solr/data&lt;/code&gt; is the destination for the file in the Docker container.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now, do &lt;code&gt;docker restart dllsolr&lt;/code&gt; to put the security measure into effect.&lt;/p&gt;
+&lt;p&gt;Great! I have a Solr server running in a Docker container, and it is secured with basic authentication. Now I need to tell Drupal how to reach it.&lt;/p&gt;
+&lt;h2&gt;Configure Search API Solr in Drupal&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Important, time-saving advice&lt;/strong&gt;: Before doing anything else, determine the IP address of the Docker container. This is a crucial piece of information for configuring Drupal to connect to the Solr server:&lt;/p&gt;
+&lt;pre class=&quot;language-twig&quot;&gt;&lt;code class=&quot;language-twig&quot;&gt;docker inspect -f &quot;&lt;span class=&quot;token twig language-twig&quot;&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;{{&lt;/span&gt;range &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;NetworkSettings&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Networks&lt;span class=&quot;token delimiter punctuation&quot;&gt;}}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token twig language-twig&quot;&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;IPAddress&lt;span class=&quot;token delimiter punctuation&quot;&gt;}}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token twig language-twig&quot;&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;{{&lt;/span&gt;end&lt;span class=&quot;token delimiter punctuation&quot;&gt;}}&lt;/span&gt;&lt;/span&gt;&quot; dllsolr&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Copy the IP address into a text file and keep it on hand.&lt;/p&gt;
+&lt;p&gt;Now, to start the process of creating a Solr &amp;quot;server&amp;quot; in Drupal, go to &lt;code&gt;/admin/config/search/search-api&lt;/code&gt; in the Drupal site. I put &amp;quot;server&amp;quot; in quotation marks because we&#39;ve already created the server. That&#39;s what everything above was about. It&#39;s more accurate to say that we&#39;re creating a connection to the Solr server.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Click &amp;quot;+Add server&amp;quot;&lt;/li&gt;
+&lt;li&gt;Enter a name for the server&lt;/li&gt;
+&lt;li&gt;Check the &amp;quot;Enabled&amp;quot; box (if it isn&#39;t already checked)&lt;/li&gt;
+&lt;li&gt;Enter a description&lt;/li&gt;
+&lt;li&gt;Select &amp;quot;Solr&amp;quot; as the Backend&lt;/li&gt;
+&lt;li&gt;In &amp;quot;Configure Solr backend&amp;quot;, select &amp;quot;Basic Auth&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now, in the &amp;quot;Configure Basic Auth Solr connector&amp;quot; submenu, do the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;HTTP protocol&lt;/strong&gt;: http&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Solr host&lt;/strong&gt;: Enter the IP address of the Docker container that you obtained earlier. You&#39;ll see some instructions that say you should enter &lt;code&gt;localhost&lt;/code&gt; here. That&#39;s true if you&#39;re running Solr as an application (i.e., not in a Docker container). But if you&#39;re running Solr in a Docker container, you need the IP address.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Solr port&lt;/strong&gt;: enter &amp;quot;8983&amp;quot;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Solr path&lt;/strong&gt;: enter &amp;quot;/&amp;quot;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Solr core&lt;/strong&gt;: enter the name of the core that you will create later. I&#39;m using &amp;quot;dllcatsolr&amp;quot;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Leave everything else as it is, except for the HTTP basic authentication fields. Here you should enter the username from your &lt;code&gt;security.json&lt;/code&gt; file (e.g., &amp;quot;solr&amp;quot;) and the actual password (i.e., NOT THE HASH in the &lt;code&gt;security.json&lt;/code&gt; file). If you entered &amp;quot;MYPASSWORD&amp;quot; in the hashing tool &lt;a href=&quot;https://clemente-biondo.github.io/&quot;&gt;https://clemente-biondo.github.io/&lt;/a&gt;, enter &amp;quot;MYPASSWORD&amp;quot; in the password field here.&lt;/p&gt;
+&lt;p&gt;Click &amp;quot;Save&amp;quot;. If all goes well, you should see a message that the Solr server could be reached. The &lt;strong&gt;Core Connection&lt;/strong&gt; field, however, should say &amp;quot;The Solr core could not be accessed&amp;quot; (or something like that). That&#39;s because we still need to create a core on the Solr server.&lt;/p&gt;
+&lt;h3&gt;Create a Solr Core&lt;/h3&gt;
+&lt;p&gt;This is the most involved part of this whole process. The first step is to download a configuration set (&amp;quot;configset&amp;quot;):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to &lt;code&gt;/admin/config/search/search-api&lt;/code&gt; in the Drupal UI&lt;/li&gt;
+&lt;li&gt;Click the name of your server&lt;/li&gt;
+&lt;li&gt;On the &amp;quot;View&amp;quot; page that should come up, click the button &amp;quot;+ Get config.zip&amp;quot; to download the configset (probably named something like &lt;code&gt;solr_9.x_config.zip&lt;/code&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now you need to upload the configset to your the server that hosts your site and your Solr Docker container. I use &lt;code&gt;scp&lt;/code&gt; (&amp;quot;secure copy&amp;quot;) to do that: &lt;code&gt;scp solr_9.x_config.zip myuser@myserver:~/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;After logging on to your server:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make a new director called &amp;quot;conf&amp;quot;: &lt;code&gt;mkdir conf&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Unzip the configset to the &amp;quot;conf&amp;quot; directory: &lt;code&gt;unzip solr_9.x_config.zip -d conf&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Copy the &amp;quot;conf&amp;quot; directory to Solr&#39;s home directory (&lt;code&gt;/var/solr/data&lt;/code&gt;) in the Docker container: &lt;code&gt;docker cp -a conf 82fd162cad53:/var/solr/data&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Restart the Docker container: &lt;code&gt;sudo systemctl restart dllsolr&lt;/code&gt; (replace &lt;code&gt;dllsolr&lt;/code&gt; with the name of your Solr Docker container)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now it&#39;s time to log on to the Solr Docker container and create the core:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Log on to the Docker container: &lt;code&gt;docker exec -it dllsolr /bin/bash&lt;/code&gt; (replace &lt;code&gt;dllsolr&lt;/code&gt; with the name of your Solr Docker container)&lt;/li&gt;
+&lt;li&gt;Create the core: &lt;code&gt;/opt/solr/bin/solr create_core -c dllcatsolr -d conf&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I&#39;ll break that last line down:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/opt/solr/bin/solr&lt;/code&gt;: This is the directory where Solr&#39;s commands are stored&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;create_core&lt;/code&gt;: This is one of the commands stored in &lt;code&gt;/opt/solr/bin/solr&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-c dllcatsolr&lt;/code&gt;: This tells Solr to name the core &amp;quot;dllcatsolr&amp;quot;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;d conf&lt;/code&gt;: This tells Solr to use the configset that you downloaded from your Drupal site and copied to the Solr Docker container&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If all goes well, you should now have a Solr core.&lt;/p&gt;
+&lt;h3&gt;Make Sure Docker and Solr Restart Automatically&lt;/h3&gt;
+&lt;p&gt;In the section on installing Docker above, I recommended doing &lt;code&gt;sudo systemctl enable docker&lt;/code&gt; to make sure that Docker restarts automatically whenever the server is rebooted. We need to update the Solr Docker container to tell it to restart automatically, too. That can be done with &lt;code&gt;docker update --restart always dllsolr&lt;/code&gt; (or whatever your Solr server is called). Now, both Docker and the Solr server should start up automatically whenever the system is rebooted.&lt;/p&gt;
+&lt;h2&gt;Useful Commands&lt;/h2&gt;
+&lt;p&gt;Some useful commands to know for managing Solr as a Docker container:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker ps&lt;/code&gt;: Shows the ID of any running containers and their status, among other things&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker exec -it dllsolr /bin/bash&lt;/code&gt;: Get access to the container&#39;s shell&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker logs dllsolr&lt;/code&gt;: Outputs all the log entries for your Solr server. The output can be reduced to the most recent entries by piping it to &lt;code&gt;tail&lt;/code&gt;: &lt;code&gt;docker logs dllsolr | tail&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl http://localhost:8983/solr/admin/info/system&lt;/code&gt;: Check the status of the Solr server&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl http://localhost:8983/solr/admin/cores&#92;?action&#92;=STATUS&#92;&amp;amp;core&#92;=&#92;dllcatsolr&lt;/code&gt;: Check the status of a core (the last value in the URL string)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Also, to find the IP address of the Docker container:&lt;/p&gt;
+&lt;pre class=&quot;language-twig&quot;&gt;&lt;code class=&quot;language-twig&quot;&gt;docker inspect -f &quot;&lt;span class=&quot;token twig language-twig&quot;&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;{{&lt;/span&gt;range &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;NetworkSettings&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Networks&lt;span class=&quot;token delimiter punctuation&quot;&gt;}}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token twig language-twig&quot;&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;IPAddress&lt;span class=&quot;token delimiter punctuation&quot;&gt;}}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token twig language-twig&quot;&gt;&lt;span class=&quot;token delimiter punctuation&quot;&gt;{{&lt;/span&gt;end&lt;span class=&quot;token delimiter punctuation&quot;&gt;}}&lt;/span&gt;&lt;/span&gt;&#39; dllsolr&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;Image credit: The Blue Whale of Catoosa. Photo by Carol M. Highsmith - &lt;a href=&quot;https://www.loc.gov/pictures/collection/highsm/item/2010630004/&quot;&gt;https://www.loc.gov/pictures/collection/highsm/item/2010630004/&lt;/a&gt;, Public Domain, &lt;a href=&quot;https://commons.wikimedia.org/w/index.php?curid=20572688&quot;&gt;https://commons.wikimedia.org/w/index.php?curid=20572688&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry> 
   <entry>
     <title>Rebuilding A Theme, Part XII: Styling the Search Page</title>
     <link href="https://sjhuskey.info/posts/upgrading-theme-part-12/" />
@@ -803,6 +933,10 @@
 &lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-6&quot;&gt;Rebuilding A Theme, Part VI: Customizing the Footer&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-7&quot;&gt;Rebuilding A Theme, Part VII: Contextual Views&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-8&quot;&gt;Rebuilding A Theme, Part VIII: Content Types&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-9&quot;&gt;Rebuilding A Theme, Part IX: Content Types, Continued&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-10&quot;&gt;Rebuilding A Theme, Part X: Solr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-11&quot;&gt;Rebuilding A Theme, Part XI: Template for the Search Page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://sjhuskey.info/posts/upgrading-theme-part-12&quot;&gt;Rebuilding A Theme, Part XII: Styling the Search Page&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
   </entry> 

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samuel J. Huskey - Wrestling with Solr on Docker</title>
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/dist/app.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-T4DCQE192P");
+    </script>
+    
+
+
+<meta name="description" content="I blog about my adventures with technology, text and data analysis, and digital philology">
+<!-- Open Graph Metadata -->
+  <meta property="og:title" content="Wrestling with Solr on Docker">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sjhuskey.info/posts/wrestling-with-solr/">
+  <meta property="og:description" content="Notes from a recent struggle with Solr">
+  <meta property="og:site_name" content="Samuel J. Huskey">
+  <meta property="og:locale" content="en_US">
+  
+  <meta property="og:image" content="https://sjhuskey.info/assets/images/docker-catoosa.jpg">
+  
+  
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Wrestling with Solr on Docker">
+  <meta name="twitter:description" content="Notes from a recent struggle with Solr">
+  
+  <meta name="twitter:image" content="https://sjhuskey.info/assets/images/docker-catoosa.jpg">
+  
+
+
+
+
+<link rel="icon" href="https://sjhuskey.info/assets/images/favicon.ico">
+
+
+
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <!-- skiplinks -->
+    <a href="#main" class="visually-hidden-focusable">Skip to main content</a>
+
+    <div id="header-container">
+  <div class="container py-6">
+    <header class="pb-5 mb-4">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container w-75 mx-auto border-bottom">
+          <a href="/" class="d-flex align-items-center text-light text-decoration-none">
+              <title>Samuel J. Huskey</title>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                fill="currentColor"
+              ></path>
+            </svg>
+            <span class="fs-4">Samuel J. Huskey</span>
+          </a>
+          <button
+            class="navbar-toggler navbar-dark"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/cv.html">CV</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/dh.html">DH</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/about/tech.html">Tech</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/posts">Blog</a>
+    </li>
+</ul>
+
+
+</div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <main id="main">
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            
+            <img src="/assets/images/docker-catoosa.jpg" class="featured-image-post" />
+            
+            <h1>Wrestling with Solr on Docker</h1>
+            
+            <p class="post-date">
+              Posted: 2024-07-31
+               in                  
+              <a href="/tags/Drupal">Drupal</a
+              >,  
+              <a href="/tags/Linux">Linux</a
+              >,  
+              <a href="/tags/Docker">Docker</a
+              >   
+            </p>
+            
+            <p>Every time I install and configure Apache Solr for a Drupal site, I find myself bogged down in a variety of issues, so I thought it would be helpful (if only to me) to record what I gleaned from the latest instance.</p>
+<h2>My History with Solr</h2>
+<p>My first experience with Solr was on the original Digital Latin Library Catalog site, which was on Drupal 7. I preparation for working with it, I read the extensive <a href="https://solr.apache.org/guide/solr/latest/index.html">documentation</a>. With all its talk of <a href="https://zookeeper.apache.org/">zookeepers</a>, my confusion and trepidation grew quickly. Then I realized that Drupal's <a href="https://www.drupal.org/project/search_api_solr">Search API Solr module</a> took care of most, but certainly not all, of the difficulties. I still had to install and configure Solr, but I eventually managed to get it up and running. I wish that I had documented all the steps back then, but I was so relieved to have made progress that I moved on to something else.</p>
+<p>My second experience with Solr was when I enhanced the search features on the website of the <a href="https://classicalstudies.org/">Society for Classical Studies</a>. Since I am not the system administrator for the SCS, we paid the hosting company (the heroic and wonderful folks at <a href="https://www.esosoft.com/">EsoSoft</a>) to spin up a Solr server. They opted to install Solr as a <a href="https://www.docker.com/">Docker</a> container, so I had the opportunity to learn about managing Solr via <code>docker</code> commands. I wish that I had documented that experience, too, but I was eager to move on after I had a working setup.</p>
+<p>When I started using the super-awesome <a href="https://ddev.com/">DDEV</a> for local development, I had to work with Solr again as a Docker container. In this instance, I did take the time to <a href="https://sjhuskey.info/posts/upgrading-theme-part-10/">document the process</a>.</p>
+<p>Now that I have finished <a href="https://sjhuskey.info/posts/drupal-7-to-drupal-10/">migrating the content of the DLL's Catalog site from Drupal 7 to Drupal 10</a> and <a href="https://sjhuskey.info/posts/drupal-7-to-drupal-10/">rebuilding its theme</a>, I need to move the site to my production server, and that involves upgrading Solr. Having learned my lesson from previous experiences, I'm going to document the process here.</p>
+<h2>Upgrading or Reinstalling Solr?</h2>
+<p>Since the server is currently configured for a Drupal 7 site, Solr wasn't the only item in need of an upgrade. I had to upgrade PHP, MariaDB, and Java, among other things. Fortunately, the <code>dnf</code> package manager made quick work of that.</p>
+<p>I tried simply upgrading Solr, but I ran into a mess of conflicts and permissions issues, so I decided to uninstall it, remove it, and start with a clean slate. I had a decision to make: run Solr as an application on the server or as a Docker container? The latter has a lot to recommend it, particularly when it comes to maintenance and upkeep, so I decided to install it that way.</p>
+<h2>Solr in Docker</h2>
+<p>Apache's <a href="https://solr.apache.org/guide/solr/latest/deployment-guide/solr-in-docker.html">documentation on Solr in Docker</a> is pretty good, as is the <a href="https://www.drupal.org/docs/extending-drupal/contributed-modules/contributed-module-documentation/search-api-solr">documentation for the Search API Solr module</a>. But there are definitely gaps here and there, and I spent more hours than I care to admit trying to figure out how to fill them. It was a &quot;non-trivial&quot; number of hours. That's all I will say.</p>
+<h3>Installing Docker and Solr</h3>
+<p>To run Solr in Docker, you obviously need to have Docker on your server. That's easy. I'm using a Red Hat Linux server, so the <code>dnf</code> package manager can take care of it:</p>
+<ol>
+<li>Make sure that <code>dnf</code> can find the Docker repository: <code>sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</code></li>
+<li>Install Docker, et al.: <code>sudo dnf install -y docker-ce docker-ce-cli containerd.io</code></li>
+<li>Start Docker: <code>sudo systemctl start docker</code></li>
+<li>Enable Docker (i.e., make sure that it will start automatically after rebooting): <code>sudo systemctl enable docker</code></li>
+</ol>
+<p>Grabbing the <a href="https://hub.docker.com/_/solr/">official Docker Solr image</a> is not difficult, either: <code>sudo docker pull solr:9.6.1</code>.</p>
+<p>Okay, I have all the components. Now what?</p>
+<p>This is where the documentation becomes opaque, at least for me. It's clear enough if you just need to start a Solr server and get to work. If you need Drupal to connect to your Solr server, you have to hold your mouth just right. At least it seems that way.</p>
+<p>The Search API Solr module makes you put the cart before the horse, as it were. That is, you have to create a server first, then connect Drupal to it. Only then can you download a configuration set and create the Solr core that you need to start indexing content.</p>
+<p>So, the first step is to create a Solr server.</p>
+<h3>Creating a Solr Server</h3>
+<p>In the following steps, the Solr server I'm creating is <code>dllsolr</code>, and the core is <code>dllcatsolr</code>. You should be able to substitute your own values for those.</p>
+<p>Since I'm going to run Solr in a Docker container, I need to use a <code>docker</code> command to create it: <code>docker run -d -p 8983:8983 --name dllsolr solr</code></p>
+<p>I'll break that down:</p>
+<ul>
+<li><code>docker run</code> is the command to create and run a container</li>
+<li><code>-d</code> causes the container to run in the background</li>
+<li><code>p 8983:8983</code> maps the container to port 8983, which is the port often used for Solr</li>
+<li><code>--name dllsolr</code> gives the container the name <code>dllsolr</code>.</li>
+<li><code>solr</code> tells Docker to use the Solr image that I downloaded earlier</li>
+</ul>
+<p>After running that command, Solr was running as a Docker container. Great! But Drupal wasn't able to connect to it because the Search API Solr module expects to use a username and password. To satisfy that requirement, I need to secure Solr with a <code>security.json</code> file.</p>
+<h3>Securing Solr</h3>
+<p>Fortunately, the DLL Catalog doesn't need most of the <a href="https://solr.apache.org/guide/solr/latest/deployment-guide/securing-solr.html">robust security measures available</a>. I just need to add a <code>security.json</code> file to set up Basic Authentication. But even that's not a trivial affair.</p>
+<p>At a minimum, a <code>security.json</code> file should look like this:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>   <span class="token property">"authentication"</span><span class="token operator">:</span><span class="token punctuation">{</span><br>      <span class="token property">"class"</span><span class="token operator">:</span><span class="token string">"solr.BasicAuthPlugin"</span><span class="token punctuation">,</span><br>      <span class="token property">"credentials"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token property">"solr"</span><span class="token operator">:</span><span class="token string">"IV0EHq1OnNrj6gvRCwvFwTrZ1+z1oBbnQdiVC3otuq0= Ndd7LKvVBAaZIF0QAVi1ekCfAJXr1GGfLtRUXhgrF8c="</span><span class="token punctuation">}</span><br>   <span class="token punctuation">}</span><span class="token punctuation">,</span><br>   <span class="token property">"authorization"</span><span class="token operator">:</span><span class="token punctuation">{</span><br>      <span class="token property">"class"</span><span class="token operator">:</span><span class="token string">"solr.RuleBasedAuthorizationPlugin"</span><span class="token punctuation">,</span><br>      <span class="token property">"permissions"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"security-edit"</span><span class="token punctuation">,</span><br>         <span class="token property">"role"</span><span class="token operator">:</span><span class="token string">"admin"</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token property">"user-role"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token property">"solr"</span><span class="token operator">:</span><span class="token string">"admin"</span><span class="token punctuation">}</span><br>   <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>That's directly from the <a href="https://solr.apache.org/guide/solr/latest/deployment-guide/authentication-and-authorization-plugins.html#configuring-security-json">Apache Solr documentation</a>.</p>
+<p>The really important part is this:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>   <span class="token property">"credentials"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token property">"solr"</span><span class="token operator">:</span><span class="token string">"IV0EHq1OnNrj6gvRCwvFwTrZ1+z1oBbnQdiVC3otuq0= Ndd7LKvVBAaZIF0QAVi1ekCfAJXr1GGfLtRUXhgrF8c="</span><span class="token punctuation">}</span>   <br><span class="token punctuation">}</span></code></pre>
+<p>This is the line that establishes the credentials (obviously) needed to log on to the Solr server and perform operations. It's pretty clear that <code>solr</code> is meant to be the username, but the password needs some explaining. In this example, the password is actually &quot;SolrRocks&quot;. But it wouldn't be safe to put that in plain text, so it must be &quot;hashed&quot; first. And you can't use just any tool to hash the password. I tried using a Python script with the <code>bcrypt</code> library to hash a password, but that didn't work. Well, it produced a hashed password, but it didn't work with Solr. I couldn't find any guidance in the Solr documentation about how to create the hash, so I did a search of the internet and found this wonderful tool: <a href="https://clemente-biondo.github.io/">https://clemente-biondo.github.io</a>. (Bless you, Clemente Biondo, whoever you are!) This client-side tool allows you to enter a password of your choice into a form and get a hashed password and a template for using it in a <code>security.json</code> file.</p>
+<p>Okay, now that I had a hashed password in a <code>security.json</code> file, I had to get it into the Docker container. Here, again, you need to know a secret.</p>
+<p>It's easy to copy files to and from a Docker container. As long as you know the ID of the container, you just use <code>docker cp</code>, as in <code>docker cp myfile.txt DOCKERID:/path/to/directory</code>. But if you just do that, the file you copy won't have the correct permissions, and <em>there will be no way to change them or to remove the file after it is in the container</em>. The answer is to use the <code>-a</code> switch on <code>docker cp</code>. That switch preserves (the &quot;a&quot; is for &quot;archive&quot;) everything about the file's permissions and ownership and prevents it from being changed by Docker.</p>
+<p>So, after hashing the password and adding it to <code>security.json</code>, copy it into the Solr Docker container like this: <code>docker cp -a security.json 82fd162cad53:/var/solr/data</code>.</p>
+<p>I'll break that down:</p>
+<ul>
+<li><code>docker cp</code> tells Docker to copy something into or out of a container</li>
+<li><code>-a</code>: archive mode, to preserve the file's permissions from being modified by Docker</li>
+<li><code>security.json</code> is the name of the file to be copied from the server to the Docker container</li>
+<li><code>82fd162cad53:</code> is the ID of the Docker container. The ID can be discovered by doing <code>docker ps</code>.</li>
+<li><code>/var/solr/data</code> is the destination for the file in the Docker container.</li>
+</ul>
+<p>Now, do <code>docker restart dllsolr</code> to put the security measure into effect.</p>
+<p>Great! I have a Solr server running in a Docker container, and it is secured with basic authentication. Now I need to tell Drupal how to reach it.</p>
+<h2>Configure Search API Solr in Drupal</h2>
+<p><strong>Important, time-saving advice</strong>: Before doing anything else, determine the IP address of the Docker container. This is a crucial piece of information for configuring Drupal to connect to the Solr server:</p>
+<pre class="language-twig"><code class="language-twig">docker inspect -f "<span class="token twig language-twig"><span class="token delimiter punctuation">{{</span>range <span class="token punctuation">.</span>NetworkSettings<span class="token punctuation">.</span>Networks<span class="token delimiter punctuation">}}</span></span><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span><span class="token punctuation">.</span>IPAddress<span class="token delimiter punctuation">}}</span></span><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span>end<span class="token delimiter punctuation">}}</span></span>" dllsolr</code></pre>
+<p>Copy the IP address into a text file and keep it on hand.</p>
+<p>Now, to start the process of creating a Solr &quot;server&quot; in Drupal, go to <code>/admin/config/search/search-api</code> in the Drupal site. I put &quot;server&quot; in quotation marks because we've already created the server. That's what everything above was about. It's more accurate to say that we're creating a connection to the Solr server.</p>
+<ol>
+<li>Click &quot;+Add server&quot;</li>
+<li>Enter a name for the server</li>
+<li>Check the &quot;Enabled&quot; box (if it isn't already checked)</li>
+<li>Enter a description</li>
+<li>Select &quot;Solr&quot; as the Backend</li>
+<li>In &quot;Configure Solr backend&quot;, select &quot;Basic Auth&quot;</li>
+</ol>
+<p>Now, in the &quot;Configure Basic Auth Solr connector&quot; submenu, do the following:</p>
+<ol>
+<li><strong>HTTP protocol</strong>: http</li>
+<li><strong>Solr host</strong>: Enter the IP address of the Docker container that you obtained earlier. You'll see some instructions that say you should enter <code>localhost</code> here. That's true if you're running Solr as an application (i.e., not in a Docker container). But if you're running Solr in a Docker container, you need the IP address.</li>
+<li><strong>Solr port</strong>: enter &quot;8983&quot;</li>
+<li><strong>Solr path</strong>: enter &quot;/&quot;</li>
+<li><strong>Solr core</strong>: enter the name of the core that you will create later. I'm using &quot;dllcatsolr&quot;.</li>
+</ol>
+<p>Leave everything else as it is, except for the HTTP basic authentication fields. Here you should enter the username from your <code>security.json</code> file (e.g., &quot;solr&quot;) and the actual password (i.e., NOT THE HASH in the <code>security.json</code> file). If you entered &quot;MYPASSWORD&quot; in the hashing tool <a href="https://clemente-biondo.github.io/">https://clemente-biondo.github.io/</a>, enter &quot;MYPASSWORD&quot; in the password field here.</p>
+<p>Click &quot;Save&quot;. If all goes well, you should see a message that the Solr server could be reached. The <strong>Core Connection</strong> field, however, should say &quot;The Solr core could not be accessed&quot; (or something like that). That's because we still need to create a core on the Solr server.</p>
+<h3>Create a Solr Core</h3>
+<p>This is the most involved part of this whole process. The first step is to download a configuration set (&quot;configset&quot;):</p>
+<ol>
+<li>Go to <code>/admin/config/search/search-api</code> in the Drupal UI</li>
+<li>Click the name of your server</li>
+<li>On the &quot;View&quot; page that should come up, click the button &quot;+ Get config.zip&quot; to download the configset (probably named something like <code>solr_9.x_config.zip</code>)</li>
+</ol>
+<p>Now you need to upload the configset to your the server that hosts your site and your Solr Docker container. I use <code>scp</code> (&quot;secure copy&quot;) to do that: <code>scp solr_9.x_config.zip myuser@myserver:~/</code>.</p>
+<p>After logging on to your server:</p>
+<ol>
+<li>Make a new director called &quot;conf&quot;: <code>mkdir conf</code>.</li>
+<li>Unzip the configset to the &quot;conf&quot; directory: <code>unzip solr_9.x_config.zip -d conf</code></li>
+<li>Copy the &quot;conf&quot; directory to Solr's home directory (<code>/var/solr/data</code>) in the Docker container: <code>docker cp -a conf 82fd162cad53:/var/solr/data</code></li>
+<li>Restart the Docker container: <code>sudo systemctl restart dllsolr</code> (replace <code>dllsolr</code> with the name of your Solr Docker container)</li>
+</ol>
+<p>Now it's time to log on to the Solr Docker container and create the core:</p>
+<ol>
+<li>Log on to the Docker container: <code>docker exec -it dllsolr /bin/bash</code> (replace <code>dllsolr</code> with the name of your Solr Docker container)</li>
+<li>Create the core: <code>/opt/solr/bin/solr create_core -c dllcatsolr -d conf</code></li>
+</ol>
+<p>I'll break that last line down:</p>
+<ul>
+<li><code>/opt/solr/bin/solr</code>: This is the directory where Solr's commands are stored</li>
+<li><code>create_core</code>: This is one of the commands stored in <code>/opt/solr/bin/solr</code></li>
+<li><code>-c dllcatsolr</code>: This tells Solr to name the core &quot;dllcatsolr&quot;</li>
+<li><code>d conf</code>: This tells Solr to use the configset that you downloaded from your Drupal site and copied to the Solr Docker container</li>
+</ul>
+<p>If all goes well, you should now have a Solr core.</p>
+<h3>Make Sure Docker and Solr Restart Automatically</h3>
+<p>In the section on installing Docker above, I recommended doing <code>sudo systemctl enable docker</code> to make sure that Docker restarts automatically whenever the server is rebooted. We need to update the Solr Docker container to tell it to restart automatically, too. That can be done with <code>docker update --restart always dllsolr</code> (or whatever your Solr server is called). Now, both Docker and the Solr server should start up automatically whenever the system is rebooted.</p>
+<h2>Useful Commands</h2>
+<p>Some useful commands to know for managing Solr as a Docker container:</p>
+<ul>
+<li><code>docker ps</code>: Shows the ID of any running containers and their status, among other things</li>
+<li><code>docker exec -it dllsolr /bin/bash</code>: Get access to the container's shell</li>
+<li><code>docker logs dllsolr</code>: Outputs all the log entries for your Solr server. The output can be reduced to the most recent entries by piping it to <code>tail</code>: <code>docker logs dllsolr | tail</code></li>
+<li><code>curl http://localhost:8983/solr/admin/info/system</code>: Check the status of the Solr server</li>
+<li><code>curl http://localhost:8983/solr/admin/cores\?action\=STATUS\&amp;core\=\dllcatsolr</code>: Check the status of a core (the last value in the URL string)</li>
+</ul>
+<p>Also, to find the IP address of the Docker container:</p>
+<pre class="language-twig"><code class="language-twig">docker inspect -f "<span class="token twig language-twig"><span class="token delimiter punctuation">{{</span>range <span class="token punctuation">.</span>NetworkSettings<span class="token punctuation">.</span>Networks<span class="token delimiter punctuation">}}</span></span><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span><span class="token punctuation">.</span>IPAddress<span class="token delimiter punctuation">}}</span></span><span class="token twig language-twig"><span class="token delimiter punctuation">{{</span>end<span class="token delimiter punctuation">}}</span></span>' dllsolr</code></pre>
+<hr>
+<p><em>Image credit: The Blue Whale of Catoosa. Photo by Carol M. Highsmith - <a href="https://www.loc.gov/pictures/collection/highsm/item/2010630004/">https://www.loc.gov/pictures/collection/highsm/item/2010630004/</a>, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=20572688">https://commons.wikimedia.org/w/index.php?curid=20572688</a></em></p>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mt-auto">
+  <div class="container w-75 mx-auto">
+    <div class="row">
+      <div class="col-8">
+        <p class="footerinfo">
+          ©2024 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
+          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+        </p>
+      </div>
+      <div class="col-4">
+        <div id="socialicons">
+          <!-- Social Media Icons by NiftyButtons https://niftybuttons.com -->
+          <a href="https://github.com/sjhuskey" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-github"
+              data-donate="true"
+              data-tag="git"
+              data-name="Github"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"
+              ></path></svg></a
+          ><a href="https://www.linkedin.com/in/sjhuskey/" target="_blank" rel="noopener noreferrer"
+            ><svg
+              class="niftybutton-linkedin"
+              data-donate="true"
+              data-tag="lin"
+              data-name="LinkedIn"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"
+              ></path></svg
+          ></a>
+          <a
+            href="https://sjhuskey.info/feed/feed.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="text-decoration: none; border: 0; width: 36px; height: 36px; padding: 0; margin: 3px; color: #ffffff"
+          >
+            <svg
+              class="niftybutton-rss"
+              style="display: block; fill: currentColor"
+              data-donate="true"
+              data-tag="rss"
+              data-name="RSS"
+              viewBox="0 0 512 512"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M201.8 347.2c0 20.3-16.5 36.8-36.8 36.8 -20.3 0-36.8-16.5-36.8-36.8s16.5-36.8 36.8-36.8C185.3 310.4 201.8 326.8 201.8 347.2zM128.2 204.7v54.5c68.5 0.7 124 56.3 124.7 124.7h54.5C306.7 285.3 226.9 205.4 128.2 204.7zM128.2 166.6c57.9 0.3 112.3 22.9 153.2 63.9 41 41 63.7 95.5 63.9 153.5h54.5c-0.3-149.9-121.7-271.4-271.6-271.9V166.6L128.2 166.6z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript" src="/dist/app.js"></script>
+  </body>
+</html>
