@@ -36,7 +36,7 @@
             <h1>{{ title }}</h1>
             {% if date %}
             <p class="post-date">
-              Posted: {{ date }}
+              Posted: {{ date | dateReadable }}
               {% if tags %} in {% set filteredTags = [] %} {% for item in tags %} {% if item !== 'posts' %} {% set
               filteredTags = filteredTags.concat(item) %} {% endif %} {% endfor %} {% if filteredTags.length == 1 %}
               <a href="/tags/{{ filteredTags[0] }}">{{ filteredTags[0] }}</a>

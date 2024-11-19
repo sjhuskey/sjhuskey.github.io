@@ -8,11 +8,11 @@ eleventyNavigation:
   key: About
 ---
 
-![Sam Huskey](/assets/images/sweater.png){.float-image-right .image .img-fluid}
+![Sam Huskey](/assets/images/sweater.png){.float-image-right .img-fluid}
 
 As an introvert, I generally prefer not to talk about myself, but since this is my personal web site, I really ought to provide _some_ information.
 
-<!-- excerpt -->
+## Background
 
 The short story is that I was born and raised in Charlottesville, VA. For much of my youth, I thought that I would be a professional musician, but that changed when I took Latin in high school. I majored in Classics at the University of Oklahoma. After graduation, I worked as a manager for Barnes and Noble's college bookstore on the campus of the University of Nevada-Las Vegas. Later, I enrolled in the Ph.D. program in Classics at the University of Iowa. I'm currently a professor in the Department of Classics and Letters at the University of Oklahoma.
 
@@ -32,7 +32,7 @@ My current work on the [Digital Latin Library](https://digitallatin.org/) projec
 
 ## Leadership
 
-![Sam Huskey](/assets/images/sjhuskey-2017.jpg){.float-image-left .image .img-fluid}
+![Sam Huskey](/assets/images/sjhuskey-2017.jpg){.float-image-left .img-fluid}
 
 My directorship of the Digital Latin Library overlapped with my decade of service (2009–2019) as chair of [OU's Department of Classics and Letters](https://ou.edu/cas/classicsandletters/), during which time the department moved across campus to new quarters, added seven new faculty members to its roster, and maintained steady enrollment in its programs even as humanities departments at OU and other institutions saw their enrollments decline. I led the department through two highly favorable academic program review periods and put it on a solid footing for my successor, who has continued to build the department's national and international profile.
 
@@ -45,6 +45,6 @@ Other leadership positions I have held:
 
 ## Other Interests
 
-![Bachelor buttons](/assets/images/flowers.png){.float-image-right .image .img-fluid}
+![Bachelor buttons](/assets/images/flowers.png){.float-image-right .img-fluid}
 
 When I'm not teaching, reading, or working on research and scholarship, I enjoy playing guitar (electric and acoustic), gardening (the image of the bachelor buttons is from our front yard), playing pool (especially nine ball), listening to old-time radio shows, watching auto racing, and spending time with family and friends (both human and canine). [I also like hats](hats.html) 🤠.
