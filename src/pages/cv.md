@@ -1,7 +1,7 @@
 ---
 title: "Curriculum Vitae"
 author: "Samuel J. Huskey"
-date: 2024-03-29
+date: 2025-01-09
 permalink: "/about/cv.html"
 layout: page
 eleventyNavigation:
@@ -16,7 +16,7 @@ The University of Oklahoma
 Department of Classics and Letters  
 Email: [huskey](mailto:huskey@ou.edu)[@ou.edu](mailto:huskey@ou.edu)  
 Website: [https://sjhuskey.info/](https://sjhuskey.info/)  
-ORCID: <https://orcid.org/0000-0002-8192-9385>  
+ORCID: <https://orcid.org/0000-0002-8192-9385>
 
 ### Education
 
