@@ -20,23 +20,19 @@ ORCID: <https://orcid.org/0000-0002-8192-9385>
 
 ### Education
 
-PhD, University Of Iowa, 2002
+PhD, University Of Iowa, 2002  
 Dissertation Title: "Ovid's _Tristia_ I and III: An Intertextual Katabasis"
 
-BA, University of Oklahoma, 1994 (Phi Beta Kappa)
+BA, University of Oklahoma, 1994 (Phi Beta Kappa)  
 Major: Classics
 
 ### Professional Positions
 
-Professor, University of Oklahoma (July 2020–Present)
-
-Chair, Department of Classics and Letters, University of Oklahoma (2009–2019)
-
-Interim Chair, Department of Classics and Letters, University of Oklahoma (January 2009–June 2009)
-
-Associate Professor, University of Oklahoma (August 2008–June 2020)
-
-Assistant Professor, University of Oklahoma. (August 2002–July 2008)
+- Professor, University of Oklahoma (July 2020–Present)
+- Chair, Department of Classics and Letters, University of Oklahoma (2009–2019)
+- Interim Chair, Department of Classics and Letters, University of Oklahoma (January 2009–June 2009)
+- Associate Professor, University of Oklahoma (August 2008–June 2020)
+- Assistant Professor, University of Oklahoma. (August 2002–July 2008)
 
 ### Contracts, Fellowships, Grants and Sponsored Research
 
@@ -53,7 +49,7 @@ Assistant Professor, University of Oklahoma. (August 2002–July 2008)
 
 #### Articles
 
-1. Huskey, S.J. 2023. "Committing to reproducibility and explainability: using Git as a research journal." _International Journal of Digital Humanities_. <https://doi.org/10.1007/s42803-023-00076-9>. PDF available at [https://rdcu.be/dt2vc](https://rdcu.be/dt2vc){.uri}
+1. Huskey, S.J. 2024. "Committing to reproducibility and explainability: using Git as a research journal." _International Journal of Digital Humanities_ 6:9–21. <https://doi.org/10.1007/s42803-023-00076-9>. PDF available at [https://rdcu.be/dt2vc](https://rdcu.be/dt2vc){.uri}
 1. Huskey, S. J. 2022. "The Visual [Re]Presentation of Textual Data in Traditional and Digital Critical Editions." _magazén: International Journal for Digital and Public Humanities_ 3.1. <https://edizionicafoscari.unive.it/it/edizioni4/riviste/magazen/2022/1/the-visual-representation-of-textual-data-in-tradi/>
 1. Huskey, S. J. and Cayless, H. 2022. "The Digital Critical Apparatus: Thoughts from the Field." _The Classical Journal_ 117.3: 340–358.
 1. Huskey, S. J., and Witt, J. 2019. "Decoupling Quality Control and Publication: The Digital Latin Library and the Traveling Imprimatur." _Digital Humanities Quarterly_ 13.4. <http://digitalhumanities.org/dhq/vol/13/4/000438/000438.html>
@@ -185,7 +181,7 @@ Association
 1. CL C 3113: Greek Epic Poetry (May 2003, 2004, Fall 2021)
 1. CL C 3123: Greek Tragedy in English Translation (Fall 2010)
 1. CL C 3313:\* Religions of Rome (Spring 2003, 2004, 2007)
-1. CL C 3510: \* States in Crisis in Greece & Rome (Spring 2021)
+1. CL C 3510: \* States in Crisis in Greece & Rome (Spring 2021, Spring 2022, Fall 2024)
 1. CL C 3613: Classical Influences on Modern Literature (Winter 2004, May 2005, Summer 2005, May 2006)
 1. CL C 4503: Classics Capstone (Spring 2009, Spring 2015, Spring 2016, Spring 2019, Spring 2020, Spring 2023)
 1. GRK 2113: Biblical Greek (Fall 2018, Fall 2020)
@@ -193,10 +189,11 @@ Association
 1. LAT 1115: Beginning Latin I (Fall 2023)
 1. LAT 1215: Beginning Latin II (Spring 2024)
 1. LAT 2113: Intermediate Latin Prose (Spring 2003, Spring 2004, Spring 2006, Spring 2008, Fall 2008, Spring 2019, Spring 2021)
-1. LAT 2213: Intermediate Latin Poetry (Spring 2007, Fall 2021)
+1. LAT 2213: Intermediate Latin Poetry (Spring 2007, Fall 2021, Fall 2024)
 1. LAT 3113: Advanced Latin Prose (Fall 2002, Fall 2003, Spring 2008, Fall 2009, Fall 2010)
 1. LAT 3213: Advanced Latin Poetry (Fall 2004, Fall 2006, Spring 2023)
 1. LAT 3313:\* Latin Prose Composition (Spring 2006, 2008, 2010, 2012, 2014, 2018)
+1. LAT 3513: Roman Philosophers (Fall 2024)
 1. LAT 4133: Historians (Fall 2006, 2007, 2011, 2012, 2013, 2017, 2019)
 1. LAT 4213: Latin Lyric Poetry (Fall 2005, Spring 2011, Spring 2017)
 1. LAT 4970: Latin Inscriptions (Fall 2015); Bucolic Poetry (Fall 2019)
@@ -230,6 +227,7 @@ Association
 
 ### University Service
 
+1. Committee Member, OU Libraries DH Task Force (Fall 2024–present)
 1. Committee Member, OU Provost AI Subcommittee on Research and Creative Activity. (Fall 2023–present).
 1. Committee Member, OU Faculty Evaluation Working Group. (January 2023–present).
 1. Committee Member, OU Humanities Forum Advisory Board. (August 2022-present).
@@ -275,6 +273,7 @@ Association
 
 ### Public Service
 
+1. Guest Speaker, OU Arts and Humanities Forum panel on Artificial Intelligence and Machine Learning Tools for the Arts and Humanities (October 31, 2024)
 1. Guest Speaker, St. Stephen's United Methodist Church Fiction Group. (August 22, 2023).
 1. Committee Member, United Way of Norman Income Council, Norman, OK. (February 23, 2017–June 20, 2017).
 1. Guest Speaker, College of Arts and Sciences Research Discussion Series. (November 10, 2017).
