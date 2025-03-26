@@ -33,6 +33,14 @@ If you download the archive and the SHA512 file (which you might have to right c
 shasum -c solr-8.11.1.tgz.sha512
 ```
 
+Sometimes you can't download the SHA file because the vendor just gives you the hash in an html file. In that case, you can copy the hash and paste it into `echo`, then pipe the input to `shasum`:
+
+```bash
+echo "file_hash_here  file_name" | shashum --check
+```
+
+It's important to insert TWO spaces between the hash and the file name; otherwise, it won't work. 
+
 You might have to wait a second or two, but then, if everything is as it should be, you'll get the message:
 
 ```bash
