@@ -6,6 +6,9 @@
     <title>Samuel J. Huskey - Upgrading the DLL Catalog Site to Drupal 10</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
     <script>
@@ -57,7 +60,7 @@
   <div class="container py-6">
     <header class="pb-5 mb-4">
       <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container w-75 mx-auto border-bottom">
+        <div class="container w-75 mx-auto">
           <a href="/" class="d-flex align-items-center text-light text-decoration-none">
               <title>Samuel J. Huskey</title>
               <path
@@ -119,7 +122,7 @@
             
             <img src="/assets/images/drupal.jpg" class="featured-image-post" />
             
-            <h1>Upgrading the DLL Catalog Site to Drupal 10</h1>
+            <h1 class="post-title">Upgrading the DLL Catalog Site to Drupal 10</h1>
             
             <p class="post-date">
               Posted: May 25, 2024
@@ -140,7 +143,7 @@
 <h2>Prepare for Migration</h2>
 <h3>Install Migrate modules on the D10 site</h3>
 <p>This is easy. First, use Composer to require the migration modules in the D10 site. Note that I'm requiring not only Migrate Upgrade and Migrate Plus, but also Migrate Tools and Migrate File, since experience tells me that I'll avoid errors on import with those installed:</p>
-<pre class="language-bash"><code class="language-bash"><span class="token comment"># Require the migrate modules</span><br>ddev <span class="token function">composer</span> require drupal/migrate_tools drupal/migrate_upgrade drupal/migrate_plus drupal/migrate_file<br><span class="token comment"># Install the migrate modules</span><br>ddev drush en -y migrate_tools,migrate_upgrade,migrate_plus,migrate_file</code></pre>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># Require the migrate modules</span><br>ddev <span class="token function">composer</span> require drupal/migrate_tools drupal/migrate_upgrade drupal/migrate_plus drupal/migrate_file<br><span class="token comment"># Install the migrate modules</span><br>ddev drush en <span class="token parameter variable">-y</span> migrate_tools,migrate_upgrade,migrate_plus,migrate_file</code></pre>
 <h3>Install Contributed Modules on the D10 site</h3>
 <p>For this step, the easiest thing to do is to install the <a href="https://www.drupal.org/project/upgrade_status">Upgrade Status</a> module on the D7 site, enable it, and run its report. That will tell you which contributed modules on the D7 site have versions that are compatible with D10.</p>
 <p>Make note of the modules that are not compatible and begin thinking about whether you need to find an alternative. In my case, I wrote some custom modules that I'll need to upgrade, but that's not a crucial detail at this stage.</p>
@@ -178,7 +181,7 @@
 <pre class="language-bash"><code class="language-bash">ddev drush migrate:upgrade --legacy-db-url<span class="token operator">=</span>mysql://db:db@ddev-catalog-db/db --legacy-root<span class="token operator">=</span>/Users/sjhuskey/Sites/catalog/sites/default/files --configure-only</code></pre>
 <h3>Export the Migration Files</h3>
 <p>After running the <code>drush migrate:upgrade</code> command above, I ran the following command to export the files needed for migration to a <code>tmp</code> directoy I created in the root directory of the site:</p>
-<pre class="language-bash"><code class="language-bash">ddev drush cex --destination<span class="token operator">=</span><span class="token punctuation">..</span>/tmp</code></pre>
+<pre class="language-bash"><code class="language-bash">ddev drush cex <span class="token parameter variable">--destination</span><span class="token operator">=</span><span class="token punctuation">..</span>/tmp</code></pre>
 <p><code>../tmp</code> changes from the <code>web</code> directory to the parent or root directory.</p>
 <p>If you don't add the <code>--destination</code> flag, the files will end up in your <code>sync</code> file, and when you try to activate your custom module later, you'll get an error.</p>
 <h3>Copy the Migration Files into your Custom Module</h3>
@@ -197,7 +200,7 @@
 <p>Remove <code>migrate_plus.migration.catalog_migrate_action.yml</code> and <code>migrate_plus.migration.upgrade_action_settings.yml</code>. From past experience, I know that they cause trouble.</p>
 <h3>Edit the Migration Config Files</h3>
 <p>Several find/replace operations are needed across all the migration config files. The command line tool <code>sed</code> is great for this:</p>
-<pre class="language-bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">file</span> <span class="token keyword">in</span> *<span class="token punctuation">;</span> <span class="token keyword">do</span><br>    <span class="token function">sed</span> -i <span class="token string">''</span> -e <span class="token string">'/^uuid: [0-9a-z\-]*$/d'</span> <span class="token punctuation">\</span><br>        -e <span class="token string">'s/migration_group: migrate_drupal_7/migration_group: catalog_migrate/'</span> <span class="token punctuation">\</span><br>        -e <span class="token string">'s/id: upgrade_d7/id: catalog_migrate/'</span> <span class="token punctuation">\</span><br>        -e <span class="token string">'s/upgrade_d7/catalog_migrate/'</span> <span class="token string">"<span class="token variable">$file</span>"</span><br><span class="token keyword">done</span></code></pre>
+<pre class="language-bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">file</span> <span class="token keyword">in</span> *<span class="token punctuation">;</span> <span class="token keyword">do</span><br>    <span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">''</span> <span class="token parameter variable">-e</span> <span class="token string">'/^uuid: [0-9a-z\-]*$/d'</span> <span class="token punctuation">\</span><br>        <span class="token parameter variable">-e</span> <span class="token string">'s/migration_group: migrate_drupal_7/migration_group: catalog_migrate/'</span> <span class="token punctuation">\</span><br>        <span class="token parameter variable">-e</span> <span class="token string">'s/id: upgrade_d7/id: catalog_migrate/'</span> <span class="token punctuation">\</span><br>        <span class="token parameter variable">-e</span> <span class="token string">'s/upgrade_d7/catalog_migrate/'</span> <span class="token string">"<span class="token variable">$file</span>"</span><br><span class="token keyword">done</span></code></pre>
 <p>Breaking that down, I'm using a <code>for</code> loop in bash to iterate over the files and perform the following operations:</p>
 <ol>
 <li>All of the migration files contain a uuid that must be removed. I'm using the Regular Expression <code>^uuid: [0-9a-z\-]*$/d</code> to match the pattern and delete the line</li>
@@ -239,8 +242,7 @@
     <div class="row">
       <div class="col-8">
         <p class="footerinfo">
-          ©2025 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
-          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+          ©2025 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a>
         </p>
       </div>
       <div class="col-4">

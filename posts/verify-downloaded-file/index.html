@@ -6,6 +6,9 @@
     <title>Samuel J. Huskey - Verify a Downloaded File</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
     <script>
@@ -57,7 +60,7 @@
   <div class="container py-6">
     <header class="pb-5 mb-4">
       <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container w-75 mx-auto border-bottom">
+        <div class="container w-75 mx-auto">
           <a href="/" class="d-flex align-items-center text-light text-decoration-none">
               <title>Samuel J. Huskey</title>
               <path
@@ -119,7 +122,7 @@
             
             <img src="/assets/images/linux.jpg" class="featured-image-post" />
             
-            <h1>Verify a Downloaded File</h1>
+            <h1 class="post-title">Verify a Downloaded File</h1>
             
             <p class="post-date">
               Posted: June 22, 2021
@@ -141,9 +144,9 @@
 </blockquote>
 <p>That is, a link to the archive of the latest distribution of Solr and some links to the PHP and SHA512 hashes.</p>
 <p>If you download the archive and the SHA512 file (which you might have to right click to get) to the same directory, you can then do the following:</p>
-<pre class="language-bash"><code class="language-bash">shasum -c solr-8.11.1.tgz.sha512</code></pre>
+<pre class="language-bash"><code class="language-bash">shasum <span class="token parameter variable">-c</span> solr-8.11.1.tgz.sha512</code></pre>
 <p>Sometimes you can't download the SHA file because the vendor just gives you the hash in an html file. In that case, you can copy the hash and paste it into <code>echo</code>, then pipe the input to <code>shasum</code>:</p>
-<pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"file_hash_here  file_name"</span> <span class="token operator">|</span> shashum --check</code></pre>
+<pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"file_hash_here  file_name"</span> <span class="token operator">|</span> shashum <span class="token parameter variable">--check</span></code></pre>
 <p>It's important to insert TWO spaces between the hash and the file name; otherwise, it won't work.</p>
 <p>You might have to wait a second or two, but then, if everything is as it should be, you'll get the message:</p>
 <pre class="language-bash"><code class="language-bash">solr-8.11.1.tgz: OK</code></pre>
@@ -161,8 +164,7 @@
     <div class="row">
       <div class="col-8">
         <p class="footerinfo">
-          ©2025 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
-          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+          ©2025 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a>
         </p>
       </div>
       <div class="col-4">

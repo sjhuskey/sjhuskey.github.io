@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Samuel J. Huskey - Updating Composer</title>
+    <title>Samuel J. Huskey - Git for Digital Humanities</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,22 +25,22 @@
 
 <meta name="description" content="I blog about my adventures with technology, text and data analysis, and digital philology">
 <!-- Open Graph Metadata -->
-  <meta property="og:title" content="Updating Composer">
+  <meta property="og:title" content="Git for Digital Humanities">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://sjhuskey.info/posts/update-composer/">
-  <meta property="og:description" content="">
+  <meta property="og:url" content="https://sjhuskey.info/posts/git-for-dh/">
+  <meta property="og:description" content="Tips for getting the most out of Git">
   <meta property="og:site_name" content="Samuel J. Huskey">
   <meta property="og:locale" content="en_US">
   
-  <meta property="og:image" content="https://sjhuskey.info/assets/images/composer.jpg">
+  <meta property="og:image" content="https://sjhuskey.info/assets/images/git.jpg">
   
   
   <!-- Twitter Card Metadata -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Updating Composer">
-  <meta name="twitter:description" content="I blog about my adventures with technology, text and data analysis, and digital philology">
+  <meta name="twitter:title" content="Git for Digital Humanities">
+  <meta name="twitter:description" content="Tips for getting the most out of Git">
   
-  <meta name="twitter:image" content="https://sjhuskey.info/assets/images/composer.jpg">
+  <meta name="twitter:image" content="https://sjhuskey.info/assets/images/git.jpg">
   
 
 
@@ -120,34 +120,38 @@
         <div class="row">
           <div class="col-md-10 mx-auto">
             
-            <img src="/assets/images/composer.jpg" class="featured-image-post" />
+            <img src="/assets/images/git.jpg" class="featured-image-post" />
             
-            <h1 class="post-title">Updating Composer</h1>
+            <h1 class="post-title">Git for Digital Humanities</h1>
             
             <p class="post-date">
-              Posted: June 25, 2021
-               in                  
-              <a href="/tags/Linux">Linux</a
-              >,  
-              <a href="/tags/System Administration">System Administration</a
-              >,  
-              <a href="/tags/Composer">Composer</a
-              >   
+              Posted: July 30, 2025
+               in         
+              <a href="/tags/Git">Git</a>
+               
             </p>
             
-            <p>I decided to upgrade my <a href="https://getcomposer.org/">Composer</a> because I was tired of seeing the following notice every time I used it:</p>
-<p><code>Warning from https://repo.packagist.org: Support for Composer 1 is deprecated and some packages will not be available. You should upgrade to Composer 2. See https://blog.packagist.com/deprecating-composer-1-support/</code></p>
-<p>Since I was upgrading Composer for use with a Drupal site, I used the directions at <a href="https://www.drupal.org/docs/develop/using-composer/preparing-your-site-for-composer-2">https://www.drupal.org/docs/develop/using-composer/preparing-your-site-for-composer-2</a> to guide me along the way. Here is what I encountered.</p>
-<p>The instructions warned me that I would receive errors if my current composer version was too old. However, the suggestions there did not resolve this error:</p>
-<p><code>[Composer\Downloader\FilesystemException] Filesystem exception: Composer update failed: &quot;/usr/local/bin/composer&quot; could not be written. rename(/home/sjhuskey/.cache/composer/composer-temp.phar,/usr/local/bin/composer): Permission denied</code></p>
-<p>I remembered encountering this before, however. Following the suggestion of <a href="https://stackoverflow.com/a/48359743/2943704">Boss COTIGA</a> resolved the issue. Here's what I did:</p>
-<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">rm</span> /usr/local/bin/composer<br><span class="token builtin class-name">cd</span> ~/.cache/composer<br><span class="token function">chmod</span> <span class="token number">755</span> composer-temp.phar<br><span class="token function">sudo</span> <span class="token function">mv</span> composer-temp.phar /usr/local/bin/composer</code></pre>
-<p>I also ran into this error:</p>
-<p><code>[UnexpectedValueException] Your github oauth token for github.com contains invalid characters:</code></p>
-<p>I've seen that before, too. My github oauth token is fine, but Composer has a bug that makes it think otherwise. Fortunately, <a href="https://stackoverflow.com/a/67005141/2943704">rafaelbitten</a> has a solution. His first step, however, is a doozy: &quot;Find the <code>composer/auth.json</code> file.&quot; For me, that's in <code>~/.config/composer</code>, not in <code>~/.composer</code>, as it might be for some. After I found my <code>auth.json</code> file, I copied the oauth part (actually, it was the only thing in the file), pasted it somewhere for the moment, and replaced it with <code>{}</code> so that Composer wouldn't throw another error: <code>Expected one of: 'STRING', 'NUMBER', 'NULL', 'TRUE', 'FALSE', '{', '['</code>. Of course, after I did that, I ran into the <code>Filesystem exception</code> error from above when I did <code>composer selfupdate</code>, so I repeated the Boss COTIGA's process.</p>
-<p>After that, <code>composer selfupdate</code> showed that I was using the most current stable version.</p>
-<hr />
-<span style="font-size:smaller">Photo by <a href="https://unsplash.com/@marius?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Marius Masalar</a> on <a href="https://unsplash.com/s/photos/music?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></span>
+            <p>Version control is not only for keeping track of research data and files; it is also a potential safeguard against loss of information and a vital component in making research reproducible and, if done well, understandable.</p>
+<p>Here are some tips I have developed for myself over the years:</p>
+<ol>
+<li>Every DH research project should employ the distributed version control system <a href="https://git-scm.com/">Git</a> for code and, if possible, data.
+<ul>
+<li>Concerns about the size of the dataset and its content (e.g., whether it contains protected, private, sensitive, or proprietary information) must dictate how the dataset is tracked.</li>
+<li>Use <a href="https://git-lfs.com/">Git LFS</a> for tracking large files (audio, video, large datasets, etc.).</li>
+</ul>
+</li>
+<li>A <code>.gitignore</code> file should be used judiciously to prevent sensitive, protected, or proprietary knowledge from being tracked by Git and pushed to remote repositories. A useful collection of ready-made <code>.gitignore</code> files can be found at <a href="https://github.com/github/gitignore">https://github.com/github/gitignore</a>.</li>
+<li>Every Git repository should have a <code>README.md</code> file that provides basic information about the project.</li>
+<li>Every Git repository should have a license clearly indicating whether the content can be shared, reused, repurposed, etc. The site <a href="https://choosealicense.com/">https://choosealicense.com/</a> is a good resource for determining which license is appropriate.</li>
+<li>Code repositories should include files (e.g., <code>requirements.txt</code>, <code>environment.yml</code>) that enable other researchers to use the same software versions that were used in the original project.</li>
+<li>Commit messages should be thought of as a research journal, containing consistent and clear language. The <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> standard is worth following.e Not to toot my own horn, but <a href="https://link.springer.com/article/10.1007/s42803-023-00076-9">I wrote an article on this subject</a>. Don't follow this example: <a href="https://xkcd.com/1296/">https://xkcd.com/1296/</a> 😉.</li>
+<li>Milestones in the project should have annotated tags, and those tags should be pushed to the remote repository.</li>
+<li>Major milestones should be <a href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">made citable</a> with a service such as <a href="https://zenodo.org/">Zenodo</a>.</li>
+<li>Each project should have a remote repository on a platform such as <a href="https://github.com/">GitHub</a>, <a href="https://gitlab.com/">GitLab</a>, or ideally an institutional repository.</li>
+<li>Remote repositories should be set to private if they contain any information that should not be publicly available.</li>
+</ol>
+<hr>
+<p><span style="font-size:smaller">Photo by <a href="https://unsplash.com/@6heinz3r?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Gabriel Heinzer</a> on <a href="https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-a-bunch-of-words-on-it-EUzk9BIEq6M?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></span></p>
 
           </div>
         </div>

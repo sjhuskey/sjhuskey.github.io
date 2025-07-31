@@ -5,13 +5,41 @@
   <type>atom</type>
   <link href="https://sjhuskey.info/feed/feed.xml" rel="self" />
   <link href="" />
-  <updated>2024-07-31T00:00:00Z</updated>
+  <updated>2025-07-30T00:00:00Z</updated>
   <id>https://sjhuskey.info/feed/feed.xml</id>
   <language>en</language>
   <author>
     <name>Samuel J. Huskey</name>
     <email>huskey@ou.edu</email>
   </author> 
+  <entry>
+    <title>Git for Digital Humanities</title>
+    <link href="https://sjhuskey.info/posts/git-for-dh/" />
+    <updated>2025-07-30T00:00:00Z</updated>
+    <id>https://sjhuskey.info/posts/git-for-dh/</id>
+    <content type="html">&lt;p&gt;Version control is not only for keeping track of research data and files; it is also a potential safeguard against loss of information and a vital component in making research reproducible and, if done well, understandable.&lt;/p&gt;
+&lt;p&gt;Here are some tips I have developed for myself over the years:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Every DH research project should employ the distributed version control system &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt; for code and, if possible, data.
+&lt;ul&gt;
+&lt;li&gt;Concerns about the size of the dataset and its content (e.g., whether it contains protected, private, sensitive, or proprietary information) must dictate how the dataset is tracked.&lt;/li&gt;
+&lt;li&gt;Use &lt;a href=&quot;https://git-lfs.com/&quot;&gt;Git LFS&lt;/a&gt; for tracking large files (audio, video, large datasets, etc.).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;A &lt;code&gt;.gitignore&lt;/code&gt; file should be used judiciously to prevent sensitive, protected, or proprietary knowledge from being tracked by Git and pushed to remote repositories. A useful collection of ready-made &lt;code&gt;.gitignore&lt;/code&gt; files can be found at &lt;a href=&quot;https://github.com/github/gitignore&quot;&gt;https://github.com/github/gitignore&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Every Git repository should have a &lt;code&gt;README.md&lt;/code&gt; file that provides basic information about the project.&lt;/li&gt;
+&lt;li&gt;Every Git repository should have a license clearly indicating whether the content can be shared, reused, repurposed, etc. The site &lt;a href=&quot;https://choosealicense.com/&quot;&gt;https://choosealicense.com/&lt;/a&gt; is a good resource for determining which license is appropriate.&lt;/li&gt;
+&lt;li&gt;Code repositories should include files (e.g., &lt;code&gt;requirements.txt&lt;/code&gt;, &lt;code&gt;environment.yml&lt;/code&gt;) that enable other researchers to use the same software versions that were used in the original project.&lt;/li&gt;
+&lt;li&gt;Commit messages should be thought of as a research journal, containing consistent and clear language. The &lt;a href=&quot;https://www.conventionalcommits.org/en/v1.0.0/&quot;&gt;Conventional Commits&lt;/a&gt; standard is worth following.e Not to toot my own horn, but &lt;a href=&quot;https://link.springer.com/article/10.1007/s42803-023-00076-9&quot;&gt;I wrote an article on this subject&lt;/a&gt;. Don&#39;t follow this example: &lt;a href=&quot;https://xkcd.com/1296/&quot;&gt;https://xkcd.com/1296/&lt;/a&gt; 😉.&lt;/li&gt;
+&lt;li&gt;Milestones in the project should have annotated tags, and those tags should be pushed to the remote repository.&lt;/li&gt;
+&lt;li&gt;Major milestones should be &lt;a href=&quot;https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content&quot;&gt;made citable&lt;/a&gt; with a service such as &lt;a href=&quot;https://zenodo.org/&quot;&gt;Zenodo&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Each project should have a remote repository on a platform such as &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;, &lt;a href=&quot;https://gitlab.com/&quot;&gt;GitLab&lt;/a&gt;, or ideally an institutional repository.&lt;/li&gt;
+&lt;li&gt;Remote repositories should be set to private if they contain any information that should not be publicly available.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;span style=&quot;font-size:smaller&quot;&gt;Photo by &lt;a href=&quot;https://unsplash.com/@6heinz3r?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&quot;&gt;Gabriel Heinzer&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-a-bunch-of-words-on-it-EUzk9BIEq6M?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&quot;&gt;Unsplash&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+</content>
+  </entry> 
   <entry>
     <title>Wrestling with Solr on Docker</title>
     <link href="https://sjhuskey.info/posts/wrestling-with-solr/" />
@@ -1002,7 +1030,7 @@
 &lt;h2&gt;Prepare for Migration&lt;/h2&gt;
 &lt;h3&gt;Install Migrate modules on the D10 site&lt;/h3&gt;
 &lt;p&gt;This is easy. First, use Composer to require the migration modules in the D10 site. Note that I&#39;m requiring not only Migrate Upgrade and Migrate Plus, but also Migrate Tools and Migrate File, since experience tells me that I&#39;ll avoid errors on import with those installed:&lt;/p&gt;
-&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Require the migrate modules&lt;/span&gt;&lt;br /&gt;ddev &lt;span class=&quot;token function&quot;&gt;composer&lt;/span&gt; require drupal/migrate_tools drupal/migrate_upgrade drupal/migrate_plus drupal/migrate_file&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# Install the migrate modules&lt;/span&gt;&lt;br /&gt;ddev drush en -y migrate_tools,migrate_upgrade,migrate_plus,migrate_file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Require the migrate modules&lt;/span&gt;&lt;br /&gt;ddev &lt;span class=&quot;token function&quot;&gt;composer&lt;/span&gt; require drupal/migrate_tools drupal/migrate_upgrade drupal/migrate_plus drupal/migrate_file&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# Install the migrate modules&lt;/span&gt;&lt;br /&gt;ddev drush en &lt;span class=&quot;token parameter variable&quot;&gt;-y&lt;/span&gt; migrate_tools,migrate_upgrade,migrate_plus,migrate_file&lt;/code&gt;&lt;/pre&gt;
 &lt;h3&gt;Install Contributed Modules on the D10 site&lt;/h3&gt;
 &lt;p&gt;For this step, the easiest thing to do is to install the &lt;a href=&quot;https://www.drupal.org/project/upgrade_status&quot;&gt;Upgrade Status&lt;/a&gt; module on the D7 site, enable it, and run its report. That will tell you which contributed modules on the D7 site have versions that are compatible with D10.&lt;/p&gt;
 &lt;p&gt;Make note of the modules that are not compatible and begin thinking about whether you need to find an alternative. In my case, I wrote some custom modules that I&#39;ll need to upgrade, but that&#39;s not a crucial detail at this stage.&lt;/p&gt;
@@ -1040,7 +1068,7 @@
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;ddev drush migrate:upgrade --legacy-db-url&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;mysql://db:db@ddev-catalog-db/db --legacy-root&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/Users/sjhuskey/Sites/catalog/sites/default/files --configure-only&lt;/code&gt;&lt;/pre&gt;
 &lt;h3&gt;Export the Migration Files&lt;/h3&gt;
 &lt;p&gt;After running the &lt;code&gt;drush migrate:upgrade&lt;/code&gt; command above, I ran the following command to export the files needed for migration to a &lt;code&gt;tmp&lt;/code&gt; directoy I created in the root directory of the site:&lt;/p&gt;
-&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;ddev drush cex --destination&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;/tmp&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;ddev drush cex &lt;span class=&quot;token parameter variable&quot;&gt;--destination&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;/tmp&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;../tmp&lt;/code&gt; changes from the &lt;code&gt;web&lt;/code&gt; directory to the parent or root directory.&lt;/p&gt;
 &lt;p&gt;If you don&#39;t add the &lt;code&gt;--destination&lt;/code&gt; flag, the files will end up in your &lt;code&gt;sync&lt;/code&gt; file, and when you try to activate your custom module later, you&#39;ll get an error.&lt;/p&gt;
 &lt;h3&gt;Copy the Migration Files into your Custom Module&lt;/h3&gt;
@@ -1059,7 +1087,7 @@
 &lt;p&gt;Remove &lt;code&gt;migrate_plus.migration.catalog_migrate_action.yml&lt;/code&gt; and &lt;code&gt;migrate_plus.migration.upgrade_action_settings.yml&lt;/code&gt;. From past experience, I know that they cause trouble.&lt;/p&gt;
 &lt;h3&gt;Edit the Migration Config Files&lt;/h3&gt;
 &lt;p&gt;Several find/replace operations are needed across all the migration config files. The command line tool &lt;code&gt;sed&lt;/code&gt; is great for this:&lt;/p&gt;
-&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token for-or-select variable&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; *&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token function&quot;&gt;sed&lt;/span&gt; -i &lt;span class=&quot;token string&quot;&gt;&#39;&#39;&lt;/span&gt; -e &lt;span class=&quot;token string&quot;&gt;&#39;/^uuid: [0-9a-z&#92;-]*$/d&#39;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;&#92;&lt;/span&gt;&lt;br /&gt;        -e &lt;span class=&quot;token string&quot;&gt;&#39;s/migration_group: migrate_drupal_7/migration_group: catalog_migrate/&#39;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;&#92;&lt;/span&gt;&lt;br /&gt;        -e &lt;span class=&quot;token string&quot;&gt;&#39;s/id: upgrade_d7/id: catalog_migrate/&#39;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;&#92;&lt;/span&gt;&lt;br /&gt;        -e &lt;span class=&quot;token string&quot;&gt;&#39;s/upgrade_d7/catalog_migrate/&#39;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$file&lt;/span&gt;&quot;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token for-or-select variable&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; *&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token function&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;&#39;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;/^uuid: [0-9a-z&#92;-]*$/d&#39;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;&#92;&lt;/span&gt;&lt;br /&gt;        &lt;span class=&quot;token parameter variable&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;s/migration_group: migrate_drupal_7/migration_group: catalog_migrate/&#39;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;&#92;&lt;/span&gt;&lt;br /&gt;        &lt;span class=&quot;token parameter variable&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;s/id: upgrade_d7/id: catalog_migrate/&#39;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;&#92;&lt;/span&gt;&lt;br /&gt;        &lt;span class=&quot;token parameter variable&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;s/upgrade_d7/catalog_migrate/&#39;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$file&lt;/span&gt;&quot;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Breaking that down, I&#39;m using a &lt;code&gt;for&lt;/code&gt; loop in bash to iterate over the files and perform the following operations:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;All of the migration files contain a uuid that must be removed. I&#39;m using the Regular Expression &lt;code&gt;^uuid: [0-9a-z&#92;-]*$/d&lt;/code&gt; to match the pattern and delete the line&lt;/li&gt;
@@ -1182,7 +1210,7 @@
     <content type="html">&lt;p&gt;Here&#39;s a .gitignore file that has worked well for my Drupal 8 and 9 sites:&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;#ignoreSettings&lt;/span&gt;&lt;br /&gt;web/sites/default/settings.php&lt;br /&gt;web/sites/default/settings.local.php&lt;br /&gt;web/sites/default/~settings.local.php&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# ignore files directories&lt;/span&gt;&lt;br /&gt;web/sites/default/files&lt;br /&gt;private&lt;br /&gt;web/sites/default/files&lt;br /&gt;private&lt;br /&gt;files&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;#ignore ddev&lt;/span&gt;&lt;br /&gt;.ddev&lt;br /&gt;web/sites/default/settings.ddev.php&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# Packages #&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;############&lt;/span&gt;&lt;br /&gt;*.7z&lt;br /&gt;*.dmg&lt;br /&gt;*.gz&lt;br /&gt;*.bz2&lt;br /&gt;*.iso&lt;br /&gt;*.jar&lt;br /&gt;*.rar&lt;br /&gt;*.tar&lt;br /&gt;*.zip&lt;br /&gt;*.tgz&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# Logs and databases #&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;######################&lt;/span&gt;&lt;br /&gt;*.log&lt;br /&gt;*.sql&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# OS generated files #&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;######################&lt;/span&gt;&lt;br /&gt;.DS_Store*&lt;br /&gt;ehthumbs.db&lt;br /&gt;Icon&lt;br /&gt;&lt;br /&gt;Thumbs.db&lt;br /&gt;._*&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# Vim generated files #&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;######################&lt;/span&gt;&lt;br /&gt;*.un~&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# SASS #&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;##########&lt;/span&gt;&lt;br /&gt;.sass-cache&lt;/code&gt;&lt;/pre&gt;
 &lt;hr /&gt;
-&lt;span style=&quot;font-size:smaller&quot;&gt;Photo by &lt;a href=&quot;https://unsplash.com/es/@rubaitulazad?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Rubaitul Azad&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/s/photos/drupal?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Unsplash&lt;/a&gt;&lt;/span&gt;
+&lt;span style=&quot;font-size:smaller&quot;&gt;Photo by &lt;a href=&quot;https://unsplash.com/@6heinz3r?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&quot;&gt;Gabriel Heinzer&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-a-bunch-of-words-on-it-EUzk9BIEq6M?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&quot;&gt;Unsplash&lt;/a&gt;&lt;/span&gt;
 </content>
   </entry> 
   <entry>
@@ -8625,9 +8653,9 @@ d. &lt;code&gt;sudo mv drush.phar /usr/local/bin/drush&lt;/code&gt;&lt;/li&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;That is, a link to the archive of the latest distribution of Solr and some links to the PHP and SHA512 hashes.&lt;/p&gt;
 &lt;p&gt;If you download the archive and the SHA512 file (which you might have to right click to get) to the same directory, you can then do the following:&lt;/p&gt;
-&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;shasum -c solr-8.11.1.tgz.sha512&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;shasum &lt;span class=&quot;token parameter variable&quot;&gt;-c&lt;/span&gt; solr-8.11.1.tgz.sha512&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Sometimes you can&#39;t download the SHA file because the vendor just gives you the hash in an html file. In that case, you can copy the hash and paste it into &lt;code&gt;echo&lt;/code&gt;, then pipe the input to &lt;code&gt;shasum&lt;/code&gt;:&lt;/p&gt;
-&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;file_hash_here  file_name&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; shashum --check&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;file_hash_here  file_name&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; shashum &lt;span class=&quot;token parameter variable&quot;&gt;--check&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;It&#39;s important to insert TWO spaces between the hash and the file name; otherwise, it won&#39;t work.&lt;/p&gt;
 &lt;p&gt;You might have to wait a second or two, but then, if everything is as it should be, you&#39;ll get the message:&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;solr-8.11.1.tgz: OK&lt;/code&gt;&lt;/pre&gt;
