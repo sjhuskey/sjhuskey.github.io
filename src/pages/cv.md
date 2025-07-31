@@ -1,7 +1,7 @@
 ---
 title: "Curriculum Vitae"
 author: "Samuel J. Huskey"
-date: 2025-01-09
+date: 2025-07-30
 permalink: "/about/cv.html"
 layout: page
 eleventyNavigation:
@@ -36,19 +36,16 @@ Major: Classics
 
 ### Contracts, Fellowships, Grants and Sponsored Research
 
+1. Huskey, S. J. (Principal Investigator), Caroline T. Schroeder (Co-PI), Raina Heaton (Co-PI). "AI for Cost-Effective Research Workflows When Funding is Scarce." Sponsored by the Data Institute for Societal Challenges (OU). $9,974. (June–December 2025).
 1. Huskey, S. J. (Principal Investigator), Abbas, J. M. (Co-Principal Investigator), Weaver, C. (Co-Principal Investigator), "Digital Latin Library Implementation." Sponsored by the Andrew W. Mellon Foundation. $1,000,000.00. (July 20, 2015–July 31, 2017). Grant number 21500706.
 1. Huskey, S. J. (Principal Investigator), Abbas, J. M. (Co-Principal Investigator), Weaver, C. (Co-Principal Investigator), "Digital Latin Library." Sponsored by the Andrew W. Mellon Foundation. $572,000.00. (July 14, 2014–July 31, 2015). Grant number 21400643.
 1. Huskey, S. J. (Principal Investigator), "Planning Grant: Digital Latin Library." Sponsored by the Andrew W. Mellon Foundation. $158,000.00. (April 1, 2012–August 31, 2013). Grant number 11200693.
 
 ### Publications
 
-#### Software
-
-1. Samuel J. Huskey, Hugh A. Cayless, & Andrew Dunning. 2020, March 5. DigitalLatin/guidelines: Version 1.3.0 (Version v1.3.0). Zenodo. <http://doi.org/10.5281/zenodo.3698122>.
-1. Katy Felkner and Samuel J. Huskey. 2019. "Automation Scripts for the Digital Latin Library: First Release." Zenodo. [http://doi:10.5281/zenodo.2658751](http://doi:10.5281/zenodo.2658751){.uri}.
-
 #### Articles
 
+1. Huskey, S.J. 2025. "Cost-Effective Machine Learning for Automatically Processing Bibliographic Metadata." _International Journal of Arts and Humanities Computing_. _Forthcoming_.
 1. Huskey, S.J. 2024. "Committing to reproducibility and explainability: using Git as a research journal." _International Journal of Digital Humanities_ 6:9–21. <https://doi.org/10.1007/s42803-023-00076-9>. PDF available at [https://rdcu.be/dt2vc](https://rdcu.be/dt2vc){.uri}
 1. Huskey, S. J. 2022. "The Visual [Re]Presentation of Textual Data in Traditional and Digital Critical Editions." _magazén: International Journal for Digital and Public Humanities_ 3.1. <https://edizionicafoscari.unive.it/it/edizioni4/riviste/magazen/2022/1/the-visual-representation-of-textual-data-in-tradi/>
 1. Huskey, S. J. and Cayless, H. 2022. "The Digital Critical Apparatus: Thoughts from the Field." _The Classical Journal_ 117.3: 340–358.
@@ -82,6 +79,7 @@ Major: Classics
 
 #### Book Reviews
 
+1. Huskey, S. J. 2025. Review of Josiah Osgood, _Lawless Republic: The Rise of Cicero and the Decline of Rome_.  New York: Basic Books, 2025. _CJ Online_.
 1. Huskey, S. J. 2021. Review of Constanze Güthenke, _Feeling and classical philology: knowing antiquity in German scholarship, 1770-1920_. _Bryn Mawr Classical Review_. Bryn Mawr, PA, USA: Bryn Mawr Classical Review. <https://bmcr.brynmawr.edu/2021/2021.05.25>
 1. Huskey, Samuel J. Review of _Passwords: Philology, Security Authentication_, by Brian Lennon. _Technology and Culture_ 60, no. 4 (2019): 1126–1127. doi:10.1353/tech.2019.0116.
 1. Huskey, S. J. 2019. Review of Barbara Weiden Boyd, _Ovid's Homer: Authority, Repetition, and Reception_. _Classical World_ 112, 235–236. <https://doi.org/10.1353/clw.2019.0022>
@@ -125,6 +123,9 @@ CAMWS = Classical Association of the Middle West and South
 SCS = Society for Classical Studies, formerly American Philological
 Association
 
+1. Huskey, S. J. "The Digital Latin Library." Digital Latin II International Workshop (June 4–6, 2025).
+1. Huskey, S. J. "Machine learning for processing metadata in the Digital Latin Library." Databases of Early Latin Manuscripts online conference, (May 13, 2025)
+1. Huskey, S. J. "Opening Up Bottlenecks in Digital Classics Workflows with Human-in-the-Loop AI." SCS 156th annual meeting, Philadelphia, PA (January 4, 2025).
 1. Huskey, S. J. Panelist: "Peer Review: Present Tensions, Future Directions." SCS 155th annual meeting, Chicago, IL (January 6, 2024).
 1. Huskey, S. J. "Evaluating Digital Scholarship on its Own Terms: A Case Study." SCS 151st annual meeting, Washington, D.C. (January 3, 2020).
 1. Huskey, S. J. "The Digital Latin Library," SCS 150th annual meeting, San Diego, CA. (January 6, 2019).
@@ -175,7 +176,7 @@ Association
 (\* Indicates a course proposed, developed, and taught)
 
 1. CL C 1113:\* Introduction to Classical Studies (Fall 2011, 2012)
-1. CL C 2383: Classical Mythology (Summer 2003, Spring 2011, Spring 2013, Fall 2014, Fall 2016, Fall 2020, Spring 2024)
+1. CL C 2383: Classical Mythology (Summer 2003, Spring 2011, Spring 2013, Fall 2014, Fall 2016, Fall 2020, Spring 2024, Spring 2025)
 1. CL C 3023:\* Greek Literature in English Translation (Fall 2008)
 1. CL C 3033: Latin Literature in English Translation (Fall 2002, 2003, 2004, 2005, 2007)
 1. CL C 3113: Greek Epic Poetry (May 2003, 2004, Fall 2021)
@@ -192,7 +193,7 @@ Association
 1. LAT 2213: Intermediate Latin Poetry (Spring 2007, Fall 2021, Fall 2024)
 1. LAT 3113: Advanced Latin Prose (Fall 2002, Fall 2003, Spring 2008, Fall 2009, Fall 2010)
 1. LAT 3213: Advanced Latin Poetry (Fall 2004, Fall 2006, Spring 2023)
-1. LAT 3313:\* Latin Prose Composition (Spring 2006, 2008, 2010, 2012, 2014, 2018)
+1. LAT 3313:\* Latin Prose Composition (Spring 2006, 2008, 2010, 2012, 2014, 2018, 2025)
 1. LAT 3513: Roman Philosophers (Fall 2024)
 1. LAT 4133: Historians (Fall 2006, 2007, 2011, 2012, 2013, 2017, 2019)
 1. LAT 4213: Latin Lyric Poetry (Fall 2005, Spring 2011, Spring 2017)
@@ -227,6 +228,8 @@ Association
 
 ### University Service
 
+1. Core Committee Member, OU CAIO AI Research Working Group (Summer 2025)
+1. Committee Member, OU CAIO AI Resources and Infrastructure Working Group (Summer 2025)
 1. Committee Member, OU Libraries DH Task Force (Fall 2024–present)
 1. Committee Member, OU Provost AI Subcommittee on Research and Creative Activity. (Fall 2023–present).
 1. Committee Member, OU Faculty Evaluation Working Group. (January 2023–present).
@@ -273,6 +276,7 @@ Association
 
 ### Public Service
 
+1. Guest Speaker, OU Institute for the American Constitutional Heritage Summer Teacher Institute (June 23, 2025)
 1. Guest Speaker, OU Arts and Humanities Forum panel on Artificial Intelligence and Machine Learning Tools for the Arts and Humanities (October 31, 2024)
 1. Guest Speaker, St. Stephen's United Methodist Church Fiction Group. (August 22, 2023).
 1. Committee Member, United Way of Norman Income Council, Norman, OK. (February 23, 2017–June 20, 2017).

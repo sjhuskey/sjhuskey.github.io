@@ -13,16 +13,35 @@
   }
 }
 
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 2.25rem;
-  margin-bottom: 1.25rem;
-  font-weight: 500;
+h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
   line-height: 1.2;
-  border-bottom: solid thin gray;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-top: 3rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+h5 {
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.2;
 }
 
 h3,
@@ -31,12 +50,40 @@ h5 {
   font-style: italic;
 }
 
+
 /* for bootstrap-icons (svg) */
 .bi {
   width: 1em;
   height: 1em;
   display: inline-block;
   vertical-align: -0.125em;
+}
+
+#welcome {
+  position: relative;
+  color: black;
+  z-index: 0;
+  padding: 2rem;
+  overflow: hidden;
+  font-size: large;
+}
+
+#welcome h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+#welcome::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('/assets/images/redbud.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  z-index: -1;
 }
 
 .img-fit-cover-container {
@@ -69,11 +116,16 @@ h5 {
   background-color: #841617;
 }
 
+.post-title {
+  margin-bottom: 0;
+}
+
 .post-date {
   font-style: italic;
   font-size: smaller;
-  border-bottom: solid thin black;
-  margin: 1rem 0 2rem 0;
+  border-top: solid thin black;
+  margin: 0.2rem 0 2rem 0;
+  padding-top: 0.25rem;
 }
 
 .post-date a {

@@ -6,6 +6,9 @@
     <title>Samuel J. Huskey - Gitignore for Drupal</title>
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="/dist/app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4DCQE192P"></script>
     <script>
@@ -57,7 +60,7 @@
   <div class="container py-6">
     <header class="pb-5 mb-4">
       <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container w-75 mx-auto border-bottom">
+        <div class="container w-75 mx-auto">
           <a href="/" class="d-flex align-items-center text-light text-decoration-none">
               <title>Samuel J. Huskey</title>
               <path
@@ -119,7 +122,7 @@
             
             <img src="/assets/images/drupal.jpg" class="featured-image-post" />
             
-            <h1>Gitignore for Drupal</h1>
+            <h1 class="post-title">Gitignore for Drupal</h1>
             
             <p class="post-date">
               Posted: February 22, 2023
@@ -131,7 +134,7 @@
             <p>Here's a .gitignore file that has worked well for my Drupal 8 and 9 sites:</p>
 <pre class="language-bash"><code class="language-bash"><span class="token comment">#ignoreSettings</span><br>web/sites/default/settings.php<br>web/sites/default/settings.local.php<br>web/sites/default/~settings.local.php<br><br><span class="token comment"># ignore files directories</span><br>web/sites/default/files<br>private<br>web/sites/default/files<br>private<br>files<br><br><span class="token comment">#ignore ddev</span><br>.ddev<br>web/sites/default/settings.ddev.php<br><br><span class="token comment"># Packages #</span><br><span class="token comment">############</span><br>*.7z<br>*.dmg<br>*.gz<br>*.bz2<br>*.iso<br>*.jar<br>*.rar<br>*.tar<br>*.zip<br>*.tgz<br><br><span class="token comment"># Logs and databases #</span><br><span class="token comment">######################</span><br>*.log<br>*.sql<br><br><span class="token comment"># OS generated files #</span><br><span class="token comment">######################</span><br>.DS_Store*<br>ehthumbs.db<br>Icon<br><br>Thumbs.db<br>._*<br><br><span class="token comment"># Vim generated files #</span><br><span class="token comment">######################</span><br>*.un~<br><br><span class="token comment"># SASS #</span><br><span class="token comment">##########</span><br>.sass-cache</code></pre>
 <hr />
-<span style="font-size:smaller">Photo by <a href="https://unsplash.com/es/@rubaitulazad?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rubaitul Azad</a> on <a href="https://unsplash.com/s/photos/drupal?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></span>
+<span style="font-size:smaller">Photo by <a href="https://unsplash.com/@6heinz3r?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Gabriel Heinzer</a> on <a href="https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-a-bunch-of-words-on-it-EUzk9BIEq6M?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></span>
 
           </div>
         </div>
@@ -143,8 +146,7 @@
     <div class="row">
       <div class="col-8">
         <p class="footerinfo">
-          ©2024 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a> |
-          <a rel="me" href="https://hcommons.social/@sjhuskey">@sjhuskey@hcommons.social</a>
+          ©2025 Samuel J. Huskey | Contact: <a href="mailto:huskey@ou.edu">huskey@ou.edu</a>
         </p>
       </div>
       <div class="col-4">

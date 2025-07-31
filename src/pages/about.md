@@ -1,14 +1,14 @@
 ---
 title: About Me
 author: "Samuel J. Huskey"
-date: 2021-06-10
+date: 2025-07-30
 layout: page
 permalink: "/about/index.html"
 eleventyNavigation:
   key: About
 ---
 
-![Sam Huskey](/assets/images/sweater.png){.float-image-right .img-fluid}
+![Samuel J Huskey](/assets/images/Samuel_Huskey_C&L_25.jpg "A picture of me in 2025"){.float-image-right .img-fluid}
 
 As an introvert, I generally prefer not to talk about myself, but since this is my personal web site, I really ought to provide _some_ information.
 
@@ -19,6 +19,8 @@ The short story is that I was born and raised in Charlottesville, VA. For much o
 ## Teaching
 
 I love teaching Greek and Latin courses, especially the beginning and intermediate ones. I also enjoy teaching general education courses such as Classical Mythology, Ancient Drama, Ancient Epic, and my new course, States in Crisis in Ancient Literature. It's fun to introduce students to the subject of Classical culture!
+
+I hope to offer a new course that will introduce a component of AI literacy into the study of the ancient world. Its tentative title is "Ancient Ideas/Modern Lessons" (get the reference? AI/ML 😉). It will combine close reading of a selection of Plutarch's *Lives* with distant reading of the entire corpus through topic modeling, Natural Language Processing, information visualization, and other modern techniques.
 
 ## Research and Scholarship
 

@@ -66,4 +66,4 @@ Thumbs.db
 ```
 
 <hr />
-<span style="font-size:smaller">Photo by <a href="https://unsplash.com/es/@rubaitulazad?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rubaitul Azad</a> on <a href="https://unsplash.com/s/photos/drupal?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></span>
+<span style="font-size:smaller">Photo by <a href="https://unsplash.com/@6heinz3r?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Gabriel Heinzer</a> on <a href="https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-a-bunch-of-words-on-it-EUzk9BIEq6M?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></span>

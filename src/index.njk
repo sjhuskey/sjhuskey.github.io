@@ -9,9 +9,9 @@ eleventyNavigation:
   key: Home
 ---
 
-<div class="p-5 mb-4 bg-light rounded-3">
+<div id="welcome" class="p-5 mb-4 rounded-3">
   <div class="container-fluid py-2">
-    <h1 class="display-5 fw-bold">Welcome!</h1>
+    <h1 class="display-5">Welcome!</h1>
 
     <p class="pt-4">
       I launched this site as a space where I could write about my adventures with technology, text and data analysis,
@@ -24,7 +24,7 @@ eleventyNavigation:
 
 <div class="row align-items-md-stretch">
   <div class="col-md-6 mt-3">
-    <div class="h-100 p-5 text-white bg-dark rounded-3">
+    <div class="h-100 px-5 py-2 text-white rounded-3" style="background-color: #841617">
       <h2>About Me</h2>
       <p>
         As an introvert, I generally prefer not to talk about myself, but since this is my personal web site, I really
@@ -35,7 +35,7 @@ eleventyNavigation:
     </div>
   </div>
   <div class="col-md-6 mt-3">
-    <div class="h-100 p-5 border text-white rounded-3" style="background-color: #96be25">
+    <div class="h-100 px-5 py-3 border text-white rounded-3" style="background-color: #4E8316">
       <h2>Digital Humanities</h2>
       <p>
         In many ways, my career in this area of study—I'll refer to it as "DH", though it goes by a variety of
@@ -47,12 +47,12 @@ eleventyNavigation:
     </div>
   </div>
   <div class="col-md-6 mt-3">
-    <div class="h-100 p-5 broder text-white rounded-3" style="background-color: #2596be">
+    <div class="h-100 px-5 py-3 border text-white rounded-3" style="background-color: #168381">
       <h2>My Blog Posts</h2>
       <ul class="list-unstyled">
         {%- set count = 0 -%} {%- for item in collections.posts | reverse -%} {%- if count < 5 -%} {%- set count = count
         + 1 -%}
-        <li class="pb-1" style="background-color: #2596be">
+        <li class="pb-1">
           <a href="{{ item.url | url }}" class="link-light">{{ item.data.title }}</a>
         </li>
         {%- endif -%} {%- endfor -%}
@@ -61,7 +61,7 @@ eleventyNavigation:
     </div>
   </div>
   <div class="col-md-6 mt-3">
-    <div class="h-100 p-5 text-white rounded-3" style="background-color: #be2596">
+    <div class="h-100 px-5 py-3 text-white rounded-3" style="background-color: #4B1683">
       <h2>Digital Latin Library</h2>
       <ul class="list-unstyled">
         <li class="pb-1"><a href="https://digitallatin.org/" class="link-light">DigitalLatin.org</a></li>
