@@ -109,15 +109,34 @@ h2.front-box {
 }
 
 #header-container {
-  background-color: #841617;
+  background-color: #007200;
 }
 
 .navbar-light .navbar-nav .nav-link {
   color: var(--bs-light);
+  padding-top: 1.0rem;
 }
 
 #header-container nav {
-  background-color: #841617;
+  background-color: #007200;
+}
+
+// Front page blocks
+
+#about {
+  background-color: #700000;
+}
+
+#digital-humanities {
+  background-color: #007000;
+}
+
+#my-blog-posts {
+  background-color: #007070;
+}
+
+#digital-latin-library {
+  background-color: #700070;
 }
 
 .post-title {
