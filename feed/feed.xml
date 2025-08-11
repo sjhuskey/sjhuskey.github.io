@@ -20,18 +20,19 @@
     <content type="html">&lt;p&gt;Version control is not only for keeping track of research data and files; it is also a potential safeguard against loss of information and a vital component in making research reproducible and, if done well, understandable.&lt;/p&gt;
 &lt;p&gt;Here are some tips I have developed for myself over the years:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Every DH research project should employ the distributed version control system &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt; for code and, if possible, data.
+&lt;li&gt;Every DH research project should employ the distributed version control system &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt; for code and, in a separate repository, data.
 &lt;ul&gt;
 &lt;li&gt;Concerns about the size of the dataset and its content (e.g., whether it contains protected, private, sensitive, or proprietary information) must dictate how the dataset is tracked.&lt;/li&gt;
 &lt;li&gt;Use &lt;a href=&quot;https://git-lfs.com/&quot;&gt;Git LFS&lt;/a&gt; for tracking large files (audio, video, large datasets, etc.).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;A &lt;code&gt;.gitignore&lt;/code&gt; file should be used judiciously to prevent sensitive, protected, or proprietary knowledge from being tracked by Git and pushed to remote repositories. A useful collection of ready-made &lt;code&gt;.gitignore&lt;/code&gt; files can be found at &lt;a href=&quot;https://github.com/github/gitignore&quot;&gt;https://github.com/github/gitignore&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Exercise great caution when tracking private or sensitive information with Git. If protected data is included in even one commit, it will be discoverable if the repository is publicly shared—even if the file is removed from later commits. &lt;a href=&quot;https://stackoverflow.com/a/8741530/2943704&quot;&gt;Know how to correct your mistakes&lt;/a&gt;!&lt;/li&gt;
 &lt;li&gt;Every Git repository should have a &lt;code&gt;README.md&lt;/code&gt; file that provides basic information about the project.&lt;/li&gt;
 &lt;li&gt;Every Git repository should have a license clearly indicating whether the content can be shared, reused, repurposed, etc. The site &lt;a href=&quot;https://choosealicense.com/&quot;&gt;https://choosealicense.com/&lt;/a&gt; is a good resource for determining which license is appropriate.&lt;/li&gt;
 &lt;li&gt;Code repositories should include files (e.g., &lt;code&gt;requirements.txt&lt;/code&gt;, &lt;code&gt;environment.yml&lt;/code&gt;) that enable other researchers to use the same software versions that were used in the original project.&lt;/li&gt;
 &lt;li&gt;Commit messages should be thought of as a research journal, containing consistent and clear language. The &lt;a href=&quot;https://www.conventionalcommits.org/en/v1.0.0/&quot;&gt;Conventional Commits&lt;/a&gt; standard is worth following.e Not to toot my own horn, but &lt;a href=&quot;https://link.springer.com/article/10.1007/s42803-023-00076-9&quot;&gt;I wrote an article on this subject&lt;/a&gt;. Don&#39;t follow this example: &lt;a href=&quot;https://xkcd.com/1296/&quot;&gt;https://xkcd.com/1296/&lt;/a&gt; 😉.&lt;/li&gt;
-&lt;li&gt;Milestones in the project should have annotated tags, and those tags should be pushed to the remote repository.&lt;/li&gt;
+&lt;li&gt;Milestones in the project should have annotated tags that follow an obvious system (e.g., &lt;a href=&quot;https://semver.org/&quot;&gt;Semantic Versioning&lt;/a&gt;), and those tags should be pushed to the remote repository.&lt;/li&gt;
 &lt;li&gt;Major milestones should be &lt;a href=&quot;https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content&quot;&gt;made citable&lt;/a&gt; with a service such as &lt;a href=&quot;https://zenodo.org/&quot;&gt;Zenodo&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Each project should have a remote repository on a platform such as &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;, &lt;a href=&quot;https://gitlab.com/&quot;&gt;GitLab&lt;/a&gt;, or ideally an institutional repository.&lt;/li&gt;
 &lt;li&gt;Remote repositories should be set to private if they contain any information that should not be publicly available.&lt;/li&gt;

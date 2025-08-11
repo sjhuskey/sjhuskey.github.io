@@ -134,18 +134,19 @@
             <p>Version control is not only for keeping track of research data and files; it is also a potential safeguard against loss of information and a vital component in making research reproducible and, if done well, understandable.</p>
 <p>Here are some tips I have developed for myself over the years:</p>
 <ol>
-<li>Every DH research project should employ the distributed version control system <a href="https://git-scm.com/">Git</a> for code and, if possible, data.
+<li>Every DH research project should employ the distributed version control system <a href="https://git-scm.com/">Git</a> for code and, in a separate repository, data.
 <ul>
 <li>Concerns about the size of the dataset and its content (e.g., whether it contains protected, private, sensitive, or proprietary information) must dictate how the dataset is tracked.</li>
 <li>Use <a href="https://git-lfs.com/">Git LFS</a> for tracking large files (audio, video, large datasets, etc.).</li>
 </ul>
 </li>
 <li>A <code>.gitignore</code> file should be used judiciously to prevent sensitive, protected, or proprietary knowledge from being tracked by Git and pushed to remote repositories. A useful collection of ready-made <code>.gitignore</code> files can be found at <a href="https://github.com/github/gitignore">https://github.com/github/gitignore</a>.</li>
+<li>Exercise great caution when tracking private or sensitive information with Git. If protected data is included in even one commit, it will be discoverable if the repository is publicly shared—even if the file is removed from later commits. <a href="https://stackoverflow.com/a/8741530/2943704">Know how to correct your mistakes</a>!</li>
 <li>Every Git repository should have a <code>README.md</code> file that provides basic information about the project.</li>
 <li>Every Git repository should have a license clearly indicating whether the content can be shared, reused, repurposed, etc. The site <a href="https://choosealicense.com/">https://choosealicense.com/</a> is a good resource for determining which license is appropriate.</li>
 <li>Code repositories should include files (e.g., <code>requirements.txt</code>, <code>environment.yml</code>) that enable other researchers to use the same software versions that were used in the original project.</li>
 <li>Commit messages should be thought of as a research journal, containing consistent and clear language. The <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> standard is worth following.e Not to toot my own horn, but <a href="https://link.springer.com/article/10.1007/s42803-023-00076-9">I wrote an article on this subject</a>. Don't follow this example: <a href="https://xkcd.com/1296/">https://xkcd.com/1296/</a> 😉.</li>
-<li>Milestones in the project should have annotated tags, and those tags should be pushed to the remote repository.</li>
+<li>Milestones in the project should have annotated tags that follow an obvious system (e.g., <a href="https://semver.org/">Semantic Versioning</a>), and those tags should be pushed to the remote repository.</li>
 <li>Major milestones should be <a href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">made citable</a> with a service such as <a href="https://zenodo.org/">Zenodo</a>.</li>
 <li>Each project should have a remote repository on a platform such as <a href="https://github.com/">GitHub</a>, <a href="https://gitlab.com/">GitLab</a>, or ideally an institutional repository.</li>
 <li>Remote repositories should be set to private if they contain any information that should not be publicly available.</li>
