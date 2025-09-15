@@ -36,7 +36,9 @@
             {% if image %}
             <img src="{{ image }}" class="featured-image-post" />
             {% endif %}
-            <h1 class="post-title">{{ title }}</h1>
+            {% if page.url != "/" %}
+              <h1 class="post-title">{{ title }}</h1>
+            {% endif %}
             {% if date %}
             <p class="post-date">
               Posted: {{ date | dateReadable }}
