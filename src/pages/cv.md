@@ -1,11 +1,12 @@
 ---
 title: "Curriculum Vitae"
 author: "Samuel J. Huskey"
-date: 2025-07-30
+date: 2025-09-20
 permalink: "/about/cv.html"
 layout: page
 eleventyNavigation:
   key: CV
+geometry: margin=1in
 ---
 
 [_Download a print version of this document._](https://sjhuskey.info/files/cv-web.pdf)
@@ -123,6 +124,7 @@ CAMWS = Classical Association of the Middle West and South
 SCS = Society for Classical Studies, formerly American Philological
 Association
 
+1. Huskey, S. J. Panelist: "Translating Boccaccio's Works: Method and Problems." Boccaccio 650: Sixth Triennial Conference of the American Boccaccio Association. Chicago, IL (September 19, 2025).
 1. Huskey, S. J. "The Digital Latin Library." Digital Latin II International Workshop (June 4–6, 2025).
 1. Huskey, S. J. "Machine learning for processing metadata in the Digital Latin Library." Databases of Early Latin Manuscripts online conference, (May 13, 2025)
 1. Huskey, S. J. "Opening Up Bottlenecks in Digital Classics Workflows with Human-in-the-Loop AI." SCS 156th annual meeting, Philadelphia, PA (January 4, 2025).
