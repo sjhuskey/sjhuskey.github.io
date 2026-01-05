@@ -1,12 +1,13 @@
 ---
 title: "Curriculum Vitae"
 author: "Samuel J. Huskey"
-date: 2025-09-20
+date: 2026-01-05
 permalink: "/about/cv.html"
 layout: page
 eleventyNavigation:
   key: CV
 geometry: margin=1in
+fontsize: 12pt
 ---
 
 [_Download a print version of this document._](https://sjhuskey.info/files/cv-web.pdf)
@@ -38,6 +39,7 @@ Major: Classics
 ### Contracts, Fellowships, Grants and Sponsored Research
 
 1. Huskey, S. J. (Principal Investigator), Caroline T. Schroeder (Co-PI), Raina Heaton (Co-PI). "AI for Cost-Effective Research Workflows When Funding is Scarce." Sponsored by the Data Institute for Societal Challenges (OU). $9,974. (June–December 2025).
+1. Huskey, S. J. (co-PI). "OneOklahoma Cyberinfrastructure Initiative Artificial Intelligence Consultants (OneOCII-AIC): Developing a Pipeline of CI Professionals in an EPSCoR Jurisdiction." Sponsored by National Science Foundation. (October 1, 2025 - September 30, 2028).
 1. Huskey, S. J. (Principal Investigator), Abbas, J. M. (Co-Principal Investigator), Weaver, C. (Co-Principal Investigator), "Digital Latin Library Implementation." Sponsored by the Andrew W. Mellon Foundation. $1,000,000.00. (July 20, 2015–July 31, 2017). Grant number 21500706.
 1. Huskey, S. J. (Principal Investigator), Abbas, J. M. (Co-Principal Investigator), Weaver, C. (Co-Principal Investigator), "Digital Latin Library." Sponsored by the Andrew W. Mellon Foundation. $572,000.00. (July 14, 2014–July 31, 2015). Grant number 21400643.
 1. Huskey, S. J. (Principal Investigator), "Planning Grant: Digital Latin Library." Sponsored by the Andrew W. Mellon Foundation. $158,000.00. (April 1, 2012–August 31, 2013). Grant number 11200693.
@@ -46,7 +48,7 @@ Major: Classics
 
 #### Articles
 
-1. Huskey, S.J. 2025. "Cost-Effective Machine Learning for Automatically Processing Bibliographic Metadata." _International Journal of Arts and Humanities Computing_. _Forthcoming_.
+1. Huskey, S.J. 2025. "Cost-Effective Machine Learning for Automatically Processing Bibliographic Metadata." _International Journal of Arts and Humanities Computing_ 19.2: 112–126. [https://doi.org/10.3366/ijhac.2025.0353](https://doi.org/10.3366/ijhac.2025.0353)
 1. Huskey, S.J. 2024. "Committing to reproducibility and explainability: using Git as a research journal." _International Journal of Digital Humanities_ 6:9–21. <https://doi.org/10.1007/s42803-023-00076-9>. PDF available at [https://rdcu.be/dt2vc](https://rdcu.be/dt2vc){.uri}
 1. Huskey, S. J. 2022. "The Visual [Re]Presentation of Textual Data in Traditional and Digital Critical Editions." _magazén: International Journal for Digital and Public Humanities_ 3.1. <https://edizionicafoscari.unive.it/it/edizioni4/riviste/magazen/2022/1/the-visual-representation-of-textual-data-in-tradi/>
 1. Huskey, S. J. and Cayless, H. 2022. "The Digital Critical Apparatus: Thoughts from the Field." _The Classical Journal_ 117.3: 340–358.
@@ -124,6 +126,7 @@ CAMWS = Classical Association of the Middle West and South
 SCS = Society for Classical Studies, formerly American Philological
 Association
 
+1. Huskey, S. J. "AI for Cost-Effective Research Workflows When Funding is Scarce." OU AI Symposium (September 26, 2025).
 1. Huskey, S. J. Panelist: "Translating Boccaccio's Works: Method and Problems." Boccaccio 650: Sixth Triennial Conference of the American Boccaccio Association. Chicago, IL (September 19, 2025).
 1. Huskey, S. J. "The Digital Latin Library." Digital Latin II International Workshop (June 4–6, 2025).
 1. Huskey, S. J. "Machine learning for processing metadata in the Digital Latin Library." Databases of Early Latin Manuscripts online conference, (May 13, 2025)
@@ -181,7 +184,7 @@ Association
 1. CL C 2383: Classical Mythology (Summer 2003, Spring 2011, Spring 2013, Fall 2014, Fall 2016, Fall 2020, Spring 2024, Spring 2025)
 1. CL C 3023:\* Greek Literature in English Translation (Fall 2008)
 1. CL C 3033: Latin Literature in English Translation (Fall 2002, 2003, 2004, 2005, 2007)
-1. CL C 3113: Greek Epic Poetry (May 2003, 2004, Fall 2021)
+1. CL C 3113: Greek Epic Poetry (May 2003, 2004, Fall 2021, Fall 2025)
 1. CL C 3123: Greek Tragedy in English Translation (Fall 2010)
 1. CL C 3313:\* Religions of Rome (Spring 2003, 2004, 2007)
 1. CL C 3510: \* States in Crisis in Greece & Rome (Spring 2021, Spring 2022, Fall 2024)
@@ -191,7 +194,7 @@ Association
 1. GRK 3213: Greek Tragedy (Spring 2024)
 1. LAT 1115: Beginning Latin I (Fall 2023)
 1. LAT 1215: Beginning Latin II (Spring 2024)
-1. LAT 2113: Intermediate Latin Prose (Spring 2003, Spring 2004, Spring 2006, Spring 2008, Fall 2008, Spring 2019, Spring 2021)
+1. LAT 2113: Intermediate Latin Prose (Spring 2003, Spring 2004, Spring 2006, Spring 2008, Fall 2008, Spring 2019, Spring 2021, Fall 2025)
 1. LAT 2213: Intermediate Latin Poetry (Spring 2007, Fall 2021, Fall 2024)
 1. LAT 3113: Advanced Latin Prose (Fall 2002, Fall 2003, Spring 2008, Fall 2009, Fall 2010)
 1. LAT 3213: Advanced Latin Poetry (Fall 2004, Fall 2006, Spring 2023)
@@ -204,6 +207,8 @@ Association
 
 #### Directed Student Learning
 
+1. Honors Research, Hunter Easley (Spring, Fall 2025). "Medea the Lionness".
+1. Mentored Undergraduate Research, Victoria Smith (Spring, Fall 2025). "Battles in Banquet Halls: Ovid's Transformation of Epic in the Metamorphoses".
 1. Honors Research, Kathryn Powers (Fall 2023)
 1. Honors Research, Jack Bennet (Fall 2021)
 1. Mentored Undergraduate Research, Caleb Carr (Spring 2019)
@@ -230,18 +235,19 @@ Association
 
 ### University Service
 
-1. Core Committee Member, OU CAIO AI Research Working Group (Summer 2025)
+1. Committee Member, OU Chief Technology Officer Interview Committee (December 2025)
+1. Core Committee Member, OU Chief Artificial Intelligence Officer (CAIO) AI Research Working Group (Summer, Fall 2025)
 1. Committee Member, OU CAIO AI Resources and Infrastructure Working Group (Summer 2025)
 1. Committee Member, OU Libraries DH Task Force (Fall 2024–present)
 1. Committee Member, OU Provost AI Subcommittee on Research and Creative Activity. (Fall 2023–present).
-1. Committee Member, OU Faculty Evaluation Working Group. (January 2023–present).
-1. Committee Member, OU Humanities Forum Advisory Board. (August 2022-present).
+1. Committee Member, OU Faculty Evaluation Working Group. (January 2023–May 2025).
+1. Committee Member, OU Humanities Forum Advisory Board. (August 2022-May 2025).
 1. Committee Member, University Libraries Associate Dean for Digital Strategies & Innovation. (Fall 2021).
 1. Committee Member, University Libraries Chief Technology Office Search. (April 2021–July 2021).
 1. Faculty Appeals Board (2020–2023)
-1. Campus IT Council. (Spring 2020, Fall 2023–present)
+1. Campus IT Council. (Spring 2020, Fall 2023–present); Chair (2025–2027)
 1. Chief Information Officer Search Committee (2019)
-1. Business Continuity Plan (2015–Present).
+1. Business Continuity Plan (2015–2021).
 1. Provost's Advisory Committee on Learning Outcomes Assessment. (2014–2016).
 1. Committee Member, Bookstore Advisory Committee. (2017).
 1. Guest Speaker, A Conversation with Tony Hey. (February 24, 2016).
@@ -278,6 +284,7 @@ Association
 
 ### Public Service
 
+1. Guest Speaker, OU Classics Day (2002–present)
 1. Guest Speaker, OU Institute for the American Constitutional Heritage Summer Teacher Institute (June 23, 2025)
 1. Guest Speaker, OU Arts and Humanities Forum panel on Artificial Intelligence and Machine Learning Tools for the Arts and Humanities (October 31, 2024)
 1. Guest Speaker, St. Stephen's United Methodist Church Fiction Group. (August 22, 2023).
@@ -298,7 +305,9 @@ Association
 
 ### Awards and Honors
 
-1. OU Center for Faculty Excellence Fellow (2023)
+1. OU Center for Faculty Excellence Senior Faculty Fellow for Artificial Intelligence (2025–2026)
+1. OU Center for Faculty Excellence Senior Faculty Fellow for Digital Humanities (2024–2025)
+1. OU Center for Faculty Excellence Fellow for Digital Humanities (2023)
 1. OU Libraries Library Partner Award (April 2019)
 1. Most Inspiring Faculty, University of Oklahoma Department of Athletics (April 2019)
 1. Nancy L. Mergler Faculty Mentor Award for Undergraduate Research, OU Office of Undergraduate Research (April 2018)
