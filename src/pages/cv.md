@@ -48,6 +48,7 @@ Major: Classics
 
 #### Articles
 
+1. Huskey, S. J. “The Digital Latin Library.” _Umanistica Digitale_, no. 23 (May 2026): 13–21. <https://doi.org/10.60923/issn.2532-8816/23501>. PDF available at <https://umanisticadigitale.unibo.it/article/view/23501/21245>.
 1. Huskey, S.J. 2025. "Cost-Effective Machine Learning for Automatically Processing Bibliographic Metadata." _International Journal of Arts and Humanities Computing_ 19.2: 112–126. [https://doi.org/10.3366/ijhac.2025.0353](https://doi.org/10.3366/ijhac.2025.0353)
 1. Huskey, S.J. 2024. "Committing to reproducibility and explainability: using Git as a research journal." _International Journal of Digital Humanities_ 6:9–21. <https://doi.org/10.1007/s42803-023-00076-9>. PDF available at [https://rdcu.be/dt2vc](https://rdcu.be/dt2vc){.uri}
 1. Huskey, S. J. 2022. "The Visual [Re]Presentation of Textual Data in Traditional and Digital Critical Editions." _magazén: International Journal for Digital and Public Humanities_ 3.1. <https://edizionicafoscari.unive.it/it/edizioni4/riviste/magazen/2022/1/the-visual-representation-of-textual-data-in-tradi/>
@@ -172,7 +173,6 @@ Association
 
 ### Ongoing Research Activity
 
-1. Houston, Jason and Samuel J. Huskey. _Boccaccio's Shorter Latin Works_. Cambridge: Harvard University Press (under contract).
 1. "Digital Critical Edition of Calpurnius Siculus and other Minor Latin Poets" (On-Going). (2016–Present) This is an ongoing project to involve undergraduate students in philological research. The result will be a new, born-digital critical edition of the minor Latin poets.
 1. "Digital Latin Library" (On-Going). (2012–Present). The DLL, funded by the Andrew W. Mellon Foundation and affiliated with the Society for Classical Studies, the Medieval Academy of America, and the Renaissance Society of America, is building a Linked Open Data, online resource for finding, reading, discussing, studying, teaching, editing, annotating, and publishing Latin texts of all eras
 
