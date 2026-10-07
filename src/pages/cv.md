@@ -1,7 +1,7 @@
 ---
 title: "Curriculum Vitae"
 author: "Samuel J. Huskey"
-date: 2026-01-05
+date: 2026-10-07
 permalink: "/about/cv.html"
 layout: page
 eleventyNavigation:
@@ -181,14 +181,15 @@ Association
 (\* Indicates a course proposed, developed, and taught)
 
 1. CL C 1113:\* Introduction to Classical Studies (Fall 2011, 2012)
-1. CL C 2383: Classical Mythology (Summer 2003, Spring 2011, Spring 2013, Fall 2014, Fall 2016, Fall 2020, Spring 2024, Spring 2025)
+1. CL C 2383: Classical Mythology (Summer 2003, Spring 2011, Spring 2013, Fall 2014, Fall 2016, Fall 2020, Spring 2024, Spring 2025, Spring 2026)
 1. CL C 3023:\* Greek Literature in English Translation (Fall 2008)
 1. CL C 3033: Latin Literature in English Translation (Fall 2002, 2003, 2004, 2005, 2007)
 1. CL C 3113: Greek Epic Poetry (May 2003, 2004, Fall 2021, Fall 2025)
 1. CL C 3123: Greek Tragedy in English Translation (Fall 2010)
 1. CL C 3313:\* Religions of Rome (Spring 2003, 2004, 2007)
-1. CL C 3510: \* States in Crisis in Greece & Rome (Spring 2021, Spring 2022, Fall 2024)
+1. CL C 3510:\* States in Crisis in Greece & Rome (Spring 2021, Spring 2022, Fall 2024)
 1. CL C 3613: Classical Influences on Modern Literature (Winter 2004, May 2005, Summer 2005, May 2006)
+1. CL C 4003:\* Ancient Ideas/Modern Lessons. I have not yet had the opportunity to teach this class on AI literacy for classical studies, but it has been approved for general education status.
 1. CL C 4503: Classics Capstone (Spring 2009, Spring 2015, Spring 2016, Spring 2019, Spring 2020, Spring 2023)
 1. GRK 2113: Biblical Greek (Fall 2018, Fall 2020)
 1. GRK 3213: Greek Tragedy (Spring 2024)
@@ -207,25 +208,26 @@ Association
 
 #### Directed Student Learning
 
-1. Honors Research, Hunter Easley (Spring, Fall 2025). "Medea the Lionness".
+1. Honors Research, Hunter Easley (Spring and Fall 2025). "Medea the Lionness".
 1. Mentored Undergraduate Research, Victoria Smith (Spring, Fall 2025). "Battles in Banquet Halls: Ovid's Transformation of Epic in the Metamorphoses".
-1. Honors Research, Kathryn Powers (Fall 2023)
-1. Honors Research, Jack Bennet (Fall 2021)
-1. Mentored Undergraduate Research, Caleb Carr (Spring 2019)
-1. Mentored Undergraduate Research, Elizabeth Anderson, (Fall 2018)
-1. Undergraduate Honors Research, "Mythological Connotations in _Ex Machina_." (May 2016) Advised: Jennifer Nguyen
-1. Undergraduate Honors Research, "A Digital Edition of Vibius Sequester." (December 2012) Advised: Shaina Gordon
-1. Undergraduate Honors Research, "Persona vs. Vita: Authorship, Identity, and Purpose in the Ovidian Corpus." (May 2011) Advised: Dylan Erwin
-1. Undergraduate Honors Research, "The Problem of Genre and Ovid's _Ars Amatoria_." (May 2011) Advised: Molly Miller
-1. Undergraduate Honors Research, "The Effects of a Creed on Freedom and Order." (December 2009) Advised: Michael Du Pont
-1. Undergraduate Honors Research, "The Sources on Amyntas IV and Amyntas Antiochou of Macedon." (December 2008) Advised: Kelly Taylor
-1. Undergraduate Honors Research, "A reading of Ovid's _Ibis_." (December 2008) Advised: Rachel Dowell
-1. Undergraduate Honors Research, "An Analysis of the Prose Style of Julius Caesar's _Bellum Civile_." (May 2007) Advised: Alex Ward
-1. Undergraduate Honors Research, "A Survey of Pedagogical Methods for Latin." (May 2007) Advised: Bethany Burklund
-1. Undergraduate Honors Research, "Latin Textual Criticism and the New Lucan MS." (May 2007) Advised: Scott Wise
-1. Undergraduate Honors Research, "A Translation and Commentary on the Life of Elagabalus." (May 2006) Advised: Shane Morgan
-1. Undergraduate Honors Research, "Religion in Roman Britain." (December 2003) Advised: Sharada Price
-1. Undergraduate Honors Research, "Jews and Judaism in Ancient Alexandria." (May 2003) Advised: Mary Veith
+1. Honors Research, Kathryn Powers (Fall 2023). "Fate and Fortune in Lucan's *Pharsalia*".
+1. Honors Research, Jack Bennet (Fall 2021). "The Relationship of Lucan and Americans to Civil War".
+1. Mentored Undergraduate Research, Caleb Carr (Spring 2019). "Machine Learning and Natural Language Processing for New Testament Greek Studies".
+1. Undergraduate Honors Research, Jennifer Nguyen (May 2016) "Mythological Connotations in _Ex Machina_."
+1. Undergraduate Honors Research, Lauren Davis (May 2014). "Ovid's _Ibis_ and a New Tool for Textual Criticism."
+1. Undergraduate Honors Research, Amy Brackenbury (May 2012). "Celery: Plant of Victory and Death."
+1. Undergraduate Honors Research, Shaina Gordon (December 2012). "A Digital Edition of Vibius Sequester."
+1. Undergraduate Honors Research, Dylan Erwin (May 2011). "Persona vs. Vita: Authorship, Identity, and Purpose in the Ovidian Corpus."
+1. Undergraduate Honors Research, Molly Miller (May 2011). "The Problem of Genre and Ovid's _Ars Amatoria_."
+1. Undergraduate Honors Research, Michael Du Pont (December 2009). "The Effects of a Creed on Freedom and Order."
+1. Undergraduate Honors Research, Kelly Taylor (December 2008). "The Sources on Amyntas IV and Amyntas Antiochou of Macedon."
+1. Undergraduate Honors Research, Rachel Dowell (December 2008). "A reading of Ovid's _Ibis_."
+1. Undergraduate Honors Research, Alex Ward (May 2007). "An Analysis of the Prose Style of Julius Caesar's _Bellum Civile_."
+1. Undergraduate Honors Research, Bethany Burklund (May 2007). "A Survey of Pedagogical Methods for Latin."
+1. Undergraduate Honors Research, Scott Wise (May 2007). "Latin Textual Criticism and the New Lucan MS."
+1. Undergraduate Honors Research, Shane Morgan (May 2006). "A Translation and Commentary on the Life of Elagabalus."
+1. Undergraduate Honors Research, Sharada Price (December 2003). "Religion in Roman Britain." (December 2003) Advised: Sharada Price
+1. Undergraduate Honors Research, Mary Veith (May 2003). "Jews and Judaism in Ancient Alexandria."
 
 ### Faculty Development Activities Attended
 
